@@ -2,6 +2,7 @@
   "stage": "3b",
   "hp_buckets": 26,
   "prob_scale": 1000,
+  "value_scale": 1000,
   "sentinel": 65535,
   "max_move_slots": 4,
   "checkpoint": "K1b5_ep280",

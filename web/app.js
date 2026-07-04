@@ -48,6 +48,7 @@ const T = {
   ko: { ja: "きぜつ！", en: "KO!" },
   foe_act_label: { ja: "相手の行動", en: "Foe's move" },
   you_act_label: { ja: "あなたの行動", en: "Your move" },
+  win_rate: { ja: "AI評価によるあなたの勝率", en: "Your win rate (AI estimate)" },
 };
 // URL の ?lang= で言語指定 (ja/en)。未指定・不正はデフォルト英語。
 function langFromUrl() {
@@ -65,7 +66,7 @@ function applyStaticI18n() {
 }
 
 // ---- state ---------------------------------------------------------------
-let META, TABLE, H, PROB, SENT;
+let META, TABLE, VALUE_TABLE, H, PROB, VSCALE, SENT;
 let battle = null, humanTeam = 0, humanLead = 0, aiTeam = 0, aiLead = 0;
 let showFoe = true, showSelf = true, gameOver = false;
 // 直前ターンの各サイドの手 {p1,p2:{kind,label,crit,ko}} と、ターン開始時の全メンバーHP。
@@ -101,6 +102,11 @@ function denseIndex(aiTeamId, ai, opp) {
 function pSwitch(aiSide, aiTeamId, oppSide) {
   const v = TABLE[denseIndex(aiTeamId, sideBuckets(aiSide), sideBuckets(oppSide))];
   return v === SENT ? null : v / PROB;
+}
+// aiSide 視点の勝率 (value head 0..1)。表に無いなら null。
+function winRate(aiSide, aiTeamId, oppSide) {
+  const v = VALUE_TABLE[denseIndex(aiTeamId, sideBuckets(aiSide), sideBuckets(oppSide))];
+  return v === SENT ? null : v / VSCALE;
 }
 
 // ---- rendering -----------------------------------------------------------
@@ -205,6 +211,19 @@ function render() {
 
   const foeP = showFoe ? pSwitch(s.p2, aiTeam, s.p1) : null;
   const selfP = showSelf ? pSwitch(s.p1, humanTeam, s.p2) : null;
+
+  // 勝率帯 (自分=P1視点の value)。tog-self に連動して表示/非表示。
+  const wr = el("winrate");
+  const wv = showSelf ? winRate(s.p1, humanTeam, s.p2) : null;
+  if (wv === null) {
+    wr.classList.add("hidden");
+  } else {
+    const pct = (wv * 100).toFixed(1);
+    wr.classList.remove("hidden");
+    wr.classList.toggle("hi", wv >= 0.5);
+    wr.classList.toggle("lo", wv < 0.5);
+    wr.innerHTML = `<span class="wr-label">${tr("win_rate")}</span><span class="wr-val">${pct}%</span>`;
+  }
 
   // ゴースト帯: 各サイドが今ターン失った割合。相手に与えた% は相手側のゴーストと一致。
   const ghFoe = ghostLost(s.p2, preHp?.p2); // 相手が失った = あなたが与えた
@@ -376,8 +395,11 @@ async function main() {
   await init();
   META = await (await fetch("./policy_3b.meta.json")).json();
   H = META.hp_buckets; PROB = META.prob_scale; SENT = META.sentinel;
+  VSCALE = META.value_scale;
   const buf = await (await fetch("./policy_3b.bin")).arrayBuffer();
   TABLE = new Uint16Array(buf);
+  const vbuf = await (await fetch("./value_3b.bin")).arrayBuffer();
+  VALUE_TABLE = new Uint16Array(vbuf);
 
   applyStaticI18n();
   buildLanding();

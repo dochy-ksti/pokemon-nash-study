@@ -149,3 +149,9 @@ h1{font-size:19px;margin:0;font-weight:650;letter-spacing:.01em}
   border:1px solid var(--edge);background:var(--panel)}
 .banner.win{color:var(--gold);border-color:var(--gold)}
 .banner.lose{color:var(--bad);border-color:var(--bad)}
+.winrate{display:flex;align-items:baseline;justify-content:center;gap:12px;
+  padding:8px 12px;border-radius:10px;border:1px solid var(--edge);background:var(--panel)}
+.winrate .wr-label{font-size:12px;color:var(--dim,#9aa)}
+.winrate .wr-val{font-size:26px;font-weight:760;font-variant-numeric:tabular-nums}
+.winrate.hi .wr-val{color:var(--good)}
+.winrate.lo .wr-val{color:var(--bad)}
