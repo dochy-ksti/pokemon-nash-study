@@ -49,13 +49,18 @@ const T = {
   foe_act_label: { ja: "相手の行動", en: "Foe's move" },
   you_act_label: { ja: "あなたの行動", en: "Your move" },
 };
-let lang = "ja";
+// URL の ?lang= で言語指定 (ja/en)。未指定・不正はデフォルト英語。
+function langFromUrl() {
+  return new URLSearchParams(location.search).get("lang") === "ja" ? "ja" : "en";
+}
+let lang = langFromUrl();
 const monName = (raw) => (MON[raw]?.[lang]) ?? raw;
 const moveName = (id) => (MOVE[id]?.[lang]) ?? id;
 const tr = (k) => T[k][lang];
 
 function applyStaticI18n() {
   document.documentElement.lang = lang;
+  document.title = tr("tag");
   for (const el of document.querySelectorAll("[data-i18n]")) el.textContent = tr(el.dataset.i18n);
 }
 
@@ -391,9 +396,15 @@ async function main() {
     if (battle && !el("battle").classList.contains("hidden")) render();
   });
   for (const b of document.querySelectorAll(".lg")) {
+    // 起動時: URL 由来の lang に合わせてボタンの on 状態を反映。
+    b.classList.toggle("on", b.dataset.lang === lang);
     b.addEventListener("click", () => {
       lang = b.dataset.lang;
       for (const x of document.querySelectorAll(".lg")) x.classList.toggle("on", x === b);
+      // 共有できるよう URL に ?lang= を反映 (履歴は増やさない)。
+      const u = new URL(location.href);
+      u.searchParams.set("lang", lang);
+      history.replaceState(null, "", u);
       applyStaticI18n(); buildLanding();
       if (battle && !el("battle").classList.contains("hidden")) render();
     });
