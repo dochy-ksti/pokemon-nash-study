@@ -1,0 +1,61 @@
+Koraidon @ Assault Vest
+Ability: Orichalcum Pulse
+Tera Type: Fire
+EVs: 204 HP / 196 Atk / 4 Def / 12 SpD / 92 Spe
+Adamant Nature
+- Flame Charge
+- Flare Blitz
+- Drain Punch
+- U-turn
+
+Lunala @ Rocky Helmet
+Ability: Shadow Shield
+Tera Type: Fairy
+EVs: 252 HP / 252 Def / 4 SpD
+Bold Nature
+IVs: 0 Atk
+- Moongeist Beam
+- Moonblast
+- Trick Room
+- Moonlight
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Stellar
+EVs: 252 Atk / 4 Def / 252 Spe
+Adamant Nature
+- Icicle Crash
+- Sucker Punch
+- Ice Shard
+- Sheer Cold
+
+Ursaluna @ Flame Orb
+Ability: Guts
+Tera Type: Fire
+EVs: 252 Atk / 252 Def / 4 SpD
+Adamant Nature
+- Facade
+- Headlong Rush
+- Roar
+- Protect
+
+Flutter Mane @ Choice Specs
+Ability: Protosynthesis
+Tera Type: Fairy
+EVs: 148 HP / 100 Def / 188 SpA / 4 SpD / 68 Spe
+Timid Nature
+IVs: 0 Atk
+- Moonblast
+- Shadow Ball
+- Draining Kiss
+- Perish Song
+
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Water
+EVs: 228 HP / 36 Def / 244 SpD
+Impish Nature
+- Knock Off
+- Toxic
+- Substitute
+- Protect

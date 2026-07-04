@@ -1,0 +1,61 @@
+Miraidon @ Choice Scarf
+Ability: Hadron Engine
+Tera Type: Ghost
+EVs: 236 HP / 4 Def / 252 SpA / 4 SpD / 12 Spe
+Modest Nature
+IVs: 0 Atk
+- Electro Drift
+- Draco Meteor
+- Tera Blast
+- Volt Switch
+
+Arceus @ Leftovers
+Ability: Multitype
+Tera Type: Fire
+EVs: 252 HP / 156 Atk / 28 Def / 60 SpD / 12 Spe
+Adamant Nature
+- Extreme Speed
+- Earthquake
+- Swords Dance
+- Recover
+
+Landorus-Therian @ Rocky Helmet
+Ability: Intimidate
+Tera Type: Water
+EVs: 252 HP / 4 Atk / 252 Def
+Relaxed Nature
+- Earthquake
+- U-turn
+- Stealth Rock
+- Taunt
+
+Glimmora @ Air Balloon
+Ability: Toxic Debris
+Tera Type: Dark
+EVs: 132 HP / 12 Def / 108 SpA / 4 SpD / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Power Gem
+- Earth Power
+- Mortal Spin
+- Spikes
+
+Chien-Pao @ Lum Berry
+Ability: Sword of Ruin
+Tera Type: Electric
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Icicle Crash
+- Tera Blast
+- Sucker Punch
+- Swords Dance
+
+Urshifu-Rapid-Strike @ Focus Sash
+Ability: Unseen Fist
+Tera Type: Stellar
+EVs: 252 Atk / 52 Def / 204 Spe
+Adamant Nature
+- Surging Strikes
+- Close Combat
+- Aqua Jet
+- Swords Dance

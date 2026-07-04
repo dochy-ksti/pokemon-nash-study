@@ -1,0 +1,59 @@
+Samurott-Hisui @ Focus Sash
+Ability: Sharpness
+Tera Type: Steel
+EVs: 252 Atk / 4 Def / 252 Spe
+Adamant Nature
+- Aqua Cutter
+- Ceaseless Edge
+- Aqua Jet
+- Encore
+
+Rillaboom @ Grassy Seed
+Ability: Grassy Surge
+Tera Type: Fire
+EVs: 140 HP / 116 Atk / 252 Def
+Adamant Nature
+- Grassy Glide
+- Acrobatics
+- High Horsepower
+- Swords Dance
+
+Zacian-Crowned @ Rusted Sword
+Ability: Intrepid Sword
+Tera Type: Ground
+EVs: 188 HP / 148 Atk / 4 Def / 12 SpD / 156 Spe
+Jolly Nature
+- Behemoth Blade
+- Play Rough
+- Tera Blast
+- Swords Dance
+
+Great Tusk @ Booster Energy
+Ability: Protosynthesis
+Tera Type: Normal
+EVs: 196 HP / 60 SpD / 252 Spe
+Jolly Nature
+- Bulldoze
+- Knock Off
+- Ice Spinner
+- Stealth Rock
+
+Chien-Pao @ Never-Melt Ice
+Ability: Sword of Ruin
+Tera Type: Fire
+EVs: 28 HP / 252 Atk / 164 Def / 4 SpD / 60 Spe
+Adamant Nature
+- Icicle Crash
+- Crunch
+- Ice Shard
+- Swords Dance
+
+Miraidon @ Electric Seed
+Ability: Hadron Engine
+Tera Type: Water
+EVs: 156 HP / 124 Def / 132 SpA / 4 SpD / 92 Spe
+Modest Nature
+- Electro Drift
+- Dragon Pulse
+- Tera Blast
+- Agility

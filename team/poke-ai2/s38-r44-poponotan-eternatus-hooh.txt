@@ -1,0 +1,60 @@
+Eternatus @ Covert Cloak
+Ability: Pressure
+Tera Type: Fairy
+EVs: 252 HP / 156 Def / 100 SpD
+Bold Nature
+IVs: 0 Atk
+- Recover
+- Dynamax Cannon
+- Toxic
+- Toxic Spikes
+
+Ho-Oh @ Choice Band
+Ability: Regenerator
+Tera Type: Fairy
+EVs: 132 HP / 236 Atk / 4 Def / 4 SpD / 132 Spe
+Adamant Nature
+- Sacred Fire
+- Brave Bird
+- Earthquake
+- Tera Blast
+
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Fairy
+EVs: 228 HP / 204 Def / 76 Spe
+Impish Nature
+- Protect
+- Substitute
+- Toxic
+- Taunt
+
+Dondozo @ Leftovers
+Ability: Unaware
+Tera Type: Steel
+EVs: 252 HP / 252 Def / 4 Spe
+Impish Nature
+- Fissure
+- Wave Crash
+- Protect
+- Rest
+
+Chansey @ Eviolite
+Ability: Natural Cure
+Tera Type: Dark
+EVs: 28 HP / 228 Def / 252 SpD
+Calm Nature
+- Soft-Boiled
+- Seismic Toss
+- Shadow Ball
+- Thunder Wave
+
+Clodsire @ Black Sludge
+Ability: Water Absorb
+Tera Type: Poison
+EVs: 252 HP / 4 Def / 252 SpD
+Careful Nature
+- Recover
+- Earthquake
+- Toxic
+- Protect

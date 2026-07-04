@@ -1,0 +1,62 @@
+Calyrex-Shadow @ Focus Sash
+Ability: As One (Spectrier)
+Tera Type: Normal
+EVs: 4 SpD / 252 SpA / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Astral Barrage
+- Psychic
+- Grass Knot
+- Encore
+
+Ho-Oh @ Heavy-Duty Boots
+Ability: Regenerator
+Tera Type: Grass
+EVs: 252 HP / 4 Atk / 36 Def / 212 SpD / 4 Spe
+Careful Nature
+- Sacred Fire
+- Protect
+- Recover
+- Whirlwind
+
+Ting-Lu @ Leftovers
+Ability: Vessel of Ruin
+Tera Type: Fairy
+EVs: 244 HP / 4 Atk / 116 Def / 132 SpD / 12 Spe
+Impish Nature
+- Earthquake
+- Spikes
+- Rest
+- Whirlwind
+
+Glimmora @ Red Card
+Ability: Toxic Debris
+Tera Type: Fairy
+EVs: 252 HP / 228 Def / 28 Spe
+Bold Nature
+IVs: 0 Atk
+- Earth Power
+- Mortal Spin
+- Stealth Rock
+- Endure
+
+Urshifu-Rapid-Strike @ Choice Band
+Ability: Unseen Fist
+Tera Type: Normal
+EVs: 236 Atk / 196 Def / 76 Spe
+Adamant Nature
+- Surging Strikes
+- Close Combat
+- U-turn
+- Facade
+
+Archaludon @ Sitrus Berry
+Ability: Stamina
+Tera Type: Water
+EVs: 252 HP / 236 Def / 20 SpD
+Bold Nature
+IVs: 0 Atk
+- Draco Meteor
+- Body Press
+- Foul Play
+- Stealth Rock

@@ -1,0 +1,63 @@
+Kyogre @ Choice Specs
+Ability: Drizzle
+Tera Type: Water
+EVs: 252 HP / 76 Def / 116 SpA / 4 SpD / 60 Spe
+Modest Nature
+IVs: 0 Atk
+- Water Spout
+- Surf
+- Ice Beam
+- Thunder
+
+Necrozma-Dusk-Mane @ Weakness Policy
+Ability: Prism Armor
+Tera Type: Steel
+EVs: 244 HP / 220 Atk / 28 Def / 12 SpD / 4 Spe
+Adamant Nature
+IVs: 0 SpA
+- Sunsteel Strike
+- Photon Geyser
+- Swords Dance
+- Trick Room
+
+Urshifu-Rapid-Strike @ Focus Sash
+Ability: Unseen Fist
+Tera Type: Stellar
+EVs: 252 Atk / 4 SpD / 252 Spe
+Adamant Nature
+- Surging Strikes
+- Close Combat
+- Aqua Jet
+- Reversal
+
+Dragonite @ Rocky Helmet
+Ability: Multiscale
+Tera Type: Fairy
+EVs: 244 HP / 124 Def / 4 SpA / 116 SpD / 20 Spe
+Bold Nature
+IVs: 0 Atk
+- Air Slash
+- Encore
+- Roost
+- Thunder Wave
+
+Ting-Lu @ Sitrus Berry
+Ability: Vessel of Ruin
+Tera Type: Grass
+EVs: 244 HP / 252 SpD / 12 Spe
+Careful Nature
+- Earthquake
+- Ruination
+- Stealth Rock
+- Whirlwind
+
+Chien-Pao @ Assault Vest
+Ability: Sword of Ruin
+Tera Type: Ground
+EVs: 124 HP / 252 Atk / 4 Def / 68 SpD / 60 Spe
+Jolly Nature
+IVs: 0 SpA
+- Icicle Crash
+- Tera Blast
+- Crunch
+- Sucker Punch

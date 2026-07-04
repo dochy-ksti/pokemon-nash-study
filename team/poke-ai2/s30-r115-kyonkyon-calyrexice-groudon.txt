@@ -1,0 +1,59 @@
+Calyrex-Ice @ Leftovers
+Ability: As One (Glastrier)
+Tera Type: Water
+EVs: 252 HP / 28 Atk / 4 Def / 132 SpD / 92 Spe
+Impish Nature
+- Glacial Lance
+- Leech Seed
+- Protect
+- Substitute
+
+Groudon @ Choice Scarf
+Ability: Drought
+Tera Type: Fire
+EVs: 44 HP / 228 Atk / 4 Def / 20 SpD / 212 Spe
+Jolly Nature
+- Earthquake
+- Heat Crash
+- Rock Slide
+- Crunch
+
+Mimikyu @ Life Orb
+Ability: Disguise
+Tera Type: Stellar
+EVs: 148 HP / 252 Atk / 108 Def
+Adamant Nature
+- Play Rough
+- Shadow Sneak
+- Trick Room
+- Curse
+
+Ursaluna @ Assault Vest
+Ability: Guts
+Tera Type: Fire
+EVs: 124 HP / 76 Atk / 12 Def / 156 SpD / 140 Spe
+Adamant Nature
+- Earthquake
+- Avalanche
+- Crunch
+- Play Rough
+
+Glimmora @ Red Card
+Ability: Toxic Debris
+Tera Type: Fairy
+EVs: 244 HP / 164 Def / 28 SpA / 4 SpD / 68 Spe
+Bold Nature
+- Power Gem
+- Mortal Spin
+- Stealth Rock
+- Endure
+
+Dragapult @ Choice Specs
+Ability: Infiltrator
+Tera Type: Normal
+EVs: 12 HP / 4 Def / 252 SpA / 4 SpD / 236 Spe
+Timid Nature
+- Draco Meteor
+- Hex
+- Flamethrower
+- Curse

@@ -1,0 +1,59 @@
+Calyrex-Ice @ Weakness Policy
+Ability: As One (Glastrier)
+Tera Type: Grass
+EVs: 252 HP / 44 Atk / 100 Def / 108 SpD / 4 Spe
+Adamant Nature
+- Glacial Lance
+- Swords Dance
+- Trick Room
+- Baton Pass
+
+Miraidon @ Leftovers
+Ability: Hadron Engine
+Tera Type: Ice
+EVs: 252 HP / 116 SpA / 20 SpD / 116 Spe
+Modest Nature
+- Parabolic Charge
+- Tera Blast
+- Calm Mind
+- Taunt
+
+Urshifu-Rapid-Strike @ Choice Band
+Ability: Unseen Fist
+Tera Type: Water
+EVs: 252 HP / 252 Atk
+Brave Nature
+- Surging Strikes
+- Close Combat
+- Aqua Jet
+- Ice Spinner
+
+Grimmsnarl @ Light Clay
+Ability: Prankster
+Tera Type: Ghost
+EVs: 244 HP / 164 Def / 76 SpD
+Careful Nature
+- Spirit Break
+- Reflect
+- Light Screen
+- Taunt
+
+Dachsbun @ Kee Berry
+Ability: Well-Baked Body
+Tera Type: Poison
+EVs: 252 HP / 204 Def / 52 SpD
+Bold Nature
+- Baton Pass
+- Agility
+- Yawn
+- Substitute
+
+Ursaluna-Bloodmoon @ Lum Berry
+Ability: Mind's Eye
+Tera Type: Water
+EVs: 252 HP / 92 Def / 36 SpA / 52 SpD / 76 Spe
+Modest Nature
+- Blood Moon
+- Calm Mind
+- Taunt
+- Moonlight

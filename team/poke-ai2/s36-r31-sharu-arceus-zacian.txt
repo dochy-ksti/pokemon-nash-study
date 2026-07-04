@@ -1,0 +1,61 @@
+Arceus-Flying @ Sky Plate
+Ability: Multitype
+Tera Type: Fire
+EVs: 220 HP / 4 Def / 28 SpA / 4 SpD / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Judgment
+- Calm Mind
+- Taunt
+- Recover
+
+Zacian-Crowned @ Rusted Sword
+Ability: Intrepid Sword
+Tera Type: Normal
+EVs: 156 HP / 124 Atk / 4 Def / 4 SpD / 220 Spe
+Jolly Nature
+- Behemoth Blade
+- Close Combat
+- Trailblaze
+- Swords Dance
+
+Ting-Lu @ Assault Vest
+Ability: Vessel of Ruin
+Tera Type: Grass
+EVs: 4 HP / 252 Atk / 252 SpD
+Brave Nature
+- Earthquake
+- Ruination
+- Tera Blast
+- Heavy Slam
+
+Glimmora @ Red Card
+Ability: Toxic Debris
+Tera Type: Ground
+EVs: 244 HP / 252 Def / 12 Spe
+Bold Nature
+IVs: 0 Atk
+- Mortal Spin
+- Earth Power
+- Endure
+- Stealth Rock
+
+Grimmsnarl @ Lagging Tail
+Ability: Prankster
+Tera Type: Ghost
+EVs: 244 HP / 60 Def / 196 SpD / 4 Spe
+Careful Nature
+- Spirit Break
+- Foul Play
+- Trick
+- Parting Shot
+
+Dondozo @ Leftovers
+Ability: Unaware
+Tera Type: Grass
+EVs: 252 HP / 252 Def
+Impish Nature
+- Earthquake
+- Avalanche
+- Yawn
+- Protect

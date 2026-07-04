@@ -1,0 +1,59 @@
+Terapagos @ Rocky Helmet
+Ability: Tera Shift
+Tera Type: Stellar
+EVs: 212 HP / 156 Def / 140 SpD
+Impish Nature
+- Rapid Spin
+- Toxic
+- Stealth Rock
+- Roar
+
+Miraidon @ Electric Seed
+Ability: Hadron Engine
+Tera Type: Water
+EVs: 124 HP / 12 Def / 252 SpA / 4 SpD / 116 Spe
+Modest Nature
+- Electro Drift
+- Dragon Pulse
+- Tera Blast
+- Agility
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Electric
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Icicle Crash
+- Tera Blast
+- Ice Shard
+- Swords Dance
+
+Mimikyu @ Mental Herb
+Ability: Disguise
+Tera Type: Normal
+EVs: 196 HP / 236 Atk / 4 Def / 4 SpD / 68 Spe
+Adamant Nature
+- Play Rough
+- Shadow Sneak
+- Endure
+- Curse
+
+Scizor @ Covert Cloak
+Ability: Technician
+Tera Type: Steel
+EVs: 188 HP / 252 Atk / 52 Def / 4 SpD / 12 Spe
+Adamant Nature
+- Bullet Punch
+- Close Combat
+- Feint
+- Swords Dance
+
+Dragonite @ Loaded Dice
+Ability: Multiscale
+Tera Type: Ground
+EVs: 4 HP / 252 Atk / 252 Spe
+Jolly Nature
+- Scale Shot
+- Earthquake
+- Extreme Speed
+- Dragon Dance

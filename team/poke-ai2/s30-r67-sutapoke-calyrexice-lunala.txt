@@ -1,0 +1,60 @@
+Calyrex-Ice @ Choice Band
+Ability: As One (Glastrier)
+Tera Type: Ice
+EVs: 252 Atk / 4 Def / 252 SpD
+Brave Nature
+IVs: 0 Spe
+- Glacial Lance
+- Icicle Spear
+- High Horsepower
+- Seed Bomb
+
+Lunala @ Rocky Helmet
+Ability: Shadow Shield
+Tera Type: Normal
+EVs: 252 HP / 244 Def / 12 SpD
+Bold Nature
+- Moonblast
+- Moonlight
+- Trick Room
+- Teleport
+
+Ting-Lu @ Sitrus Berry
+Ability: Vessel of Ruin
+Tera Type: Steel
+EVs: 244 HP / 4 Atk / 4 Def / 228 SpD / 28 Spe
+Impish Nature
+- Earthquake
+- Payback
+- Stealth Rock
+- Taunt
+
+Glimmora @ Focus Sash
+Ability: Toxic Debris
+Tera Type: Ground
+EVs: 4 Def / 252 SpA / 252 Spe
+Modest Nature
+- Power Gem
+- Earth Power
+- Acid Spray
+- Stealth Rock
+
+Archaludon @ Custap Berry
+Ability: Sturdy
+Tera Type: Stellar
+EVs: 4 Def / 252 SpA / 252 Spe
+Modest Nature
+- Draco Meteor
+- Flash Cannon
+- Electro Shot
+- Dark Pulse
+
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Dark
+EVs: 228 HP / 4 Atk / 36 Def / 172 SpD / 68 Spe
+Impish Nature
+- Knock Off
+- Taunt
+- Protect
+- Substitute

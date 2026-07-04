@@ -1,0 +1,59 @@
+Ho-Oh @ Choice Band
+Ability: Regenerator
+Tera Type: Fairy
+EVs: 132 HP / 236 Atk / 4 Def / 4 SpD / 132 Spe
+Adamant Nature
+- Sacred Fire
+- Brave Bird
+- Earthquake
+- Tera Blast
+
+Eternatus @ Covert Cloak
+Ability: Pressure
+Tera Type: Fairy
+EVs: 236 HP / 124 Def / 148 SpD
+Bold Nature
+- Dynamax Cannon
+- Toxic
+- Toxic Spikes
+- Recover
+
+Chansey @ Eviolite
+Ability: Natural Cure
+Tera Type: Dark
+EVs: 12 HP / 244 Def / 252 SpD
+Calm Nature
+- Seismic Toss
+- Shadow Ball
+- Thunder Wave
+- Soft-Boiled
+
+Dondozo @ Leftovers
+Ability: Unaware
+Tera Type: Steel
+EVs: 252 HP / 244 Def / 12 Spe
+Impish Nature
+- Fissure
+- Wave Crash
+- Protect
+- Rest
+
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Fairy
+EVs: 228 HP / 204 Def / 76 Spe
+Impish Nature
+- Toxic
+- Taunt
+- Substitute
+- Protect
+
+Clodsire @ Bright Powder
+Ability: Water Absorb
+Tera Type: Ghost
+EVs: 252 HP / 4 Def / 252 SpD
+Careful Nature
+- Earthquake
+- Toxic
+- Protect
+- Recover

@@ -1,0 +1,59 @@
+Koraidon @ Choice Band
+Ability: Orichalcum Pulse
+Tera Type: Fairy
+EVs: 252 Atk / 4 SpD / 252 Spe
+Jolly Nature
+- Low Kick
+- Flare Blitz
+- U-turn
+- Tera Blast
+
+Dondozo @ Leftovers
+Ability: Unaware
+Tera Type: Fairy
+EVs: 252 HP / 236 Def / 20 Spe
+Impish Nature
+- Protect
+- Substitute
+- Wave Crash
+- Rest
+
+Clodsire @ Bright Powder
+Ability: Water Absorb
+Tera Type: Dark
+EVs: 252 HP / 4 Def / 252 SpD
+Careful Nature
+- Recover
+- Earthquake
+- Toxic Spikes
+- Protect
+
+Ho-Oh @ Assault Vest
+Ability: Regenerator
+Tera Type: Grass
+EVs: 252 HP / 244 Atk / 12 Def
+Brave Nature
+- Sacred Fire
+- Tera Blast
+- Earthquake
+- Giga Drain
+
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Fairy
+EVs: 228 HP / 196 SpD / 84 Spe
+Jolly Nature
+- Protect
+- Substitute
+- Toxic
+- Knock Off
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Stellar
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Icicle Crash
+- Sucker Punch
+- Swords Dance
+- Sheer Cold

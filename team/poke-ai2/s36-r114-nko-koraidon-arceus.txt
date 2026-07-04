@@ -1,0 +1,62 @@
+Koraidon @ Life Orb
+Ability: Orichalcum Pulse
+Tera Type: Fire
+EVs: 188 HP / 252 Atk / 68 Spe
+Adamant Nature
+- Flame Charge
+- Flare Blitz
+- Scale Shot
+- Close Combat
+
+Arceus-Electric @ Zap Plate
+Ability: Multitype
+Tera Type: Normal
+EVs: 252 HP / 140 Def / 116 SpD
+Calm Nature
+IVs: 0 Atk
+- Judgment
+- Recover
+- Thunder Wave
+- Dragon Tail
+
+Ting-Lu @ Sitrus Berry
+Ability: Vessel of Ruin
+Tera Type: Poison
+EVs: 244 HP / 4 Atk / 36 Def / 188 SpD / 36 Spe
+Impish Nature
+- Stealth Rock
+- Spikes
+- Ruination
+- Earthquake
+
+Archaludon @ Custap Berry
+Ability: Sturdy
+Tera Type: Steel
+EVs: 252 SpA / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Stealth Rock
+- Draco Meteor
+- Steel Beam
+- Endure
+
+Flutter Mane @ Choice Specs
+Ability: Protosynthesis
+Tera Type: Stellar
+EVs: 100 HP / 132 Def / 132 SpA / 4 SpD / 140 Spe
+Timid Nature
+IVs: 0 Atk
+- Moonblast
+- Shadow Ball
+- Power Gem
+- Tera Blast
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Ghost
+EVs: 252 Atk / 4 SpD / 252 Spe
+Jolly Nature
+- Icicle Crash
+- Sucker Punch
+- Sacred Sword
+- Swords Dance

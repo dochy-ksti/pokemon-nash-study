@@ -1,0 +1,58 @@
+Calyrex-Shadow @ Sitrus Berry
+Ability: As One (Spectrier)
+Tera Type: Fairy
+EVs: 228 HP / 68 Def / 116 SpA / 52 SpD / 44 Spe
+Modest Nature
+IVs: 0 Atk
+- Astral Barrage
+- Draining Kiss
+- Nasty Plot
+- Agility
+
+Koraidon @ Loaded Dice
+Ability: Orichalcum Pulse
+Tera Type: Fire
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Flare Blitz
+- Scale Shot
+- Swords Dance
+- Taunt
+
+Ditto @ Choice Scarf
+Ability: Imposter
+Tera Type: Normal
+EVs: 252 HP / 4 Def / 252 SpD
+Sassy Nature
+- Transform
+
+Flutter Mane @ Focus Sash
+Ability: Protosynthesis
+Tera Type: Normal
+EVs: 252 SpA / 4 SpD / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Moonblast
+- Hex
+- Taunt
+- Thunder Wave
+
+Iron Treads @ Booster Energy
+Ability: Quark Drive
+Tera Type: Normal
+EVs: 204 HP / 52 SpD / 252 Spe
+Jolly Nature
+- Bulldoze
+- Endeavor
+- Stealth Rock
+- Rapid Spin
+
+Chien-Pao @ Black Glasses
+Ability: Sword of Ruin
+Tera Type: Fire
+EVs: 28 HP / 252 Atk / 204 Def / 4 SpD / 20 Spe
+Adamant Nature
+- Crunch
+- Ice Shard
+- Sucker Punch
+- Swords Dance

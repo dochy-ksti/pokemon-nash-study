@@ -1,0 +1,62 @@
+Landorus-Therian @ Choice Scarf
+Ability: Intimidate
+Tera Type: Flying
+EVs: 52 HP / 228 Atk / 12 Def / 4 SpD / 212 Spe
+Jolly Nature
+- Earthquake
+- Tera Blast
+- Stone Edge
+- U-turn
+
+Terapagos @ Leftovers
+Ability: Tera Shift
+Tera Type: Stellar
+EVs: 228 HP / 44 Def / 20 SpA / 204 SpD / 12 Spe
+Calm Nature
+IVs: 0 Atk
+- Tera Starstorm
+- Earth Power
+- Toxic
+- Protect
+
+Primarina @ Rocky Helmet
+Ability: Torrent
+Tera Type: Steel
+EVs: 236 HP / 212 Def / 52 SpA / 4 SpD / 4 Spe
+Bold Nature
+IVs: 0 Atk
+- Moonblast
+- Sparkling Aria
+- Flip Turn
+- Encore
+
+Ogerpon-Hearthflame @ Hearthflame Mask
+Ability: Mold Breaker
+Tera Type: Fire
+EVs: 92 HP / 204 Atk / 52 Def / 4 SpD / 156 Spe
+Adamant Nature
+- Ivy Cudgel
+- Knock Off
+- Rock Tomb
+- Trailblaze
+
+Zacian-Crowned @ Rusted Sword
+Ability: Intrepid Sword
+Tera Type: Water
+EVs: 188 HP / 236 Atk / 12 Def / 12 SpD / 60 Spe
+Adamant Nature
+- Behemoth Blade
+- Close Combat
+- Tera Blast
+- Trailblaze
+
+Gholdengo @ Focus Sash
+Ability: Good as Gold
+Tera Type: Flying
+EVs: 100 HP / 4 Def / 244 SpA / 28 SpD / 132 Spe
+Modest Nature
+IVs: 0 Atk
+- Make It Rain
+- Shadow Ball
+- Nasty Plot
+- Recover

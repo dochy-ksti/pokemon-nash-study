@@ -1,0 +1,59 @@
+Wo-Chien @ Leftovers
+Ability: Tablets of Ruin
+Tera Type: Water
+EVs: 252 HP / 252 Def / 4 SpD
+Impish Nature
+- Foul Play
+- Leech Seed
+- Protect
+- Substitute
+
+Calyrex-Shadow @ Focus Sash
+Ability: As One (Spectrier)
+Tera Type: Ground
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+- Astral Barrage
+- Grass Knot
+- Tera Blast
+- Encore
+
+Arceus @ Choice Band
+Ability: Multitype
+Tera Type: Normal
+EVs: 156 HP / 252 Atk / 4 Def / 4 SpD / 92 Spe
+Adamant Nature
+- Extreme Speed
+- Double-Edge
+- Earthquake
+- Shadow Claw
+
+Glimmora @ Red Card
+Ability: Toxic Debris
+Tera Type: Fairy
+EVs: 236 HP / 244 Def / 28 Spe
+Bold Nature
+- Mortal Spin
+- Earth Power
+- Dazzling Gleam
+- Stealth Rock
+
+Chien-Pao @ Heavy-Duty Boots
+Ability: Sword of Ruin
+Tera Type: Fire
+EVs: 108 HP / 252 Atk / 44 Def / 4 SpD / 100 Spe
+Adamant Nature
+- Icicle Crash
+- Sucker Punch
+- Ice Shard
+- Swords Dance
+
+Flutter Mane @ Booster Energy
+Ability: Protosynthesis
+Tera Type: Normal
+EVs: 4 HP / 164 SpA / 4 SpD / 252 Spe
+Timid Nature
+- Moonblast
+- Hex
+- Protect
+- Substitute

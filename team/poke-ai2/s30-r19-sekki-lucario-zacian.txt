@@ -1,0 +1,59 @@
+Lucario @ Focus Sash
+Ability: Inner Focus
+Tera Type: Ghost
+EVs: 252 Atk / 36 SpD / 220 Spe
+Adamant Nature
+- Close Combat
+- Extreme Speed
+- Ice Punch
+- Counter
+
+Zacian-Crowned @ Rusted Sword
+Ability: Intrepid Sword
+Tera Type: Water
+EVs: 188 HP / 252 Atk / 4 Def / 12 SpD / 52 Spe
+Adamant Nature
+- Behemoth Blade
+- Close Combat
+- Tera Blast
+- Trailblaze
+
+Calyrex-Shadow @ Choice Scarf
+Ability: As One (Spectrier)
+Tera Type: Fairy
+EVs: 124 HP / 124 Def / 84 SpA / 12 SpD / 164 Spe
+Timid Nature
+- Astral Barrage
+- Psyshock
+- Draining Kiss
+- Trick
+
+Dragonite @ Choice Band
+Ability: Multiscale
+Tera Type: Normal
+EVs: 116 HP / 252 Atk / 140 Def
+Adamant Nature
+- Outrage
+- Extreme Speed
+- Earthquake
+- Facade
+
+Chien-Pao @ Life Orb
+Ability: Sword of Ruin
+Tera Type: Fire
+EVs: 28 HP / 252 Atk / 204 Def / 4 SpD / 20 Spe
+Adamant Nature
+- Crunch
+- Sucker Punch
+- Ice Shard
+- Swords Dance
+
+Ursaluna-Bloodmoon @ Assault Vest
+Ability: Mind's Eye
+Tera Type: Normal
+EVs: 100 HP / 4 Def / 164 SpA / 228 SpD / 12 Spe
+Modest Nature
+- Blood Moon
+- Earth Power
+- Hyper Voice
+- Vacuum Wave

@@ -1,0 +1,59 @@
+Miraidon @ Focus Sash
+Ability: Hadron Engine
+Tera Type: Electric
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+- Electro Drift
+- Draco Meteor
+- Mirror Coat
+- Thunder Wave
+
+Calyrex-Ice @ Leftovers
+Ability: As One (Glastrier)
+Tera Type: Water
+EVs: 252 HP / 4 Atk / 76 Def / 132 SpD / 44 Spe
+Impish Nature
+- Glacial Lance
+- Leech Seed
+- Protect
+- Substitute
+
+Mimikyu @ Rocky Helmet
+Ability: Disguise
+Tera Type: Ghost
+EVs: 100 HP / 156 Atk / 252 Def
+Adamant Nature
+- Curse
+- Play Rough
+- Shadow Sneak
+- Endure
+
+Iron Crown @ Air Balloon
+Ability: Quark Drive
+Tera Type: Rock
+EVs: 4 Def / 252 SpA / 252 Spe
+Modest Nature
+- Tachyon Cutter
+- Psychic Noise
+- Future Sight
+- Tera Blast
+
+Urshifu-Rapid-Strike @ Punching Glove
+Ability: Unseen Fist
+Tera Type: Water
+EVs: 156 HP / 156 Atk / 132 Def / 4 SpD / 60 Spe
+Adamant Nature
+- Surging Strikes
+- Focus Punch
+- Swords Dance
+- Substitute
+
+Ting-Lu @ Assault Vest
+Ability: Vessel of Ruin
+Tera Type: Poison
+EVs: 4 HP / 236 Atk / 4 Def / 252 SpD / 12 Spe
+Adamant Nature
+- Earthquake
+- Ruination
+- Payback
+- Fissure

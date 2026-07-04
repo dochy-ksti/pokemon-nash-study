@@ -1,0 +1,59 @@
+Calyrex-Shadow @ Choice Scarf
+Ability: As One (Spectrier)
+Tera Type: Ghost
+EVs: 108 HP / 252 SpA / 148 Spe
+Timid Nature
+- Astral Barrage
+- Psychic
+- Grass Knot
+- Encore
+
+Zacian-Crowned @ Rusted Sword
+Ability: Intrepid Sword
+Tera Type: Normal
+EVs: 220 HP / 252 Atk / 36 Spe
+Adamant Nature
+- Behemoth Blade
+- Close Combat
+- Wild Charge
+- Trailblaze
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Stellar
+EVs: 252 Atk / 4 Def / 252 Spe
+Adamant Nature
+- Icicle Crash
+- Sucker Punch
+- Ice Shard
+- Swords Dance
+
+Dragonite @ Grip Claw
+Ability: Multiscale
+Tera Type: Poison
+EVs: 212 HP / 116 Def / 180 Spe
+Bold Nature
+- Fire Spin
+- Air Slash
+- Roost
+- Encore
+
+Ting-Lu @ Assault Vest
+Ability: Vessel of Ruin
+Tera Type: Fire
+EVs: 4 HP / 252 Atk / 252 SpD
+Adamant Nature
+- Earthquake
+- Ruination
+- Fissure
+- Rock Tomb
+
+Dondozo @ Rocky Helmet
+Ability: Unaware
+Tera Type: Grass
+EVs: 252 HP / 252 Def / 4 SpD
+Impish Nature
+- Fissure
+- Crunch
+- Rest
+- Yawn

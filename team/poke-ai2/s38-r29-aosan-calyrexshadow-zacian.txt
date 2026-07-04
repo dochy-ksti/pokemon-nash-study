@@ -1,0 +1,59 @@
+Calyrex-Shadow @ Leftovers
+Ability: As One (Spectrier)
+Tera Type: Normal
+EVs: 140 HP / 100 Def / 4 SpA / 12 SpD / 252 Spe
+Timid Nature
+- Astral Barrage
+- Will-O-Wisp
+- Encore
+- Protect
+
+Zacian-Crowned @ Rusted Sword
+Ability: Intrepid Sword
+Tera Type: Normal
+EVs: 188 HP / 252 Atk / 4 Def / 12 SpD / 52 Spe
+Adamant Nature
+- Behemoth Blade
+- Close Combat
+- Wild Charge
+- Trailblaze
+
+Dragonite @ Rocky Helmet
+Ability: Multiscale
+Tera Type: Steel
+EVs: 244 HP / 36 Def / 4 SpA / 12 SpD / 212 Spe
+Bold Nature
+- Roost
+- Encore
+- Thunder Wave
+- Fire Spin
+
+Ting-Lu @ Sitrus Berry
+Ability: Vessel of Ruin
+Tera Type: Grass
+EVs: 244 HP / 244 SpD / 20 Spe
+Bold Nature
+- Earthquake
+- Ruination
+- Spikes
+- Whirlwind
+
+Urshifu-Rapid-Strike @ Punching Glove
+Ability: Unseen Fist
+Tera Type: Water
+EVs: 12 HP / 220 Atk / 252 Def / 4 SpD / 20 Spe
+Adamant Nature
+- Surging Strikes
+- Drain Punch
+- Substitute
+- Swords Dance
+
+Glimmora @ Red Card
+Ability: Toxic Debris
+Tera Type: Dark
+EVs: 244 HP / 252 Def / 12 Spe
+Bold Nature
+- Mortal Spin
+- Power Gem
+- Memento
+- Stealth Rock

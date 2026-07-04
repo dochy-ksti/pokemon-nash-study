@@ -1,0 +1,59 @@
+Eternatus @ Eject Pack
+Ability: Pressure
+Tera Type: Fairy
+EVs: 12 HP / 44 Def / 236 SpA / 44 SpD / 172 Spe
+Timid Nature
+- Dynamax Cannon
+- Shadow Ball
+- Sludge Bomb
+- Draco Meteor
+
+Ho-Oh @ Choice Band
+Ability: Regenerator
+Tera Type: Grass
+EVs: 188 HP / 204 Atk / 4 Def / 4 SpD / 108 Spe
+Adamant Nature
+- Sacred Fire
+- Brave Bird
+- Tera Blast
+- Earthquake
+
+Urshifu-Rapid-Strike @ Mystic Water
+Ability: Unseen Fist
+Tera Type: Fairy
+EVs: 60 HP / 252 Atk / 148 Def / 4 SpD / 44 Spe
+Adamant Nature
+- Surging Strikes
+- Focus Punch
+- Substitute
+- Aqua Jet
+
+Flutter Mane @ Focus Sash
+Ability: Protosynthesis
+Tera Type: Normal
+EVs: 4 HP / 252 SpA / 252 Spe
+Timid Nature
+- Moonblast
+- Hex
+- Taunt
+- Thunder Wave
+
+Ting-Lu @ Assault Vest
+Ability: Vessel of Ruin
+Tera Type: Steel
+EVs: 4 HP / 196 Atk / 60 Def / 244 SpD / 4 Spe
+Adamant Nature
+- Earthquake
+- Payback
+- Heavy Slam
+- Fissure
+
+Dondozo @ Leftovers
+Ability: Unaware
+Tera Type: Fire
+EVs: 252 HP / 236 Def / 20 Spe
+Impish Nature
+- Wave Crash
+- Fissure
+- Yawn
+- Protect

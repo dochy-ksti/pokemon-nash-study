@@ -1,0 +1,60 @@
+Calyrex-Shadow @ Focus Sash
+Ability: As One (Spectrier)
+Tera Type: Grass
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Astral Barrage
+- Psyshock
+- Grass Knot
+- Encore
+
+Koraidon @ Loaded Dice
+Ability: Orichalcum Pulse
+Tera Type: Fire
+EVs: 252 Atk / 4 SpD / 252 Spe
+Jolly Nature
+- Scale Shot
+- Flare Blitz
+- Flame Charge
+- Swords Dance
+
+Ting-Lu @ Assault Vest
+Ability: Vessel of Ruin
+Tera Type: Steel
+EVs: 68 HP / 156 Atk / 252 SpD / 28 Spe
+Adamant Nature
+- Earthquake
+- Fissure
+- Ruination
+- Heavy Slam
+
+Dondozo @ Leftovers
+Ability: Unaware
+Tera Type: Fairy
+EVs: 252 HP / 196 Def / 44 SpD / 12 Spe
+Impish Nature
+- Wave Crash
+- Fissure
+- Yawn
+- Protect
+
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Steel
+EVs: 228 HP / 36 Def / 244 SpD
+Impish Nature
+- Protect
+- Substitute
+- Toxic
+- Earthquake
+
+Clodsire @ Black Sludge
+Ability: Water Absorb
+Tera Type: Poison
+EVs: 252 HP / 12 Def / 244 SpD
+Careful Nature
+- Earthquake
+- Toxic
+- Toxic Spikes
+- Recover

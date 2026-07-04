@@ -1,0 +1,57 @@
+Calyrex-Shadow @ Choice Specs
+Ability: As One (Spectrier)
+Tera Type: Fairy
+EVs: 124 HP / 4 Def / 124 SpA / 4 SpD / 252 Spe
+Timid Nature
+- Astral Barrage
+- Psyshock
+- Tera Blast
+- Leaf Storm
+
+Ho-Oh @ Assault Vest
+Ability: Regenerator
+Tera Type: Dark
+EVs: 252 HP / 76 Atk / 124 Def / 12 SpD / 44 Spe
+Adamant Nature
+- Sacred Fire
+- Brave Bird
+- Earthquake
+- Tera Blast
+
+Alomomola @ Rocky Helmet
+Ability: Regenerator
+Tera Type: Fairy
+EVs: 116 HP / 252 Def / 140 SpD
+Relaxed Nature
+IVs: 0 Spe
+- Flip Turn
+- Play Rough
+- Wish
+- Protect
+
+Urshifu-Rapid-Strike @ Choice Band
+Ability: Unseen Fist
+Tera Type: Water
+EVs: 60 HP / 236 Atk / 164 Def / 4 SpD / 44 Spe
+Adamant Nature
+- Surging Strikes
+- Close Combat
+- Ice Spinner
+- Aqua Jet
+
+Dragonite @ Loaded Dice
+Ability: Multiscale
+Tera Type: Ground
+EVs: 4 HP / 252 Atk / 252 Spe
+Jolly Nature
+- Scale Shot
+- Earthquake
+- Extreme Speed
+- Dragon Dance
+
+Ditto @ Choice Scarf
+Ability: Imposter
+Tera Type: Normal
+EVs: 252 HP / 252 Spe
+Jolly Nature
+- Transform

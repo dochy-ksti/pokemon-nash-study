@@ -1,0 +1,59 @@
+Lunala @ Power Herb
+Ability: Shadow Shield
+Tera Type: Normal
+EVs: 244 HP / 244 SpA / 20 Spe
+Modest Nature
+- Moongeist Beam
+- Ice Beam
+- Meteor Beam
+- Trick Room
+
+Koraidon @ Choice Band
+Ability: Orichalcum Pulse
+Tera Type: Fairy
+EVs: 220 HP / 196 Atk / 4 Def / 28 SpD / 60 Spe
+Adamant Nature
+- Flare Blitz
+- Close Combat
+- Outrage
+- U-turn
+
+Chi-Yu @ Choice Specs
+Ability: Beads of Ruin
+Tera Type: Fire
+EVs: 228 HP / 12 Def / 116 SpA / 44 SpD / 108 Spe
+Modest Nature
+- Overheat
+- Flamethrower
+- Dark Pulse
+- Psychic
+
+Ting-Lu @ Assault Vest
+Ability: Vessel of Ruin
+Tera Type: Steel
+EVs: 164 HP / 76 Atk / 4 Def / 252 SpD / 12 Spe
+Adamant Nature
+- Earthquake
+- Ruination
+- Heavy Slam
+- Payback
+
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Steel
+EVs: 228 HP / 28 Def / 252 SpD
+Careful Nature
+- Earthquake
+- Toxic
+- Protect
+- Substitute
+
+Dondozo @ Leftovers
+Ability: Unaware
+Tera Type: Fairy
+EVs: 252 HP / 252 Def / 4 SpD
+Impish Nature
+- Wave Crash
+- Yawn
+- Protect
+- Rest

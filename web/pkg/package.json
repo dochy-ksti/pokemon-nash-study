@@ -1,0 +1,13 @@
+{
+  "name": "poke-wasm",
+  "type": "module",
+  "version": "0.1.0",
+  "files": [
+    "poke_wasm_bg.wasm",
+    "poke_wasm.js"
+  ],
+  "main": "poke_wasm.js",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}

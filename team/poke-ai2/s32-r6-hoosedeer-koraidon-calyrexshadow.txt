@@ -1,0 +1,61 @@
+Smeargle @ Focus Sash
+Ability: Technician
+Tera Type: Grass
+EVs: 4 HP / 252 Def / 252 Spe
+Jolly Nature
+- Stone Axe
+- Nuzzle
+- Endeavor
+- Sticky Web
+
+Flutter Mane @ Choice Specs
+Ability: Protosynthesis
+Tera Type: Normal
+EVs: 4 HP / 252 SpA / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Moonblast
+- Shadow Ball
+- Power Gem
+- Hyper Voice
+
+Calyrex-Shadow @ Choice Scarf
+Ability: As One (Spectrier)
+Tera Type: Dark
+EVs: 172 HP / 92 Def / 100 SpA / 4 SpD / 140 Spe
+Timid Nature
+IVs: 0 Atk
+- Astral Barrage
+- Psychic
+- Grass Knot
+- Trick
+
+Koraidon @ Choice Band
+Ability: Orichalcum Pulse
+Tera Type: Fire
+EVs: 252 Atk / 4 SpD / 252 Spe
+Jolly Nature
+- Close Combat
+- Outrage
+- Flare Blitz
+- U-turn
+
+Dondozo @ Leftovers
+Ability: Unaware
+Tera Type: Fairy
+EVs: 252 HP / 4 Atk / 196 Def / 36 SpD / 20 Spe
+Impish Nature
+- Wave Crash
+- Tera Blast
+- Yawn
+- Rest
+
+Ting-Lu @ Assault Vest
+Ability: Vessel of Ruin
+Tera Type: Fire
+EVs: 4 HP / 252 Atk / 252 SpD
+Adamant Nature
+- Earthquake
+- Payback
+- Ruination
+- Rock Tomb

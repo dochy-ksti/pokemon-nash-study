@@ -1,0 +1,60 @@
+Ting-Lu @ Sitrus Berry
+Ability: Vessel of Ruin
+Tera Type: Water
+EVs: 244 HP / 28 Atk / 4 Def / 212 SpD / 20 Spe
+Impish Nature
+- Earthquake
+- Ruination
+- Stealth Rock
+- Whirlwind
+
+Dragonite @ Choice Band
+Ability: Multiscale
+Tera Type: Normal
+EVs: 4 HP / 252 Atk / 20 Def / 4 SpD / 228 Spe
+Adamant Nature
+- Outrage
+- Extreme Speed
+- Earthquake
+- Low Kick
+
+Calyrex-Shadow @ Choice Scarf
+Ability: As One (Spectrier)
+Tera Type: Ghost
+EVs: 124 HP / 108 Def / 108 SpA / 12 SpD / 156 Spe
+Timid Nature
+IVs: 0 Atk
+- Astral Barrage
+- Psychic
+- Will-O-Wisp
+- Trick
+
+Zacian-Crowned @ Rusted Sword
+Ability: Intrepid Sword
+Tera Type: Electric
+EVs: 188 HP / 236 Atk / 4 Def / 12 SpD / 68 Spe
+Adamant Nature
+- Behemoth Blade
+- Close Combat
+- Wild Charge
+- Trailblaze
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Stellar
+EVs: 252 Atk / 4 Def / 252 Spe
+Adamant Nature
+- Icicle Crash
+- Sucker Punch
+- Ice Shard
+- Swords Dance
+
+Garganacl @ Leftovers
+Ability: Purifying Salt
+Tera Type: Grass
+EVs: 252 HP / 236 SpD / 20 Spe
+Careful Nature
+- Salt Cure
+- Substitute
+- Protect
+- Recover

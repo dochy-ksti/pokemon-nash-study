@@ -1,0 +1,60 @@
+Miraidon @ Assault Vest
+Ability: Hadron Engine
+Tera Type: Electric
+EVs: 252 HP / 4 Def / 36 SpA / 132 SpD / 84 Spe
+Modest Nature
+- Electro Drift
+- Draco Meteor
+- Parabolic Charge
+- U-turn
+
+Calyrex-Ice @ Leftovers
+Ability: As One (Glastrier)
+Tera Type: Water
+EVs: 252 HP / 20 Atk / 100 Def / 132 SpD / 4 Spe
+Impish Nature
+- Glacial Lance
+- Leech Seed
+- Trick Room
+- Curse
+
+Mimikyu @ Rocky Helmet
+Ability: Disguise
+Tera Type: Stellar
+EVs: 100 HP / 156 Atk / 252 Def
+Brave Nature
+IVs: 0 Spe
+- Play Rough
+- Shadow Sneak
+- Trick Room
+- Curse
+
+Urshifu-Rapid-Strike @ Focus Sash
+Ability: Unseen Fist
+Tera Type: Ghost
+EVs: 252 Atk / 4 Def / 252 Spe
+Adamant Nature
+- Surging Strikes
+- Close Combat
+- Aqua Jet
+- Reversal
+
+Iron Treads @ Choice Band
+Ability: Quark Drive
+Tera Type: Ground
+EVs: 156 HP / 164 Atk / 4 Def / 44 SpD / 140 Spe
+Jolly Nature
+- Earthquake
+- Iron Head
+- Ice Spinner
+- Megahorn
+
+Chien-Pao @ Life Orb
+Ability: Sword of Ruin
+Tera Type: Electric
+EVs: 108 HP / 252 Atk / 60 Def / 4 SpD / 84 Spe
+Adamant Nature
+- Icicle Crash
+- Tera Blast
+- Sucker Punch
+- Taunt

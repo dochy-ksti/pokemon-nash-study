@@ -1,0 +1,9 @@
+[workspace]
+members = [
+    "poke-sho-rust",
+    "poke-env-rust",
+    "poke-ai3",
+    "poke-wasm",
+]
+exclude = ["poke-ai3-python"]
+resolver = "3"

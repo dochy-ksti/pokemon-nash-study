@@ -1,0 +1,59 @@
+Miraidon @ Electric Seed
+Ability: Hadron Engine
+Tera Type: Water
+EVs: 156 HP / 124 Def / 132 SpA / 4 SpD / 92 Spe
+Modest Nature
+- Electro Drift
+- Dragon Pulse
+- Tera Blast
+- Agility
+
+Zacian-Crowned @ Rusted Sword
+Ability: Intrepid Sword
+Tera Type: Normal
+EVs: 44 HP / 252 Atk / 212 Spe
+Jolly Nature
+- Behemoth Blade
+- Play Rough
+- Close Combat
+- Wild Charge
+
+Landorus-Therian @ Rocky Helmet
+Ability: Intimidate
+Tera Type: Water
+EVs: 252 HP / 4 Atk / 252 Def
+Impish Nature
+- Earthquake
+- U-turn
+- Stealth Rock
+- Taunt
+
+Flutter Mane @ Booster Energy
+Ability: Protosynthesis
+Tera Type: Stellar
+EVs: 4 HP / 108 Def / 140 SpA / 4 SpD / 252 Spe
+Timid Nature
+- Moonblast
+- Hex
+- Substitute
+- Protect
+
+Gliscor @ Focus Sash
+Ability: Poison Heal
+Tera Type: Normal
+EVs: 4 HP / 252 Atk / 252 Spe
+Jolly Nature
+- Bulldoze
+- Knock Off
+- Toxic Spikes
+- Taunt
+
+Wo-Chien @ Leftovers
+Ability: Tablets of Ruin
+Tera Type: Water
+EVs: 252 HP / 60 Def / 196 SpD
+Calm Nature
+- Foul Play
+- Leech Seed
+- Substitute
+- Protect

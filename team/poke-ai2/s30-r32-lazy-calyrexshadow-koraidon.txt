@@ -1,0 +1,61 @@
+Calyrex-Shadow @ Leftovers
+Ability: As One (Spectrier)
+Tera Type: Normal
+EVs: 140 HP / 4 Def / 100 SpA / 12 SpD / 252 Spe
+Timid Nature
+- Astral Barrage
+- Leech Seed
+- Substitute
+- Protect
+
+Koraidon @ Assault Vest
+Ability: Orichalcum Pulse
+Tera Type: Electric
+EVs: 204 HP / 252 Atk / 4 Def / 36 SpD / 12 Spe
+Adamant Nature
+- Collision Course
+- Flame Charge
+- Crunch
+- Tera Blast
+
+Dondozo @ Sitrus Berry
+Ability: Oblivious
+Tera Type: Fairy
+EVs: 252 HP / 252 Def / 4 SpD
+Relaxed Nature
+IVs: 0 Spe
+- Earthquake
+- Avalanche
+- Rest
+- Yawn
+
+Gliscor @ Focus Sash
+Ability: Poison Heal
+Tera Type: Normal
+EVs: 4 HP / 252 Atk / 252 Spe
+Jolly Nature
+- Bulldoze
+- Knock Off
+- Taunt
+- Toxic Spikes
+
+Scizor @ Choice Band
+Ability: Technician
+Tera Type: Ground
+EVs: 252 HP / 252 Atk / 4 Def
+Brave Nature
+IVs: 0 Spe
+- Bullet Punch
+- U-turn
+- Close Combat
+- Tera Blast
+
+Mimikyu @ Life Orb
+Ability: Disguise
+Tera Type: Normal
+EVs: 36 HP / 236 Atk / 100 Def / 4 SpD / 132 Spe
+Adamant Nature
+- Play Rough
+- Shadow Sneak
+- Curse
+- Endure

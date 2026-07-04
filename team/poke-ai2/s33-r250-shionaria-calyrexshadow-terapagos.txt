@@ -1,0 +1,59 @@
+Terapagos @ Leftovers
+Ability: Tera Shift
+Tera Type: Stellar
+EVs: 172 HP / 4 Def / 180 SpA / 12 SpD / 140 Spe
+Modest Nature
+- Tera Starstorm
+- Rock Polish
+- Calm Mind
+- Substitute
+
+Calyrex-Shadow @ Focus Sash
+Ability: As One (Spectrier)
+Tera Type: Fairy
+EVs: 76 HP / 124 Def / 52 SpA / 4 SpD / 252 Spe
+Timid Nature
+- Astral Barrage
+- Draining Kiss
+- Will-O-Wisp
+- Encore
+
+Iron Treads @ Booster Energy
+Ability: Quark Drive
+Tera Type: Water
+EVs: 172 HP / 116 Atk / 4 Def / 4 SpD / 212 Spe
+Jolly Nature
+- Bulldoze
+- Knock Off
+- Rapid Spin
+- Stealth Rock
+
+Urshifu-Rapid-Strike @ Choice Scarf
+Ability: Unseen Fist
+Tera Type: Water
+EVs: 252 Atk / 4 Def / 252 Spe
+Adamant Nature
+- Surging Strikes
+- Close Combat
+- Ice Spinner
+- U-turn
+
+Chien-Pao @ Black Glasses
+Ability: Sword of Ruin
+Tera Type: Dark
+EVs: 252 Atk / 4 Def / 252 Spe
+Adamant Nature
+- Sucker Punch
+- Ice Shard
+- Crunch
+- Swords Dance
+
+Glimmora @ Red Card
+Ability: Toxic Debris
+Tera Type: Fairy
+EVs: 244 HP / 252 Def / 12 Spe
+Bold Nature
+- Mortal Spin
+- Dazzling Gleam
+- Mud Shot
+- Toxic Spikes

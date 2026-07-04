@@ -1,0 +1,59 @@
+Koraidon @ Loaded Dice
+Ability: Orichalcum Pulse
+Tera Type: Steel
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Scale Shot
+- Iron Head
+- Swords Dance
+- Substitute
+
+Calyrex-Shadow @ Choice Specs
+Ability: As One (Spectrier)
+Tera Type: Fairy
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+- Astral Barrage
+- Grass Knot
+- Psychic
+- Tera Blast
+
+Flutter Mane @ Focus Sash
+Ability: Protosynthesis
+Tera Type: Normal
+EVs: 4 HP / 252 SpA / 252 Spe
+Timid Nature
+- Moonblast
+- Hex
+- Power Gem
+- Thunder Wave
+
+Urshifu-Rapid-Strike @ Choice Band
+Ability: Unseen Fist
+Tera Type: Normal
+EVs: 124 HP / 172 Atk / 12 Def / 132 SpD / 68 Spe
+Adamant Nature
+- Surging Strikes
+- Close Combat
+- Ice Spinner
+- Aqua Jet
+
+Dondozo @ Leftovers
+Ability: Unaware
+Tera Type: Fire
+EVs: 252 HP / 252 Def / 4 SpD
+Impish Nature
+- Wave Crash
+- Yawn
+- Protect
+- Rest
+
+Ting-Lu @ Assault Vest
+Ability: Vessel of Ruin
+Tera Type: Fire
+EVs: 84 HP / 156 Atk / 4 Def / 252 SpD / 12 Spe
+Adamant Nature
+- Earthquake
+- Ruination
+- Stone Edge
+- Fissure

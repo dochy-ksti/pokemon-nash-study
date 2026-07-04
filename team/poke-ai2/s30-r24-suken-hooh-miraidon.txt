@@ -1,0 +1,56 @@
+Ho-Oh @ Leftovers
+Ability: Regenerator
+Tera Type: Fairy
+EVs: 252 HP / 4 Atk / 244 Def / 4 SpD / 4 Spe
+Bold Nature
+- Sacred Fire
+- Protect
+- Whirlwind
+- Recover
+
+Miraidon @ Assault Vest
+Ability: Hadron Engine
+Tera Type: Electric
+EVs: 252 HP / 4 Def / 76 SpA / 116 SpD / 60 Spe
+Modest Nature
+- Electro Drift
+- Draco Meteor
+- Parabolic Charge
+- U-turn
+
+Iron Treads @ Choice Band
+Ability: Quark Drive
+Tera Type: Steel
+EVs: 12 HP / 220 Atk / 4 Def / 52 SpD / 220 Spe
+Jolly Nature
+- Earthquake
+- Iron Head
+- Ice Spinner
+- Stone Edge
+
+Ditto @ Choice Scarf
+Ability: Imposter
+Tera Type: Normal
+EVs: 252 HP / 4 Def / 252 SpD
+Calm Nature
+- Transform
+
+Glimmora @ Air Balloon
+Ability: Toxic Debris
+Tera Type: Fairy
+EVs: 252 HP / 236 Def / 20 Spe
+Bold Nature
+- Power Gem
+- Mortal Spin
+- Earth Power
+- Stealth Rock
+
+Urshifu-Rapid-Strike @ Focus Sash
+Ability: Unseen Fist
+Tera Type: Stellar
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Surging Strikes
+- Close Combat
+- Aqua Jet
+- U-turn

@@ -1,0 +1,44 @@
+{
+  "stage": "3b",
+  "hp_buckets": 26,
+  "prob_scale": 1000,
+  "sentinel": 65535,
+  "max_move_slots": 4,
+  "checkpoint": "K1b5_ep280",
+  "cross_team_only": true,
+  "radix": [
+    {
+      "name": "ai_team",
+      "size": 2
+    },
+    {
+      "name": "ai_active",
+      "size": 2
+    },
+    {
+      "name": "ai_hp_cloyster",
+      "size": 26
+    },
+    {
+      "name": "ai_hp_goodra",
+      "size": 26
+    },
+    {
+      "name": "opp_active",
+      "size": 2
+    },
+    {
+      "name": "opp_hp_cloyster",
+      "size": 26
+    },
+    {
+      "name": "opp_hp_goodra",
+      "size": 26
+    }
+  ],
+  "total": 3655808,
+  "species_order": [
+    "Cloyster",
+    "Goodra-Hisui"
+  ]
+}

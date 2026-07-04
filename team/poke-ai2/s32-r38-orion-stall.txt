@@ -1,0 +1,59 @@
+Ho-Oh @ Heavy-Duty Boots
+Ability: Regenerator
+Tera Type: Fairy
+EVs: 252 HP / 236 Def / 20 Spe
+Impish Nature
+- Sacred Fire
+- Imprison
+- Whirlwind
+- Recover
+
+Eternatus @ Covert Cloak
+Ability: Pressure
+Tera Type: Fairy
+EVs: 236 HP / 124 Def / 148 SpD
+Bold Nature
+- Dynamax Cannon
+- Toxic
+- Toxic Spikes
+- Recover
+
+Chansey @ Eviolite
+Ability: Natural Cure
+Tera Type: Steel
+EVs: 12 HP / 244 Def / 252 SpD
+Calm Nature
+- Seismic Toss
+- Calm Mind
+- Stealth Rock
+- Soft-Boiled
+
+Dondozo @ Leftovers
+Ability: Unaware
+Tera Type: Steel
+EVs: 252 HP / 252 Def / 4 Spe
+Impish Nature
+- Fissure
+- Wave Crash
+- Protect
+- Rest
+
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Fairy
+EVs: 228 HP / 84 Def / 196 Spe
+Impish Nature
+- Toxic Spikes
+- Taunt
+- Substitute
+- Protect
+
+Muk-Alola @ Black Sludge
+Ability: Poison Touch
+Tera Type: Poison
+EVs: 252 HP / 4 Def / 252 SpD
+Careful Nature
+- Poison Jab
+- Knock Off
+- Disable
+- Protect

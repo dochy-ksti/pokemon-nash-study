@@ -1,0 +1,59 @@
+Wo-Chien @ Leftovers
+Ability: Tablets of Ruin
+Tera Type: Water
+EVs: 252 HP / 156 Def / 100 SpD
+Bold Nature
+- Foul Play
+- Leech Seed
+- Protect
+- Substitute
+
+Calyrex-Shadow @ Focus Sash
+Ability: As One (Spectrier)
+Tera Type: Fighting
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+- Astral Barrage
+- Grass Knot
+- Tera Blast
+- Nasty Plot
+
+Miraidon @ Choice Scarf
+Ability: Hadron Engine
+Tera Type: Fairy
+EVs: 124 HP / 4 Def / 244 SpA / 12 SpD / 124 Spe
+Modest Nature
+- Electro Drift
+- Draco Meteor
+- Volt Switch
+- Dazzling Gleam
+
+Ting-Lu @ Sitrus Berry
+Ability: Vessel of Ruin
+Tera Type: Poison
+EVs: 196 HP / 4 Atk / 4 Def / 236 SpD / 68 Spe
+Careful Nature
+- Earthquake
+- Ruination
+- Stealth Rock
+- Whirlwind
+
+Urshifu-Rapid-Strike @ Choice Band
+Ability: Unseen Fist
+Tera Type: Water
+EVs: 60 HP / 236 Atk / 148 Def / 4 SpD / 60 Spe
+Adamant Nature
+- Surging Strikes
+- Close Combat
+- Aqua Jet
+- U-turn
+
+Glimmora @ Red Card
+Ability: Toxic Debris
+Tera Type: Fairy
+EVs: 244 HP / 236 Def / 28 Spe
+Bold Nature
+- Mortal Spin
+- Dazzling Gleam
+- Earth Power
+- Endure

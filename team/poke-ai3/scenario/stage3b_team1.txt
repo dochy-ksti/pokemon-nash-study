@@ -1,0 +1,16 @@
+Cloyster @ Covert Cloak
+Ability: Illuminate
+Level: 50
+Tera Type: Water
+EVs: 252 HP / 12 Atk / 12 Def / 92 SpA / 228 SpD / 76 Spe
+Relaxed Nature
+- Shock Wave
+
+Goodra-Hisui @ Covert Cloak
+Ability: Illuminate
+Level: 50
+Tera Type: Dragon
+EVs: 12 HP / 252 SpD / 76 Spe
+IVs: 0 Def / 24 Atk / 4 SpA
+Gentle Nature
+- Bulldoze

@@ -1,0 +1,59 @@
+Koraidon @ Assault Vest
+Ability: Orichalcum Pulse
+Tera Type: Fire
+EVs: 124 HP / 252 Atk / 4 Def / 12 SpD / 116 Spe
+Adamant Nature
+- Flare Blitz
+- Drain Punch
+- Outrage
+- Flame Charge
+
+Lunala @ Rocky Helmet
+Ability: Shadow Shield
+Tera Type: Poison
+EVs: 252 HP / 244 Def / 4 SpA / 4 SpD / 4 Spe
+Bold Nature
+- Moongeist Beam
+- Moonblast
+- Calm Mind
+- Moonlight
+
+Chi-Yu @ Choice Scarf
+Ability: Beads of Ruin
+Tera Type: Normal
+EVs: 100 HP / 4 Def / 164 SpA / 4 SpD / 236 Spe
+Modest Nature
+- Flamethrower
+- Dark Pulse
+- Overheat
+- Fire Blast
+
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Normal
+EVs: 228 HP / 28 Def / 252 SpD
+Careful Nature
+- Protect
+- Substitute
+- Toxic
+- Taunt
+
+Garganacl @ Leftovers
+Ability: Purifying Salt
+Tera Type: Water
+EVs: 252 HP / 236 SpD / 20 Spe
+Careful Nature
+- Salt Cure
+- Protect
+- Substitute
+- Recover
+
+Glimmora @ Focus Sash
+Ability: Toxic Debris
+Tera Type: Ground
+EVs: 4 HP / 252 SpA / 252 Spe
+Timid Nature
+- Mortal Spin
+- Mud Shot
+- Toxic Spikes
+- Spiky Shield

@@ -1,0 +1,59 @@
+Miraidon @ Assault Vest
+Ability: Hadron Engine
+Tera Type: Normal
+EVs: 108 HP / 4 Def / 244 SpA / 20 SpD / 132 Spe
+Timid Nature
+- Electro Drift
+- Volt Switch
+- Dragon Pulse
+- Draco Meteor
+
+Zacian-Crowned @ Rusted Sword
+Ability: Intrepid Sword
+Tera Type: Fairy
+EVs: 60 HP / 212 Atk / 236 Spe
+Jolly Nature
+- Behemoth Blade
+- Play Rough
+- Ice Fang
+- Close Combat
+
+Glimmora @ Air Balloon
+Ability: Toxic Debris
+Tera Type: Water
+EVs: 244 HP / 4 SpA / 4 SpD / 252 Spe
+Timid Nature
+- Mortal Spin
+- Power Gem
+- Spikes
+- Spiky Shield
+
+Landorus-Therian @ Choice Scarf
+Ability: Intimidate
+Tera Type: Ground
+EVs: 52 HP / 188 Atk / 4 Def / 12 SpD / 252 Spe
+Jolly Nature
+- Earthquake
+- Bulldoze
+- Crunch
+- U-turn
+
+Garganacl @ Leftovers
+Ability: Purifying Salt
+Tera Type: Fairy
+EVs: 252 HP / 4 Atk / 36 Def / 212 SpD / 4 Spe
+Impish Nature
+- Salt Cure
+- Protect
+- Recover
+- Tera Blast
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Stellar
+EVs: 252 Atk / 252 Spe
+Adamant Nature
+- Icicle Crash
+- Sucker Punch
+- Taunt
+- Swords Dance

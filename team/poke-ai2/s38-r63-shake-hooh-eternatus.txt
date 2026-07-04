@@ -1,0 +1,59 @@
+Ho-Oh @ Choice Band
+Ability: Regenerator
+Tera Type: Ground
+EVs: 252 Atk / 4 Def / 252 Spe
+Adamant Nature
+- Sacred Fire
+- Brave Bird
+- Earthquake
+- Whirlwind
+
+Eternatus @ Choice Specs
+Ability: Pressure
+Tera Type: Normal
+EVs: 76 HP / 252 SpA / 180 Spe
+Modest Nature
+- Dynamax Cannon
+- Sludge Bomb
+- Flamethrower
+- Draco Meteor
+
+Urshifu-Rapid-Strike @ Choice Scarf
+Ability: Unseen Fist
+Tera Type: Water
+EVs: 252 Atk / 4 Def / 252 Spe
+Adamant Nature
+- Surging Strikes
+- Close Combat
+- Aqua Jet
+- U-turn
+
+Mimikyu @ Rocky Helmet
+Ability: Disguise
+Tera Type: Water
+EVs: 148 HP / 196 Atk / 164 Def
+Adamant Nature
+- Play Rough
+- Shadow Sneak
+- Curse
+- Endure
+
+Mamoswine @ Focus Sash
+Ability: Thick Fat
+Tera Type: Fairy
+EVs: 252 Atk / 204 Def / 52 Spe
+Adamant Nature
+- Icicle Spear
+- Earthquake
+- Knock Off
+- Ice Shard
+
+Scizor @ Assault Vest
+Ability: Technician
+Tera Type: Dark
+EVs: 252 HP / 20 Def / 236 SpD
+Adamant Nature
+- Bullet Punch
+- U-turn
+- Knock Off
+- Close Combat

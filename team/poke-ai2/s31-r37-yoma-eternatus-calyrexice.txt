@@ -1,0 +1,61 @@
+Eternatus @ Focus Sash
+Ability: Pressure
+Tera Type: Water
+EVs: 60 HP / 4 Def / 252 SpA / 4 SpD / 188 Spe
+Timid Nature
+IVs: 0 Atk
+- Dynamax Cannon
+- Toxic
+- Toxic Spikes
+- Recover
+
+Calyrex-Ice @ Leftovers
+Ability: As One (Glastrier)
+Tera Type: Electric
+EVs: 252 HP / 36 Atk / 164 Def / 52 SpD / 4 Spe
+Relaxed Nature
+- Glacial Lance
+- Tera Blast
+- Curse
+- Trick Room
+
+Mimikyu @ Red Card
+Ability: Disguise
+Tera Type: Water
+EVs: 228 HP / 236 Atk / 4 Def / 36 SpD / 4 Spe
+Adamant Nature
+- Play Rough
+- Shadow Sneak
+- Curse
+- Trick Room
+
+Urshifu-Rapid-Strike @ Life Orb
+Ability: Unseen Fist
+Tera Type: Water
+EVs: 188 HP / 252 Atk / 52 Def / 4 SpD / 12 Spe
+Adamant Nature
+- Surging Strikes
+- Close Combat
+- Swords Dance
+- Aqua Jet
+
+Gothitelle @ Choice Scarf
+Ability: Shadow Tag
+Tera Type: Flying
+EVs: 252 HP / 220 Def / 36 Spe
+Bold Nature
+IVs: 0 Atk
+- Psychic Noise
+- Charm
+- Trick
+- Rest
+
+Ting-Lu @ Assault Vest
+Ability: Vessel of Ruin
+Tera Type: Steel
+EVs: 4 HP / 236 Atk / 4 Def / 252 SpD / 12 Spe
+Adamant Nature
+- Earthquake
+- Ruination
+- Heavy Slam
+- Payback

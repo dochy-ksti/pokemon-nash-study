@@ -1,0 +1,59 @@
+Calyrex-Ice @ Leftovers
+Ability: As One (Glastrier)
+Tera Type: Fire
+EVs: 252 HP / 116 Atk / 140 SpD
+Adamant Nature
+- Glacial Lance
+- High Horsepower
+- Encore
+- Trick Room
+
+Miraidon @ Assault Vest
+Ability: Hadron Engine
+Tera Type: Ice
+EVs: 236 HP / 4 Def / 196 SpA / 4 SpD / 68 Spe
+Modest Nature
+- Electro Drift
+- Draco Meteor
+- Tera Blast
+- Volt Switch
+
+Mimikyu @ Mental Herb
+Ability: Disguise
+Tera Type: Normal
+EVs: 100 HP / 156 Atk / 252 Def
+Brave Nature
+- Play Rough
+- Curse
+- Trick Room
+- Shadow Sneak
+
+Iron Treads @ Choice Band
+Ability: Quark Drive
+Tera Type: Ground
+EVs: 12 HP / 140 Atk / 4 Def / 132 SpD / 220 Spe
+Jolly Nature
+- Earthquake
+- Iron Head
+- Knock Off
+- Wild Charge
+
+Ogerpon-Hearthflame @ Hearthflame Mask
+Ability: Mold Breaker
+Tera Type: Fire
+EVs: 252 HP / 220 Def / 36 Spe
+Adamant Nature
+- Ivy Cudgel
+- Horn Leech
+- Swords Dance
+- Synthesis
+
+Sneasler @ Focus Sash
+Ability: Unburden
+Tera Type: Ghost
+EVs: 4 HP / 252 Atk / 252 Spe
+Adamant Nature
+- Dire Claw
+- Close Combat
+- Shadow Claw
+- Toxic Spikes

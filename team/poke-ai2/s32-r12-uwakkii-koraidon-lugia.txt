@@ -1,0 +1,61 @@
+Lugia @ Leftovers
+Ability: Multiscale
+Tera Type: Poison
+EVs: 252 HP / 236 Def / 20 SpD
+Bold Nature
+IVs: 0 Atk
+- Psychic Noise
+- Substitute
+- Whirlwind
+- Recover
+
+Koraidon @ Choice Scarf
+Ability: Orichalcum Pulse
+Tera Type: Normal
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Flare Blitz
+- Close Combat
+- Outrage
+- U-turn
+
+Overqwil @ Mental Herb
+Ability: Intimidate
+Tera Type: Normal
+EVs: 244 HP / 228 Def / 36 SpD
+Impish Nature
+- Barb Barrage
+- Toxic Spikes
+- Spikes
+- Taunt
+
+Iron Treads @ Booster Energy
+Ability: Quark Drive
+Tera Type: Grass
+EVs: 236 HP / 76 Atk / 4 Def / 4 SpD / 188 Spe
+Jolly Nature
+- Earthquake
+- Endeavor
+- Knock Off
+- Stealth Rock
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Stellar
+EVs: 252 Atk / 4 Def / 252 Spe
+Adamant Nature
+- Icicle Crash
+- Sucker Punch
+- Ice Shard
+- Swords Dance
+
+Flutter Mane @ Lum Berry
+Ability: Protosynthesis
+Tera Type: Fairy
+EVs: 100 HP / 108 Def / 228 SpA / 4 SpD / 68 Spe
+Modest Nature
+IVs: 0 Atk
+- Moonblast
+- Power Gem
+- Calm Mind
+- Taunt

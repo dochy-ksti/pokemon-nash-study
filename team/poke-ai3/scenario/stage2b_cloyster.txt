@@ -1,0 +1,9 @@
+Cloyster @ Covert Cloak
+Ability: Skill Link
+Level: 50
+Tera Type: Water
+EVs: 252 HP / 12 Atk / 92 SpA / 252 SpD
+IVs: 0 Def
+Gentle Nature
+- Crunch
+- Dark Pulse

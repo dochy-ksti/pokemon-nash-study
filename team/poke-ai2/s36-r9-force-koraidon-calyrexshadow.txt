@@ -1,0 +1,62 @@
+Koraidon @ Choice Scarf
+Ability: Orichalcum Pulse
+Tera Type: Fire
+EVs: 220 HP / 252 Atk / 4 Def / 12 SpD / 20 Spe
+Adamant Nature
+- Close Combat
+- Flare Blitz
+- Outrage
+- U-turn
+
+Calyrex-Shadow @ Choice Specs
+Ability: As One (Spectrier)
+Tera Type: Ground
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Astral Barrage
+- Psychic
+- Grass Knot
+- Tera Blast
+
+Incineroar @ Assault Vest
+Ability: Intimidate
+Tera Type: Fairy
+EVs: 252 HP / 4 Def / 252 SpD
+Sassy Nature
+IVs: 25 Spe
+- Flare Blitz
+- Knock Off
+- U-turn
+- Bulldoze
+
+Ursaluna-Bloodmoon @ Silk Scarf
+Ability: Mind's Eye
+Tera Type: Normal
+EVs: 252 HP / 52 Def / 52 SpA / 148 SpD / 4 Spe
+Modest Nature
+- Blood Moon
+- Hyper Voice
+- Calm Mind
+- Moonlight
+
+Iron Treads @ Focus Sash
+Ability: Quark Drive
+Tera Type: Normal
+EVs: 180 Atk / 76 SpD / 252 Spe
+Jolly Nature
+- Bulldoze
+- Knock Off
+- Endeavor
+- Stealth Rock
+
+Skeledirge @ Heavy-Duty Boots
+Ability: Unaware
+Tera Type: Normal
+EVs: 252 HP / 252 Def / 4 Spe
+Bold Nature
+IVs: 0 Atk
+- Torch Song
+- Hex
+- Will-O-Wisp
+- Slack Off

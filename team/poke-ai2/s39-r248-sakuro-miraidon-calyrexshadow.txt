@@ -1,0 +1,60 @@
+Miraidon @ Eject Pack
+Ability: Hadron Engine
+Tera Type: Normal
+EVs: 124 HP / 4 Def / 244 SpA / 4 SpD / 132 Spe
+Timid Nature
+- Electro Drift
+- Draco Meteor
+- Overheat
+- Protect
+
+Calyrex-Shadow @ Choice Scarf
+Ability: As One (Spectrier)
+Tera Type: Fairy
+EVs: 124 HP / 124 Def / 100 SpA / 12 SpD / 148 Spe
+Timid Nature
+IVs: 0 Atk
+- Astral Barrage
+- Psychic
+- Draining Kiss
+- Trick
+
+Iron Valiant @ Focus Sash
+Ability: Quark Drive
+Tera Type: Ground
+EVs: 12 HP / 252 Atk / 244 Spe
+Jolly Nature
+- Close Combat
+- Knock Off
+- Spirit Break
+- Thunder Wave
+
+Chien-Pao @ Icicle Plate
+Ability: Sword of Ruin
+Tera Type: Fire
+EVs: 44 HP / 252 Atk / 180 Def / 12 SpD / 20 Spe
+Adamant Nature
+- Icicle Crash
+- Sucker Punch
+- Ice Shard
+- Swords Dance
+
+Iron Treads @ Life Orb
+Ability: Quark Drive
+Tera Type: Stellar
+EVs: 12 HP / 188 Atk / 4 Def / 132 SpD / 172 Spe
+Jolly Nature
+- Earthquake
+- Iron Head
+- Knock Off
+- Electro Ball
+
+Dragonite @ Leftovers
+Ability: Multiscale
+Tera Type: Normal
+EVs: 244 HP / 252 Atk / 4 Def / 4 SpD / 4 Spe
+Adamant Nature
+- Extreme Speed
+- Earthquake
+- Encore
+- Roost

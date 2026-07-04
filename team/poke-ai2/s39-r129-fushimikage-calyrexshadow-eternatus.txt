@@ -1,0 +1,62 @@
+Calyrex-Shadow @ Leftovers
+Ability: As One (Spectrier)
+Tera Type: Fairy
+EVs: 140 HP / 84 Def / 4 SpA / 28 SpD / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Astral Barrage
+- Substitute
+- Protect
+- Leech Seed
+
+Eternatus @ Rocky Helmet
+Ability: Pressure
+Tera Type: Fire
+EVs: 252 HP / 244 Def / 4 SpA / 4 SpD / 4 Spe
+Bold Nature
+IVs: 0 Atk
+- Sludge Bomb
+- Flamethrower
+- Toxic Spikes
+- Recover
+
+Ting-Lu @ Sitrus Berry
+Ability: Vessel of Ruin
+Tera Type: Steel
+EVs: 252 HP / 52 Def / 204 SpD
+Careful Nature
+- Earthquake
+- Stealth Rock
+- Spikes
+- Whirlwind
+
+Ursaluna-Bloodmoon @ Assault Vest
+Ability: Mind's Eye
+Tera Type: Normal
+EVs: 212 HP / 4 Def / 36 SpA / 244 SpD / 12 Spe
+Modest Nature
+IVs: 0 Atk
+- Blood Moon
+- Earth Power
+- Hyper Voice
+- Vacuum Wave
+
+Urshifu-Rapid-Strike @ Choice Band
+Ability: Unseen Fist
+Tera Type: Fire
+EVs: 60 HP / 236 Atk / 124 Def / 4 SpD / 84 Spe
+Adamant Nature
+- Surging Strikes
+- Close Combat
+- Aqua Jet
+- U-turn
+
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Dark
+EVs: 228 HP / 28 SpD / 252 Spe
+Jolly Nature
+- Knock Off
+- Taunt
+- Substitute
+- Protect

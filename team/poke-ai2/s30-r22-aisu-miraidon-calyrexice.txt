@@ -1,0 +1,61 @@
+Miraidon @ Assault Vest
+Ability: Hadron Engine
+Tera Type: Electric
+EVs: 252 HP / 4 Def / 84 SpA / 148 SpD / 20 Spe
+Modest Nature
+IVs: 0 Atk
+- Electro Drift
+- Draco Meteor
+- Mirror Coat
+- Volt Switch
+
+Calyrex-Ice @ Leftovers
+Ability: As One (Glastrier)
+Tera Type: Fire
+EVs: 252 HP / 148 Atk / 28 Def / 4 SpD / 76 Spe
+Brave Nature
+- Glacial Lance
+- High Horsepower
+- Curse
+- Trick Room
+
+Glimmora @ Red Card
+Ability: Toxic Debris
+Tera Type: Fairy
+EVs: 244 HP / 252 Def / 4 SpA / 4 SpD / 4 Spe
+Bold Nature
+IVs: 0 Atk
+- Dazzling Gleam
+- Mortal Spin
+- Stealth Rock
+- Endure
+
+Urshifu-Rapid-Strike @ Focus Sash
+Ability: Unseen Fist
+Tera Type: Stellar
+EVs: 76 HP / 252 Atk / 116 Def / 4 SpD / 60 Spe
+Adamant Nature
+- Surging Strikes
+- Close Combat
+- Ice Spinner
+- Aqua Jet
+
+Landorus-Therian @ Choice Band
+Ability: Intimidate
+Tera Type: Flying
+EVs: 244 HP / 116 Atk / 4 Def / 52 SpD / 92 Spe
+Adamant Nature
+- Earthquake
+- U-turn
+- Rock Slide
+- Tera Blast
+
+Sneasler @ Electric Seed
+Ability: Unburden
+Tera Type: Flying
+EVs: 44 HP / 220 Atk / 4 Def / 28 SpD / 212 Spe
+Adamant Nature
+- Close Combat
+- Acrobatics
+- Taunt
+- Swords Dance

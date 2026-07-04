@@ -1,0 +1,59 @@
+Koraidon @ Loaded Dice
+Ability: Orichalcum Pulse
+Tera Type: Steel
+EVs: 124 HP / 212 Atk / 4 Def / 116 SpD / 52 Spe
+Adamant Nature
+- Scale Shot
+- Iron Head
+- Substitute
+- Swords Dance
+
+Arceus-Fairy @ Pixie Plate
+Ability: Multitype
+Tera Type: Normal
+EVs: 252 HP / 36 Def / 196 SpA / 20 SpD
+Modest Nature
+- Judgment
+- Earthquake
+- Acid Spray
+- Extreme Speed
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Ghost
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Icicle Crash
+- Sucker Punch
+- Sacred Sword
+- Sheer Cold
+
+Ting-Lu @ Assault Vest
+Ability: Vessel of Ruin
+Tera Type: Grass
+EVs: 68 HP / 156 Atk / 4 Def / 252 SpD / 28 Spe
+Adamant Nature
+- Earthquake
+- Ruination
+- Heavy Slam
+- Fissure
+
+Dondozo @ Leftovers
+Ability: Unaware
+Tera Type: Ground
+EVs: 252 HP / 4 Atk / 196 Def / 52 SpD / 4 Spe
+Relaxed Nature
+- Wave Crash
+- Earthquake
+- Yawn
+- Protect
+
+Archaludon @ Power Herb
+Ability: Sturdy
+Tera Type: Stellar
+EVs: 4 Def / 252 SpA / 252 Spe
+Modest Nature
+- Draco Meteor
+- Flash Cannon
+- Electro Shot
+- Metal Burst

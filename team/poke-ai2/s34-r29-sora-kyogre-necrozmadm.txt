@@ -1,0 +1,59 @@
+Kyogre @ Choice Scarf
+Ability: Drizzle
+Tera Type: Ghost
+EVs: 12 HP / 4 Def / 252 SpA / 4 SpD / 236 Spe
+Timid Nature
+- Water Spout
+- Surf
+- Thunder
+- Ice Beam
+
+Weezing-Galar @ Eject Pack
+Ability: Neutralizing Gas
+Tera Type: Fire
+EVs: 252 HP / 84 Def / 172 SpD
+Bold Nature
+- Strange Steam
+- Overheat
+- Toxic
+- Toxic Spikes
+
+Ting-Lu @ Leftovers
+Ability: Vessel of Ruin
+Tera Type: Fairy
+EVs: 84 HP / 156 Atk / 12 Def / 252 SpD / 4 Spe
+Adamant Nature
+- Earthquake
+- Payback
+- Tera Blast
+- Stealth Rock
+
+Urshifu-Rapid-Strike @ Focus Sash
+Ability: Unseen Fist
+Tera Type: Stellar
+EVs: 12 HP / 252 Atk / 108 Def / 4 SpD / 132 Spe
+Adamant Nature
+- Surging Strikes
+- Close Combat
+- Aqua Jet
+- Swords Dance
+
+Clodsire @ Sitrus Berry
+Ability: Unaware
+Tera Type: Normal
+EVs: 252 HP / 252 Def / 4 SpD
+Impish Nature
+- Earthquake
+- Toxic
+- Counter
+- Recover
+
+Necrozma-Dusk-Mane @ Covert Cloak
+Ability: Prism Armor
+Tera Type: Normal
+EVs: 244 HP / 108 Atk / 28 Def / 12 SpD / 116 Spe
+Adamant Nature
+- Sunsteel Strike
+- Photon Geyser
+- Dragon Dance
+- Morning Sun

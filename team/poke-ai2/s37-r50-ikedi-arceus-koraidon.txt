@@ -1,0 +1,59 @@
+Arceus-Ground @ Earth Plate
+Ability: Multitype
+Tera Type: Steel
+EVs: 220 HP / 36 SpD / 252 Spe
+Timid Nature
+- Judgment
+- Thunder Wave
+- Will-O-Wisp
+- Recover
+
+Koraidon @ Loaded Dice
+Ability: Orichalcum Pulse
+Tera Type: Steel
+EVs: 236 HP / 196 Atk / 76 Spe
+Adamant Nature
+- Scale Shot
+- Iron Head
+- Substitute
+- Swords Dance
+
+Flutter Mane @ Focus Sash
+Ability: Protosynthesis
+Tera Type: Normal
+EVs: 4 HP / 252 SpA / 252 Spe
+Timid Nature
+- Moonblast
+- Spite
+- Thunder Wave
+- Perish Song
+
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Dark
+EVs: 228 HP / 28 SpD / 252 Spe
+Jolly Nature
+- Knock Off
+- Taunt
+- Stealth Rock
+- Spikes
+
+Garganacl @ Leftovers
+Ability: Purifying Salt
+Tera Type: Fire
+EVs: 252 HP / 156 Def / 84 SpD / 12 Spe
+Careful Nature
+- Salt Cure
+- Iron Defense
+- Body Press
+- Recover
+
+Brute Bonnet @ Heavy-Duty Boots
+Ability: Protosynthesis
+Tera Type: Poison
+EVs: 244 HP / 44 Def / 220 SpD
+Careful Nature
+- Spore
+- Crunch
+- Clear Smog
+- Synthesis

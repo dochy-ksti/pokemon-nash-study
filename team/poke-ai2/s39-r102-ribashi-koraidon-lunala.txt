@@ -1,0 +1,59 @@
+Koraidon @ Focus Sash
+Ability: Orichalcum Pulse
+Tera Type: Fighting
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Flame Charge
+- Crunch
+- Close Combat
+- Reversal
+
+Lunala @ Power Herb
+Ability: Shadow Shield
+Tera Type: Ground
+EVs: 52 HP / 76 Def / 244 SpA / 4 SpD / 132 Spe
+Modest Nature
+- Moongeist Beam
+- Ice Beam
+- Meteor Beam
+- Tailwind
+
+Landorus-Therian @ Light Ball
+Ability: Intimidate
+Tera Type: Water
+EVs: 252 HP / 52 Atk / 20 Def / 172 SpD / 12 Spe
+Careful Nature
+- Earthquake
+- Taunt
+- Stealth Rock
+- Fling
+
+Chi-Yu @ Choice Specs
+Ability: Beads of Ruin
+Tera Type: Fire
+EVs: 228 HP / 124 SpA / 156 SpD
+Modest Nature
+- Overheat
+- Flamethrower
+- Dark Pulse
+- Psychic
+
+Iron Treads @ Jaboca Berry
+Ability: Quark Drive
+Tera Type: Normal
+EVs: 236 HP / 116 Atk / 52 Def / 4 SpD / 100 Spe
+Jolly Nature
+- Earthquake
+- Iron Head
+- Rapid Spin
+- Endeavor
+
+Dragonite @ Weakness Policy
+Ability: Multiscale
+Tera Type: Ground
+EVs: 244 HP / 164 Atk / 4 Def / 4 SpD / 92 Spe
+Adamant Nature
+- Extreme Speed
+- Earthquake
+- Scale Shot
+- Tailwind

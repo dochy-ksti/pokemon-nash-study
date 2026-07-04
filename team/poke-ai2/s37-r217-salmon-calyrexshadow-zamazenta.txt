@@ -1,0 +1,61 @@
+Calyrex-Shadow @ Lum Berry
+Ability: As One (Spectrier)
+Tera Type: Fairy
+EVs: 140 HP / 140 Def / 204 SpA / 4 SpD / 20 Spe
+Modest Nature
+IVs: 0 Atk
+- Astral Barrage
+- Draining Kiss
+- Nasty Plot
+- Agility
+
+Zamazenta-Crowned @ Rusted Shield
+Ability: Dauntless Shield
+Tera Type: Normal
+EVs: 92 HP / 4 Atk / 252 Def / 4 SpD / 156 Spe
+Impish Nature
+- Body Press
+- Heavy Slam
+- Iron Defense
+- Agility
+
+Dragapult @ Light Clay
+Ability: Clear Body
+Tera Type: Dark
+EVs: 196 HP / 100 Def / 212 Spe
+Jolly Nature
+- Dragon Darts
+- Reflect
+- Light Screen
+- Curse
+
+Smeargle @ Choice Scarf
+Ability: Moody
+Tera Type: Ghost
+EVs: 252 HP / 4 Def / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Trick
+- Horn Drill
+- Destiny Bond
+- Taunt
+
+Iron Boulder @ Sitrus Berry
+Ability: Quark Drive
+Tera Type: Grass
+EVs: 92 HP / 252 Atk / 4 Def / 4 SpD / 156 Spe
+Adamant Nature
+- Mighty Cleave
+- Zen Headbutt
+- Swords Dance
+- Taunt
+
+Ogerpon-Wellspring @ Wellspring Mask
+Ability: Water Absorb
+Tera Type: Water
+EVs: 92 HP / 252 Atk / 4 Def / 4 SpD / 156 Spe
+Adamant Nature
+- Ivy Cudgel
+- Horn Leech
+- Substitute
+- Swords Dance

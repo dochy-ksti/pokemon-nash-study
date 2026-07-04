@@ -1,0 +1,59 @@
+Landorus-Therian @ Focus Sash
+Ability: Intimidate
+Tera Type: Ground
+EVs: 4 HP / 252 Atk / 252 Spe
+Jolly Nature
+- Bulldoze
+- Earthquake
+- Rock Tomb
+- Stealth Rock
+
+Koraidon @ Life Orb
+Ability: Orichalcum Pulse
+Tera Type: Electric
+EVs: 108 HP / 252 Atk / 4 Def / 44 SpD / 100 Spe
+Adamant Nature
+- Scale Shot
+- Close Combat
+- Flare Blitz
+- Tera Blast
+
+Lunala @ Power Herb
+Ability: Shadow Shield
+Tera Type: Normal
+EVs: 244 HP / 244 SpA / 20 Spe
+Modest Nature
+- Trick Room
+- Moongeist Beam
+- Ice Beam
+- Meteor Beam
+
+Kingambit @ Black Glasses
+Ability: Supreme Overlord
+Tera Type: Dark
+EVs: 252 HP / 252 Atk / 4 Def
+Adamant Nature
+- Kowtow Cleave
+- Sucker Punch
+- Swords Dance
+- Iron Head
+
+Flutter Mane @ Choice Specs
+Ability: Protosynthesis
+Tera Type: Fairy
+EVs: 180 HP / 156 Def / 140 SpA / 4 SpD / 28 Spe
+Timid Nature
+- Moonblast
+- Shadow Ball
+- Power Gem
+- Disarming Voice
+
+Ogerpon-Hearthflame @ Hearthflame Mask
+Ability: Mold Breaker
+Tera Type: Fire
+EVs: 236 HP / 252 Atk / 20 Spe
+Adamant Nature
+- Ivy Cudgel
+- Horn Leech
+- Play Rough
+- Quick Attack

@@ -1,0 +1,61 @@
+Calyrex-Shadow @ Choice Specs
+Ability: As One (Spectrier)
+Tera Type: Ground
+EVs: 60 HP / 4 Def / 180 SpA / 12 SpD / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Astral Barrage
+- Psychic
+- Grass Knot
+- Tera Blast
+
+Arceus-Flying @ Sky Plate
+Ability: Multitype
+Tera Type: Flying
+EVs: 220 HP / 172 Atk / 4 Def / 4 SpD / 108 Spe
+Adamant Nature
+- Tera Blast
+- Taunt
+- Dragon Dance
+- Recover
+
+Glimmora @ Focus Sash
+Ability: Toxic Debris
+Tera Type: Normal
+EVs: 132 HP / 124 Def / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Mortal Spin
+- Mud Shot
+- Stealth Rock
+- Toxic Spikes
+
+Sneasler @ Red Card
+Ability: Unburden
+Tera Type: Ghost
+EVs: 28 HP / 252 Atk / 4 Def / 4 SpD / 220 Spe
+Adamant Nature
+- Close Combat
+- Dire Claw
+- Shadow Claw
+- Endure
+
+Ting-Lu @ Assault Vest
+Ability: Vessel of Ruin
+Tera Type: Steel
+EVs: 68 HP / 156 Atk / 4 Def / 252 SpD / 28 Spe
+Adamant Nature
+- Earthquake
+- Heavy Slam
+- Payback
+- Ruination
+
+Urshifu-Rapid-Strike @ Choice Band
+Ability: Unseen Fist
+Tera Type: Fire
+EVs: 60 HP / 236 Atk / 204 Def / 4 SpD / 4 Spe
+Adamant Nature
+- Surging Strikes
+- Aqua Jet
+- Close Combat
+- U-turn

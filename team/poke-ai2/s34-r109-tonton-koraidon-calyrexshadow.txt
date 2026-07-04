@@ -1,0 +1,61 @@
+Koraidon @ Leftovers
+Ability: Orichalcum Pulse
+Tera Type: Fire
+EVs: 172 HP / 180 Atk / 4 Def / 36 SpD / 116 Spe
+Adamant Nature
+- Flame Charge
+- Drain Punch
+- Bulk Up
+- Taunt
+
+Calyrex-Shadow @ Focus Sash
+Ability: As One (Spectrier)
+Tera Type: Normal
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Astral Barrage
+- Psyshock
+- Grass Knot
+- Encore
+
+Grimmsnarl @ Light Clay
+Ability: Prankster
+Tera Type: Grass
+EVs: 244 HP / 124 Def / 120 SpD / 20 Spe
+Careful Nature
+- Spirit Break
+- Reflect
+- Light Screen
+- Taunt
+
+Ting-Lu @ Sitrus Berry
+Ability: Vessel of Ruin
+Tera Type: Poison
+EVs: 244 HP / 4 Atk / 196 Def / 4 SpD / 60 Spe
+Impish Nature
+- Earthquake
+- Stealth Rock
+- Spikes
+- Whirlwind
+
+Iron Treads @ Choice Band
+Ability: Quark Drive
+Tera Type: Normal
+EVs: 60 HP / 196 Atk / 20 Def / 92 SpD / 140 Spe
+Jolly Nature
+- Earthquake
+- Iron Head
+- Supercell Slam
+- Ice Spinner
+
+Archaludon @ Power Herb
+Ability: Sturdy
+Tera Type: Normal
+EVs: 4 Def / 252 SpA / 252 Spe
+Modest Nature
+IVs: 0 Atk
+- Electro Shot
+- Flash Cannon
+- Draco Meteor
+- Thunder Wave

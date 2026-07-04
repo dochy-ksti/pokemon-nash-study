@@ -1,0 +1,59 @@
+Miraidon @ Choice Specs
+Ability: Hadron Engine
+Tera Type: Fairy
+EVs: 124 HP / 28 Def / 92 SpA / 12 SpD / 252 Spe
+Timid Nature
+- Electro Drift
+- Volt Switch
+- Draco Meteor
+- Dazzling Gleam
+
+Ho-Oh @ Heavy-Duty Boots
+Ability: Regenerator
+Tera Type: Normal
+EVs: 252 HP / 236 Def / 20 Spe
+Impish Nature
+- Sacred Fire
+- Earthquake
+- Recover
+- Whirlwind
+
+Ting-Lu @ Assault Vest
+Ability: Vessel of Ruin
+Tera Type: Fire
+EVs: 4 HP / 236 Atk / 4 Def / 252 SpD / 12 Spe
+Adamant Nature
+- Earthquake
+- Payback
+- Rock Tomb
+- Ruination
+
+Chien-Pao @ Choice Band
+Ability: Sword of Ruin
+Tera Type: Stellar
+EVs: 252 Atk / 4 Def / 252 Spe
+Adamant Nature
+- Icicle Crash
+- Ice Shard
+- Crunch
+- Tera Blast
+
+Primarina @ Rocky Helmet
+Ability: Torrent
+Tera Type: Normal
+EVs: 252 HP / 252 Def / 4 SpD
+Bold Nature
+- Moonblast
+- Sparkling Aria
+- Flip Turn
+- Encore
+
+Scizor @ Sitrus Berry
+Ability: Technician
+Tera Type: Normal
+EVs: 252 HP / 76 Atk / 108 Def / 68 SpD / 4 Spe
+Adamant Nature
+- Bullet Punch
+- U-turn
+- Knock Off
+- Swords Dance

@@ -1,0 +1,59 @@
+Kyogre @ Assault Vest
+Ability: Drizzle
+Tera Type: Electric
+EVs: 252 HP / 20 Def / 156 SpA / 12 SpD / 68 Spe
+Modest Nature
+- Water Spout
+- Surf
+- Thunder
+- Ice Beam
+
+Zacian-Crowned @ Rusted Sword
+Ability: Intrepid Sword
+Tera Type: Normal
+EVs: 204 HP / 252 Atk / 4 Def / 4 SpD / 44 Spe
+Adamant Nature
+- Behemoth Blade
+- Play Rough
+- Quick Attack
+- Swords Dance
+
+Flutter Mane @ Focus Sash
+Ability: Protosynthesis
+Tera Type: Normal
+EVs: 4 HP / 252 SpA / 252 Spe
+Timid Nature
+- Moonblast
+- Hex
+- Thunder Wave
+- Pain Split
+
+Dragonite @ Rocky Helmet
+Ability: Multiscale
+Tera Type: Normal
+EVs: 244 HP / 44 Atk / 60 Def / 68 SpD / 92 Spe
+Adamant Nature
+- Extreme Speed
+- Earthquake
+- Thunder Wave
+- Roost
+
+Ting-Lu @ Sitrus Berry
+Ability: Vessel of Ruin
+Tera Type: Poison
+EVs: 244 HP / 12 Atk / 36 Def / 212 SpD / 4 Spe
+Impish Nature
+- Earthquake
+- Stealth Rock
+- Spikes
+- Whirlwind
+
+Urshifu-Rapid-Strike @ Punching Glove
+Ability: Unseen Fist
+Tera Type: Water
+EVs: 60 HP / 252 Atk / 188 Def / 4 SpD / 4 Spe
+Adamant Nature
+- Surging Strikes
+- Drain Punch
+- Aqua Jet
+- Swords Dance

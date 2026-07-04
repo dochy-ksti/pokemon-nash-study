@@ -1,0 +1,62 @@
+Lunala @ Choice Specs
+Ability: Shadow Shield
+Tera Type: Fairy
+EVs: 4 HP / 252 SpA / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Moongeist Beam
+- Moonblast
+- Psyshock
+- Psychic
+
+Koraidon @ Choice Scarf
+Ability: Orichalcum Pulse
+Tera Type: Fire
+EVs: 252 Atk / 4 SpD / 252 Spe
+Jolly Nature
+- Flare Blitz
+- Collision Course
+- Outrage
+- U-turn
+
+Chi-Yu @ Assault Vest
+Ability: Beads of Ruin
+Tera Type: Fairy
+EVs: 252 HP / 252 SpA / 4 SpD
+Modest Nature
+IVs: 0 Atk
+- Flamethrower
+- Overheat
+- Dark Pulse
+- Psychic
+
+Landorus-Therian @ Choice Band
+Ability: Intimidate
+Tera Type: Normal
+EVs: 252 HP / 124 Atk / 116 Def / 4 SpD / 12 Spe
+Adamant Nature
+- Earthquake
+- Facade
+- Rock Tomb
+- U-turn
+
+Weezing-Galar @ Black Sludge
+Ability: Levitate
+Tera Type: Dark
+EVs: 252 HP / 252 Def / 4 Spe
+Bold Nature
+IVs: 0 Atk
+- Toxic
+- Taunt
+- Defog
+- Pain Split
+
+Umbreon @ Covert Cloak
+Ability: Synchronize
+Tera Type: Poison
+EVs: 252 HP / 68 Def / 188 SpD
+Relaxed Nature
+- Wish
+- Baton Pass
+- Protect
+- Toxic

@@ -1,0 +1,61 @@
+Eternatus @ Leftovers
+Ability: Pressure
+Tera Type: Fire
+EVs: 76 HP / 4 Def / 236 SpA / 12 SpD / 180 Spe
+Timid Nature
+IVs: 0 Atk
+- Dynamax Cannon
+- Flamethrower
+- Protect
+- Substitute
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Stellar
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Sucker Punch
+- Icicle Crash
+- Sacred Sword
+- Sheer Cold
+
+Ting-Lu @ Assault Vest
+Ability: Vessel of Ruin
+Tera Type: Fairy
+EVs: 4 HP / 236 Atk / 4 Def / 188 SpD / 76 Spe
+Adamant Nature
+- Earthquake
+- Ruination
+- Fissure
+- Tera Blast
+
+Mimikyu @ Rocky Helmet
+Ability: Disguise
+Tera Type: Stellar
+EVs: 100 HP / 252 Atk / 4 Def / 4 SpD / 148 Spe
+Adamant Nature
+- Shadow Sneak
+- Play Rough
+- Curse
+- Endure
+
+Kyogre @ Choice Scarf
+Ability: Drizzle
+Tera Type: Water
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Water Spout
+- Surf
+- Ice Beam
+- Thunder
+
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Normal
+EVs: 228 HP / 28 SpD / 252 Spe
+Jolly Nature
+- Knock Off
+- Taunt
+- Toxic Spikes
+- Substitute

@@ -1,0 +1,62 @@
+Arceus-Fairy @ Pixie Plate
+Ability: Multitype
+Tera Type: Steel
+EVs: 252 HP / 4 Def / 76 SpA / 84 SpD / 92 Spe
+Modest Nature
+IVs: 0 Atk
+- Judgment
+- Earth Power
+- Acid Spray
+- Extreme Speed
+
+Terapagos @ Power Herb
+Ability: Tera Shift
+Tera Type: Stellar
+EVs: 4 Def / 252 SpA / 252 Spe
+Modest Nature
+IVs: 0 Atk
+- Tera Starstorm
+- Ice Beam
+- Meteor Beam
+- Rapid Spin
+
+Urshifu-Rapid-Strike @ Focus Sash
+Ability: Unseen Fist
+Tera Type: Ghost
+EVs: 4 Def / 252 Atk / 252 Spe
+Adamant Nature
+- Surging Strikes
+- Close Combat
+- Aqua Jet
+- Swords Dance
+
+Weezing-Galar @ Covert Cloak
+Ability: Neutralizing Gas
+Tera Type: Water
+EVs: 244 HP / 156 Def / 4 SpA / 100 SpD / 4 Spe
+Bold Nature
+IVs: 0 Atk
+- Strange Steam
+- Sludge Bomb
+- Toxic
+- Pain Split
+
+Dondozo @ Leftovers
+Ability: Unaware
+Tera Type: Ground
+EVs: 252 HP / 4 Atk / 196 Def / 52 SpD / 4 Spe
+Impish Nature
+- Wave Crash
+- Earthquake
+- Yawn
+- Protect
+
+Ting-Lu @ Assault Vest
+Ability: Vessel of Ruin
+Tera Type: Grass
+EVs: 4 HP / 236 Atk / 4 Def / 252 SpD / 12 Spe
+Adamant Nature
+- Earthquake
+- Stone Edge
+- Heavy Slam
+- Fissure

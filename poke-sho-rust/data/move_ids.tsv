@@ -1,0 +1,954 @@
+id	name	type	category	base_power
+0	10,000,000 Volt Thunderbolt	Electric	Special	195
+1	Absorb	Grass	Special	20
+2	Accelerock	Rock	Physical	40
+3	Acid	Poison	Special	40
+4	Acid Armor	Poison	Status	0
+5	Acid Downpour	Poison	Physical	1
+6	Acid Spray	Poison	Special	40
+7	Acrobatics	Flying	Physical	55
+8	Acupressure	Normal	Status	0
+9	Aerial Ace	Flying	Physical	60
+10	Aeroblast	Flying	Special	100
+11	After You	Normal	Status	0
+12	Agility	Psychic	Status	0
+13	Air Cutter	Flying	Special	60
+14	Air Slash	Flying	Special	75
+15	All-Out Pummeling	Fighting	Physical	1
+16	Alluring Voice	Fairy	Special	80
+17	Ally Switch	Psychic	Status	0
+18	Amnesia	Psychic	Status	0
+19	Anchor Shot	Steel	Physical	80
+20	Ancient Power	Rock	Special	60
+21	Apple Acid	Grass	Special	80
+22	Aqua Cutter	Water	Physical	70
+23	Aqua Jet	Water	Physical	40
+24	Aqua Ring	Water	Status	0
+25	Aqua Step	Water	Physical	80
+26	Aqua Tail	Water	Physical	90
+27	Armor Cannon	Fire	Special	120
+28	Arm Thrust	Fighting	Physical	15
+29	Aromatherapy	Grass	Status	0
+30	Aromatic Mist	Fairy	Status	0
+31	Assist	Normal	Status	0
+32	Assurance	Dark	Physical	60
+33	Astonish	Ghost	Physical	30
+34	Astral Barrage	Ghost	Special	120
+35	Attack Order	Bug	Physical	90
+36	Attract	Normal	Status	0
+37	Aura Sphere	Fighting	Special	80
+38	Aura Wheel	Electric	Physical	110
+39	Aurora Beam	Ice	Special	65
+40	Aurora Veil	Ice	Status	0
+41	Autotomize	Steel	Status	0
+42	Avalanche	Ice	Physical	60
+43	Axe Kick	Fighting	Physical	120
+44	Baby-Doll Eyes	Fairy	Status	0
+45	Baddy Bad	Dark	Special	80
+46	Baneful Bunker	Poison	Status	0
+47	Barb Barrage	Poison	Physical	60
+48	Barrage	Normal	Physical	15
+49	Barrier	Psychic	Status	0
+50	Baton Pass	Normal	Status	0
+51	Beak Blast	Flying	Physical	100
+52	Beat Up	Dark	Physical	0
+53	Behemoth Bash	Steel	Physical	100
+54	Behemoth Blade	Steel	Physical	100
+55	Belch	Poison	Special	120
+56	Belly Drum	Normal	Status	0
+57	Bestow	Normal	Status	0
+58	Bide	Normal	Physical	0
+59	Bind	Normal	Physical	15
+60	Bite	Dark	Physical	60
+61	Bitter Blade	Fire	Physical	90
+62	Bitter Malice	Ghost	Special	75
+63	Black Hole Eclipse	Dark	Physical	1
+64	Blast Burn	Fire	Special	150
+65	Blaze Kick	Fire	Physical	85
+66	Blazing Torque	Fire	Physical	80
+67	Bleakwind Storm	Flying	Special	100
+68	Blizzard	Ice	Special	110
+69	Block	Normal	Status	0
+70	Blood Moon	Normal	Special	140
+71	Bloom Doom	Grass	Physical	1
+72	Blue Flare	Fire	Special	130
+73	Body Press	Fighting	Physical	80
+74	Body Slam	Normal	Physical	85
+75	Bolt Beak	Electric	Physical	85
+76	Bolt Strike	Electric	Physical	130
+77	Bone Club	Ground	Physical	65
+78	Bonemerang	Ground	Physical	50
+79	Bone Rush	Ground	Physical	25
+80	Boomburst	Normal	Special	140
+81	Bounce	Flying	Physical	85
+82	Bouncy Bubble	Water	Special	60
+83	Branch Poke	Grass	Physical	40
+84	Brave Bird	Flying	Physical	120
+85	Breaking Swipe	Dragon	Physical	60
+86	Breakneck Blitz	Normal	Physical	1
+87	Brick Break	Fighting	Physical	75
+88	Brine	Water	Special	65
+89	Brutal Swing	Dark	Physical	60
+90	Bubble	Water	Special	40
+91	Bubble Beam	Water	Special	65
+92	Bug Bite	Bug	Physical	60
+93	Bug Buzz	Bug	Special	90
+94	Bulk Up	Fighting	Status	0
+95	Bulldoze	Ground	Physical	60
+96	Bullet Punch	Steel	Physical	40
+97	Bullet Seed	Grass	Physical	25
+98	Burning Bulwark	Fire	Status	0
+99	Burning Jealousy	Fire	Special	70
+100	Burn Up	Fire	Special	130
+101	Buzzy Buzz	Electric	Special	60
+102	Calm Mind	Psychic	Status	0
+103	Camouflage	Normal	Status	0
+104	Captivate	Normal	Status	0
+105	Catastropika	Electric	Physical	210
+106	Ceaseless Edge	Dark	Physical	65
+107	Celebrate	Normal	Status	0
+108	Charge	Electric	Status	0
+109	Charge Beam	Electric	Special	50
+110	Charm	Fairy	Status	0
+111	Chatter	Flying	Special	65
+112	Chilling Water	Water	Special	50
+113	Chilly Reception	Ice	Status	0
+114	Chip Away	Normal	Physical	70
+115	Chloroblast	Grass	Special	150
+116	Circle Throw	Fighting	Physical	60
+117	Clamp	Water	Physical	35
+118	Clanging Scales	Dragon	Special	110
+119	Clangorous Soul	Dragon	Status	0
+120	Clangorous Soulblaze	Dragon	Special	185
+121	Clear Smog	Poison	Special	50
+122	Close Combat	Fighting	Physical	120
+123	Coaching	Fighting	Status	0
+124	Coil	Poison	Status	0
+125	Collision Course	Fighting	Physical	100
+126	Combat Torque	Fighting	Physical	100
+127	Comet Punch	Normal	Physical	18
+128	Comeuppance	Dark	Physical	0
+129	Confide	Normal	Status	0
+130	Confuse Ray	Ghost	Status	0
+131	Confusion	Psychic	Special	50
+132	Constrict	Normal	Physical	10
+133	Continental Crush	Rock	Physical	1
+134	Conversion	Normal	Status	0
+135	Conversion 2	Normal	Status	0
+136	Copycat	Normal	Status	0
+137	Core Enforcer	Dragon	Special	100
+138	Corkscrew Crash	Steel	Physical	1
+139	Corrosive Gas	Poison	Status	0
+140	Cosmic Power	Psychic	Status	0
+141	Cotton Guard	Grass	Status	0
+142	Cotton Spore	Grass	Status	0
+143	Counter	Fighting	Physical	0
+144	Court Change	Normal	Status	0
+145	Covet	Normal	Physical	60
+146	Crabhammer	Water	Physical	100
+147	Crafty Shield	Fairy	Status	0
+148	Cross Chop	Fighting	Physical	100
+149	Cross Poison	Poison	Physical	70
+150	Crunch	Dark	Physical	80
+151	Crush Claw	Normal	Physical	75
+152	Crush Grip	Normal	Physical	0
+153	Curse	Ghost	Status	0
+154	Cut	Normal	Physical	50
+155	Darkest Lariat	Dark	Physical	85
+156	Dark Pulse	Dark	Special	80
+157	Dark Void	Dark	Status	0
+158	Dazzling Gleam	Fairy	Special	80
+159	Decorate	Fairy	Status	0
+160	Defend Order	Bug	Status	0
+161	Defense Curl	Normal	Status	0
+162	Defog	Flying	Status	0
+163	Destiny Bond	Ghost	Status	0
+164	Detect	Fighting	Status	0
+165	Devastating Drake	Dragon	Physical	1
+166	Diamond Storm	Rock	Physical	100
+167	Dig	Ground	Physical	80
+168	Dire Claw	Poison	Physical	80
+169	Disable	Normal	Status	0
+170	Disarming Voice	Fairy	Special	40
+171	Discharge	Electric	Special	80
+172	Dive	Water	Physical	80
+173	Dizzy Punch	Normal	Physical	70
+174	Doodle	Normal	Status	0
+175	Doom Desire	Steel	Special	140
+176	Double-Edge	Normal	Physical	120
+177	Double Hit	Normal	Physical	35
+178	Double Iron Bash	Steel	Physical	60
+179	Double Kick	Fighting	Physical	30
+180	Double Shock	Electric	Physical	120
+181	Double Slap	Normal	Physical	15
+182	Double Team	Normal	Status	0
+183	Draco Meteor	Dragon	Special	130
+184	Dragon Ascent	Flying	Physical	120
+185	Dragon Breath	Dragon	Special	60
+186	Dragon Cheer	Dragon	Status	0
+187	Dragon Claw	Dragon	Physical	80
+188	Dragon Dance	Dragon	Status	0
+189	Dragon Darts	Dragon	Physical	50
+190	Dragon Energy	Dragon	Special	150
+191	Dragon Hammer	Dragon	Physical	90
+192	Dragon Pulse	Dragon	Special	85
+193	Dragon Rage	Dragon	Special	0
+194	Dragon Rush	Dragon	Physical	100
+195	Dragon Tail	Dragon	Physical	60
+196	Draining Kiss	Fairy	Special	50
+197	Drain Punch	Fighting	Physical	75
+198	Dream Eater	Psychic	Special	100
+199	Drill Peck	Flying	Physical	80
+200	Drill Run	Ground	Physical	80
+201	Drum Beating	Grass	Physical	80
+202	Dual Chop	Dragon	Physical	40
+203	Dual Wingbeat	Flying	Physical	40
+204	Dynamax Cannon	Dragon	Special	100
+205	Dynamic Punch	Fighting	Physical	100
+206	Earth Power	Ground	Special	90
+207	Earthquake	Ground	Physical	100
+208	Echoed Voice	Normal	Special	40
+209	Eerie Impulse	Electric	Status	0
+210	Eerie Spell	Psychic	Special	80
+211	Egg Bomb	Normal	Physical	100
+212	Electric Terrain	Electric	Status	0
+213	Electrify	Electric	Status	0
+214	Electro Ball	Electric	Special	0
+215	Electro Drift	Electric	Special	100
+216	Electro Shot	Electric	Special	130
+217	Electroweb	Electric	Special	55
+218	Embargo	Dark	Status	0
+219	Ember	Fire	Special	40
+220	Encore	Normal	Status	0
+221	Endeavor	Normal	Physical	0
+222	Endure	Normal	Status	0
+223	Energy Ball	Grass	Special	90
+224	Entrainment	Normal	Status	0
+225	Eruption	Fire	Special	150
+226	Esper Wing	Psychic	Special	80
+227	Eternabeam	Dragon	Special	160
+228	Expanding Force	Psychic	Special	80
+229	Explosion	Normal	Physical	250
+230	Extrasensory	Psychic	Special	80
+231	Extreme Evoboost	Normal	Status	0
+232	Extreme Speed	Normal	Physical	80
+233	Facade	Normal	Physical	70
+234	Fairy Lock	Fairy	Status	0
+235	Fairy Wind	Fairy	Special	40
+236	Fake Out	Normal	Physical	40
+237	Fake Tears	Dark	Status	0
+238	False Surrender	Dark	Physical	80
+239	False Swipe	Normal	Physical	40
+240	Feather Dance	Flying	Status	0
+241	Feint	Normal	Physical	30
+242	Feint Attack	Dark	Physical	60
+243	Fell Stinger	Bug	Physical	50
+244	Fickle Beam	Dragon	Special	80
+245	Fiery Dance	Fire	Special	80
+246	Fiery Wrath	Dark	Special	90
+247	Fillet Away	Normal	Status	0
+248	Final Gambit	Fighting	Special	0
+249	Fire Blast	Fire	Special	110
+250	Fire Fang	Fire	Physical	65
+251	Fire Lash	Fire	Physical	80
+252	Fire Pledge	Fire	Special	80
+253	Fire Punch	Fire	Physical	75
+254	Fire Spin	Fire	Special	35
+255	First Impression	Bug	Physical	90
+256	Fishious Rend	Water	Physical	85
+257	Fissure	Ground	Physical	0
+258	Flail	Normal	Physical	0
+259	Flame Burst	Fire	Special	70
+260	Flame Charge	Fire	Physical	50
+261	Flamethrower	Fire	Special	90
+262	Flame Wheel	Fire	Physical	60
+263	Flare Blitz	Fire	Physical	120
+264	Flash	Normal	Status	0
+265	Flash Cannon	Steel	Special	80
+266	Flatter	Dark	Status	0
+267	Fleur Cannon	Fairy	Special	130
+268	Fling	Dark	Physical	0
+269	Flip Turn	Water	Physical	60
+270	Floaty Fall	Flying	Physical	90
+271	Floral Healing	Fairy	Status	0
+272	Flower Shield	Fairy	Status	0
+273	Flower Trick	Grass	Physical	70
+274	Fly	Flying	Physical	90
+275	Flying Press	Fighting	Physical	100
+276	Focus Blast	Fighting	Special	120
+277	Focus Energy	Normal	Status	0
+278	Focus Punch	Fighting	Physical	150
+279	Follow Me	Normal	Status	0
+280	Force Palm	Fighting	Physical	60
+281	Foresight	Normal	Status	0
+282	Forest's Curse	Grass	Status	0
+283	Foul Play	Dark	Physical	95
+284	Freeze-Dry	Ice	Special	70
+285	Freeze Shock	Ice	Physical	140
+286	Freezing Glare	Psychic	Special	90
+287	Freezy Frost	Ice	Special	100
+288	Frenzy Plant	Grass	Special	150
+289	Frost Breath	Ice	Special	60
+290	Frustration	Normal	Physical	0
+291	Fury Attack	Normal	Physical	15
+292	Fury Cutter	Bug	Physical	40
+293	Fury Swipes	Normal	Physical	18
+294	Fusion Bolt	Electric	Physical	100
+295	Fusion Flare	Fire	Special	100
+296	Future Sight	Psychic	Special	120
+297	Gastro Acid	Poison	Status	0
+298	Gear Grind	Steel	Physical	50
+299	Gear Up	Steel	Status	0
+300	Genesis Supernova	Psychic	Special	185
+301	Geomancy	Fairy	Status	0
+302	Giga Drain	Grass	Special	75
+303	Giga Impact	Normal	Physical	150
+304	Gigaton Hammer	Steel	Physical	160
+305	Gigavolt Havoc	Electric	Physical	1
+306	Glacial Lance	Ice	Physical	120
+307	Glaciate	Ice	Special	65
+308	Glaive Rush	Dragon	Physical	120
+309	Glare	Normal	Status	0
+310	Glitzy Glow	Psychic	Special	80
+311	G-Max Befuddle	Bug	Physical	10
+312	G-Max Cannonade	Water	Physical	10
+313	G-Max Centiferno	Fire	Physical	10
+314	G-Max Chi Strike	Fighting	Physical	10
+315	G-Max Cuddle	Normal	Physical	10
+316	G-Max Depletion	Dragon	Physical	10
+317	G-Max Drum Solo	Grass	Physical	160
+318	G-Max Finale	Fairy	Physical	10
+319	G-Max Fireball	Fire	Physical	160
+320	G-Max Foam Burst	Water	Physical	10
+321	G-Max Gold Rush	Normal	Physical	10
+322	G-Max Gravitas	Psychic	Physical	10
+323	G-Max Hydrosnipe	Water	Physical	160
+324	G-Max Malodor	Poison	Physical	10
+325	G-Max Meltdown	Steel	Physical	10
+326	G-Max One Blow	Dark	Physical	10
+327	G-Max Rapid Flow	Water	Physical	10
+328	G-Max Replenish	Normal	Physical	10
+329	G-Max Resonance	Ice	Physical	10
+330	G-Max Sandblast	Ground	Physical	10
+331	G-Max Smite	Fairy	Physical	10
+332	G-Max Snooze	Dark	Physical	10
+333	G-Max Steelsurge	Steel	Physical	10
+334	G-Max Stonesurge	Water	Physical	10
+335	G-Max Stun Shock	Electric	Physical	10
+336	G-Max Sweetness	Grass	Physical	10
+337	G-Max Tartness	Grass	Physical	10
+338	G-Max Terror	Ghost	Physical	10
+339	G-Max Vine Lash	Grass	Physical	10
+340	G-Max Volcalith	Rock	Physical	10
+341	G-Max Volt Crash	Electric	Physical	10
+342	G-Max Wildfire	Fire	Physical	10
+343	G-Max Wind Rage	Flying	Physical	10
+344	Grass Knot	Grass	Special	0
+345	Grass Pledge	Grass	Special	80
+346	Grass Whistle	Grass	Status	0
+347	Grassy Glide	Grass	Physical	55
+348	Grassy Terrain	Grass	Status	0
+349	Grav Apple	Grass	Physical	80
+350	Gravity	Psychic	Status	0
+351	Growl	Normal	Status	0
+352	Growth	Normal	Status	0
+353	Grudge	Ghost	Status	0
+354	Guardian of Alola	Fairy	Special	0
+355	Guard Split	Psychic	Status	0
+356	Guard Swap	Psychic	Status	0
+357	Guillotine	Normal	Physical	0
+358	Gunk Shot	Poison	Physical	120
+359	Gust	Flying	Special	40
+360	Gyro Ball	Steel	Physical	0
+361	Hail	Ice	Status	0
+362	Hammer Arm	Fighting	Physical	100
+363	Happy Hour	Normal	Status	0
+364	Harden	Normal	Status	0
+365	Hard Press	Steel	Physical	0
+366	Haze	Ice	Status	0
+367	Headbutt	Normal	Physical	70
+368	Head Charge	Normal	Physical	120
+369	Headlong Rush	Ground	Physical	120
+370	Head Smash	Rock	Physical	150
+371	Heal Bell	Normal	Status	0
+372	Heal Block	Psychic	Status	0
+373	Healing Wish	Psychic	Status	0
+374	Heal Order	Bug	Status	0
+375	Heal Pulse	Psychic	Status	0
+376	Heart Stamp	Psychic	Physical	60
+377	Heart Swap	Psychic	Status	0
+378	Heat Crash	Fire	Physical	0
+379	Heat Wave	Fire	Special	95
+380	Heavy Slam	Steel	Physical	0
+381	Helping Hand	Normal	Status	0
+382	Hex	Ghost	Special	65
+383	Hidden Power	Normal	Special	60
+384	Hidden Power Bug	Bug	Special	60
+385	Hidden Power Dark	Dark	Special	60
+386	Hidden Power Dragon	Dragon	Special	60
+387	Hidden Power Electric	Electric	Special	60
+388	Hidden Power Fighting	Fighting	Special	60
+389	Hidden Power Fire	Fire	Special	60
+390	Hidden Power Flying	Flying	Special	60
+391	Hidden Power Ghost	Ghost	Special	60
+392	Hidden Power Grass	Grass	Special	60
+393	Hidden Power Ground	Ground	Special	60
+394	Hidden Power Ice	Ice	Special	60
+395	Hidden Power Poison	Poison	Special	60
+396	Hidden Power Psychic	Psychic	Special	60
+397	Hidden Power Rock	Rock	Special	60
+398	Hidden Power Steel	Steel	Special	60
+399	Hidden Power Water	Water	Special	60
+400	High Horsepower	Ground	Physical	95
+401	High Jump Kick	Fighting	Physical	130
+402	Hold Back	Normal	Physical	40
+403	Hold Hands	Normal	Status	0
+404	Hone Claws	Dark	Status	0
+405	Horn Attack	Normal	Physical	65
+406	Horn Drill	Normal	Physical	0
+407	Horn Leech	Grass	Physical	75
+408	Howl	Normal	Status	0
+409	Hurricane	Flying	Special	110
+410	Hydro Cannon	Water	Special	150
+411	Hydro Pump	Water	Special	110
+412	Hydro Steam	Water	Special	80
+413	Hydro Vortex	Water	Physical	1
+414	Hyper Beam	Normal	Special	150
+415	Hyper Drill	Normal	Physical	100
+416	Hyper Fang	Normal	Physical	80
+417	Hyperspace Fury	Dark	Physical	100
+418	Hyperspace Hole	Psychic	Special	80
+419	Hyper Voice	Normal	Special	90
+420	Hypnosis	Psychic	Status	0
+421	Ice Ball	Ice	Physical	30
+422	Ice Beam	Ice	Special	90
+423	Ice Burn	Ice	Special	140
+424	Ice Fang	Ice	Physical	65
+425	Ice Hammer	Ice	Physical	100
+426	Ice Punch	Ice	Physical	75
+427	Ice Shard	Ice	Physical	40
+428	Ice Spinner	Ice	Physical	80
+429	Icicle Crash	Ice	Physical	85
+430	Icicle Spear	Ice	Physical	25
+431	Icy Wind	Ice	Special	55
+432	Imprison	Psychic	Status	0
+433	Incinerate	Fire	Special	60
+434	Infernal Parade	Ghost	Special	60
+435	Inferno	Fire	Special	100
+436	Inferno Overdrive	Fire	Physical	1
+437	Infestation	Bug	Special	20
+438	Ingrain	Grass	Status	0
+439	Instruct	Psychic	Status	0
+440	Ion Deluge	Electric	Status	0
+441	Iron Defense	Steel	Status	0
+442	Iron Head	Steel	Physical	80
+443	Iron Tail	Steel	Physical	100
+444	Ivy Cudgel	Grass	Physical	100
+445	Jaw Lock	Dark	Physical	80
+446	Jet Punch	Water	Physical	60
+447	Judgment	Normal	Special	100
+448	Jump Kick	Fighting	Physical	100
+449	Jungle Healing	Grass	Status	0
+450	Karate Chop	Fighting	Physical	50
+451	Kinesis	Psychic	Status	0
+452	King's Shield	Steel	Status	0
+453	Knock Off	Dark	Physical	65
+454	Kowtow Cleave	Dark	Physical	85
+455	Land's Wrath	Ground	Physical	90
+456	Laser Focus	Normal	Status	0
+457	Lash Out	Dark	Physical	75
+458	Last Resort	Normal	Physical	140
+459	Last Respects	Ghost	Physical	50
+460	Lava Plume	Fire	Special	80
+461	Leafage	Grass	Physical	40
+462	Leaf Blade	Grass	Physical	90
+463	Leaf Storm	Grass	Special	130
+464	Leaf Tornado	Grass	Special	65
+465	Leech Life	Bug	Physical	80
+466	Leech Seed	Grass	Status	0
+467	Leer	Normal	Status	0
+468	Let's Snuggle Forever	Fairy	Physical	190
+469	Lick	Ghost	Physical	30
+470	Life Dew	Water	Status	0
+471	Light of Ruin	Fairy	Special	140
+472	Light Screen	Psychic	Status	0
+473	Light That Burns the Sky	Psychic	Special	200
+474	Liquidation	Water	Physical	85
+475	Lock-On	Normal	Status	0
+476	Lovely Kiss	Normal	Status	0
+477	Low Kick	Fighting	Physical	0
+478	Low Sweep	Fighting	Physical	65
+479	Lucky Chant	Normal	Status	0
+480	Lumina Crash	Psychic	Special	80
+481	Lunar Blessing	Psychic	Status	0
+482	Lunar Dance	Psychic	Status	0
+483	Lunge	Bug	Physical	80
+484	Luster Purge	Psychic	Special	95
+485	Mach Punch	Fighting	Physical	40
+486	Magical Leaf	Grass	Special	60
+487	Magical Torque	Fairy	Physical	100
+488	Magic Coat	Psychic	Status	0
+489	Magic Powder	Psychic	Status	0
+490	Magic Room	Psychic	Status	0
+491	Magma Storm	Fire	Special	100
+492	Magnet Bomb	Steel	Physical	60
+493	Magnetic Flux	Electric	Status	0
+494	Magnet Rise	Electric	Status	0
+495	Magnitude	Ground	Physical	0
+496	Make It Rain	Steel	Special	120
+497	Malicious Moonsault	Dark	Physical	180
+498	Malignant Chain	Poison	Special	100
+499	Mat Block	Fighting	Status	0
+500	Matcha Gotcha	Grass	Special	80
+501	Max Airstream	Flying	Physical	10
+502	Max Darkness	Dark	Physical	10
+503	Max Flare	Fire	Physical	100
+504	Max Flutterby	Bug	Physical	10
+505	Max Geyser	Water	Physical	10
+506	Max Guard	Normal	Status	0
+507	Max Hailstorm	Ice	Physical	10
+508	Max Knuckle	Fighting	Physical	10
+509	Max Lightning	Electric	Physical	10
+510	Max Mindstorm	Psychic	Physical	10
+511	Max Ooze	Poison	Physical	10
+512	Max Overgrowth	Grass	Physical	10
+513	Max Phantasm	Ghost	Physical	10
+514	Max Quake	Ground	Physical	10
+515	Max Rockfall	Rock	Physical	10
+516	Max Starfall	Fairy	Physical	10
+517	Max Steelspike	Steel	Physical	10
+518	Max Strike	Normal	Physical	10
+519	Max Wyrmwind	Dragon	Physical	10
+520	Mean Look	Normal	Status	0
+521	Meditate	Psychic	Status	0
+522	Me First	Normal	Status	0
+523	Mega Drain	Grass	Special	40
+524	Megahorn	Bug	Physical	120
+525	Mega Kick	Normal	Physical	120
+526	Mega Punch	Normal	Physical	80
+527	Memento	Dark	Status	0
+528	Menacing Moonraze Maelstrom	Ghost	Special	200
+529	Metal Burst	Steel	Physical	0
+530	Metal Claw	Steel	Physical	50
+531	Metal Sound	Steel	Status	0
+532	Meteor Assault	Fighting	Physical	150
+533	Meteor Beam	Rock	Special	120
+534	Meteor Mash	Steel	Physical	90
+535	Metronome	Normal	Status	0
+536	Mighty Cleave	Rock	Physical	95
+537	Milk Drink	Normal	Status	0
+538	Mimic	Normal	Status	0
+539	Mind Blown	Fire	Special	150
+540	Mind Reader	Normal	Status	0
+541	Minimize	Normal	Status	0
+542	Miracle Eye	Psychic	Status	0
+543	Mirror Coat	Psychic	Special	0
+544	Mirror Move	Flying	Status	0
+545	Mirror Shot	Steel	Special	65
+546	Mist	Ice	Status	0
+547	Mist Ball	Psychic	Special	95
+548	Misty Explosion	Fairy	Special	100
+549	Misty Terrain	Fairy	Status	0
+550	Moonblast	Fairy	Special	95
+551	Moongeist Beam	Ghost	Special	100
+552	Moonlight	Fairy	Status	0
+553	Morning Sun	Normal	Status	0
+554	Mortal Spin	Poison	Physical	30
+555	Mountain Gale	Ice	Physical	100
+556	Mud Bomb	Ground	Special	65
+557	Muddy Water	Water	Special	90
+558	Mud Shot	Ground	Special	55
+559	Mud-Slap	Ground	Special	20
+560	Mud Sport	Ground	Status	0
+561	Multi-Attack	Normal	Physical	120
+562	Mystical Fire	Fire	Special	75
+563	Mystical Power	Psychic	Special	70
+564	Nasty Plot	Dark	Status	0
+565	Natural Gift	Normal	Physical	0
+566	Nature Power	Normal	Status	0
+567	Nature's Madness	Fairy	Special	0
+568	Needle Arm	Grass	Physical	60
+569	Never-Ending Nightmare	Ghost	Physical	1
+570	Night Daze	Dark	Special	85
+571	Nightmare	Ghost	Status	0
+572	Night Shade	Ghost	Special	0
+573	Night Slash	Dark	Physical	70
+574	Nihil Light	Dragon	Special	100
+575	Noble Roar	Normal	Status	0
+576	No Retreat	Fighting	Status	0
+577	Noxious Torque	Poison	Physical	100
+578	Nuzzle	Electric	Physical	20
+579	Oblivion Wing	Flying	Special	80
+580	Obstruct	Dark	Status	0
+581	Oceanic Operetta	Water	Special	195
+582	Octazooka	Water	Special	65
+583	Octolock	Fighting	Status	0
+584	Odor Sleuth	Normal	Status	0
+585	Ominous Wind	Ghost	Special	60
+586	Order Up	Dragon	Physical	80
+587	Origin Pulse	Water	Special	110
+588	Outrage	Dragon	Physical	120
+589	Overdrive	Electric	Special	80
+590	Overheat	Fire	Special	130
+591	Pain Split	Normal	Status	0
+592	Parabolic Charge	Electric	Special	65
+593	Parting Shot	Dark	Status	0
+594	Payback	Dark	Physical	50
+595	Pay Day	Normal	Physical	40
+596	Peck	Flying	Physical	35
+597	Perish Song	Normal	Status	0
+598	Petal Blizzard	Grass	Physical	90
+599	Petal Dance	Grass	Special	120
+600	Phantom Force	Ghost	Physical	90
+601	Photon Geyser	Psychic	Special	100
+602	Pika Papow	Electric	Special	0
+603	Pin Missile	Bug	Physical	25
+604	Plasma Fists	Electric	Physical	100
+605	Play Nice	Normal	Status	0
+606	Play Rough	Fairy	Physical	90
+607	Pluck	Flying	Physical	60
+608	Poison Fang	Poison	Physical	50
+609	Poison Gas	Poison	Status	0
+610	Poison Jab	Poison	Physical	80
+611	Poison Powder	Poison	Status	0
+612	Poison Sting	Poison	Physical	15
+613	Poison Tail	Poison	Physical	50
+614	Pollen Puff	Bug	Special	90
+615	Poltergeist	Ghost	Physical	110
+616	Population Bomb	Normal	Physical	20
+617	Pounce	Bug	Physical	50
+618	Pound	Normal	Physical	40
+619	Powder	Bug	Status	0
+620	Powder Snow	Ice	Special	40
+621	Power Gem	Rock	Special	80
+622	Power Shift	Normal	Status	0
+623	Power Split	Psychic	Status	0
+624	Power Swap	Psychic	Status	0
+625	Power Trick	Psychic	Status	0
+626	Power Trip	Dark	Physical	20
+627	Power-Up Punch	Fighting	Physical	40
+628	Power Whip	Grass	Physical	120
+629	Precipice Blades	Ground	Physical	120
+630	Present	Normal	Physical	0
+631	Prismatic Laser	Psychic	Special	160
+632	Protect	Normal	Status	0
+633	Psybeam	Psychic	Special	65
+634	Psyblade	Psychic	Physical	80
+635	Psychic	Psychic	Special	90
+636	Psychic Fangs	Psychic	Physical	85
+637	Psychic Noise	Psychic	Special	75
+638	Psychic Terrain	Psychic	Status	0
+639	Psycho Boost	Psychic	Special	140
+640	Psycho Cut	Psychic	Physical	70
+641	Psycho Shift	Psychic	Status	0
+642	Psych Up	Normal	Status	0
+643	Psyshield Bash	Psychic	Physical	70
+644	Psyshock	Psychic	Special	80
+645	Psystrike	Psychic	Special	100
+646	Psywave	Psychic	Special	0
+647	Pulverizing Pancake	Normal	Physical	210
+648	Punishment	Dark	Physical	0
+649	Purify	Poison	Status	0
+650	Pursuit	Dark	Physical	40
+651	Pyro Ball	Fire	Physical	120
+652	Quash	Dark	Status	0
+653	Quick Attack	Normal	Physical	40
+654	Quick Guard	Fighting	Status	0
+655	Quiver Dance	Bug	Status	0
+656	Rage	Normal	Physical	20
+657	Rage Fist	Ghost	Physical	50
+658	Rage Powder	Bug	Status	0
+659	Raging Bull	Normal	Physical	90
+660	Raging Fury	Fire	Physical	120
+661	Rain Dance	Water	Status	0
+662	Rapid Spin	Normal	Physical	50
+663	Razor Leaf	Grass	Physical	55
+664	Razor Shell	Water	Physical	75
+665	Razor Wind	Normal	Special	80
+666	Recover	Normal	Status	0
+667	Recycle	Normal	Status	0
+668	Reflect	Psychic	Status	0
+669	Reflect Type	Normal	Status	0
+670	Refresh	Normal	Status	0
+671	Relic Song	Normal	Special	75
+672	Rest	Psychic	Status	0
+673	Retaliate	Normal	Physical	70
+674	Return	Normal	Physical	0
+675	Revelation Dance	Normal	Special	90
+676	Revenge	Fighting	Physical	60
+677	Reversal	Fighting	Physical	0
+678	Revival Blessing	Normal	Status	0
+679	Rising Voltage	Electric	Special	70
+680	Roar	Normal	Status	0
+681	Roar of Time	Dragon	Special	150
+682	Rock Blast	Rock	Physical	25
+683	Rock Climb	Normal	Physical	90
+684	Rock Polish	Rock	Status	0
+685	Rock Slide	Rock	Physical	75
+686	Rock Smash	Fighting	Physical	40
+687	Rock Throw	Rock	Physical	50
+688	Rock Tomb	Rock	Physical	60
+689	Rock Wrecker	Rock	Physical	150
+690	Role Play	Psychic	Status	0
+691	Rolling Kick	Fighting	Physical	60
+692	Rollout	Rock	Physical	30
+693	Roost	Flying	Status	0
+694	Rototiller	Ground	Status	0
+695	Round	Normal	Special	60
+696	Ruination	Dark	Special	0
+697	Sacred Fire	Fire	Physical	100
+698	Sacred Sword	Fighting	Physical	90
+699	Safeguard	Normal	Status	0
+700	Salt Cure	Rock	Physical	40
+701	Sand Attack	Ground	Status	0
+702	Sandsear Storm	Ground	Special	100
+703	Sandstorm	Rock	Status	0
+704	Sand Tomb	Ground	Physical	35
+705	Sappy Seed	Grass	Physical	100
+706	Savage Spin-Out	Bug	Physical	1
+707	Scald	Water	Special	80
+708	Scale Shot	Dragon	Physical	25
+709	Scary Face	Normal	Status	0
+710	Scorching Sands	Ground	Special	70
+711	Scratch	Normal	Physical	40
+712	Screech	Normal	Status	0
+713	Searing Shot	Fire	Special	100
+714	Searing Sunraze Smash	Steel	Physical	200
+715	Secret Power	Normal	Physical	70
+716	Secret Sword	Fighting	Special	85
+717	Seed Bomb	Grass	Physical	80
+718	Seed Flare	Grass	Special	120
+719	Seismic Toss	Fighting	Physical	0
+720	Self-Destruct	Normal	Physical	200
+721	Shadow Ball	Ghost	Special	80
+722	Shadow Bone	Ghost	Physical	85
+723	Shadow Claw	Ghost	Physical	70
+724	Shadow Force	Ghost	Physical	120
+725	Shadow Punch	Ghost	Physical	60
+726	Shadow Sneak	Ghost	Physical	40
+727	Sharpen	Normal	Status	0
+728	Shattered Psyche	Psychic	Physical	1
+729	Shed Tail	Normal	Status	0
+730	Sheer Cold	Ice	Special	0
+731	Shell Side Arm	Poison	Special	90
+732	Shell Smash	Normal	Status	0
+733	Shell Trap	Fire	Special	150
+734	Shelter	Steel	Status	0
+735	Shift Gear	Steel	Status	0
+736	Shock Wave	Electric	Special	60
+737	Shore Up	Ground	Status	0
+738	Signal Beam	Bug	Special	75
+739	Silk Trap	Bug	Status	0
+740	Silver Wind	Bug	Special	60
+741	Simple Beam	Normal	Status	0
+742	Sing	Normal	Status	0
+743	Sinister Arrow Raid	Ghost	Physical	180
+744	Sizzly Slide	Fire	Physical	60
+745	Sketch	Normal	Status	0
+746	Skill Swap	Psychic	Status	0
+747	Skitter Smack	Bug	Physical	70
+748	Skull Bash	Normal	Physical	130
+749	Sky Attack	Flying	Physical	140
+750	Sky Drop	Flying	Physical	60
+751	Sky Uppercut	Fighting	Physical	85
+752	Slack Off	Normal	Status	0
+753	Slam	Normal	Physical	80
+754	Slash	Normal	Physical	70
+755	Sleep Powder	Grass	Status	0
+756	Sleep Talk	Normal	Status	0
+757	Sludge	Poison	Special	65
+758	Sludge Bomb	Poison	Special	90
+759	Sludge Wave	Poison	Special	95
+760	Smack Down	Rock	Physical	50
+761	Smart Strike	Steel	Physical	70
+762	Smelling Salts	Normal	Physical	70
+763	Smog	Poison	Special	30
+764	Smokescreen	Normal	Status	0
+765	Snap Trap	Grass	Physical	35
+766	Snarl	Dark	Special	55
+767	Snatch	Dark	Status	0
+768	Snipe Shot	Water	Special	80
+769	Snore	Normal	Special	50
+770	Snowscape	Ice	Status	0
+771	Soak	Water	Status	0
+772	Soft-Boiled	Normal	Status	0
+773	Solar Beam	Grass	Special	120
+774	Solar Blade	Grass	Physical	125
+775	Sonic Boom	Normal	Special	0
+776	Soul-Stealing 7-Star Strike	Ghost	Physical	195
+777	Spacial Rend	Dragon	Special	100
+778	Spark	Electric	Physical	65
+779	Sparkling Aria	Water	Special	90
+780	Sparkly Swirl	Fairy	Special	120
+781	Spectral Thief	Ghost	Physical	90
+782	Speed Swap	Psychic	Status	0
+783	Spicy Extract	Grass	Status	0
+784	Spider Web	Bug	Status	0
+785	Spike Cannon	Normal	Physical	20
+786	Spikes	Ground	Status	0
+787	Spiky Shield	Grass	Status	0
+788	Spin Out	Steel	Physical	100
+789	Spirit Break	Fairy	Physical	75
+790	Spirit Shackle	Ghost	Physical	80
+791	Spite	Ghost	Status	0
+792	Spit Up	Normal	Special	0
+793	Splash	Normal	Status	0
+794	Splintered Stormshards	Rock	Physical	190
+795	Splishy Splash	Water	Special	90
+796	Spore	Grass	Status	0
+797	Spotlight	Normal	Status	0
+798	Springtide Storm	Fairy	Special	100
+799	Stealth Rock	Rock	Status	0
+800	Steam Eruption	Water	Special	110
+801	Steamroller	Bug	Physical	65
+802	Steel Beam	Steel	Special	140
+803	Steel Roller	Steel	Physical	130
+804	Steel Wing	Steel	Physical	70
+805	Sticky Web	Bug	Status	0
+806	Stockpile	Normal	Status	0
+807	Stoked Sparksurfer	Electric	Special	175
+808	Stomp	Normal	Physical	65
+809	Stomping Tantrum	Ground	Physical	75
+810	Stone Axe	Rock	Physical	65
+811	Stone Edge	Rock	Physical	100
+812	Stored Power	Psychic	Special	20
+813	Storm Throw	Fighting	Physical	60
+814	Strange Steam	Fairy	Special	90
+815	Strength	Normal	Physical	80
+816	Strength Sap	Grass	Status	0
+817	String Shot	Bug	Status	0
+818	Struggle	Normal	Physical	50
+819	Struggle Bug	Bug	Special	50
+820	Stuff Cheeks	Normal	Status	0
+821	Stun Spore	Grass	Status	0
+822	Submission	Fighting	Physical	80
+823	Substitute	Normal	Status	0
+824	Subzero Slammer	Ice	Physical	1
+825	Sucker Punch	Dark	Physical	70
+826	Sunny Day	Fire	Status	0
+827	Sunsteel Strike	Steel	Physical	100
+828	Supercell Slam	Electric	Physical	100
+829	Super Fang	Normal	Physical	0
+830	Superpower	Fighting	Physical	120
+831	Supersonic	Normal	Status	0
+832	Supersonic Skystrike	Flying	Physical	1
+833	Surf	Water	Special	90
+834	Surging Strikes	Water	Physical	25
+835	Swagger	Normal	Status	0
+836	Swallow	Normal	Status	0
+837	Sweet Kiss	Fairy	Status	0
+838	Sweet Scent	Normal	Status	0
+839	Swift	Normal	Special	60
+840	Switcheroo	Dark	Status	0
+841	Swords Dance	Normal	Status	0
+842	Synchronoise	Psychic	Special	120
+843	Synthesis	Grass	Status	0
+844	Syrup Bomb	Grass	Special	60
+845	Tachyon Cutter	Steel	Special	50
+846	Tackle	Normal	Physical	40
+847	Tail Glow	Bug	Status	0
+848	Tail Slap	Normal	Physical	25
+849	Tail Whip	Normal	Status	0
+850	Tailwind	Flying	Status	0
+851	Take Down	Normal	Physical	90
+852	Take Heart	Psychic	Status	0
+853	Tar Shot	Rock	Status	0
+854	Taunt	Dark	Status	0
+855	Tearful Look	Normal	Status	0
+856	Teatime	Normal	Status	0
+857	Techno Blast	Normal	Special	120
+858	Tectonic Rage	Ground	Physical	1
+859	Teeter Dance	Normal	Status	0
+860	Telekinesis	Psychic	Status	0
+861	Teleport	Psychic	Status	0
+862	Temper Flare	Fire	Physical	75
+863	Tera Blast	Normal	Special	80
+864	Tera Starstorm	Normal	Special	120
+865	Terrain Pulse	Normal	Special	50
+866	Thief	Dark	Physical	60
+867	Thousand Arrows	Ground	Physical	90
+868	Thousand Waves	Ground	Physical	90
+869	Thrash	Normal	Physical	120
+870	Throat Chop	Dark	Physical	80
+871	Thunder	Electric	Special	110
+872	Thunderbolt	Electric	Special	90
+873	Thunder Cage	Electric	Special	80
+874	Thunderclap	Electric	Special	70
+875	Thunder Fang	Electric	Physical	65
+876	Thunderous Kick	Fighting	Physical	90
+877	Thunder Punch	Electric	Physical	75
+878	Thunder Shock	Electric	Special	40
+879	Thunder Wave	Electric	Status	0
+880	Tickle	Normal	Status	0
+881	Tidy Up	Normal	Status	0
+882	Topsy-Turvy	Dark	Status	0
+883	Torch Song	Fire	Special	80
+884	Torment	Dark	Status	0
+885	Toxic	Poison	Status	0
+886	Toxic Spikes	Poison	Status	0
+887	Toxic Thread	Poison	Status	0
+888	Trailblaze	Grass	Physical	50
+889	Transform	Normal	Status	0
+890	Tri Attack	Normal	Special	80
+891	Trick	Psychic	Status	0
+892	Trick-or-Treat	Ghost	Status	0
+893	Trick Room	Psychic	Status	0
+894	Triple Arrows	Fighting	Physical	90
+895	Triple Axel	Ice	Physical	20
+896	Triple Dive	Water	Physical	30
+897	Triple Kick	Fighting	Physical	10
+898	Trop Kick	Grass	Physical	70
+899	Trump Card	Normal	Special	0
+900	Twin Beam	Psychic	Special	40
+901	Twineedle	Bug	Physical	25
+902	Twinkle Tackle	Fairy	Physical	1
+903	Twister	Dragon	Special	40
+904	Upper Hand	Fighting	Physical	65
+905	Uproar	Normal	Special	90
+906	U-turn	Bug	Physical	70
+907	Vacuum Wave	Fighting	Special	40
+908	V-create	Fire	Physical	180
+909	Veevee Volley	Normal	Physical	0
+910	Venom Drench	Poison	Status	0
+911	Venoshock	Poison	Special	65
+912	Victory Dance	Fighting	Status	0
+913	Vine Whip	Grass	Physical	45
+914	Vise Grip	Normal	Physical	55
+915	Vital Throw	Fighting	Physical	70
+916	Volt Switch	Electric	Special	70
+917	Volt Tackle	Electric	Physical	120
+918	Wake-Up Slap	Fighting	Physical	70
+919	Waterfall	Water	Physical	80
+920	Water Gun	Water	Special	40
+921	Water Pledge	Water	Special	80
+922	Water Pulse	Water	Special	60
+923	Water Shuriken	Water	Special	15
+924	Water Sport	Water	Status	0
+925	Water Spout	Water	Special	150
+926	Wave Crash	Water	Physical	120
+927	Weather Ball	Normal	Special	50
+928	Whirlpool	Water	Special	35
+929	Whirlwind	Normal	Status	0
+930	Wicked Blow	Dark	Physical	75
+931	Wicked Torque	Dark	Physical	80
+932	Wide Guard	Rock	Status	0
+933	Wildbolt Storm	Electric	Special	100
+934	Wild Charge	Electric	Physical	90
+935	Will-O-Wisp	Fire	Status	0
+936	Wing Attack	Flying	Physical	60
+937	Wish	Normal	Status	0
+938	Withdraw	Water	Status	0
+939	Wonder Room	Psychic	Status	0
+940	Wood Hammer	Grass	Physical	120
+941	Work Up	Normal	Status	0
+942	Worry Seed	Grass	Status	0
+943	Wrap	Normal	Physical	15
+944	Wring Out	Normal	Special	0
+945	X-Scissor	Bug	Physical	80
+946	Yawn	Normal	Status	0
+947	Zap Cannon	Electric	Special	120
+948	Zen Headbutt	Psychic	Physical	80
+949	Zing Zap	Electric	Physical	80
+950	Zippy Zap	Electric	Physical	80
+951	FightSpe60	Fighting	Special	60
+952	FairyPhy60	Fairy	Physical	60

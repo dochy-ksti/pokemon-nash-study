@@ -1,0 +1,60 @@
+Eternatus @ Red Card
+Ability: Pressure
+Tera Type: Fairy
+EVs: 76 HP / 132 Def / 4 SpA / 180 SpD / 116 Spe
+Calm Nature
+IVs: 0 Atk
+- Dynamax Cannon
+- Toxic Spikes
+- Recover
+- Protect
+
+Zacian-Crowned @ Rusted Sword
+Ability: Intrepid Sword
+Tera Type: Normal
+EVs: 172 HP / 244 Atk / 4 Def / 12 SpD / 76 Spe
+Adamant Nature
+- Behemoth Blade
+- Play Rough
+- Close Combat
+- Wild Charge
+
+Landorus-Therian @ Assault Vest
+Ability: Intimidate
+Tera Type: Normal
+EVs: 244 HP / 236 SpD / 28 Spe
+Adamant Nature
+- Earthquake
+- U-turn
+- Rock Slide
+- Crunch
+
+Ting-Lu @ Leftovers
+Ability: Vessel of Ruin
+Tera Type: Water
+EVs: 244 HP / 4 Atk / 132 Def / 108 SpD / 20 Spe
+Impish Nature
+- Earthquake
+- Protect
+- Whirlwind
+- Spikes
+
+Urshifu-Rapid-Strike @ Punching Glove
+Ability: Unseen Fist
+Tera Type: Normal
+EVs: 44 HP / 252 Atk / 164 Def / 4 SpD / 44 Spe
+Adamant Nature
+- Surging Strikes
+- Drain Punch
+- Taunt
+- Substitute
+
+Kingambit @ Air Balloon
+Ability: Defiant
+Tera Type: Fire
+EVs: 124 HP / 252 Atk / 4 Def / 124 SpD / 4 Spe
+Adamant Nature
+- Kowtow Cleave
+- Sucker Punch
+- Taunt
+- Swords Dance

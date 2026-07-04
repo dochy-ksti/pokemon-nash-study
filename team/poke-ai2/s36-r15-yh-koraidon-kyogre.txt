@@ -1,0 +1,61 @@
+Koraidon @ Choice Scarf
+Ability: Orichalcum Pulse
+Tera Type: Ghost
+EVs: 92 HP / 252 Atk / 164 Spe
+Adamant Nature
+- Outrage
+- Close Combat
+- Flare Blitz
+- U-turn
+
+Kyogre @ Assault Vest
+Ability: Drizzle
+Tera Type: Fairy
+EVs: 252 HP / 228 SpA / 28 Spe
+Modest Nature
+IVs: 0 Atk
+- Origin Pulse
+- Thunder
+- Ice Beam
+- Tera Blast
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Ground
+EVs: 252 Atk / 4 SpD / 252 Spe
+Adamant Nature
+- Icicle Crash
+- Brick Break
+- Sucker Punch
+- Tera Blast
+
+Ursaluna @ Flame Orb
+Ability: Guts
+Tera Type: Fire
+EVs: 252 HP / 252 Atk / 4 Spe
+Adamant Nature
+- Facade
+- Earthquake
+- Crunch
+- Roar
+
+Archaludon @ Choice Specs
+Ability: Stamina
+Tera Type: Fairy
+EVs: 252 HP / 4 Def / 252 SpA
+Bold Nature
+IVs: 0 Atk
+- Draco Meteor
+- Flash Cannon
+- Dragon Pulse
+- Electro Shot
+
+Iron Treads @ Choice Band
+Ability: Quark Drive
+Tera Type: Ground
+EVs: 108 HP / 204 Atk / 4 Def / 44 SpD / 148 Spe
+Adamant Nature
+- Earthquake
+- Iron Head
+- Stone Edge
+- Ice Spinner

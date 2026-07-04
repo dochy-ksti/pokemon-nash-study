@@ -1,0 +1,59 @@
+Koraidon @ Choice Band
+Ability: Orichalcum Pulse
+Tera Type: Fairy
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Low Kick
+- Scale Shot
+- Flare Blitz
+- Tera Blast
+
+Calyrex-Shadow @ Focus Sash
+Ability: As One (Spectrier)
+Tera Type: Stellar
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+- Astral Barrage
+- Psychic
+- Grass Knot
+- Encore
+
+Grimmsnarl @ Lagging Tail
+Ability: Prankster
+Tera Type: Ghost
+EVs: 244 HP / 52 Atk / 12 Def / 196 SpD / 4 Spe
+Timid Nature
+- Spirit Break
+- Sucker Punch
+- Thunder Wave
+- Trick
+
+Swampert @ Assault Vest
+Ability: Torrent
+Tera Type: Steel
+EVs: 252 HP / 4 Atk / 252 SpD
+Careful Nature
+- Earthquake
+- Knock Off
+- Flip Turn
+- Mirror Coat
+
+Glimmora @ Power Herb
+Ability: Toxic Debris
+Tera Type: Rock
+EVs: 68 HP / 252 SpA / 188 Spe
+Modest Nature
+- Meteor Beam
+- Sludge Wave
+- Power Gem
+- Earth Power
+
+Dondozo @ Leftovers
+Ability: Unaware
+Tera Type: Fire
+EVs: 252 HP / 4 Atk / 252 Def
+Impish Nature
+- Wave Crash
+- Yawn
+- Protect
+- Rest

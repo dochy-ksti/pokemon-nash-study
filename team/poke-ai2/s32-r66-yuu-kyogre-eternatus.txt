@@ -1,0 +1,59 @@
+Eternatus @ Leftovers
+Ability: Pressure
+Tera Type: Fairy
+EVs: 76 HP / 4 Def / 252 SpA / 4 SpD / 172 Spe
+Timid Nature
+- Sludge Bomb
+- Recover
+- Substitute
+- Protect
+
+Urshifu-Rapid-Strike @ Choice Band
+Ability: Unseen Fist
+Tera Type: Water
+EVs: 156 HP / 244 Atk / 100 Def / 4 SpD / 4 Spe
+Adamant Nature
+- Surging Strikes
+- Close Combat
+- U-turn
+- Aqua Jet
+
+Landorus-Therian @ Rocky Helmet
+Ability: Intimidate
+Tera Type: Water
+EVs: 252 HP / 4 Atk / 252 Def
+Impish Nature
+- Earthquake
+- U-turn
+- Taunt
+- Stealth Rock
+
+Porygon2 @ Eviolite
+Ability: Trace
+Tera Type: Fairy
+EVs: 244 HP / 12 Def / 252 SpD
+Calm Nature
+- Tri Attack
+- Foul Play
+- Thunder Wave
+- Recover
+
+Kyogre @ Choice Scarf
+Ability: Drizzle
+Tera Type: Fairy
+EVs: 252 SpA / 252 Spe
+Timid Nature
+- Water Spout
+- Surf
+- Thunder
+- Tera Blast
+
+Smeargle @ Focus Sash
+Ability: Moody
+Tera Type: Fairy
+EVs: 252 Def / 252 Spe
+Jolly Nature
+- Ceaseless Edge
+- Toxic Spikes
+- Spore
+- Endeavor

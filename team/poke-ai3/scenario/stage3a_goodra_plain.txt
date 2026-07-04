@@ -1,0 +1,11 @@
+Goodra @ Covert Cloak
+Ability: Illuminate
+Level: 50
+Tera Type: Dragon
+EVs: 116 Def / 252 SpD
+IVs: 14 HP / 24 Atk / 4 SpA / 10 Spe
+Gentle Nature
+- Crunch
+- Dark Pulse
+- Shock Wave
+- Bulldoze

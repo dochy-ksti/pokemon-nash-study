@@ -1,0 +1,10 @@
+Cloyster @ Covert Cloak
+Ability: Illuminate
+Level: 50
+Tera Type: Water
+EVs: 252 HP / 12 Atk / 12 Def / 92 SpA / 228 SpD / 76 Spe
+Relaxed Nature
+- Crunch
+- Dark Pulse
+- Shock Wave
+- Bulldoze

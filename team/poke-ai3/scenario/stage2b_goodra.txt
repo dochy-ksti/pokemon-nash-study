@@ -1,0 +1,9 @@
+Goodra @ Covert Cloak
+Ability: Hydration
+Level: 50
+Tera Type: Dragon
+EVs: 4 Atk / 128 Def
+IVs: 15 HP / 24 Atk / 4 SpA / 22 SpD / 10 Spe
+Serious Nature
+- Crunch
+- Dark Pulse

@@ -1,0 +1,59 @@
+Calyrex-Shadow @ Focus Sash
+Ability: As One (Spectrier)
+Tera Type: Normal
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+- Astral Barrage
+- Psyshock
+- Grass Knot
+- Encore
+
+Rayquaza @ Silk Scarf
+Ability: Air Lock
+Tera Type: Normal
+EVs: 180 HP / 252 Atk / 76 Spe
+Adamant Nature
+- Extreme Speed
+- Earthquake
+- Dragon Ascent
+- Swords Dance
+
+Archaludon @ Jaboca Berry
+Ability: Sturdy
+Tera Type: Stellar
+EVs: 252 HP / 20 Def / 236 SpA
+Modest Nature
+- Draco Meteor
+- Steel Beam
+- Mirror Coat
+- Stealth Rock
+
+Hippowdon @ Rocky Helmet
+Ability: Sand Stream
+Tera Type: Fire
+EVs: 252 HP / 4 Atk / 252 Def
+Impish Nature
+- Earthquake
+- Yawn
+- Slack Off
+- Body Press
+
+Ursaluna-Bloodmoon @ Assault Vest
+Ability: Mind's Eye
+Tera Type: Normal
+EVs: 176 HP / 4 Def / 252 SpA / 76 SpD
+Modest Nature
+- Blood Moon
+- Hyper Voice
+- Earth Power
+- Vacuum Wave
+
+Chien-Pao @ Life Orb
+Ability: Sword of Ruin
+Tera Type: Dark
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Icicle Crash
+- Ice Shard
+- Sucker Punch
+- Crunch

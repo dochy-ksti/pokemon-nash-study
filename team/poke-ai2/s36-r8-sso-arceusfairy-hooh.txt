@@ -1,0 +1,59 @@
+Arceus-Fairy @ Pixie Plate
+Ability: Multitype
+Tera Type: Steel
+EVs: 252 HP / 76 Def / 4 SpA / 4 SpD / 172 Spe
+Bold Nature
+- Judgment
+- Calm Mind
+- Taunt
+- Recover
+
+Ho-Oh @ Assault Vest
+Ability: Regenerator
+Tera Type: Grass
+EVs: 252 HP / 36 Atk / 84 Def / 4 SpA / 132 SpD
+Sassy Nature
+- Sacred Fire
+- Brave Bird
+- Earthquake
+- Giga Drain
+
+Dondozo @ Leftovers
+Ability: Unaware
+Tera Type: Ghost
+EVs: 252 HP / 220 Def / 36 SpD
+Impish Nature
+- Wave Crash
+- Curse
+- Rest
+- Protect
+
+Glimmora @ Air Balloon
+Ability: Corrosion
+Tera Type: Ground
+EVs: 244 HP / 12 Def / 252 Spe
+Timid Nature
+- Mortal Spin
+- Mud Shot
+- Toxic
+- Spiky Shield
+
+Ting-Lu @ Choice Band
+Ability: Vessel of Ruin
+Tera Type: Fire
+EVs: 4 HP / 252 Atk / 4 Def / 212 SpD / 36 Spe
+Adamant Nature
+- Earthquake
+- Payback
+- Heavy Slam
+- Stone Edge
+
+Urshifu-Rapid-Strike @ Focus Sash
+Ability: Unseen Fist
+Tera Type: Stellar
+EVs: 252 Atk / 76 Def / 180 Spe
+Adamant Nature
+- Surging Strikes
+- Close Combat
+- Ice Spinner
+- Aqua Jet

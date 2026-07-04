@@ -1,0 +1,59 @@
+Lucario @ Life Orb
+Ability: Inner Focus
+Tera Type: Normal
+EVs: 76 HP / 252 Atk / 180 Def
+Adamant Nature
+- Close Combat
+- Swords Dance
+- Extreme Speed
+- Bullet Punch
+
+Scizor @ Sitrus Berry
+Ability: Technician
+Tera Type: Dark
+EVs: 252 HP / 28 Atk / 212 Def / 12 SpD / 4 Spe
+Adamant Nature
+- Bullet Punch
+- U-turn
+- Knock Off
+- Swords Dance
+
+Snorlax @ Leftovers
+Ability: Thick Fat
+Tera Type: Fairy
+EVs: 172 HP / 100 Def / 236 SpD
+Sassy Nature
+- Yawn
+- Encore
+- Protect
+- Earthquake
+
+Koraidon @ Choice Band
+Ability: Orichalcum Pulse
+Tera Type: Fire
+EVs: 172 HP / 252 Atk / 4 Def / 36 SpD / 44 Spe
+Adamant Nature
+- Flare Blitz
+- Flame Charge
+- Close Combat
+- Scale Shot
+
+Calyrex-Shadow @ Choice Scarf
+Ability: As One (Spectrier)
+Tera Type: Ghost
+EVs: 140 HP / 4 Def / 204 SpA / 4 SpD / 156 Spe
+Timid Nature
+- Astral Barrage
+- Psychic
+- Trick
+- Grass Knot
+
+Landorus-Therian @ Rocky Helmet
+Ability: Intimidate
+Tera Type: Fairy
+EVs: 252 HP / 4 Atk / 252 Def
+Relaxed Nature
+- Earthquake
+- Stealth Rock
+- U-turn
+- Taunt

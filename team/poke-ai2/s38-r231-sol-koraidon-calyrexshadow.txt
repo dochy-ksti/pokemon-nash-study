@@ -1,0 +1,60 @@
+Koraidon @ Choice Band
+Ability: Orichalcum Pulse
+Tera Type: Fairy
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Outrage
+- Close Combat
+- Flare Blitz
+- U-turn
+
+Calyrex-Shadow @ Choice Specs
+Ability: As One (Spectrier)
+Tera Type: Ghost
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Astral Barrage
+- Psychic
+- Grass Knot
+- Trick
+
+Ting-Lu @ Assault Vest
+Ability: Vessel of Ruin
+Tera Type: Fairy
+EVs: 236 Atk / 252 SpD / 20 Spe
+Adamant Nature
+- Earthquake
+- Ruination
+- Payback
+- Tera Blast
+
+Dondozo @ Leftovers
+Ability: Unaware
+Tera Type: Normal
+EVs: 252 HP / 252 Def / 4 SpD
+Impish Nature
+- Wave Crash
+- Yawn
+- Protect
+- Rest
+
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Normal
+EVs: 228 HP / 36 Def / 244 SpD
+Impish Nature
+- Earthquake
+- Toxic
+- Protect
+- Substitute
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Stellar
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Icicle Crash
+- Ice Shard
+- Sucker Punch
+- Sacred Sword

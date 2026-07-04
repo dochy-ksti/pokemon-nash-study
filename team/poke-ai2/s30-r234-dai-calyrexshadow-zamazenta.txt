@@ -1,0 +1,60 @@
+Calyrex-Shadow @ Focus Sash
+Ability: As One (Spectrier)
+Tera Type: Normal
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+- Astral Barrage
+- Psychic
+- Grass Knot
+- Encore
+
+Zamazenta-Crowned @ Rusted Shield
+Ability: Dauntless Shield
+Tera Type: Water
+EVs: 92 HP / 4 Atk / 252 Def / 4 SpD / 156 Spe
+Impish Nature
+- Body Press
+- Crunch
+- Iron Defense
+- Agility
+
+Ting-Lu @ Sitrus Berry
+Ability: Vessel of Ruin
+Tera Type: Grass
+EVs: 244 HP / 4 Atk / 4 Def / 252 SpD / 4 Spe
+Impish Nature
+- Earthquake
+- Ruination
+- Stealth Rock
+- Whirlwind
+
+Overqwil @ Custap Berry
+Ability: Intimidate
+Tera Type: Fairy
+EVs: 236 HP / 20 Def / 252 SpD
+Careful Nature
+- Barb Barrage
+- Toxic Spikes
+- Destiny Bond
+- Endure
+
+Ursaluna-Bloodmoon @ Kee Berry
+Ability: Mind's Eye
+Tera Type: Poison
+EVs: 252 HP / 44 Def / 212 SpD
+Bold Nature
+IVs: 10 Spe
+- Blood Moon
+- Hyper Voice
+- Calm Mind
+- Moonlight
+
+Mimikyu @ Rocky Helmet
+Ability: Disguise
+Tera Type: Dark
+EVs: 68 HP / 204 Atk / 212 Def / 4 SpD / 20 Spe
+Adamant Nature
+- Wood Hammer
+- Shadow Sneak
+- Curse
+- Endure

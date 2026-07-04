@@ -1,0 +1,56 @@
+Terapagos @ Rocky Helmet
+Ability: Tera Shell
+Tera Type: Stellar
+EVs: 4 HP / 252 SpA / 252 Spe
+Timid Nature
+- Tera Starstorm
+- Dark Pulse
+- Rapid Spin
+- Stealth Rock
+
+Calyrex-Shadow @ Focus Sash
+Ability: As One (Spectrier)
+Tera Type: Normal
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+- Encore
+- Grass Knot
+- Psyshock
+- Astral Barrage
+
+Chien-Pao @ Life Orb
+Ability: Sword of Ruin
+Tera Type: Electric
+EVs: 92 HP / 252 Atk / 84 Def / 4 SpD / 76 Spe
+Adamant Nature
+- Ice Shard
+- Tera Blast
+- Sucker Punch
+- Swords Dance
+
+Ditto @ Choice Scarf
+Ability: Imposter
+Tera Type: Fairy
+EVs: 252 HP / 252 Spe
+Hasty Nature
+- Transform
+
+Primarina @ Leftovers
+Ability: Torrent
+Tera Type: Rock
+EVs: 252 HP / 188 Def / 68 SpD
+Calm Nature
+- Whirlpool
+- Perish Song
+- Protect
+- Encore
+
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Steel
+EVs: 228 HP / 4 Atk / 20 Def / 252 SpD / 4 Spe
+Careful Nature
+- Earthquake
+- Toxic
+- Protect
+- Substitute

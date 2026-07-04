@@ -1,0 +1,59 @@
+Kyogre @ Rocky Helmet
+Ability: Drizzle
+Tera Type: Normal
+EVs: 252 HP / 188 Def / 52 SpD
+Bold Nature
+- Surf
+- Thunder Wave
+- Ice Beam
+- Thunder
+
+Miraidon @ Choice Scarf
+Ability: Hadron Engine
+Tera Type: Water
+EVs: 124 HP / 212 SpA / 36 SpD / 116 Spe
+Modest Nature
+- Draco Meteor
+- Electro Drift
+- Tera Blast
+- Volt Switch
+
+Ting-Lu @ Sitrus Berry
+Ability: Vessel of Ruin
+Tera Type: Fire
+EVs: 244 HP / 60 Def / 180 SpD / 20 Spe
+Careful Nature
+- Earthquake
+- Whirlwind
+- Stealth Rock
+- Spikes
+
+Chien-Pao @ Life Orb
+Ability: Sword of Ruin
+Tera Type: Fire
+EVs: 252 Atk / 4 Def / 252 Spe
+Adamant Nature
+- Icicle Crash
+- Crunch
+- Ice Shard
+- Sucker Punch
+
+Urshifu-Rapid-Strike @ Focus Sash
+Ability: Unseen Fist
+Tera Type: Water
+EVs: 252 Atk / 252 Spe
+Adamant Nature
+- Surging Strikes
+- Close Combat
+- Aqua Jet
+- Taunt
+
+Landorus-Therian @ Assault Vest
+Ability: Intimidate
+Tera Type: Normal
+EVs: 252 HP / 20 Def / 236 SpD
+Careful Nature
+- Earthquake
+- Fissure
+- U-turn
+- Crunch

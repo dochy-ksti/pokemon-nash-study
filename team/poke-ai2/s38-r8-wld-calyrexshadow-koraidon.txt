@@ -1,0 +1,61 @@
+Calyrex-Shadow @ Focus Sash
+Ability: As One (Spectrier)
+Tera Type: Fairy
+EVs: 4 Def / 252 SpA / 252 Spe
+IVs: 0 Atk
+Timid Nature
+- Astral Barrage
+- Draining Kiss
+- Encore
+- Nasty Plot
+
+Koraidon @ Choice Scarf
+Ability: Orichalcum Pulse
+Tera Type: Fire
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Flare Blitz
+- U-turn
+- Close Combat
+- Outrage
+
+Garganacl @ Leftovers
+Ability: Purifying Salt
+Tera Type: Fairy
+EVs: 252 HP / 52 Atk / 68 Def / 132 SpD / 4 Spe
+Impish Nature
+- Salt Cure
+- Recover
+- Protect
+- Tera Blast
+
+Alomomola @ Assault Vest
+Ability: Regenerator
+Tera Type: Normal
+EVs: 4 HP / 252 Def / 252 SpD
+IVs: 0 Spe
+Sassy Nature
+- Flip Turn
+- Aqua Jet
+- Icy Wind
+- Mirror Coat
+
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Fairy
+EVs: 228 HP / 252 SpD / 28 Spe
+Careful Nature
+- Protect
+- Substitute
+- Toxic
+- Taunt
+
+Iron Treads @ Choice Band
+Ability: Quark Drive
+Tera Type: Ground
+EVs: 108 HP / 196 Atk / 4 Def / 44 SpD / 156 Spe
+Jolly Nature
+- Earthquake
+- Knock Off
+- Iron Head
+- Ice Spinner

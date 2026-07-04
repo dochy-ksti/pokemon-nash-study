@@ -1,0 +1,60 @@
+Calyrex-Shadow @ Choice Specs
+Ability: As One (Spectrier)
+Tera Type: Fairy
+EVs: 4 Def / 252 SpA / 252 Spe
+Modest Nature
+- Astral Barrage
+- Psyshock
+- Tera Blast
+- Leaf Storm
+
+Urshifu-Rapid-Strike @ Choice Scarf
+Ability: Unseen Fist
+Tera Type: Water
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Surging Strikes
+- Close Combat
+- Ice Spinner
+- U-turn
+
+Ho-Oh @ Heavy-Duty Boots
+Ability: Regenerator
+Tera Type: Dark
+EVs: 252 HP / 4 Atk / 4 Def / 244 SpD / 4 Spe
+Careful Nature
+- Recover
+- Sacred Fire
+- Tera Blast
+- Whirlwind
+
+Dondozo @ Leftovers
+Ability: Unaware
+Tera Type: Fire
+EVs: 252 HP / 252 Def / 4 Spe
+Impish Nature
+- Rest
+- Fissure
+- Avalanche
+- Protect
+
+Clodsire @ Covert Cloak
+Ability: Water Absorb
+Tera Type: Ghost
+EVs: 252 HP / 4 Def / 252 SpD
+Sassy Nature
+- Recover
+- Earthquake
+- Toxic Spikes
+- Stealth Rock
+
+Corviknight @ Rocky Helmet
+Ability: Pressure
+Tera Type: Fire
+EVs: 252 HP / 252 Def / 4 SpD
+Relaxed Nature
+IVs: 0 Spe
+- Roost
+- Body Press
+- U-turn
+- Iron Defense

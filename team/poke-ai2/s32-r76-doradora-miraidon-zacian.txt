@@ -1,0 +1,57 @@
+Miraidon @ Choice Specs
+Ability: Hadron Engine
+Tera Type: Fairy
+EVs: 252 SpA / 4 SpD / 252 Spe
+Timid Nature
+- Electro Drift
+- Draco Meteor
+- Volt Switch
+- Dazzling Gleam
+
+Zacian-Crowned @ Rusted Sword
+Ability: Intrepid Sword
+Tera Type: Normal
+EVs: 236 HP / 252 Atk / 4 SpD / 12 Spe
+Adamant Nature
+- Behemoth Blade
+- Close Combat
+- Wild Charge
+- Trailblaze
+
+Ting-Lu @ Assault Vest
+Ability: Vessel of Ruin
+Tera Type: Fire
+EVs: 116 HP / 212 Atk / 164 SpD / 12 Spe
+Adamant Nature
+- Earthquake
+- Ruination
+- Payback
+- Heavy Slam
+
+Alomomola @ Leftovers
+Ability: Regenerator
+Tera Type: Fairy
+EVs: 252 HP / 196 Def / 60 SpD
+Relaxed Nature
+IVs: 0 Spe
+- Protect
+- Wish
+- Aqua Jet
+- Flip Turn
+
+Landorus-Therian @ Choice Band
+Ability: Intimidate
+Tera Type: Normal
+EVs: 244 HP / 116 Atk / 92 SpD / 52 Spe
+Adamant Nature
+- Earthquake
+- Rock Slide
+- Stealth Rock
+- U-turn
+
+Ditto @ Focus Sash
+Ability: Imposter
+Tera Type: Steel
+EVs: 252 HP / 4 SpA / 252 Spe
+Jolly Nature
+- Transform

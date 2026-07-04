@@ -1,0 +1,59 @@
+Kyogre @ Assault Vest
+Ability: Drizzle
+Tera Type: Electric
+EVs: 252 HP / 60 Def / 76 SpA / 4 SpD / 116 Spe
+Modest Nature
+- Water Spout
+- Surf
+- Thunder
+- Ice Beam
+
+Necrozma-Dusk-Mane @ Covert Cloak
+Ability: Prism Armor
+Tera Type: Normal
+EVs: 228 HP / 124 Atk / 156 Def
+Adamant Nature
+- Sunsteel Strike
+- Photon Geyser
+- Swords Dance
+- Trick Room
+
+Flutter Mane @ Focus Sash
+Ability: Protosynthesis
+Tera Type: Normal
+EVs: 4 HP / 252 SpA / 252 Spe
+Timid Nature
+- Moonblast
+- Hex
+- Thunder Wave
+- Pain Split
+
+Urshifu-Rapid-Strike @ Choice Scarf
+Ability: Unseen Fist
+Tera Type: Water
+EVs: 252 Atk / 4 Def / 252 Spe
+Adamant Nature
+- Surging Strikes
+- Close Combat
+- U-turn
+- Aqua Jet
+
+Dragonite @ Rocky Helmet
+Ability: Multiscale
+Tera Type: Normal
+EVs: 244 HP / 252 Atk / 4 Def / 4 SpD / 4 Spe
+Adamant Nature
+- Extreme Speed
+- Earthquake
+- Encore
+- Roost
+
+Clodsire @ Leftovers
+Ability: Water Absorb
+Tera Type: Fairy
+EVs: 252 HP / 116 Def / 140 SpD
+Careful Nature
+- Earthquake
+- Toxic
+- Protect
+- Recover

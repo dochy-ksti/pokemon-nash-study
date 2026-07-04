@@ -1,0 +1,61 @@
+Lunala @ Power Herb
+Ability: Shadow Shield
+Tera Type: Grass
+EVs: 244 HP / 244 SpA / 20 Spe
+Modest Nature
+IVs: 0 Atk
+- Trick Room
+- Moongeist Beam
+- Psyshock
+- Meteor Beam
+
+Kyogre @ Choice Specs
+Ability: Drizzle
+Tera Type: Fairy
+EVs: 236 HP / 84 Def / 156 SpA / 4 SpD / 28 Spe
+Modest Nature
+IVs: 0 Atk
+- Water Spout
+- Origin Pulse
+- Thunder
+- Ice Beam
+
+Urshifu-Rapid-Strike @ Focus Sash
+Ability: Unseen Fist
+Tera Type: Water
+EVs: 252 Atk / 4 Def / 252 Spe
+Adamant Nature
+- Surging Strikes
+- Close Combat
+- Swords Dance
+- Aqua Jet
+
+Kingambit @ Black Glasses
+Ability: Supreme Overlord
+Tera Type: Dark
+EVs: 252 HP / 252 Atk / 4 Def
+Adamant Nature
+- Kowtow Cleave
+- Sucker Punch
+- Swords Dance
+- Iron Head
+
+Mimikyu @ Rocky Helmet
+Ability: Disguise
+Tera Type: Normal
+EVs: 100 HP / 156 Atk / 252 Def
+Adamant Nature
+- Thunder Wave
+- Play Rough
+- Shadow Sneak
+- Curse
+
+Dragonite @ Assault Vest
+Ability: Multiscale
+Tera Type: Ground
+EVs: 148 HP / 252 Atk / 4 Def / 4 SpD / 100 Spe
+Adamant Nature
+- Extreme Speed
+- Earthquake
+- Ice Spinner
+- Stone Edge

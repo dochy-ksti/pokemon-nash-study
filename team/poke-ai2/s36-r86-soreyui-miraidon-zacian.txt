@@ -1,0 +1,59 @@
+Miraidon @ Choice Scarf
+Ability: Hadron Engine
+Tera Type: Ice
+EVs: 124 HP / 12 Def / 252 SpA / 4 SpD / 116 Spe
+Timid Nature
+- Electro Drift
+- Volt Switch
+- Draco Meteor
+- Tera Blast
+
+Zacian-Crowned @ Rusted Sword
+Ability: Intrepid Sword
+Tera Type: Normal
+EVs: 44 HP / 252 Atk / 212 Spe
+Jolly Nature
+- Behemoth Blade
+- Play Rough
+- Wild Charge
+- Close Combat
+
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Water
+EVs: 228 HP / 252 Def / 28 SpD
+Relaxed Nature
+- Earthquake
+- U-turn
+- Spikes
+- Toxic
+
+Toxapex @ Rocky Helmet
+Ability: Regenerator
+Tera Type: Fairy
+EVs: 252 HP / 252 Def / 4 SpD
+Bold Nature
+- Baneful Bunker
+- Toxic Spikes
+- Haze
+- Recover
+
+Wo-Chien @ Leftovers
+Ability: Tablets of Ruin
+Tera Type: Water
+EVs: 252 HP / 252 Def / 4 Spe
+Bold Nature
+- Foul Play
+- Leech Seed
+- Substitute
+- Protect
+
+Iron Treads @ Focus Sash
+Ability: Quark Drive
+Tera Type: Normal
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Bulldoze
+- Knock Off
+- Endeavor
+- Stealth Rock

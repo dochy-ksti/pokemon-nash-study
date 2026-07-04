@@ -1,0 +1,65 @@
+Miraidon @ Choice Scarf
+Ability: Hadron Engine
+Tera Type: Ice
+EVs: 236 HP / 4 Def / 252 SpA / 4 SpD / 12 Spe
+Modest Nature
+IVs: 0 Atk
+- Electro Drift
+- Draco Meteor
+- Tera Blast
+- Volt Switch
+
+Lunala @ Rocky Helmet
+Ability: Shadow Shield
+Tera Type: Fairy
+EVs: 252 HP / 12 Def / 244 SpA
+Modest Nature
+IVs: 0 Atk
+- Moongeist Beam
+- Moonblast
+- Moonlight
+- Trick Room
+
+Urshifu-Rapid-Strike @ Choice Band
+Ability: Unseen Fist
+Tera Type: Water
+EVs: 156 HP / 252 Atk / 100 Def
+Adamant Nature
+IVs: 29 Spe
+- Surging Strikes
+- Close Combat
+- U-turn
+- Aqua Jet
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Electric
+EVs: 252 Atk / 4 Def / 252 Spe
+Adamant Nature
+IVs: 0 SpA
+- Icicle Crash
+- Tera Blast
+- Sucker Punch
+- Swords Dance
+
+Landorus-Therian @ Assault Vest
+Ability: Intimidate
+Tera Type: Normal
+EVs: 244 HP / 4 Atk / 4 Def / 4 SpA / 252 SpD
+Brave Nature
+IVs: 27 Spe
+- Earthquake
+- U-turn
+- Bulldoze
+- Grass Knot
+
+Flutter Mane @ Choice Specs
+Ability: Protosynthesis
+Tera Type: Fairy
+EVs: 4 HP / 252 SpA / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Moonblast
+- Shadow Ball
+- Draining Kiss
+- Disarming Voice

@@ -1,0 +1,60 @@
+Calyrex-Shadow @ Focus Sash
+Ability: As One (Spectrier)
+Tera Type: Stellar
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+- Astral Barrage
+- Grass Knot
+- Psyshock
+- Encore
+
+Ho-Oh @ Assault Vest
+Ability: Regenerator
+Tera Type: Grass
+EVs: 252 HP / 76 Atk / 28 Def / 4 SpD / 148 Spe
+Adamant Nature
+- Sacred Fire
+- Brave Bird
+- Earthquake
+- Tera Blast
+
+Alomomola @ Rocky Helmet
+Ability: Regenerator
+Tera Type: Fairy
+EVs: 252 HP / 252 Def / 4 SpD
+Relaxed Nature
+IVs: 0 Spe
+- Flip Turn
+- Wish
+- Protect
+- Aqua Jet
+
+Glimmora @ Red Card
+Ability: Toxic Debris
+Tera Type: Fairy
+EVs: 252 HP / 196 Def / 60 Spe
+Bold Nature
+- Mortal Spin
+- Stealth Rock
+- Endure
+- Earth Power
+
+Mimikyu @ Choice Scarf
+Ability: Disguise
+Tera Type: Normal
+EVs: 4 HP / 252 Atk / 252 Spe
+Jolly Nature
+- Play Rough
+- Curse
+- Destiny Bond
+- Trick
+
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Steel
+EVs: 228 HP / 252 SpD / 28 Spe
+Careful Nature
+- Earthquake
+- Toxic
+- Substitute
+- Protect

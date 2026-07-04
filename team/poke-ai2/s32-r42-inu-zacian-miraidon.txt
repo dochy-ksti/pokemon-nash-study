@@ -1,0 +1,61 @@
+Landorus-Therian @ Focus Sash
+Ability: Intimidate
+Tera Type: Normal
+EVs: 4 HP / 252 Atk / 252 Spe
+Jolly Nature
+- Earthquake
+- Bulldoze
+- Stealth Rock
+- Taunt
+
+Zacian-Crowned @ Rusted Sword
+Ability: Intrepid Sword
+Tera Type: Normal
+EVs: 236 HP / 92 Atk / 180 Spe
+Jolly Nature
+- Behemoth Blade
+- Play Rough
+- Wild Charge
+- Swords Dance
+
+Miraidon @ Electric Seed
+Ability: Hadron Engine
+Tera Type: Water
+EVs: 156 HP / 124 Def / 132 SpA / 4 SpD / 92 Spe
+Modest Nature
+IVs: 0 Atk
+- Electro Drift
+- Dragon Pulse
+- Tera Blast
+- Agility
+
+Ogerpon-Cornerstone @ Cornerstone Mask
+Ability: Sturdy
+Tera Type: Rock
+EVs: 252 Atk / 4 Def / 252 Spe
+Adamant Nature
+- Ivy Cudgel
+- Knock Off
+- Encore
+- Swords Dance
+
+Flutter Mane @ Booster Energy
+Ability: Protosynthesis
+Tera Type: Steel
+EVs: 228 HP / 252 Def / 4 SpA / 4 SpD / 20 Spe
+Bold Nature
+IVs: 0 Atk
+- Moonblast
+- Taunt
+- Calm Mind
+- Pain Split
+
+Ting-Lu @ Sitrus Berry
+Ability: Vessel of Ruin
+Tera Type: Poison
+EVs: 244 HP / 36 Def / 228 SpD
+Impish Nature
+- Stealth Rock
+- Spikes
+- Ruination
+- Whirlwind

@@ -1,0 +1,59 @@
+Miraidon @ Eject Pack
+Ability: Hadron Engine
+Tera Type: Normal
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+- Electro Drift
+- Draco Meteor
+- Overheat
+- Protect
+
+Ho-Oh @ Choice Scarf
+Ability: Regenerator
+Tera Type: Dark
+EVs: 108 HP / 180 Atk / 4 Def / 4 SpD / 212 Spe
+Jolly Nature
+- Sacred Fire
+- Brave Bird
+- Earthquake
+- Tera Blast
+
+Iron Valiant @ Focus Sash
+Ability: Quark Drive
+Tera Type: Ghost
+EVs: 12 HP / 252 Atk / 244 Spe
+Jolly Nature
+- Close Combat
+- Spirit Break
+- Knock Off
+- Thunder Wave
+
+Iron Treads @ Life Orb
+Ability: Quark Drive
+Tera Type: Stellar
+EVs: 60 HP / 220 Atk / 4 Def / 60 SpD / 164 Spe
+Jolly Nature
+- Earthquake
+- Iron Head
+- Ice Spinner
+- Stone Edge
+
+Urshifu-Rapid-Strike @ Covert Cloak
+Ability: Unseen Fist
+Tera Type: Fairy
+EVs: 60 HP / 252 Atk / 148 Def / 4 SpD / 44 Spe
+Adamant Nature
+- Surging Strikes
+- Close Combat
+- Focus Punch
+- Substitute
+
+Ting-Lu @ Leftovers
+Ability: Vessel of Ruin
+Tera Type: Flying
+EVs: 252 HP / 4 Def / 252 SpD
+Careful Nature
+- Mean Look
+- Rest
+- Taunt
+- Spite

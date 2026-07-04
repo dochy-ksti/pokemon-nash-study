@@ -1,0 +1,62 @@
+Arceus-Dark @ Dread Plate
+Ability: Multitype
+Tera Type: Poison
+EVs: 252 HP / 4 Def / 196 SpA / 44 SpD / 12 Spe
+Calm Nature
+IVs: 0 Atk
+- Judgment
+- Acid Spray
+- Will-O-Wisp
+- Recover
+
+Zacian-Crowned @ Rusted Sword
+Ability: Intrepid Sword
+Tera Type: Normal
+EVs: 92 HP / 252 Atk / 164 Spe
+Jolly Nature
+- Behemoth Blade
+- Play Rough
+- Ice Fang
+- Swords Dance
+
+Landorus-Therian @ Rocky Helmet
+Ability: Intimidate
+Tera Type: Steel
+EVs: 252 HP / 252 Def / 4 SpD
+Relaxed Nature
+- Earthquake
+- U-turn
+- Taunt
+- Stealth Rock
+
+Gholdengo @ Choice Scarf
+Ability: Good as Gold
+Tera Type: Flying
+EVs: 4 HP / 252 SpA / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Make It Rain
+- Shadow Ball
+- Recover
+- Trick
+
+Primarina @ Assault Vest
+Ability: Torrent
+Tera Type: Normal
+EVs: 252 HP / 132 Def / 44 SpA / 80 SpD
+Modest Nature
+IVs: 0 Atk
+- Sparkling Aria
+- Moonblast
+- Flip Turn
+- Aqua Jet
+
+Ceruledge @ Air Balloon
+Ability: Flash Fire
+Tera Type: Fairy
+EVs: 4 HP / 252 Atk / 252 Spe
+Adamant Nature
+- Shadow Sneak
+- Bitter Blade
+- Poltergeist
+- Taunt

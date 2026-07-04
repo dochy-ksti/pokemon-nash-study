@@ -1,0 +1,59 @@
+Terapagos @ Leftovers
+Ability: Tera Shift
+Tera Type: Stellar
+EVs: 44 HP / 4 Def / 252 SpA / 4 SpD / 204 Spe
+Modest Nature
+- Tera Starstorm
+- Protect
+- Substitute
+- Calm Mind
+
+Zacian-Crowned @ Rusted Sword
+Ability: Intrepid Sword
+Tera Type: Ground
+EVs: 60 HP / 252 Atk / 4 Def / 4 SpD / 188 Spe
+Jolly Nature
+- Behemoth Blade
+- Play Rough
+- Trailblaze
+- Tera Blast
+
+Glimmora @ Focus Sash
+Ability: Toxic Debris
+Tera Type: Fairy
+EVs: 132 HP / 76 Def / 44 SpA / 4 SpD / 252 Spe
+Timid Nature
+- Mortal Spin
+- Mud Shot
+- Toxic Spikes
+- Stealth Rock
+
+Ting-Lu @ Sitrus Berry
+Ability: Vessel of Ruin
+Tera Type: Poison
+EVs: 244 HP / 252 SpD / 12 Spe
+Careful Nature
+- Ruination
+- Stealth Rock
+- Whirlwind
+- Spikes
+
+Urshifu-Rapid-Strike @ Punching Glove
+Ability: Unseen Fist
+Tera Type: Water
+EVs: 124 HP / 252 Atk / 4 Def / 4 SpD / 124 Spe
+Adamant Nature
+- Surging Strikes
+- Focus Punch
+- Aqua Jet
+- Substitute
+
+Mimikyu @ Rocky Helmet
+Ability: Disguise
+Tera Type: Stellar
+EVs: 68 HP / 236 Atk / 204 Def
+Adamant Nature
+- Play Rough
+- Shadow Sneak
+- Curse
+- Endure

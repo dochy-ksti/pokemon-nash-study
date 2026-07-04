@@ -1,0 +1,60 @@
+Terapagos @ Rocky Helmet
+Ability: Tera Shell
+Tera Type: Stellar
+EVs: 220 HP / 244 Def / 44 SpD
+Bold Nature
+- Tera Starstorm
+- Rapid Spin
+- Rest
+- Toxic
+
+Ho-Oh @ Assault Vest
+Ability: Regenerator
+Tera Type: Grass
+EVs: 252 HP / 156 Atk / 100 Spe
+Adamant Nature
+- Sacred Fire
+- Brave Bird
+- Tera Blast
+- Earthquake
+
+Dondozo @ Leftovers
+Ability: Unaware
+Tera Type: Fairy
+EVs: 252 HP / 252 Def / 4 SpD
+Impish Nature
+- Rest
+- Protect
+- Avalanche
+- Fissure
+
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Steel
+EVs: 228 HP / 52 SpD / 228 Spe
+Jolly Nature
+- Earthquake
+- Protect
+- Substitute
+- Toxic
+
+Gothitelle @ Covert Cloak
+Ability: Shadow Tag
+Tera Type: Fire
+EVs: 252 HP / 252 Def / 4 SpD
+Bold Nature
+- Psychic Noise
+- Taunt
+- Charm
+- Rest
+
+Dugtrio @ Focus Sash
+Ability: Arena Trap
+Tera Type: Fairy
+EVs: 252 Atk / 252 Spe
+Naughty Nature
+IVs: 0 HP / 0 Def / 0 SpD
+- Sucker Punch
+- Protect
+- Endeavor
+- Earthquake

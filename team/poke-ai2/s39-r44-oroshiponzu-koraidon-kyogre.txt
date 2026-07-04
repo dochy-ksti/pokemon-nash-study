@@ -1,0 +1,59 @@
+Koraidon @ Loaded Dice
+Ability: Orichalcum Pulse
+Tera Type: Fire
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Scale Shot
+- Flare Blitz
+- Flame Charge
+- Protect
+
+Kyogre @ Rocky Helmet
+Ability: Drizzle
+Tera Type: Normal
+EVs: 252 HP / 244 Def / 12 Spe
+Bold Nature
+- Surf
+- Thunder
+- Ice Beam
+- Thunder Wave
+
+Flutter Mane @ Focus Sash
+Ability: Protosynthesis
+Tera Type: Normal
+EVs: 4 HP / 252 SpA / 252 Spe
+Timid Nature
+- Moonblast
+- Hex
+- Taunt
+- Thunder Wave
+
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Steel
+EVs: 228 HP / 28 Def / 252 SpD
+Careful Nature
+- Earthquake
+- Toxic Spikes
+- Substitute
+- Protect
+
+Gholdengo @ Covert Cloak
+Ability: Good as Gold
+Tera Type: Normal
+EVs: 252 HP / 252 Def / 4 Spe
+Bold Nature
+- Make It Rain
+- Shadow Ball
+- Nasty Plot
+- Recover
+
+Kingambit @ Sitrus Berry
+Ability: Defiant
+Tera Type: Fairy
+EVs: 252 HP / 76 Atk / 4 Def / 164 SpD / 12 Spe
+Adamant Nature
+- Kowtow Cleave
+- Iron Head
+- Sucker Punch
+- Swords Dance

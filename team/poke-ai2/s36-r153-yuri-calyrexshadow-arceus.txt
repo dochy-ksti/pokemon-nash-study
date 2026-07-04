@@ -1,0 +1,57 @@
+Arceus-Water @ Splash Plate
+Ability: Multitype
+Tera Type: Normal
+EVs: 188 HP / 204 Atk / 4 Def / 4 SpD / 108 Spe
+Adamant Nature
+- Liquidation
+- Extreme Speed
+- Dragon Dance
+- Recover
+
+Calyrex-Shadow @ Leftovers
+Ability: As One (Spectrier)
+Tera Type: Fighting
+EVs: 124 HP / 28 Def / 76 SpA / 28 SpD / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Astral Barrage
+- Tera Blast
+- Protect
+- Substitute
+
+Overqwil @ Custap Berry
+Ability: Intimidate
+Tera Type: Water
+EVs: 244 HP / 212 Def / 52 SpD
+Impish Nature
+- Barb Barrage
+- Toxic Spikes
+- Endure
+- Destiny Bond
+
+Ting-Lu @ Sitrus Berry
+Ability: Vessel of Ruin
+Tera Type: Poison
+EVs: 244 HP / 4 Atk / 20 Def / 236 SpD / 4 Spe
+Careful Nature
+- Earthquake
+- Ruination
+- Stealth Rock
+- Taunt
+
+Chien-Pao @ Life Orb
+Ability: Sword of Ruin
+Tera Type: Electric
+EVs: 252 Atk / 220 Def / 36 Spe
+Adamant Nature
+- Icicle Crash
+- Crunch
+- Tera Blast
+- Ice Shard
+
+Ditto @ Choice Scarf
+Ability: Imposter
+Tera Type: Normal
+EVs: 252 HP / 252 SpD
+Sassy Nature
+- Transform

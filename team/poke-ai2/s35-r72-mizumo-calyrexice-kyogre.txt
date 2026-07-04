@@ -1,0 +1,62 @@
+Calyrex-Ice @ Loaded Dice
+Ability: As One (Glastrier)
+Tera Type: Normal
+EVs: 252 Atk / 4 SpD / 252 Spe
+Adamant Nature
+IVs: 18 Spe
+- Glacial Lance
+- Bullet Seed
+- High Horsepower
+- Trick Room
+
+Kyogre @ Choice Specs
+Ability: Drizzle
+Tera Type: Ground
+EVs: 252 HP / 148 Def / 76 SpA / 20 SpD / 12 Spe
+Modest Nature
+- Surf
+- Thunder
+- Ice Beam
+- Tera Blast
+
+Archaludon @ Power Herb
+Ability: Sturdy
+Tera Type: Stellar
+EVs: 4 Def / 252 SpA / 252 Spe
+Rash Nature
+IVs: 0 SpD
+- Draco Meteor
+- Flash Cannon
+- Electro Shot
+- Metal Burst
+
+Urshifu-Rapid-Strike @ Focus Sash
+Ability: Unseen Fist
+Tera Type: Ghost
+EVs: 252 Atk / 4 Def / 252 Spe
+Adamant Nature
+- Surging Strikes
+- Close Combat
+- Aqua Jet
+- Reversal
+
+Mimikyu @ Rocky Helmet
+Ability: Disguise
+Tera Type: Stellar
+EVs: 100 HP / 156 Atk / 252 Def
+Brave Nature
+IVs: 0 Spe
+- Play Rough
+- Shadow Sneak
+- Trick Room
+- Curse
+
+Ursaluna @ Flame Orb
+Ability: Guts
+Tera Type: Fire
+EVs: 140 HP / 252 Atk / 4 Def / 92 SpD / 20 Spe
+Adamant Nature
+- Facade
+- Earthquake
+- Protect
+- Roar

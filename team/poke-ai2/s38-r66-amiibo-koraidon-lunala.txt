@@ -1,0 +1,59 @@
+Koraidon @ Loaded Dice
+Ability: Orichalcum Pulse
+Tera Type: Fire
+EVs: 220 HP / 212 Atk / 4 Def / 4 SpD / 68 Spe
+Adamant Nature
+- Flare Blitz
+- Scale Shot
+- Collision Course
+- Swords Dance
+
+Lunala @ Choice Scarf
+Ability: Shadow Shield
+Tera Type: Fairy
+EVs: 4 HP / 244 SpA / 4 SpD / 252 Spe
+Modest Nature
+- Moongeist Beam
+- Moonblast
+- Trick
+- Moonlight
+
+Clodsire @ Covert Cloak
+Ability: Water Absorb
+Tera Type: Electric
+EVs: 252 HP / 4 Def / 252 SpD
+Careful Nature
+- Earthquake
+- Toxic
+- Toxic Spikes
+- Recover
+
+Dondozo @ Leftovers
+Ability: Unaware
+Tera Type: Fire
+EVs: 252 HP / 252 Def / 4 Spe
+Impish Nature
+- Wave Crash
+- Fissure
+- Protect
+- Rest
+
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Fairy
+EVs: 228 HP / 28 Def / 252 Spe
+Jolly Nature
+- Protect
+- Substitute
+- Toxic
+- Taunt
+
+Muk-Alola @ Black Sludge
+Ability: Poison Touch
+Tera Type: Poison
+EVs: 252 HP / 4 Def / 252 SpD
+Careful Nature
+- Knock Off
+- Poison Fang
+- Protect
+- Taunt

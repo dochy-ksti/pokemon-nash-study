@@ -1,0 +1,62 @@
+Calyrex-Shadow @ Leftovers
+Ability: As One (Spectrier)
+Tera Type: Water
+EVs: 156 HP / 164 Def / 4 SpA / 36 SpD / 148 Spe
+Timid Nature
+IVs: 0 Atk
+- Astral Barrage
+- Leech Seed
+- Substitute
+- Protect
+
+Flutter Mane @ Choice Specs
+Ability: Protosynthesis
+Tera Type: Fairy
+EVs: 4 HP / 252 SpA / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Moonblast
+- Shadow Ball
+- Power Gem
+- Perish Song
+
+Ting-Lu @ Assault Vest
+Ability: Vessel of Ruin
+Tera Type: Steel
+EVs: 4 HP / 236 Atk / 188 SpD / 76 Spe
+Adamant Nature
+- Earthquake
+- Ruination
+- Heavy Slam
+- Bulldoze
+
+Koraidon @ Choice Scarf
+Ability: Orichalcum Pulse
+Tera Type: Fire
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Flare Blitz
+- U-turn
+- Outrage
+- Close Combat
+
+Glimmora @ Air Balloon
+Ability: Toxic Debris
+Tera Type: Normal
+EVs: 252 HP / 4 Def / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Mortal Spin
+- Earth Power
+- Stealth Rock
+- Spiky Shield
+
+Chien-Pao @ Life Orb
+Ability: Sword of Ruin
+Tera Type: Electric
+EVs: 188 HP / 252 Atk / 4 Def / 60 Spe
+Adamant Nature
+- Icicle Crash
+- Sucker Punch
+- Tera Blast
+- Taunt

@@ -1,0 +1,60 @@
+Lunala @ Choice Scarf
+Ability: Shadow Shield
+Tera Type: Fairy
+EVs: 12 Def / 244 SpA / 252 Spe
+Modest Nature
+- Moongeist Beam
+- Moonblast
+- Trick
+- Moonlight
+
+Ho-Oh @ Heavy-Duty Boots
+Ability: Regenerator
+Tera Type: Normal
+EVs: 252 HP / 4 Def / 252 SpD
+Careful Nature
+- Sacred Fire
+- Light Screen
+- Whirlwind
+- Recover
+
+Chansey @ Eviolite
+Ability: Natural Cure
+Tera Type: Grass
+EVs: 12 HP / 252 Def / 244 SpD
+Sassy Nature
+IVs: 0 Spe
+- Seismic Toss
+- Calm Mind
+- Stealth Rock
+- Soft-Boiled
+
+Dondozo @ Leftovers
+Ability: Unaware
+Tera Type: Steel
+EVs: 252 HP / 252 Def / 4 Spe
+Impish Nature
+- Fissure
+- Wave Crash
+- Protect
+- Rest
+
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Fairy
+EVs: 228 HP / 196 Def / 84 Spe
+Impish Nature
+- Earthquake
+- Toxic
+- Substitute
+- Protect
+
+Corviknight @ Covert Cloak
+Ability: Pressure
+Tera Type: Ghost
+EVs: 252 HP / 252 Def / 4 SpD
+Impish Nature
+- Iron Head
+- Taunt
+- Defog
+- Roost

@@ -1,0 +1,59 @@
+Landorus-Therian @ Choice Scarf
+Ability: Intimidate
+Tera Type: Fairy
+EVs: 52 HP / 188 Atk / 4 Def / 12 SpD / 252 Spe
+Jolly Nature
+- Earthquake
+- Crunch
+- Tera Blast
+- U-turn
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Stellar
+EVs: 12 HP / 244 Atk / 92 Def / 4 SpD / 156 Spe
+Adamant Nature
+- Icicle Crash
+- Sucker Punch
+- Brick Break
+- Swords Dance
+
+Kyogre @ Assault Vest
+Ability: Drizzle
+Tera Type: Electric
+EVs: 252 HP / 4 Def / 124 SpA / 28 SpD / 100 Spe
+Modest Nature
+- Water Spout
+- Surf
+- Thunder
+- Ice Beam
+
+Glimmora @ Leftovers
+Ability: Toxic Debris
+Tera Type: Fairy
+EVs: 252 HP / 196 Def / 60 Spe
+Bold Nature
+- Sludge Wave
+- Dazzling Gleam
+- Mortal Spin
+- Spiky Shield
+
+Dragonite @ Rocky Helmet
+Ability: Multiscale
+Tera Type: Normal
+EVs: 244 HP / 12 Atk / 252 Def
+Impish Nature
+- Extreme Speed
+- Earthquake
+- Encore
+- Roost
+
+Necrozma-Dusk-Mane @ Lum Berry
+Ability: Prism Armor
+Tera Type: Normal
+EVs: 228 HP / 252 Atk / 28 Def
+Adamant Nature
+- Sunsteel Strike
+- Photon Geyser
+- Swords Dance
+- Trick Room

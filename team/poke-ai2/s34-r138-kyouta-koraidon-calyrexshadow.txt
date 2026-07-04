@@ -1,0 +1,60 @@
+Tyranitar @ Smooth Rock
+Ability: Sand Stream
+Tera Type: Fairy
+EVs: 236 HP / 236 SpD / 36 Spe
+Careful Nature
+- Knock Off
+- Low Kick
+- Stealth Rock
+- Roar
+
+Excadrill @ Life Orb
+Ability: Sand Rush
+Tera Type: Stellar
+EVs: 252 Atk / 4 Def / 252 Spe
+Adamant Nature
+- Earthquake
+- Iron Head
+- Rock Slide
+- Swords Dance
+
+Calyrex-Shadow @ Spell Tag
+Ability: As One (Spectrier)
+Tera Type: Fighting
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Astral Barrage
+- Tera Blast
+- Leech Seed
+- Substitute
+
+Koraidon @ Choice Scarf
+Ability: Orichalcum Pulse
+Tera Type: Fire
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Flare Blitz
+- Close Combat
+- Outrage
+- U-turn
+
+Landorus-Therian @ Rocky Helmet
+Ability: Intimidate
+Tera Type: Water
+EVs: 252 HP / 252 Def / 4 Spe
+Impish Nature
+- Earthquake
+- U-turn
+- Stealth Rock
+- Taunt
+
+Dondozo @ Leftovers
+Ability: Unaware
+Tera Type: Fairy
+EVs: 252 HP / 196 Def / 60 SpD
+Impish Nature
+- Wave Crash
+- Yawn
+- Protect
+- Rest

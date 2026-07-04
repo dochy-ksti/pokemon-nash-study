@@ -1,0 +1,61 @@
+Koraidon @ Choice Band
+Ability: Orichalcum Pulse
+Tera Type: Fire
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Close Combat
+- Flare Blitz
+- Outrage
+- U-turn
+
+Kyogre @ Choice Scarf
+Ability: Drizzle
+Tera Type: Ghost
+EVs: 44 Def / 252 SpA / 212 Spe
+Timid Nature
+IVs: 0 Atk
+- Water Spout
+- Surf
+- Ice Beam
+- Thunder
+
+Grimmsnarl @ Rocky Helmet
+Ability: Prankster
+Tera Type: Fire
+EVs: 244 HP / 252 Def / 12 Spe
+Impish Nature
+- Play Rough
+- Sucker Punch
+- Thunder Wave
+- Parting Shot
+
+Landorus-Therian @ Assault Vest
+Ability: Intimidate
+Tera Type: Grass
+EVs: 212 HP / 44 Atk / 252 SpD
+Brave Nature
+- Earthquake
+- U-turn
+- Grass Knot
+- Rock Tomb
+
+Glimmora @ Power Herb
+Ability: Toxic Debris
+Tera Type: Fairy
+EVs: 4 HP / 84 Def / 196 SpA / 4 SpD / 220 Spe
+Modest Nature
+IVs: 0 Atk
+- Meteor Beam
+- Sludge Wave
+- Dazzling Gleam
+- Spiky Shield
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Ground
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Icicle Crash
+- Tera Blast
+- Sacred Sword
+- Sucker Punch

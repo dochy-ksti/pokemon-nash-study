@@ -1,0 +1,59 @@
+Calyrex-Shadow @ Choice Scarf
+Ability: As One (Spectrier)
+Tera Type: Ghost
+EVs: 108 HP / 4 Def / 252 SpA / 4 SpD / 140 Spe
+Timid Nature
+- Astral Barrage
+- Psychic
+- Will-O-Wisp
+- Trick
+
+Incineroar @ Assault Vest
+Ability: Intimidate
+Tera Type: Fairy
+EVs: 252 HP / 4 Def / 252 SpD
+Careful Nature
+- Flare Blitz
+- Knock Off
+- U-turn
+- Fake Out
+
+Kyogre @ Rocky Helmet
+Ability: Drizzle
+Tera Type: Fairy
+EVs: 252 HP / 204 Def / 52 Spe
+Bold Nature
+- Surf
+- Ice Beam
+- Thunder
+- Substitute
+
+Ting-Lu @ Sitrus Berry
+Ability: Vessel of Ruin
+Tera Type: Fairy
+EVs: 252 HP / 4 Def / 252 SpD
+Impish Nature
+- Earthquake
+- Ruination
+- Stealth Rock
+- Whirlwind
+
+Ogerpon-Wellspring @ Wellspring Mask
+Ability: Water Absorb
+Tera Type: Water
+EVs: 252 HP / 4 Def / 4 SpA / 228 SpD / 20 Spe
+Careful Nature
+- Ivy Cudgel
+- Horn Leech
+- Knock Off
+- Leech Seed
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Ice
+EVs: 252 Atk / 4 SpD / 252 Spe
+Adamant Nature
+- Icicle Crash
+- Crunch
+- Ice Shard
+- Swords Dance

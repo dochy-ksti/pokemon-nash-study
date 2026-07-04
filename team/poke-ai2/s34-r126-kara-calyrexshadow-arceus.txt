@@ -1,0 +1,61 @@
+Calyrex-Shadow @ Focus Sash
+Ability: As One (Spectrier)
+Tera Type: Fighting
+EVs: 4 HP / 252 SpA / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Astral Barrage
+- Tera Blast
+- Nasty Plot
+- Protect
+
+Arceus @ Life Orb
+Ability: Multitype
+Tera Type: Ground
+EVs: 172 HP / 252 Atk / 4 Def / 4 SpD / 76 Spe
+Adamant Nature
+- Extreme Speed
+- Earthquake
+- Swords Dance
+- Recover
+
+Glimmora @ Air Balloon
+Ability: Toxic Debris
+Tera Type: Dark
+EVs: 132 HP / 124 Def / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Mortal Spin
+- Power Gem
+- Mud Shot
+- Stealth Rock
+
+Iron Treads @ Booster Energy
+Ability: Quark Drive
+Tera Type: Normal
+EVs: 252 HP / 4 Atk / 92 Def / 52 SpD / 108 Spe
+Jolly Nature
+- Bulldoze
+- Endeavor
+- Rapid Spin
+- Stealth Rock
+
+Roaring Moon @ Covert Cloak
+Ability: Protosynthesis
+Tera Type: Flying
+EVs: 244 HP / 4 Atk / 252 Def / 4 SpD / 4 Spe
+Impish Nature
+- Jaw Lock
+- Roost
+- Taunt
+- Dragon Dance
+
+Ogerpon-Wellspring @ Wellspring Mask
+Ability: Water Absorb
+Tera Type: Water
+EVs: 252 HP / 196 SpD / 60 Spe
+Jolly Nature
+- Ivy Cudgel
+- Knock Off
+- Leech Seed
+- Substitute

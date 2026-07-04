@@ -1,0 +1,57 @@
+Calyrex-Shadow @ Focus Sash
+Ability: As One (Spectrier)
+Tera Type: Fairy
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+- Astral Barrage
+- Draining Kiss
+- Nasty Plot
+- Encore
+
+Terapagos @ Leftovers
+Ability: Tera Shift
+Tera Type: Stellar
+EVs: 172 HP / 4 Def / 4 SpA / 252 SpD / 76 Spe
+Calm Nature
+- Tera Starstorm
+- Rapid Spin
+- Toxic
+- Protect
+
+Alomomola @ Rocky Helmet
+Ability: Regenerator
+Tera Type: Fairy
+EVs: 252 HP / 252 Def / 4 SpD
+Relaxed Nature
+IVs: 0 Spe
+- Flip Turn
+- Aqua Jet
+- Wish
+- Protect
+
+Ditto @ Choice Scarf
+Ability: Imposter
+Tera Type: Normal
+EVs: 252 HP / 252 SpD
+Sassy Nature
+- Transform
+
+Iron Treads @ Choice Band
+Ability: Quark Drive
+Tera Type: Ground
+EVs: 108 HP / 204 Atk / 4 Def / 44 SpD / 148 Spe
+Jolly Nature
+- Earthquake
+- Iron Head
+- Ice Spinner
+- Stone Edge
+
+Chien-Pao @ Never-Melt Ice
+Ability: Sword of Ruin
+Tera Type: Fire
+EVs: 108 HP / 252 Atk / 44 Def / 4 SpD / 100 Spe
+Adamant Nature
+- Icicle Crash
+- Crunch
+- Ice Shard
+- Swords Dance

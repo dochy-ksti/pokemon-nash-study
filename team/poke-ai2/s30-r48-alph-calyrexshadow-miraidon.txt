@@ -1,0 +1,59 @@
+Calyrex-Shadow @ Light Clay
+Ability: As One (Spectrier)
+Tera Type: Normal
+EVs: 172 HP / 148 Def / 12 SpA / 4 SpD / 172 Spe
+Timid Nature
+- Astral Barrage
+- Curse
+- Reflect
+- Light Screen
+
+Miraidon @ Weakness Policy
+Ability: Hadron Engine
+Tera Type: Fairy
+EVs: 252 HP / 60 Def / 164 SpA / 4 SpD / 28 Spe
+Modest Nature
+- Parabolic Charge
+- Dazzling Gleam
+- Calm Mind
+- Agility
+
+Chien-Pao @ Black Glasses
+Ability: Sword of Ruin
+Tera Type: Fire
+EVs: 28 HP / 252 Atk / 108 Def / 4 SpD / 116 Spe
+Adamant Nature
+- Crunch
+- Ice Shard
+- Sucker Punch
+- Swords Dance
+
+Urshifu-Rapid-Strike @ Focus Sash
+Ability: Unseen Fist
+Tera Type: Water
+EVs: 4 HP / 252 Atk / 252 Spe
+Adamant Nature
+- Surging Strikes
+- Close Combat
+- Aqua Jet
+- Taunt
+
+Mimikyu @ Rocky Helmet
+Ability: Disguise
+Tera Type: Normal
+EVs: 84 HP / 252 Atk / 132 Def / 4 SpD / 36 Spe
+Adamant Nature
+- Play Rough
+- Shadow Sneak
+- Curse
+- Endure
+
+Ting-Lu @ Choice Band
+Ability: Vessel of Ruin
+Tera Type: Rock
+EVs: 4 HP / 252 Atk / 4 Def / 148 SpD / 100 Spe
+Adamant Nature
+- Earthquake
+- Payback
+- Bulldoze
+- Spikes

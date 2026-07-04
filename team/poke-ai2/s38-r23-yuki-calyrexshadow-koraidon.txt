@@ -1,0 +1,59 @@
+Calyrex-Shadow @ Choice Specs
+Ability: As One (Spectrier)
+Tera Type: Ground
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+- Astral Barrage
+- Psychic
+- Tera Blast
+- Grass Knot
+
+Koraidon @ Loaded Dice
+Ability: Orichalcum Pulse
+Tera Type: Steel
+EVs: 252 Atk / 4 SpD / 252 Spe
+Jolly Nature
+- Scale Shot
+- Iron Head
+- Substitute
+- Swords Dance
+
+Flutter Mane @ Focus Sash
+Ability: Protosynthesis
+Tera Type: Normal
+EVs: 4 HP / 252 SpA / 252 Spe
+Timid Nature
+- Moonblast
+- Hex
+- Power Gem
+- Thunder Wave
+
+Ting-Lu @ Assault Vest
+Ability: Vessel of Ruin
+Tera Type: Fire
+EVs: 84 HP / 156 Atk / 4 Def / 252 SpD / 12 Spe
+Adamant Nature
+- Earthquake
+- Payback
+- Stone Edge
+- Fissure
+
+Dondozo @ Leftovers
+Ability: Unaware
+Tera Type: Fire
+EVs: 252 HP / 196 Def / 60 SpD
+Impish Nature
+- Fissure
+- Rest
+- Yawn
+- Protect
+
+Chien-Pao @ Black Glasses
+Ability: Sword of Ruin
+Tera Type: Fire
+EVs: 12 HP / 252 Atk / 244 Def
+Adamant Nature
+- Crunch
+- Icicle Crash
+- Sucker Punch
+- Swords Dance

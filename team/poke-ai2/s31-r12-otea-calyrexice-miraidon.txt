@@ -1,0 +1,60 @@
+Calyrex-Ice @ Leftovers
+Ability: As One (Glastrier)
+Tera Type: Fire
+EVs: 252 HP / 156 Def / 100 SpD
+Impish Nature
+- Glacial Lance
+- High Horsepower
+- Trick Room
+- Leech Seed
+
+Miraidon @ Assault Vest
+Ability: Hadron Engine
+Tera Type: Electric
+EVs: 252 HP / 140 SpA / 116 SpD
+Calm Nature
+- Electro Drift
+- Draco Meteor
+- Parabolic Charge
+- U-turn
+
+Urshifu-Rapid-Strike @ Focus Sash
+Ability: Unseen Fist
+Tera Type: Water
+EVs: 252 Atk / 76 Def / 180 Spe
+Adamant Nature
+- Surging Strikes
+- Close Combat
+- Swords Dance
+- Aqua Jet
+
+Ursaluna-Bloodmoon @ Chople Berry
+Ability: Mind's Eye
+Tera Type: Normal
+EVs: 20 HP / 236 Def / 252 SpA
+Quiet Nature
+IVs: 0 Spe
+- Blood Moon
+- Hyper Voice
+- Yawn
+- Vacuum Wave
+
+Mimikyu @ Rocky Helmet
+Ability: Disguise
+Tera Type: Normal
+EVs: 148 HP / 196 Atk / 164 Def
+Adamant Nature
+- Play Rough
+- Shadow Sneak
+- Will-O-Wisp
+- Swords Dance
+
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Dark
+EVs: 228 HP / 236 SpD / 44 Spe
+Careful Nature
+- Earthquake
+- Night Slash
+- Stealth Rock
+- Toxic

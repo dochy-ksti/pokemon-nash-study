@@ -1,0 +1,60 @@
+Koraidon @ Loaded Dice
+Ability: Orichalcum Pulse
+Tera Type: Fire
+EVs: 124 HP / 124 Atk / 4 Def / 116 SpD / 140 Spe
+Adamant Nature
+- Flare Blitz
+- Flame Charge
+- Scale Shot
+- Swords Dance
+
+Calyrex-Shadow @ Focus Sash
+Ability: As One (Spectrier)
+Tera Type: Normal
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Encore
+- Astral Barrage
+- Nasty Plot
+- Grass Knot
+
+Chien-Pao @ Rocky Helmet
+Ability: Sword of Ruin
+Tera Type: Fairy
+EVs: 12 HP / 124 Atk / 244 Def / 4 SpD / 124 Spe
+Jolly Nature
+- Crunch
+- Ruination
+- Taunt
+- Sacred Sword
+
+Dondozo @ Leftovers
+Ability: Unaware
+Tera Type: Normal
+EVs: 252 HP / 196 Def / 60 SpD
+Impish Nature
+- Rest
+- Protect
+- Yawn
+- Fissure
+
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Normal
+EVs: 228 HP / 28 Def / 252 SpD
+Careful Nature
+- Protect
+- Substitute
+- Toxic
+- Earthquake
+
+Ting-Lu @ Sitrus Berry
+Ability: Vessel of Ruin
+Tera Type: Steel
+EVs: 244 HP / 4 Atk / 116 Def / 140 SpD / 4 Spe
+Impish Nature
+- Earthquake
+- Spikes
+- Ruination
+- Whirlwind

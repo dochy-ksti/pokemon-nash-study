@@ -1,0 +1,59 @@
+Zacian-Crowned @ Rusted Sword
+Ability: Intrepid Sword
+Tera Type: Normal
+EVs: 172 HP / 236 Atk / 4 Def / 12 SpD / 84 Spe
+Adamant Nature
+- Behemoth Blade
+- Close Combat
+- Wild Charge
+- Swords Dance
+
+Miraidon @ Choice Scarf
+Ability: Hadron Engine
+Tera Type: Ice
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+- Electro Drift
+- Volt Switch
+- Draco Meteor
+- Tera Blast
+
+Urshifu-Rapid-Strike @ Choice Band
+Ability: Unseen Fist
+Tera Type: Fire
+EVs: 12 HP / 252 Atk / 212 Def / 4 SpD / 28 Spe
+Adamant Nature
+- Surging Strikes
+- Close Combat
+- U-turn
+- Aqua Jet
+
+Landorus-Therian @ Assault Vest
+Ability: Intimidate
+Tera Type: Normal
+EVs: 244 HP / 4 Atk / 44 Def / 212 SpD / 4 Spe
+Adamant Nature
+- Earthquake
+- U-turn
+- Stone Edge
+- Fissure
+
+Archaludon @ Rocky Helmet
+Ability: Stamina
+Tera Type: Water
+EVs: 252 HP / 252 Def / 4 Spe
+Bold Nature
+- Draco Meteor
+- Body Press
+- Foul Play
+- Endure
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Ground
+EVs: 252 Atk / 4 Def / 252 Spe
+Adamant Nature
+- Icicle Crash
+- Sucker Punch
+- Tera Blast
+- Sheer Cold

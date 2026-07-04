@@ -1,0 +1,59 @@
+Calyrex-Shadow @ Choice Specs
+Ability: As One (Spectrier)
+Tera Type: Grass
+EVs: 124 HP / 4 Def / 116 SpA / 12 SpD / 252 Spe
+Timid Nature
+- Astral Barrage
+- Psyshock
+- Leaf Storm
+- Giga Drain
+
+Zacian-Crowned @ Rusted Sword
+Ability: Intrepid Sword
+Tera Type: Normal
+EVs: 220 HP / 252 Atk / 36 Spe
+Adamant Nature
+- Behemoth Blade
+- Close Combat
+- Wild Charge
+- Trailblaze
+
+Ting-Lu @ Assault Vest
+Ability: Vessel of Ruin
+Tera Type: Fairy
+EVs: 4 HP / 236 Atk / 4 Def / 188 SpD / 76 Spe
+Adamant Nature
+- Earthquake
+- Fissure
+- Tera Blast
+- Ruination
+
+Dondozo @ Leftovers
+Ability: Unaware
+Tera Type: Fire
+EVs: 252 HP / 196 Def / 60 SpD
+Impish Nature
+- Wave Crash
+- Fissure
+- Yawn
+- Protect
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Stellar
+EVs: 12 HP / 252 Atk / 92 Def / 4 SpD / 148 Spe
+Adamant Nature
+- Sucker Punch
+- Ice Shard
+- Icicle Crash
+- Swords Dance
+
+Dragonite @ Covert Cloak
+Ability: Multiscale
+Tera Type: Poison
+EVs: 212 HP / 116 Def / 180 Spe
+Bold Nature
+- Fire Spin
+- Draco Meteor
+- Encore
+- Roost

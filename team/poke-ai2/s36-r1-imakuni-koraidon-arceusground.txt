@@ -1,0 +1,59 @@
+Koraidon @ Loaded Dice
+Ability: Orichalcum Pulse
+Tera Type: Fire
+EVs: 220 HP / 220 Atk / 4 Def / 44 SpD / 20 Spe
+Adamant Nature
+- Scale Shot
+- Flare Blitz
+- Flame Charge
+- Taunt
+
+Arceus-Ground @ Earth Plate
+Ability: Multitype
+Tera Type: Steel
+EVs: 252 HP / 4 Def / 156 SpA / 84 SpD / 12 Spe
+Modest Nature
+- Judgment
+- Ice Beam
+- Thunder Wave
+- Recover
+
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Steel
+EVs: 228 HP / 28 Def / 252 SpD
+Careful Nature
+- Earthquake
+- Toxic
+- Protect
+- Substitute
+
+Flutter Mane @ Focus Sash
+Ability: Protosynthesis
+Tera Type: Normal
+EVs: 4 HP / 252 SpA / 252 Spe
+Timid Nature
+- Moonblast
+- Hex
+- Thunder Wave
+- Pain Split
+
+Brute Bonnet @ Heavy-Duty Boots
+Ability: Protosynthesis
+Tera Type: Fire
+EVs: 244 HP / 12 Def / 252 SpD
+Careful Nature
+- Crunch
+- Clear Smog
+- Spore
+- Synthesis
+
+Dondozo @ Leftovers
+Ability: Unaware
+Tera Type: Normal
+EVs: 252 HP / 196 Def / 44 SpD / 12 Spe
+Impish Nature
+- Wave Crash
+- Fissure
+- Protect
+- Rest

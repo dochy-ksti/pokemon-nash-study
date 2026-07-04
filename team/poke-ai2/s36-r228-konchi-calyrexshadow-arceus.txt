@@ -1,0 +1,61 @@
+Calyrex-Shadow @ Choice Specs
+Ability: As One (Spectrier)
+Tera Type: Ground
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Astral Barrage
+- Psychic
+- Grass Knot
+- Tera Blast
+
+Arceus @ Choice Band
+Ability: Multitype
+Tera Type: Normal
+EVs: 156 HP / 252 Atk / 4 Def / 4 SpD / 92 Spe
+Adamant Nature
+- Extreme Speed
+- Double-Edge
+- Earthquake
+- Rock Slide
+
+Urshifu-Rapid-Strike @ Focus Sash
+Ability: Unseen Fist
+Tera Type: Ghost
+EVs: 252 Atk / 4 Def / 252 Spe
+Adamant Nature
+- Surging Strikes
+- Close Combat
+- Aqua Jet
+- Reversal
+
+Alomomola @ Rocky Helmet
+Ability: Regenerator
+Tera Type: Fairy
+EVs: 244 HP / 252 Def / 12 SpD
+Relaxed Nature
+IVs: 0 Spe
+- Flip Turn
+- Aqua Jet
+- Wish
+- Protect
+
+Ting-Lu @ Leftovers
+Ability: Vessel of Ruin
+Tera Type: Poison
+EVs: 244 HP / 84 Def / 180 SpD
+Impish Nature
+- Earthquake
+- Ruination
+- Spikes
+- Whirlwind
+
+Iron Treads @ Booster Energy
+Ability: Quark Drive
+Tera Type: Grass
+EVs: 188 HP / 92 Atk / 4 Def / 12 SpD / 212 Spe
+Jolly Nature
+- Earthquake
+- Heavy Slam
+- Knock Off
+- Rapid Spin

@@ -1,0 +1,59 @@
+Miraidon @ Assault Vest
+Ability: Hadron Engine
+Tera Type: Electric
+EVs: 252 HP / 4 Def / 52 SpA / 180 SpD / 20 Spe
+Modest Nature
+- Electro Drift
+- Draco Meteor
+- Parabolic Charge
+- U-turn
+
+Calyrex-Ice @ Leftovers
+Ability: As One (Glastrier)
+Tera Type: Fire
+EVs: 252 HP / 156 Def / 100 SpD
+Relaxed Nature
+- Glacial Lance
+- Leech Seed
+- Encore
+- Trick Room
+
+Ursaluna-Bloodmoon @ Chople Berry
+Ability: Mind's Eye
+Tera Type: Normal
+EVs: 20 HP / 236 Def / 252 SpA
+Quiet Nature
+- Blood Moon
+- Earth Power
+- Hyper Voice
+- Vacuum Wave
+
+Ogerpon-Hearthflame @ Hearthflame Mask
+Ability: Mold Breaker
+Tera Type: Fire
+EVs: 188 HP / 236 Atk / 4 Def / 4 SpD / 76 Spe
+Adamant Nature
+- Ivy Cudgel
+- Horn Leech
+- Rock Tomb
+- Spiky Shield
+
+Mimikyu @ Rocky Helmet
+Ability: Disguise
+Tera Type: Normal
+EVs: 100 HP / 156 Atk / 252 Def
+Adamant Nature
+- Play Rough
+- Shadow Sneak
+- Curse
+- Trick Room
+
+Urshifu-Rapid-Strike @ Choice Band
+Ability: Unseen Fist
+Tera Type: Normal
+EVs: 8 HP / 236 Atk / 220 Def / 44 Spe
+Adamant Nature
+- Surging Strikes
+- Close Combat
+- Facade
+- Aqua Jet

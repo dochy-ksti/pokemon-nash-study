@@ -1,0 +1,59 @@
+Tyranitar @ Assault Vest
+Ability: Sand Stream
+Tera Type: Ground
+EVs: 252 HP / 204 Atk / 52 Spe
+Adamant Nature
+- Rock Tomb
+- Knock Off
+- Low Kick
+- Earthquake
+
+Landorus-Therian @ Rocky Helmet
+Ability: Intimidate
+Tera Type: Water
+EVs: 252 HP / 252 Def / 4 Spe
+Impish Nature
+- Earthquake
+- U-turn
+- Taunt
+- Stealth Rock
+
+Skeledirge @ Leftovers
+Ability: Unaware
+Tera Type: Water
+EVs: 252 HP / 252 Def / 4 SpD
+Bold Nature
+- Torch Song
+- Yawn
+- Slack Off
+- Substitute
+
+Ogerpon-Wellspring @ Wellspring Mask
+Ability: Water Absorb
+Tera Type: Water
+EVs: 252 HP / 4 Atk / 4 Def / 92 SpD / 156 Spe
+Jolly Nature
+- Ivy Cudgel
+- Horn Leech
+- Knock Off
+- Taunt
+
+Zacian-Crowned @ Rusted Sword
+Ability: Intrepid Sword
+Tera Type: Fighting
+EVs: 236 HP / 76 Atk / 4 Def / 12 SpD / 180 Spe
+Jolly Nature
+- Behemoth Blade
+- Close Combat
+- Trailblaze
+- Swords Dance
+
+Calyrex-Shadow @ Spell Tag
+Ability: As One (Spectrier)
+Tera Type: Fighting
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+- Astral Barrage
+- Tera Blast
+- Leech Seed
+- Substitute

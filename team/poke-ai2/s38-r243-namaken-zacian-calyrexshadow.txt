@@ -1,0 +1,61 @@
+Ting-Lu @ Leftovers
+Ability: Vessel of Ruin
+Tera Type: Water
+EVs: 212 HP / 228 SpD / 68 Spe
+Impish Nature
+- Earthquake
+- Ruination
+- Stealth Rock
+- Taunt
+
+Dragonite @ Rocky Helmet
+Ability: Multiscale
+Tera Type: Steel
+EVs: 244 HP / 36 Def / 12 SpD / 212 Spe
+Bold Nature
+IVs: 0 Atk
+- Fire Spin
+- Thunder Wave
+- Roost
+- Encore
+
+Zacian-Crowned @ Rusted Sword
+Ability: Intrepid Sword
+Tera Type: Normal
+EVs: 140 HP / 188 Atk / 4 Def / 4 SpD / 172 Spe
+Jolly Nature
+- Behemoth Blade
+- Play Rough
+- Wild Charge
+- Swords Dance
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Ghost
+EVs: 252 Atk / 180 Def / 76 Spe
+Adamant Nature
+- Crunch
+- Icicle Crash
+- Swords Dance
+- Sucker Punch
+
+Calyrex-Shadow @ Choice Scarf
+Ability: As One (Spectrier)
+Tera Type: Ghost
+EVs: 124 HP / 100 Def / 108 SpA / 12 SpD / 164 Spe
+Timid Nature
+IVs: 0 Atk
+- Astral Barrage
+- Psychic
+- Will-O-Wisp
+- Trick
+
+Urshifu-Rapid-Strike @ Choice Band
+Ability: Unseen Fist
+Tera Type: Ground
+EVs: 252 Atk / 172 Def / 84 Spe
+Adamant Nature
+- Surging Strikes
+- Close Combat
+- U-turn
+- Aqua Jet

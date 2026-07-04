@@ -1,0 +1,16 @@
+[package]
+name = "poke-ai3-python"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+name = "poke_ai3_python"
+crate-type = ["cdylib"]
+
+[dependencies]
+numpy = "0.28"
+poke-ai3 = { path = "../poke-ai3" }
+poke-env-rust = { path = "../poke-env-rust" }
+poke-sho-rust = { path = "../poke-sho-rust" }
+pyo3 = "0.28.3"
+serde_json = "1"

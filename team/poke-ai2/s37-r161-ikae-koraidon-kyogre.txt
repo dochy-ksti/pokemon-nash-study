@@ -1,0 +1,61 @@
+Koraidon @ Loaded Dice
+Ability: Orichalcum Pulse
+Tera Type: Steel
+EVs: 124 HP / 236 Atk / 4 Def / 4 SpD / 140 Spe
+Adamant Nature
+- Scale Shot
+- Iron Head
+- Substitute
+- Swords Dance
+
+Kyogre @ Assault Vest
+Ability: Drizzle
+Tera Type: Fairy
+EVs: 236 HP / 156 SpA / 116 Spe
+Modest Nature
+IVs: 0 Atk
+- Water Spout
+- Surf
+- Thunder
+- Tera Blast
+
+Landorus-Therian @ Rocky Helmet
+Ability: Intimidate
+Tera Type: Fire
+EVs: 252 HP / 4 Atk / 252 Def
+Relaxed Nature
+- Earthquake
+- U-turn
+- Stealth Rock
+- Taunt
+
+Chi-Yu @ Choice Scarf
+Ability: Beads of Ruin
+Tera Type: Rock
+EVs: 164 HP / 4 Def / 108 SpA / 4 SpD / 228 Spe
+Modest Nature
+IVs: 0 Atk
+- Overheat
+- Flamethrower
+- Dark Pulse
+- Tera Blast
+
+Iron Treads @ Booster Energy
+Ability: Quark Drive
+Tera Type: Ghost
+EVs: 252 HP / 124 Def / 132 Spe
+Jolly Nature
+- Earthquake
+- Knock Off
+- Body Press
+- Iron Defense
+
+Kingambit @ Dread Plate
+Ability: Supreme Overlord
+Tera Type: Dark
+EVs: 252 HP / 36 Atk / 212 Def / 4 SpD / 4 Spe
+Adamant Nature
+- Kowtow Cleave
+- Sucker Punch
+- Foul Play
+- Swords Dance

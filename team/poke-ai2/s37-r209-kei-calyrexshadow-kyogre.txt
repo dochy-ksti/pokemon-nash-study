@@ -1,0 +1,62 @@
+Calyrex-Shadow @ Choice Specs
+Ability: As One (Spectrier)
+Tera Type: Ground
+EVs: 172 HP / 92 Def / 100 SpA / 4 SpD / 140 Spe
+Timid Nature
+IVs: 0 Atk
+- Astral Barrage
+- Psyshock
+- Tera Blast
+- Grass Knot
+
+Kyogre @ Rocky Helmet
+Ability: Drizzle
+Tera Type: Fairy
+EVs: 252 HP / 172 Def / 4 SpA / 68 SpD / 12 Spe
+Bold Nature
+IVs: 0 Atk
+- Surf
+- Thunder
+- Ice Beam
+- Thunder Wave
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Stellar
+EVs: 252 Atk / 4 Def / 252 Spe
+Adamant Nature
+- Icicle Crash
+- Sucker Punch
+- Swords Dance
+- Ice Shard
+
+Ursaluna-Bloodmoon @ Covert Cloak
+Ability: Mind's Eye
+Tera Type: Normal
+EVs: 108 HP / 4 Def / 236 SpA / 156 SpD / 4 Spe
+Modest Nature
+IVs: 0 Atk
+- Hyper Voice
+- Taunt
+- Calm Mind
+- Moonlight
+
+Clodsire @ Leftovers
+Ability: Unaware
+Tera Type: Normal
+EVs: 252 HP / 252 Def / 4 SpD
+Impish Nature
+- Earthquake
+- Recover
+- Counter
+- Protect
+
+Incineroar @ Assault Vest
+Ability: Intimidate
+Tera Type: Fairy
+EVs: 252 HP / 4 Atk / 252 SpD
+Careful Nature
+- Knock Off
+- Flare Blitz
+- U-turn
+- Fake Out

@@ -1,0 +1,59 @@
+Koraidon @ Focus Sash
+Ability: Orichalcum Pulse
+Tera Type: Ice
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Scale Shot
+- Close Combat
+- Iron Head
+- Tera Blast
+
+Calyrex-Shadow @ Sitrus Berry
+Ability: As One (Spectrier)
+Tera Type: Fairy
+EVs: 252 HP / 124 Def / 116 SpA / 4 SpD / 12 Spe
+Modest Nature
+IVs: 0 Atk
+- Astral Barrage
+- Draining Kiss
+- Nasty Plot
+- Agility
+
+Flutter Mane @ Lum Berry
+Ability: Protosynthesis
+Tera Type: Normal
+EVs: 100 HP / 140 Def / 4 SpA / 12 SpD / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Moonblast
+- Thunder Wave
+- Taunt
+- Memento
+
+Ting-Lu @ Leftovers
+Ability: Vessel of Ruin
+Tera Type: Fire
+EVs: 244 HP / 4 Atk / 196 Def / 36 SpD / 28 Spe
+Impish Nature
+- Earthquake
+- Taunt
+- Mean Look
+- Rest
+
+Archaludon @ Power Herb
+Ability: Sturdy
+Tera Type: Steel
+EVs: 4 Def / 252 SpA / 252 Spe
+Rash Nature
+- Flash Cannon
+- Draco Meteor
+- Electro Shot
+- Metal Burst
+
+Ditto @ Choice Scarf
+Ability: Imposter
+Tera Type: Normal
+EVs: 252 HP
+Sassy Nature
+IVs: 0 Atk
+- Transform

@@ -1,0 +1,60 @@
+Calyrex-Shadow @ Choice Specs
+Ability: As One (Spectrier)
+Tera Type: Grass
+EVs: 124 HP / 4 Def / 236 SpA / 4 SpD / 140 Spe
+Timid Nature
+- Astral Barrage
+- Psychic
+- Leaf Storm
+- Encore
+
+Ho-Oh @ Heavy-Duty Boots
+Ability: Regenerator
+Tera Type: Fairy
+EVs: 252 HP / 236 Def / 20 Spe
+Impish Nature
+- Sacred Fire
+- Earthquake
+- Whirlwind
+- Recover
+
+Grimmsnarl @ Lagging Tail
+Ability: Prankster
+Tera Type: Normal
+EVs: 244 HP / 4 Atk / 60 Def / 196 SpD / 4 Spe
+Careful Nature
+- Spirit Break
+- Sucker Punch
+- Thunder Wave
+- Trick
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Ground
+EVs: 252 Atk / 4 Def / 252 Spe
+Adamant Nature
+- Icicle Crash
+- Sucker Punch
+- Tera Blast
+- Brick Break
+
+Alomomola @ Assault Vest
+Ability: Regenerator
+Tera Type: Fairy
+EVs: 244 HP / 12 Def / 252 SpD
+Sassy Nature
+IVs: 0 Spe
+- Flip Turn
+- Icy Wind
+- Aqua Jet
+- Mirror Coat
+
+Ting-Lu @ Leftovers
+Ability: Vessel of Ruin
+Tera Type: Poison
+EVs: 212 HP / 4 Atk / 36 Def / 252 SpD / 4 Spe
+Impish Nature
+- Earthquake
+- Stealth Rock
+- Spikes
+- Whirlwind

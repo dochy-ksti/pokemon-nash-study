@@ -1,0 +1,62 @@
+Arceus-Fairy @ Pixie Plate
+Ability: Multitype
+Tera Type: Fairy
+EVs: 76 HP / 124 Def / 124 SpA / 68 SpD / 116 Spe
+Timid Nature
+IVs: 0 Atk
+- Judgment
+- Thunder Wave
+- Taunt
+- Recover
+
+Calyrex-Shadow @ Spooky Plate
+Ability: As One (Spectrier)
+Tera Type: Ghost
+EVs: 12 HP / 244 Def / 196 SpA / 20 SpD / 36 Spe
+Modest Nature
+IVs: 0 Atk
+- Astral Barrage
+- Psyshock
+- Tera Blast
+- Nasty Plot
+
+Kingambit @ Dread Plate
+Ability: Supreme Overlord
+Tera Type: Dark
+EVs: 140 HP / 228 Atk / 140 SpD
+Adamant Nature
+- Kowtow Cleave
+- Sucker Punch
+- Iron Head
+- Swords Dance
+
+Ursaluna-Bloodmoon @ Assault Vest
+Ability: Mind's Eye
+Tera Type: Ice
+EVs: 132 HP / 4 Def / 116 SpA / 244 SpD / 12 Spe
+Modest Nature
+IVs: 0 Atk
+- Blood Moon
+- Earth Power
+- Moonblast
+- Vacuum Wave
+
+Dondozo @ Leftovers
+Ability: Unaware
+Tera Type: Water
+EVs: 252 HP / 132 Def / 124 SpD
+Impish Nature
+- Wave Crash
+- Yawn
+- Protect
+- Rest
+
+Meowscarada @ Focus Sash
+Ability: Overgrow
+Tera Type: Normal
+EVs: 252 Atk / 4 SpD / 252 Spe
+Adamant Nature
+- Flower Trick
+- Knock Off
+- Triple Axel
+- Sucker Punch

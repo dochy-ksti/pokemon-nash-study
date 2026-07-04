@@ -1,0 +1,59 @@
+Calyrex-Shadow @ Leftovers
+Ability: As One (Spectrier)
+Tera Type: Normal
+EVs: 140 HP / 108 Def / 252 SpA / 4 SpD / 4 Spe
+Timid Nature
+- Astral Barrage
+- Leech Seed
+- Substitute
+- Protect
+
+Zamazenta-Crowned @ Rusted Shield
+Ability: Dauntless Shield
+Tera Type: Water
+EVs: 188 HP / 4 Atk / 156 Def / 4 SpD / 156 Spe
+Impish Nature
+- Heavy Slam
+- Body Press
+- Iron Defense
+- Rest
+
+Ting-Lu @ Assault Vest
+Ability: Vessel of Ruin
+Tera Type: Steel
+EVs: 4 HP / 244 Atk / 4 Def / 252 SpD / 4 Spe
+Careful Nature
+- Earthquake
+- Ruination
+- Payback
+- Heavy Slam
+
+Gliscor @ Focus Sash
+Ability: Poison Heal
+Tera Type: Water
+EVs: 4 HP / 252 Atk / 252 Spe
+Jolly Nature
+- Bulldoze
+- Knock Off
+- Stealth Rock
+- Taunt
+
+Mimikyu @ Rocky Helmet
+Ability: Disguise
+Tera Type: Water
+EVs: 228 HP / 196 Atk / 84 Def
+Adamant Nature
+- Play Rough
+- Shadow Sneak
+- Curse
+- Endure
+
+Sneasler @ Sitrus Berry
+Ability: Unburden
+Tera Type: Ghost
+EVs: 228 HP / 164 Def / 116 Spe
+Adamant Nature
+- Dire Claw
+- Close Combat
+- Shadow Claw
+- Toxic Spikes

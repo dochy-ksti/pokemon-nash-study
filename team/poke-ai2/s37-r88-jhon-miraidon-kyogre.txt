@@ -1,0 +1,62 @@
+Miraidon @ Assault Vest
+Ability: Hadron Engine
+Tera Type: Ice
+EVs: 172 HP / 4 Def / 252 SpA / 4 SpD / 76 Spe
+Modest Nature
+IVs: 0 Atk
+- Electro Drift
+- Draco Meteor
+- Volt Switch
+- Tera Blast
+
+Kyogre @ Choice Specs
+Ability: Drizzle
+Tera Type: Ground
+EVs: 236 HP / 20 Def / 156 SpA / 28 SpD / 68 Spe
+Modest Nature
+IVs: 0 Atk
+- Water Spout
+- Surf
+- Ice Beam
+- Tera Blast
+
+Mimikyu @ Life Orb
+Ability: Disguise
+Tera Type: Stellar
+EVs: 36 HP / 252 Atk / 156 Def / 4 SpD / 60 Spe
+Adamant Nature
+- Shadow Sneak
+- Play Rough
+- Curse
+- Trick Room
+
+Scizor @ Rocky Helmet
+Ability: Technician
+Tera Type: Flying
+EVs: 252 HP / 4 Atk / 252 Def
+Impish Nature
+- Bullet Punch
+- Knock Off
+- U-turn
+- Swords Dance
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Electric
+EVs: 252 Atk / 108 Def / 148 Spe
+Adamant Nature
+- Icicle Crash
+- Ice Shard
+- Tera Blast
+- Sacred Sword
+
+Glimmora @ Red Card
+Ability: Toxic Debris
+Tera Type: Normal
+EVs: 252 HP / 252 Def / 4 SpD
+Bold Nature
+IVs: 0 Atk
+- Mortal Spin
+- Power Gem
+- Dazzling Gleam
+- Spiky Shield

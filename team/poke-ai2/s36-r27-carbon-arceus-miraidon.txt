@@ -1,0 +1,60 @@
+Arceus @ Covert Cloak
+Ability: Multitype
+Tera Type: Ghost
+EVs: 252 HP / 252 Atk / 4 Def
+Adamant Nature
+- Extreme Speed
+- Shadow Claw
+- Swords Dance
+- Recover
+
+Miraidon @ Assault Vest
+Ability: Hadron Engine
+Tera Type: Ice
+EVs: 236 HP / 4 Def / 36 SpA / 164 SpD / 68 Spe
+Modest Nature
+IVs: 0 Atk
+- Electro Drift
+- Tera Blast
+- Mirror Coat
+- Volt Switch
+
+Landorus-Therian @ Rocky Helmet
+Ability: Intimidate
+Tera Type: Steel
+EVs: 252 HP / 4 Atk / 252 Def
+Relaxed Nature
+- Earthquake
+- U-turn
+- Stealth Rock
+- Taunt
+
+Urshifu-Rapid-Strike @ Focus Sash
+Ability: Unseen Fist
+Tera Type: Ghost
+EVs: 12 HP / 252 Atk / 244 Spe
+Adamant Nature
+- Surging Strikes
+- Close Combat
+- Ice Spinner
+- Aqua Jet
+
+Chien-Pao @ Life Orb
+Ability: Sword of Ruin
+Tera Type: Electric
+EVs: 108 HP / 252 Atk / 148 Spe
+Adamant Nature
+- Icicle Crash
+- Sucker Punch
+- Tera Blast
+- Ice Shard
+
+Iron Treads @ Choice Band
+Ability: Quark Drive
+Tera Type: Ground
+EVs: 60 HP / 196 Atk / 20 Def / 92 SpD / 140 Spe
+Jolly Nature
+- Earthquake
+- Iron Head
+- Ice Spinner
+- Knock Off

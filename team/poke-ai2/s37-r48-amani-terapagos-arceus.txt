@@ -1,0 +1,59 @@
+Terapagos @ Rocky Helmet
+Ability: Tera Shell
+Tera Type: Stellar
+EVs: 4 HP / 252 SpA / 252 Spe
+Timid Nature
+- Tera Starstorm
+- Rapid Spin
+- Dark Pulse
+- Stealth Rock
+
+Arceus-Ground @ Earth Plate
+Ability: Multitype
+Tera Type: Steel
+EVs: 124 HP / 236 Atk / 4 Def / 4 SpD / 140 Spe
+Adamant Nature
+- Earthquake
+- Extreme Speed
+- Taunt
+- Dragon Dance
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Ghost
+EVs: 12 HP / 252 Atk / 92 Def / 4 SpD / 148 Spe
+Adamant Nature
+- Ice Shard
+- Icicle Crash
+- Sacred Sword
+- Swords Dance
+
+Dragonite @ Choice Band
+Ability: Multiscale
+Tera Type: Flying
+EVs: 68 HP / 252 Atk / 188 Spe
+Adamant Nature
+- Extreme Speed
+- Outrage
+- Earthquake
+- Tera Blast
+
+Garganacl @ Leftovers
+Ability: Purifying Salt
+Tera Type: Ghost
+EVs: 252 HP / 156 Def / 100 SpD
+Impish Nature
+- Salt Cure
+- Curse
+- Protect
+- Recover
+
+Skeledirge @ Covert Cloak
+Ability: Unaware
+Tera Type: Normal
+EVs: 252 HP / 252 Def / 4 SpD
+Bold Nature
+- Torch Song
+- Hex
+- Yawn
+- Slack Off

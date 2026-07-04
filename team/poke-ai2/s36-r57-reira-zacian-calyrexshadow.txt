@@ -1,0 +1,60 @@
+Zacian-Crowned @ Rusted Sword
+Ability: Intrepid Sword
+Tera Type: Normal
+EVs: 172 HP / 236 Atk / 4 Def / 12 SpD / 84 Spe
+Adamant Nature
+- Behemoth Blade
+- Close Combat
+- Wild Charge
+- Swords Dance
+
+Calyrex-Shadow @ Focus Sash
+Ability: As One (Spectrier)
+Tera Type: Ground
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Astral Barrage
+- Grass Knot
+- Tera Blast
+- Nasty Plot
+
+Ting-Lu @ Sitrus Berry
+Ability: Vessel of Ruin
+Tera Type: Electric
+EVs: 212 HP / 4 Atk / 4 Def / 220 SpD / 68 Spe
+Impish Nature
+- Earthquake
+- Ruination
+- Stealth Rock
+- Whirlwind
+
+Chien-Pao @ Dread Plate
+Ability: Sword of Ruin
+Tera Type: Fire
+EVs: 12 HP / 252 Atk / 244 Def
+Adamant Nature
+- Icicle Crash
+- Crunch
+- Sucker Punch
+- Swords Dance
+
+Dragonite @ Choice Band
+Ability: Multiscale
+Tera Type: Flying
+EVs: 4 HP / 252 Atk / 252 Spe
+Adamant Nature
+- Outrage
+- Tera Blast
+- Extreme Speed
+- Fire Punch
+
+Urshifu-Rapid-Strike @ Choice Scarf
+Ability: Unseen Fist
+Tera Type: Water
+EVs: 252 Atk / 4 Def / 252 Spe
+Adamant Nature
+- Surging Strikes
+- Close Combat
+- Ice Spinner
+- U-turn

@@ -1,0 +1,65 @@
+Koraidon @ Choice Band
+Ability: Orichalcum Pulse
+Tera Type: Fairy
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+IVs: 0 SpA
+- Close Combat
+- Outrage
+- U-turn
+- Tera Blast
+
+Ho-Oh @ Choice Scarf
+Ability: Regenerator
+Tera Type: Dark
+EVs: 108 HP / 116 Atk / 68 Def / 4 SpD / 212 Spe
+Jolly Nature
+IVs: 0 SpA
+- Sacred Fire
+- Brave Bird
+- Earthquake
+- Tera Blast
+
+Ursaluna-Bloodmoon @ Silk Scarf
+Ability: Mind's Eye
+Tera Type: Normal
+EVs: 108 HP / 4 Def / 236 SpA / 156 SpD / 4 Spe
+Modest Nature
+IVs: 0 Atk
+- Blood Moon
+- Hyper Voice
+- Calm Mind
+- Moonlight
+
+Clodsire @ Sitrus Berry
+Ability: Unaware
+Tera Type: Normal
+EVs: 252 HP / 252 Def / 4 SpD
+Impish Nature
+IVs: 0 SpA
+- Earthquake
+- Toxic
+- Recover
+- Counter
+
+Dondozo @ Leftovers
+Ability: Unaware
+Tera Type: Normal
+EVs: 252 HP / 4 Atk / 196 Def / 28 SpD / 28 Spe
+Impish Nature
+IVs: 0 SpA
+- Protect
+- Yawn
+- Substitute
+- Fissure
+
+Baxcalibur @ Loaded Dice
+Ability: Thermal Exchange
+Tera Type: Steel
+EVs: 4 HP / 252 Atk / 252 Spe
+Jolly Nature
+IVs: 0 SpA
+- Icicle Spear
+- Scale Shot
+- Swords Dance
+- Ice Shard

@@ -1,0 +1,60 @@
+Calyrex-Shadow @ Focus Sash
+Ability: As One (Spectrier)
+Tera Type: Grass
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Astral Barrage
+- Giga Drain
+- Nasty Plot
+- Substitute
+
+Zacian-Crowned @ Rusted Sword
+Ability: Intrepid Sword
+Tera Type: Normal
+EVs: 188 HP / 236 Atk / 4 Def / 12 SpD / 68 Spe
+Adamant Nature
+- Behemoth Blade
+- Close Combat
+- Trailblaze
+- Swords Dance
+
+Chien-Pao @ Life Orb
+Ability: Sword of Ruin
+Tera Type: Electric
+EVs: 188 HP / 252 Atk / 68 Spe
+Adamant Nature
+- Crunch
+- Tera Blast
+- Ice Shard
+- Swords Dance
+
+Dondozo @ Leftovers
+Ability: Unaware
+Tera Type: Normal
+EVs: 252 HP / 196 Def / 60 SpD
+Impish Nature
+- Wave Crash
+- Protect
+- Yawn
+- Rest
+
+Ting-Lu @ Assault Vest
+Ability: Vessel of Ruin
+Tera Type: Fire
+EVs: 4 HP / 156 Atk / 4 Def / 220 SpD / 124 Spe
+Adamant Nature
+- Earthquake
+- Heavy Slam
+- Rock Tomb
+- Fissure
+
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Steel
+EVs: 228 HP / 196 SpD / 84 Spe
+Careful Nature
+- Earthquake
+- Toxic
+- Protect
+- Substitute

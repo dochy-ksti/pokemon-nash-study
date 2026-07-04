@@ -1,0 +1,61 @@
+Gallade @ Custap Berry
+Ability: Sharpness
+Tera Type: Steel
+EVs: 252 HP / 36 Atk / 220 Spe
+Adamant Nature
+- Sacred Sword
+- Taunt
+- Destiny Bond
+- Trick Room
+
+Calyrex-Shadow @ Choice Scarf
+Ability: As One (Spectrier)
+Tera Type: Fairy
+EVs: 172 HP / 84 Def / 92 SpA / 4 SpD / 156 Spe
+Modest Nature
+IVs: 0 Atk
+- Astral Barrage
+- Psychic
+- Draining Kiss
+- Trick
+
+Ho-Oh @ Heavy-Duty Boots
+Ability: Regenerator
+Tera Type: Normal
+EVs: 252 HP / 220 Def / 36 Spe
+Impish Nature
+- Sacred Fire
+- Protect
+- Whirlwind
+- Recover
+
+Urshifu @ Covert Cloak
+Ability: Unseen Fist
+Tera Type: Dark
+EVs: 124 HP / 252 Atk / 60 Def / 4 SpD / 68 Spe
+Adamant Nature
+- Wicked Blow
+- Close Combat
+- Sucker Punch
+- Swords Dance
+
+Dondozo @ Leftovers
+Ability: Unaware
+Tera Type: Fairy
+EVs: 252 Atk / 252 Def / 4 SpD
+Impish Nature
+- Liquidation
+- Earthquake
+- Rest
+- Protect
+
+Clodsire @ Black Sludge
+Ability: Water Absorb
+Tera Type: Dark
+EVs: 252 HP / 124 Def / 44 SpA / 84 SpD / 4 Spe
+Calm Nature
+IVs: 0 Atk
+- Sludge Bomb
+- Toxic Spikes
+- Protect
+- Recover

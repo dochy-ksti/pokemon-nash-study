@@ -1,0 +1,56 @@
+Miraidon @ Choice Specs
+Ability: Hadron Engine
+Tera Type: Fairy
+EVs: 140 HP / 20 Def / 236 SpA / 4 SpD / 108 Spe
+Modest Nature
+- Electro Drift
+- Draco Meteor
+- Dazzling Gleam
+- Volt Switch
+
+Calyrex-Ice @ Loaded Dice
+Ability: As One (Glastrier)
+Tera Type: Fire
+EVs: 252 HP / 196 Atk / 60 SpD
+Adamant Nature
+- Icicle Spear
+- High Horsepower
+- Swords Dance
+- Trick Room
+
+Urshifu-Rapid-Strike @ Choice Band
+Ability: Unseen Fist
+Tera Type: Normal
+EVs: 92 HP / 236 Atk / 172 Def / 4 SpD / 4 Spe
+Adamant Nature
+- Surging Strikes
+- Close Combat
+- Ice Spinner
+- Aqua Jet
+
+Sneasler @ Electric Seed
+Ability: Unburden
+Tera Type: Dark
+EVs: 156 HP / 212 Atk / 28 Def / 4 SpD / 108 Spe
+Adamant Nature
+- Dire Claw
+- Close Combat
+- Throat Chop
+- Swords Dance
+
+Iron Treads @ Assault Vest
+Ability: Quark Drive
+Tera Type: Normal
+EVs: 188 HP / 4 Atk / 4 Def / 236 SpD / 76 Spe
+Jolly Nature
+- Bulldoze
+- Iron Head
+- Knock Off
+- Endeavor
+
+Ditto @ Focus Sash
+Ability: Imposter
+Tera Type: Steel
+EVs: 252 HP / 4 Def / 252 SpD
+Sassy Nature
+- Transform

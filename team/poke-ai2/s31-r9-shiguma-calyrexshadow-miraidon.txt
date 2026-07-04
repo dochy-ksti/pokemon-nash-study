@@ -1,0 +1,59 @@
+Calyrex-Shadow @ Leftovers
+Ability: As One (Spectrier)
+Tera Type: Normal
+EVs: 172 HP / 164 Def / 4 SpD / 164 Spe
+Timid Nature
+- Astral Barrage
+- Disable
+- Encore
+- Protect
+
+Miraidon @ Electric Seed
+Ability: Hadron Engine
+Tera Type: Water
+EVs: 156 HP / 124 Def / 132 SpA / 92 Spe
+Modest Nature
+- Electro Drift
+- Dragon Pulse
+- Tera Blast
+- Agility
+
+Chien-Pao @ Never-Melt Ice
+Ability: Sword of Ruin
+Tera Type: Fire
+EVs: 108 HP / 252 Atk / 44 Def / 100 Spe
+Adamant Nature
+- Icicle Crash
+- Crunch
+- Ice Shard
+- Swords Dance
+
+Great Tusk @ Booster Energy
+Ability: Protosynthesis
+Tera Type: Dark
+EVs: 196 HP / 60 SpD / 252 Spe
+Jolly Nature
+- Bulldoze
+- Knock Off
+- Rapid Spin
+- Stealth Rock
+
+Meowscarada @ Focus Sash
+Ability: Overgrow
+Tera Type: Normal
+EVs: 252 Atk / 12 SpD / 244 Spe
+Jolly Nature
+- Knock Off
+- Flower Trick
+- Spikes
+- Toxic Spikes
+
+Gastrodon @ Sitrus Berry
+Ability: Storm Drain
+Tera Type: Steel
+EVs: 244 HP / 12 Def / 252 SpD
+Calm Nature
+- Surf
+- Stealth Rock
+- Spikes
+- Yawn

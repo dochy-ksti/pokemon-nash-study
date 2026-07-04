@@ -1,0 +1,59 @@
+Ho-Oh @ Choice Scarf
+Ability: Regenerator
+Tera Type: Stellar
+EVs: 252 Atk / 4 SpD / 252 Spe
+Jolly Nature
+- Sacred Fire
+- Brave Bird
+- Earthquake
+- Whirlwind
+
+Garganacl @ Leftovers
+Ability: Purifying Salt
+Tera Type: Water
+EVs: 252 HP / 244 Def / 12 Spe
+Impish Nature
+- Salt Cure
+- Stealth Rock
+- Protect
+- Recover
+
+Flutter Mane @ Choice Specs
+Ability: Protosynthesis
+Tera Type: Fairy
+EVs: 4 HP / 252 SpA / 252 Spe
+Timid Nature
+- Moonblast
+- Shadow Ball
+- Power Gem
+- Perish Song
+
+Koraidon @ Loaded Dice
+Ability: Orichalcum Pulse
+Tera Type: Steel
+EVs: 244 Atk / 12 SpD / 252 Spe
+Jolly Nature
+- Scale Shot
+- Iron Head
+- Snarl
+- Bulk Up
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Stellar
+EVs: 252 Atk / 4 Def / 252 Spe
+Adamant Nature
+- Crunch
+- Ice Shard
+- Sucker Punch
+- Swords Dance
+
+Clodsire @ Mental Herb
+Ability: Water Absorb
+Tera Type: Dark
+EVs: 252 HP / 4 Def / 252 SpD
+Careful Nature
+- Earthquake
+- Toxic
+- Toxic Spikes
+- Recover

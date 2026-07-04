@@ -1,0 +1,65 @@
+Mimikyu @ Rocky Helmet
+Ability: Disguise
+Tera Type: Dark
+EVs: 252 HP / 252 Def / 4 SpD
+Relaxed Nature
+IVs: 0 Spe
+- Trick Room
+- Will-O-Wisp
+- Taunt
+- Curse
+
+Necrozma-Dawn-Wings @ Power Herb
+Ability: Prism Armor
+Tera Type: Water
+EVs: 244 HP / 12 Def / 252 SpA
+Quiet Nature
+IVs: 0 Spe
+- Moongeist Beam
+- Photon Geyser
+- Trick Room
+- Meteor Beam
+
+Urshifu-Rapid-Strike @ Choice Band
+Ability: Unseen Fist
+Tera Type: Water
+EVs: 4 HP / 252 Atk / 252 SpD
+Brave Nature
+IVs: 0 Spe
+- Surging Strikes
+- Aqua Jet
+- U-turn
+- Close Combat
+
+Ursaluna @ Flame Orb
+Ability: Guts
+Tera Type: Fire
+EVs: 252 Atk / 252 SpD
+Brave Nature
+IVs: 0 Spe
+- Facade
+- Earthquake
+- Taunt
+- Fling
+
+Hatterene @ Focus Sash
+Ability: Magic Bounce
+Tera Type: Water
+EVs: 252 HP / 4 Def / 252 SpA
+Quiet Nature
+IVs: 0 Spe
+- Trick Room
+- Psyshock
+- Psychic Noise
+- Misty Explosion
+
+Calyrex-Ice @ Loaded Dice
+Ability: As One (Glastrier)
+Tera Type: Grass
+EVs: 252 HP / 252 Atk
+Brave Nature
+IVs: 0 Spe
+- Icicle Spear
+- High Horsepower
+- Trick Room
+- Bullet Seed

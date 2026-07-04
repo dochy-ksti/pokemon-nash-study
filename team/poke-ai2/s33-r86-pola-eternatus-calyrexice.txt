@@ -1,0 +1,60 @@
+Eternatus @ Leftovers
+Ability: Pressure
+Tera Type: Fire
+EVs: 44 HP / 4 Def / 236 SpA / 12 SpD / 212 Spe
+Timid Nature
+- Substitute
+- Protect
+- Flamethrower
+- Dynamax Cannon
+
+Calyrex-Ice @ Loaded Dice
+Ability: As One (Glastrier)
+Tera Type: Normal
+EVs: 252 HP / 252 Atk / 4 Def
+Brave Nature
+IVs: 0 Spe
+- Icicle Spear
+- High Horsepower
+- Trick Room
+- Bullet Seed
+
+Ting-Lu @ Assault Vest
+Ability: Vessel of Ruin
+Tera Type: Fairy
+EVs: 4 HP / 252 Atk / 4 Def / 228 SpD / 20 Spe
+Adamant Nature
+- Earthquake
+- Fissure
+- Tera Blast
+- Payback
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Ice
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Brick Break
+- Icicle Crash
+- Ice Shard
+- Sheer Cold
+
+Ursaluna-Bloodmoon @ Silk Scarf
+Ability: Mind's Eye
+Tera Type: Normal
+EVs: 252 HP / 4 Def / 252 SpA
+Modest Nature
+- Calm Mind
+- Moonlight
+- Blood Moon
+- Hyper Voice
+
+Mimikyu @ Mental Herb
+Ability: Disguise
+Tera Type: Water
+EVs: 4 HP / 252 Atk / 252 Def
+Adamant Nature
+- Curse
+- Shadow Sneak
+- Play Rough
+- Trick Room

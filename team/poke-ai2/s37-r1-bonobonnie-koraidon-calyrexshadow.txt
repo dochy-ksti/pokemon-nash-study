@@ -1,0 +1,59 @@
+Koraidon @ Assault Vest
+Ability: Orichalcum Pulse
+Tera Type: Fire
+EVs: 124 HP / 252 Atk / 4 Def / 12 SpD / 116 Spe
+Adamant Nature
+- Flare Blitz
+- Drain Punch
+- Outrage
+- Flame Charge
+
+Calyrex-Shadow @ Focus Sash
+Ability: As One (Spectrier)
+Tera Type: Steel
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+- Astral Barrage
+- Grass Knot
+- Encore
+- Nasty Plot
+
+Flutter Mane @ Choice Specs
+Ability: Protosynthesis
+Tera Type: Fairy
+EVs: 100 HP / 108 Def / 148 SpA / 4 SpD / 148 Spe
+Timid Nature
+- Moonblast
+- Shadow Ball
+- Power Gem
+- Disarming Voice
+
+Garganacl @ Leftovers
+Ability: Purifying Salt
+Tera Type: Water
+EVs: 252 HP / 4 Atk / 76 Def / 148 SpD / 28 Spe
+Impish Nature
+- Salt Cure
+- Protect
+- Recover
+- Stealth Rock
+
+Chi-Yu @ Choice Scarf
+Ability: Beads of Ruin
+Tera Type: Fire
+EVs: 100 HP / 4 Def / 164 SpA / 4 SpD / 236 Spe
+Modest Nature
+- Overheat
+- Flamethrower
+- Dark Pulse
+- Fire Blast
+
+Ting-Lu @ Sitrus Berry
+Ability: Vessel of Ruin
+Tera Type: Poison
+EVs: 244 HP / 4 Atk / 36 Def / 204 SpD / 20 Spe
+Impish Nature
+- Bulldoze
+- Ruination
+- Stealth Rock
+- Taunt

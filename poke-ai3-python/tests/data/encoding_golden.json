@@ -1,0 +1,319 @@
+{
+ "states": [
+  {
+   "my_species_gid": 7,
+   "opp_species_gid": 11,
+   "my_exact_hp_frac": 0.75,
+   "opp_quantized_hp_frac": 0.5,
+   "my_move_gids": [
+    3,
+    4
+   ],
+   "opp_move_gids": [
+    6
+   ],
+   "my_bench": [
+    {
+     "species_gid": 9,
+     "hp_frac": 0.25,
+     "move_gids": [
+      5
+     ]
+    }
+   ],
+   "opp_bench": [
+    {
+     "species_gid": 13,
+     "hp_frac": 0.5,
+     "move_gids": [
+      8,
+      9
+     ]
+    }
+   ],
+   "legal_action_mask": [
+    true,
+    false,
+    false,
+    false,
+    true
+   ]
+  },
+  {
+   "my_species_gid": 1,
+   "opp_species_gid": 2,
+   "my_exact_hp_frac": 1.0,
+   "opp_quantized_hp_frac": 1.0,
+   "my_move_gids": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "opp_move_gids": [
+    5,
+    6,
+    7,
+    8
+   ],
+   "my_bench": [
+    {
+     "species_gid": 2,
+     "hp_frac": 1.0,
+     "move_gids": [
+      1,
+      2
+     ]
+    }
+   ],
+   "opp_bench": [
+    {
+     "species_gid": 5,
+     "hp_frac": 0.0,
+     "move_gids": [
+      4
+     ]
+    }
+   ],
+   "legal_action_mask": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  }
+ ],
+ "tensors": {
+  "my_species": [
+   7.0,
+   1.0
+  ],
+  "opp_species": [
+   11.0,
+   2.0
+  ],
+  "my_hp": [
+   0.75,
+   1.0
+  ],
+  "opp_hp": [
+   0.5,
+   1.0
+  ],
+  "move_gids": [
+   [
+    3.0,
+    4.0,
+    0.0,
+    0.0
+   ],
+   [
+    1.0,
+    2.0,
+    3.0,
+    4.0
+   ]
+  ],
+  "move_present": [
+   [
+    1.0,
+    1.0,
+    0.0,
+    0.0
+   ],
+   [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  ],
+  "move_legal": [
+   [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  ],
+  "opp_move_gids": [
+   [
+    6.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    5.0,
+    6.0,
+    7.0,
+    8.0
+   ]
+  ],
+  "opp_move_present": [
+   [
+    1.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  ],
+  "bench_species": [
+   [
+    9.0
+   ],
+   [
+    2.0
+   ]
+  ],
+  "bench_hp": [
+   [
+    0.25
+   ],
+   [
+    1.0
+   ]
+  ],
+  "bench_present": [
+   [
+    1.0
+   ],
+   [
+    1.0
+   ]
+  ],
+  "bench_move_gids": [
+   [
+    [
+     5.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   ],
+   [
+    [
+     1.0,
+     2.0,
+     0.0,
+     0.0
+    ]
+   ]
+  ],
+  "bench_move_present": [
+   [
+    [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   ],
+   [
+    [
+     1.0,
+     1.0,
+     0.0,
+     0.0
+    ]
+   ]
+  ],
+  "opp_bench_species": [
+   [
+    13.0
+   ],
+   [
+    5.0
+   ]
+  ],
+  "opp_bench_hp": [
+   [
+    0.5
+   ],
+   [
+    0.0
+   ]
+  ],
+  "opp_bench_present": [
+   [
+    1.0
+   ],
+   [
+    1.0
+   ]
+  ],
+  "opp_bench_move_gids": [
+   [
+    [
+     8.0,
+     9.0,
+     0.0,
+     0.0
+    ]
+   ],
+   [
+    [
+     4.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   ]
+  ],
+  "opp_bench_move_present": [
+   [
+    [
+     1.0,
+     1.0,
+     0.0,
+     0.0
+    ]
+   ],
+   [
+    [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   ]
+  ],
+  "switch_legal": [
+   [
+    1.0
+   ],
+   [
+    1.0
+   ]
+  ],
+  "legal_action_mask": [
+   [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  ]
+ }
+}

@@ -1,0 +1,62 @@
+Calyrex-Shadow @ Leftovers
+Ability: As One (Spectrier)
+Tera Type: Steel
+EVs: 156 HP / 84 Def / 4 SpA / 12 SpD / 252 Spe
+IVs: 5 Atk
+Timid Nature
+- Astral Barrage
+- Protect
+- Substitute
+- Leech Seed
+
+Koraidon @ Assault Vest
+Ability: Orichalcum Pulse
+Tera Type: Electric
+EVs: 204 HP / 196 Atk / 4 Def / 12 SpD / 92 Spe
+Adamant Nature
+- Scale Shot
+- Collision Course
+- Tera Blast
+- U-turn
+
+Chien-Pao @ Life Orb
+Ability: Sword of Ruin
+Tera Type: Dark
+EVs: 252 Atk / 4 Def / 252 Spe
+Adamant Nature
+- Icicle Crash
+- Crunch
+- Sucker Punch
+- Ice Shard
+
+Alomomola @ Rocky Helmet
+Ability: Regenerator
+Tera Type: Fairy
+EVs: 252 HP / 252 Def / 4 SpD
+IVs: 0 Spe
+Relaxed Nature
+- Flip Turn
+- Aqua Jet
+- Wish
+- Protect
+
+Ursaluna-Bloodmoon @ Silk Scarf
+Ability: Mind's Eye
+Tera Type: Normal
+EVs: 108 HP / 196 SpA / 204 SpD
+IVs: 0 Atk
+Modest Nature
+- Blood Moon
+- Hyper Voice
+- Calm Mind
+- Moonlight
+
+Landorus-Therian @ Light Ball
+Ability: Intimidate
+Tera Type: Normal
+EVs: 244 HP / 52 Atk / 20 Def / 188 SpD / 4 Spe
+Careful Nature
+- Fling
+- Earthquake
+- U-turn
+- Stealth Rock

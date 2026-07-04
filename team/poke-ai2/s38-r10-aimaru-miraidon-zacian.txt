@@ -1,0 +1,59 @@
+Miraidon @ Choice Specs
+Ability: Hadron Engine
+Tera Type: Dragon
+EVs: 148 HP / 252 SpA / 4 SpD / 100 Spe
+Modest Nature
+- Electro Drift
+- Draco Meteor
+- Dragon Pulse
+- Volt Switch
+
+Zacian-Crowned @ Rusted Sword
+Ability: Intrepid Sword
+Tera Type: Normal
+EVs: 60 HP / 252 Atk / 4 Def / 4 SpD / 188 Spe
+Jolly Nature
+- Behemoth Blade
+- Play Rough
+- Crunch
+- Ice Fang
+
+Ting-Lu @ Assault Vest
+Ability: Vessel of Ruin
+Tera Type: Fire
+EVs: 180 HP / 252 Atk / 4 Def / 4 SpD / 68 Spe
+Adamant Nature
+- Earthquake
+- Ruination
+- Payback
+- Fissure
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Ice
+EVs: 252 Atk / 180 Def / 76 Spe
+Adamant Nature
+- Icicle Crash
+- Sucker Punch
+- Ice Shard
+- Swords Dance
+
+Flutter Mane @ Booster Energy
+Ability: Protosynthesis
+Tera Type: Dark
+EVs: 164 HP / 196 Def / 4 SpA / 4 SpD / 140 Spe
+Timid Nature
+- Moonblast
+- Charm
+- Taunt
+- Pain Split
+
+Garganacl @ Leftovers
+Ability: Purifying Salt
+Tera Type: Water
+EVs: 252 HP / 4 Atk / 4 Def / 212 SpD / 36 Spe
+Impish Nature
+- Salt Cure
+- Protect
+- Substitute
+- Recover

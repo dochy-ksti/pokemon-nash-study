@@ -1,0 +1,59 @@
+Calyrex-Shadow @ Choice Scarf
+Ability: As One (Spectrier)
+Tera Type: Ghost
+EVs: 76 HP / 4 Def / 252 SpA / 4 SpD / 172 Spe
+Timid Nature
+- Astral Barrage
+- Psychic
+- Grass Knot
+- Trick
+
+Ho-Oh @ Assault Vest
+Ability: Regenerator
+Tera Type: Electric
+EVs: 204 HP / 76 Atk / 164 Def / 12 SpD / 52 Spe
+Adamant Nature
+- Sacred Fire
+- Brave Bird
+- Earthquake
+- Tera Blast
+
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Dark
+EVs: 228 HP / 244 SpD / 36 Spe
+Careful Nature
+- Protect
+- Substitute
+- Taunt
+- Knock Off
+
+Dondozo @ Leftovers
+Ability: Unaware
+Tera Type: Fairy
+EVs: 252 HP / 252 Def / 4 SpD
+Impish Nature
+- Protect
+- Yawn
+- Rest
+- Wave Crash
+
+Glimmora @ Red Card
+Ability: Toxic Debris
+Tera Type: Fairy
+EVs: 244 HP / 252 Def / 12 SpD
+Bold Nature
+- Power Gem
+- Mortal Spin
+- Dazzling Gleam
+- Stealth Rock
+
+Flutter Mane @ Lum Berry
+Ability: Protosynthesis
+Tera Type: Flying
+EVs: 252 HP / 204 Def / 52 Spe
+Bold Nature
+- Mean Look
+- Perish Song
+- Taunt
+- Rest

@@ -1,0 +1,59 @@
+Koraidon @ Choice Scarf
+Ability: Orichalcum Pulse
+Tera Type: Fairy
+EVs: 252 Atk / 4 SpD / 252 Spe
+Jolly Nature
+- Outrage
+- Flare Blitz
+- Tera Blast
+- U-turn
+
+Kyogre @ Assault Vest
+Ability: Drizzle
+Tera Type: Fairy
+EVs: 236 HP / 156 SpA / 116 Spe
+Modest Nature
+- Water Spout
+- Surf
+- Thunder
+- Tera Blast
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Ice
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Icicle Crash
+- Sacred Sword
+- Sheer Cold
+- Ice Shard
+
+Archaludon @ Choice Specs
+Ability: Stamina
+Tera Type: Normal
+EVs: 236 HP / 4 Def / 196 SpA / 4 SpD / 68 Spe
+Modest Nature
+- Draco Meteor
+- Flash Cannon
+- Electro Shot
+- Dark Pulse
+
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Steel
+EVs: 228 HP / 4 Atk / 4 Def / 204 SpD / 68 Spe
+Impish Nature
+- Knock Off
+- Taunt
+- Substitute
+- Protect
+
+Clodsire @ Leftovers
+Ability: Unaware
+Tera Type: Normal
+EVs: 252 HP / 252 Def / 4 SpD
+Impish Nature
+- Earthquake
+- Stockpile
+- Protect
+- Recover

@@ -1,0 +1,61 @@
+Calyrex-Ice @ Loaded Dice
+Ability: As One (Glastrier)
+Tera Type: Fire
+EVs: 252 HP / 196 Atk / 60 SpD
+Adamant Nature
+- Icicle Spear
+- Bullet Seed
+- High Horsepower
+- Trick Room
+
+Mimikyu @ Rocky Helmet
+Ability: Disguise
+Tera Type: Normal
+EVs: 252 HP / 4 Atk / 252 Def
+Brave Nature
+- Play Rough
+- Curse
+- Endure
+- Trick Room
+
+Sneasler @ Focus Sash
+Ability: Unburden
+Tera Type: Rock
+EVs: 252 Atk / 4 Def / 252 Spe
+Naughty Nature
+- Dire Claw
+- Close Combat
+- Throat Chop
+- Tera Blast
+
+Giratina-Origin @ Griseous Core
+Ability: Levitate
+Tera Type: Steel
+EVs: 92 HP / 60 Def / 244 SpA / 4 SpD / 108 Spe
+Modest Nature
+IVs: 0 Atk
+- Draco Meteor
+- Hex
+- Will-O-Wisp
+- Shadow Sneak
+
+Chien-Pao @ Life Orb
+Ability: Sword of Ruin
+Tera Type: Psychic
+EVs: 188 HP / 252 Atk / 36 Def / 4 SpD / 28 Spe
+Adamant Nature
+- Icicle Crash
+- Crunch
+- Psychic Fangs
+- Sucker Punch
+
+Ursaluna-Bloodmoon @ Assault Vest
+Ability: Mind's Eye
+Tera Type: Normal
+EVs: 100 HP / 4 Def / 196 SpA / 188 SpD / 20 Spe
+Modest Nature
+IVs: 0 Atk
+- Blood Moon
+- Earth Power
+- Hyper Voice
+- Vacuum Wave

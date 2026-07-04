@@ -1,0 +1,59 @@
+Calyrex-Shadow @ Choice Specs
+Ability: As One (Spectrier)
+Tera Type: Fairy
+EVs: 124 HP / 4 Def / 124 SpA / 4 SpD / 252 Spe
+Timid Nature
+- Astral Barrage
+- Psychic
+- Grass Knot
+- Tera Blast
+
+Zacian-Crowned @ Rusted Sword
+Ability: Intrepid Sword
+Tera Type: Fighting
+EVs: 140 HP / 164 Atk / 4 Def / 12 SpD / 188 Spe
+Jolly Nature
+- Behemoth Blade
+- Close Combat
+- Trailblaze
+- Ice Fang
+
+Ting-Lu @ Rocky Helmet
+Ability: Vessel of Ruin
+Tera Type: Poison
+EVs: 244 HP / 44 Def / 220 SpD
+Impish Nature
+- Payback
+- Ruination
+- Stealth Rock
+- Whirlwind
+
+Dondozo @ Leftovers
+Ability: Unaware
+Tera Type: Normal
+EVs: 252 HP / 4 Atk / 180 Def / 44 SpD / 28 Spe
+Impish Nature
+- Wave Crash
+- Protect
+- Substitute
+- Yawn
+
+Ogerpon-Cornerstone @ Cornerstone Mask
+Ability: Sturdy
+Tera Type: Rock
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Ivy Cudgel
+- Knock Off
+- Trailblaze
+- Taunt
+
+Ursaluna-Bloodmoon @ Focus Sash
+Ability: Mind's Eye
+Tera Type: Normal
+EVs: 36 HP / 140 Def / 252 SpA / 4 SpD / 76 Spe
+Modest Nature
+- Blood Moon
+- Hyper Voice
+- Earth Power
+- Vacuum Wave

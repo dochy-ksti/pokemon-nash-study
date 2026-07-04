@@ -1,0 +1,59 @@
+Koraidon @ Choice Scarf
+Ability: Orichalcum Pulse
+Tera Type: Fire
+EVs: 4 HP / 252 Atk / 252 Spe
+Jolly Nature
+- Flare Blitz
+- Outrage
+- Close Combat
+- U-turn
+
+Chien-Pao @ Life Orb
+Ability: Sword of Ruin
+Tera Type: Stellar
+EVs: 252 Atk / 4 SpD / 252 Spe
+Adamant Nature
+- Icicle Crash
+- Ice Shard
+- Sucker Punch
+- Swords Dance
+
+Glimmora @ Focus Sash
+Ability: Toxic Debris
+Tera Type: Normal
+EVs: 132 HP / 124 SpA / 252 Spe
+Timid Nature
+- Mortal Spin
+- Mud Shot
+- Toxic Spikes
+- Spikes
+
+Clodsire @ Black Sludge
+Ability: Unaware
+Tera Type: Normal
+EVs: 252 HP / 252 Def / 4 SpD
+Impish Nature
+- Earthquake
+- Toxic
+- Counter
+- Recover
+
+Lugia @ Leftovers
+Ability: Multiscale
+Tera Type: Poison
+EVs: 236 HP / 252 Def / 20 Spe
+Bold Nature
+- Aeroblast
+- Psychic Noise
+- Calm Mind
+- Recover
+
+Ting-Lu @ Sitrus Berry
+Ability: Vessel of Ruin
+Tera Type: Steel
+EVs: 244 HP / 4 Atk / 116 Def / 132 SpD / 12 Spe
+Impish Nature
+- Earthquake
+- Spikes
+- Rest
+- Whirlwind

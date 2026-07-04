@@ -1,0 +1,60 @@
+Miraidon @ Assault Vest
+Ability: Hadron Engine
+Tera Type: Water
+EVs: 252 HP / 44 Def / 60 SpA / 4 SpD / 148 Spe
+Modest Nature
+- Electro Drift
+- Draco Meteor
+- Tera Blast
+- Volt Switch
+
+Arceus @ Silk Scarf
+Ability: Multitype
+Tera Type: Ghost
+EVs: 188 HP / 252 Atk / 68 Spe
+Adamant Nature
+- Extreme Speed
+- Shadow Claw
+- Dragon Dance
+- Recover
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Ghost
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Icicle Crash
+- Sacred Sword
+- Ice Shard
+- Sheer Cold
+
+Iron Treads @ Choice Scarf
+Ability: Quark Drive
+Tera Type: Normal
+EVs: 108 HP / 204 Atk / 4 Def / 44 SpD / 148 Spe
+Jolly Nature
+- Earthquake
+- Iron Head
+- Knock Off
+- Ice Spinner
+
+Glimmora @ Electric Seed
+Ability: Toxic Debris
+Tera Type: Fairy
+EVs: 252 HP / 252 Def / 4 Spe
+Bold Nature
+IVs: 0 Atk
+- Power Gem
+- Mud Shot
+- Mortal Spin
+- Spiky Shield
+
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Dark
+EVs: 212 HP / 44 SpD / 252 Spe
+Jolly Nature
+- Knock Off
+- Taunt
+- Protect
+- Substitute

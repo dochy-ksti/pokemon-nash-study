@@ -1,0 +1,60 @@
+Koraidon @ Choice Band
+Ability: Orichalcum Pulse
+Tera Type: Fire
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- U-turn
+- Flare Blitz
+- Close Combat
+- Scale Shot
+
+Ho-Oh @ Choice Scarf
+Ability: Regenerator
+Tera Type: Dark
+EVs: 108 HP / 180 Atk / 4 Def / 4 SpD / 212 Spe
+Jolly Nature
+- Sacred Fire
+- Brave Bird
+- Tera Blast
+- Earthquake
+
+Flutter Mane @ Focus Sash
+Ability: Protosynthesis
+Tera Type: Stellar
+EVs: 4 HP / 252 SpA / 252 Spe
+Timid Nature
+- Moonblast
+- Thunder Wave
+- Hex
+- Taunt
+
+Clodsire @ Leftovers
+Ability: Unaware
+Tera Type: Normal
+EVs: 252 HP / 252 Def / 4 SpD
+Impish Nature
+- Earthquake
+- Recover
+- Protect
+- Counter
+
+Alomomola @ Covert Cloak
+Ability: Regenerator
+Tera Type: Normal
+EVs: 252 HP / 156 Def / 100 SpD
+IVs: 0 Spe
+Bold Nature
+- Flip Turn
+- Tickle
+- Wish
+- Healing Wish
+
+Iron Bundle @ Life Orb
+Ability: Quark Drive
+Tera Type: Normal
+EVs: 252 SpA / 4 SpD / 252 Spe
+Timid Nature
+- Hydro Pump
+- Substitute
+- Freeze-Dry
+- Blizzard

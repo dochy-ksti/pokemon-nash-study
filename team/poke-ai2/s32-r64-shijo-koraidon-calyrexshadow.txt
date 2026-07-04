@@ -1,0 +1,60 @@
+Koraidon @ Mental Herb
+Ability: Orichalcum Pulse
+Tera Type: Fire
+EVs: 252 HP / 156 Atk / 4 Def / 4 SpD / 92 Spe
+Adamant Nature
+- Flame Charge
+- Drain Punch
+- Swords Dance
+- Taunt
+
+Calyrex-Shadow @ Light Clay
+Ability: As One (Spectrier)
+Tera Type: Normal
+EVs: 140 HP / 116 Def / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Astral Barrage
+- Light Screen
+- Reflect
+- Curse
+
+Flutter Mane @ Focus Sash
+Ability: Protosynthesis
+Tera Type: Normal
+EVs: 4 HP / 252 SpA / 252 Spe
+Timid Nature
+- Moonblast
+- Shadow Ball
+- Taunt
+- Pain Split
+
+Roaring Moon @ Booster Energy
+Ability: Protosynthesis
+Tera Type: Flying
+EVs: 52 HP / 220 Atk / 116 Def / 4 SpD / 116 Spe
+Adamant Nature
+- Acrobatics
+- Dragon Dance
+- Taunt
+- Roost
+
+Ogerpon-Hearthflame @ Hearthflame Mask
+Ability: Mold Breaker
+Tera Type: Fire
+EVs: 252 HP / 84 Atk / 4 Def / 4 SpD / 164 Spe
+Adamant Nature
+- Ivy Cudgel
+- Horn Leech
+- Trailblaze
+- Swords Dance
+
+Sneasler @ Light Ball
+Ability: Unburden
+Tera Type: Dark
+EVs: 252 HP / 236 Def / 12 SpD
+Careful Nature
+- Fling
+- Close Combat
+- Throat Chop
+- Toxic Spikes

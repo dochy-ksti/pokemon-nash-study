@@ -1,0 +1,60 @@
+Lunala @ Choice Specs
+Ability: Shadow Shield
+Tera Type: Fairy
+EVs: 4 HP / 252 SpA / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Moongeist Beam
+- Moonblast
+- Psyshock
+- Psychic
+
+Ting-Lu @ Sitrus Berry
+Ability: Vessel of Ruin
+Tera Type: Poison
+EVs: 244 HP / 252 SpD / 12 Spe
+Careful Nature
+- Ruination
+- Whirlwind
+- Spikes
+- Stealth Rock
+
+Koraidon @ Choice Scarf
+Ability: Orichalcum Pulse
+Tera Type: Fire
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Flare Blitz
+- Close Combat
+- Outrage
+- U-turn
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Normal
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Icicle Crash
+- Sacred Sword
+- Sucker Punch
+- Sheer Cold
+
+Landorus-Therian @ Choice Band
+Ability: Intimidate
+Tera Type: Normal
+EVs: 244 HP / 116 Atk / 4 Def / 76 SpD / 68 Spe
+Adamant Nature
+- Earthquake
+- Rock Slide
+- Facade
+- U-turn
+
+Garganacl @ Leftovers
+Ability: Purifying Salt
+Tera Type: Ghost
+EVs: 252 HP / 20 Def / 236 SpD
+Impish Nature
+- Salt Cure
+- Protect
+- Curse
+- Recover

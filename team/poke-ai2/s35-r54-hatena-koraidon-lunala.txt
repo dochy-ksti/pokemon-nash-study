@@ -1,0 +1,61 @@
+Lunala @ Leftovers
+Ability: Shadow Shield
+Tera Type: Poison
+EVs: 252 HP / 244 Def / 4 SpA / 4 SpD / 4 Spe
+Bold Nature
+IVs: 0 Atk
+- Moongeist Beam
+- Moonblast
+- Calm Mind
+- Moonlight
+
+Koraidon @ Choice Scarf
+Ability: Orichalcum Pulse
+Tera Type: Fire
+EVs: 4 Def / 252 Atk / 252 Spe
+Jolly Nature
+- Flare Blitz
+- Close Combat
+- Outrage
+- U-turn
+
+Ting-Lu @ Assault Vest
+Ability: Vessel of Ruin
+Tera Type: Fire
+EVs: 84 HP / 156 Atk / 4 Def / 252 SpD / 12 Spe
+Adamant Nature
+- Earthquake
+- Payback
+- Stone Edge
+- Fissure
+
+Flutter Mane @ Booster Energy
+Ability: Protosynthesis
+Tera Type: Fairy
+EVs: 228 HP / 252 Def / 28 Spe
+Bold Nature
+IVs: 0 Atk
+- Moonblast
+- Charm
+- Pain Split
+- Calm Mind
+
+Gliscor @ Focus Sash
+Ability: Hyper Cutter
+Tera Type: Steel
+EVs: 212 HP / 44 Def / 252 Spe
+Jolly Nature
+- Bulldoze
+- Knock Off
+- Taunt
+- Toxic Spikes
+
+Chien-Pao @ Life Orb
+Ability: Sword of Ruin
+Tera Type: Electric
+EVs: 28 HP / 252 Atk / 20 Def / 68 SpD / 140 Spe
+Adamant Nature
+- Icicle Crash
+- Tera Blast
+- Ice Shard
+- Swords Dance

@@ -1,0 +1,61 @@
+Koraidon @ Sitrus Berry
+Ability: Orichalcum Pulse
+Tera Type: Fire
+EVs: 252 HP / 116 Atk / 4 Def / 44 SpD / 92 Spe
+Adamant Nature
+- Drain Punch
+- Flame Charge
+- Bulk Up
+- Taunt
+
+Calyrex-Shadow @ Focus Sash
+Ability: As One (Spectrier)
+Tera Type: Normal
+EVs: 252 SpD / 252 Spe / 4 SpA
+Timid Nature
+IVs: 0 Atk
+- Astral Barrage
+- Grass Knot
+- Will-O-Wisp
+- Encore
+
+Grimmsnarl @ Light Clay
+Ability: Prankster
+Tera Type: Fire
+EVs: 252 HP / 156 Def / 100 SpD
+Careful Nature
+- Spirit Break
+- Thunder Wave
+- Reflect
+- Light Screen
+
+Glimmora @ Red Card
+Ability: Toxic Debris
+Tera Type: Fairy
+EVs: 244 HP / 252 Def / 12 Spe
+Bold Nature
+IVs: 0 Atk
+- Mortal Spin
+- Dazzling Gleam
+- Mud Shot
+- Endure
+
+Rillaboom @ Assault Vest
+Ability: Grassy Surge
+Tera Type: Normal
+EVs: 252 HP / 4 Atk / 252 SpD
+Careful Nature
+- Drum Beating
+- Knock Off
+- U-turn
+- Grassy Glide
+
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Steel
+EVs: 228 HP / 36 Def / 244 SpD
+Impish Nature
+- Earthquake
+- Toxic
+- Substitute
+- Protect

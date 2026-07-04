@@ -1,0 +1,60 @@
+Ho-Oh @ Assault Vest
+Ability: Regenerator
+Tera Type: Grass
+EVs: 156 HP / 244 Atk / 108 Spe
+Adamant Nature
+- Sacred Fire
+- Brave Bird
+- Earthquake
+- Tera Blast
+
+Glimmora @ Red Card
+Ability: Toxic Debris
+Tera Type: Dark
+EVs: 244 HP / 252 Def / 4 SpA / 4 SpD / 4 Spe
+Bold Nature
+- Mortal Spin
+- Power Gem
+- Earth Power
+- Endure
+
+Flutter Mane @ Focus Sash
+Ability: Protosynthesis
+Tera Type: Stellar
+EVs: 4 HP / 252 SpA / 252 Spe
+Timid Nature
+- Moonblast
+- Hex
+- Perish Song
+- Thunder Wave
+
+Koraidon @ Loaded Dice
+Ability: Orichalcum Pulse
+Tera Type: Fire
+EVs: 204 HP / 212 Atk / 4 Def / 44 SpD / 44 Spe
+Adamant Nature
+- Scale Shot
+- Flare Blitz
+- Taunt
+- Swords Dance
+
+Dondozo @ Leftovers
+Ability: Unaware
+Tera Type: Fairy
+EVs: 252 HP / 252 Def / 4 SpD
+Relaxed Nature
+IVs: 0 Spe
+- Liquidation
+- Earthquake
+- Curse
+- Rest
+
+Ursaluna-Bloodmoon @ Covert Cloak
+Ability: Mind's Eye
+Tera Type: Poison
+EVs: 252 HP / 84 Def / 4 SpA / 164 SpD / 4 Spe
+Modest Nature
+- Blood Moon
+- Hyper Voice
+- Moonlight
+- Calm Mind

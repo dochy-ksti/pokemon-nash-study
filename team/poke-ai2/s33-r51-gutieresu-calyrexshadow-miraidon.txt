@@ -1,0 +1,61 @@
+Calyrex-Shadow @ Leftovers
+Ability: As One (Spectrier)
+Tera Type: Normal
+EVs: 140 HP / 92 Def / 4 SpA / 20 SpD / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Astral Barrage
+- Encore
+- Protect
+- Disable
+
+Miraidon @ Electric Seed
+Ability: Hadron Engine
+Tera Type: Fairy
+EVs: 124 HP / 12 Def / 252 SpA / 4 SpD / 116 Spe
+Modest Nature
+IVs: 0 Atk
+- Electro Drift
+- Parabolic Charge
+- Dazzling Gleam
+- Agility
+
+Gliscor @ Focus Sash
+Ability: Poison Heal
+Tera Type: Flying
+EVs: 4 HP / 252 Atk / 252 Spe
+Jolly Nature
+- Toxic Spikes
+- Bulldoze
+- Taunt
+- Knock Off
+
+Chien-Pao @ Never-Melt Ice
+Ability: Sword of Ruin
+Tera Type: Fire
+EVs: 28 HP / 212 Atk / 108 Def / 4 SpD / 156 Spe
+Adamant Nature
+- Icicle Crash
+- Ice Shard
+- Swords Dance
+- Crunch
+
+Dondozo @ Assault Vest
+Ability: Unaware
+Tera Type: Grass
+EVs: 252 Atk / 4 Def / 252 SpD
+Adamant Nature
+- Liquidation
+- Earthquake
+- Crunch
+- Heavy Slam
+
+Latias @ Covert Cloak
+Ability: Levitate
+Tera Type: Poison
+EVs: 252 HP / 116 SpD / 140 Spe
+Calm Nature
+- Stored Power
+- Alluring Voice
+- Calm Mind
+- Recover

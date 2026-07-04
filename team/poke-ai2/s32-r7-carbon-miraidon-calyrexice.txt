@@ -1,0 +1,61 @@
+Calyrex-Ice @ Loaded Dice
+Ability: As One (Glastrier)
+Tera Type: Normal
+EVs: 252 HP / 252 Atk / 4 SpD
+Adamant Nature
+- Icicle Spear
+- Bullet Seed
+- High Horsepower
+- Trick Room
+
+Flutter Mane @ Focus Sash
+Ability: Protosynthesis
+Tera Type: Stellar
+EVs: 4 HP / 252 SpA / 252 Spe
+IVs: 0 Atk
+Timid Nature
+- Moonblast
+- Hex
+- Thunder Wave
+- Taunt
+
+Glimmora @ Red Card
+Ability: Toxic Debris
+Tera Type: Fairy
+EVs: 196 HP / 252 Def / 60 Spe
+Bold Nature
+- Power Gem
+- Dazzling Gleam
+- Mortal Spin
+- Memento
+
+Miraidon @ Choice Scarf
+Ability: Hadron Engine
+Tera Type: Electric
+EVs: 140 HP / 20 Def / 236 SpA / 4 SpD / 108 Spe
+Modest Nature
+- Electro Drift
+- Draco Meteor
+- Overheat
+- Volt Switch
+
+Landorus-Therian @ Assault Vest
+Ability: Intimidate
+Tera Type: Steel
+EVs: 244 HP / 84 Def / 180 SpD
+IVs: 22 Spe
+Sassy Nature
+- Earthquake
+- U-turn
+- Brick Break
+- Bulldoze
+
+Urshifu-Rapid-Strike @ Choice Band
+Ability: Unseen Fist
+Tera Type: Normal
+EVs: 12 HP / 236 Atk / 220 Def / 4 SpD / 36 Spe
+Adamant Nature
+- Surging Strikes
+- Close Combat
+- Facade
+- Aqua Jet

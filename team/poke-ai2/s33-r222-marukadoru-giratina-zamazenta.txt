@@ -1,0 +1,59 @@
+Gyarados @ Assault Vest
+Ability: Intimidate
+Tera Type: Ground
+EVs: 152 HP / 252 Atk / 12 SpD / 92 Spe
+Adamant Nature
+- Waterfall
+- Earthquake
+- Crunch
+- Endeavor
+
+Zamazenta-Crowned @ Rusted Shield
+Ability: Dauntless Shield
+Tera Type: Ground
+EVs: 252 HP / 252 Def / 4 Spe
+Impish Nature
+- Body Press
+- Crunch
+- Iron Defense
+- Substitute
+
+Brute Bonnet @ Black Glasses
+Ability: Protosynthesis
+Tera Type: Dark
+EVs: 252 HP / 252 Atk / 4 Def
+Adamant Nature
+- Payback
+- Spore
+- Bullet Seed
+- Sucker Punch
+
+Giratina-Origin @ Griseous Core
+Ability: Levitate
+Tera Type: Fire
+EVs: 252 HP / 252 Atk / 4 Def
+Brave Nature
+- Shadow Sneak
+- Poltergeist
+- Draco Meteor
+- Curse
+
+Iron Crown @ Choice Specs
+Ability: Quark Drive
+Tera Type: Normal
+EVs: 4 HP / 252 SpA / 252 Spe
+Timid Nature
+- Tachyon Cutter
+- Psychic Noise
+- Psyshock
+- Volt Switch
+
+Iron Valiant @ Focus Sash
+Ability: Quark Drive
+Tera Type: Rock
+EVs: 4 HP / 252 Atk / 252 Spe
+Adamant Nature
+- Close Combat
+- Shadow Sneak
+- Ice Punch
+- Tera Blast

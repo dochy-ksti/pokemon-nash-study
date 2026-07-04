@@ -1,0 +1,60 @@
+Calyrex-Shadow @ Choice Scarf
+Ability: As One (Spectrier)
+Tera Type: Ghost
+EVs: 76 HP / 68 Def / 204 SpA / 12 SpD / 148 Spe
+Timid Nature
+IVs: 0 Atk
+- Astral Barrage
+- Psychic
+- Future Sight
+- Trick
+
+Ting-Lu @ Sitrus Berry
+Ability: Vessel of Ruin
+Tera Type: Water
+EVs: 244 HP / 36 Atk / 228 SpD
+Impish Nature
+- Earthquake
+- Ruination
+- Stealth Rock
+- Taunt
+
+Zacian-Crowned @ Rusted Sword
+Ability: Intrepid Sword
+Tera Type: Dark
+EVs: 140 HP / 156 Atk / 4 Def / 4 SpD / 204 Spe
+Jolly Nature
+- Behemoth Blade
+- Play Rough
+- Crunch
+- Swords Dance
+
+Urshifu-Rapid-Strike @ Choice Band
+Ability: Unseen Fist
+Tera Type: Normal
+EVs: 252 Atk / 92 Def / 164 Spe
+Adamant Nature
+- Surging Strikes
+- Close Combat
+- Facade
+- U-turn
+
+Brute Bonnet @ Loaded Dice
+Ability: Protosynthesis
+Tera Type: Poison
+EVs: 196 HP / 180 Atk / 52 Def / 20 SpD / 60 Spe
+Adamant Nature
+- Bullet Seed
+- Sucker Punch
+- Spore
+- Taunt
+
+Dragonite @ Rocky Helmet
+Ability: Multiscale
+Tera Type: Steel
+EVs: 244 HP / 36 Def / 4 SpA / 12 SpD / 212 Spe
+Bold Nature
+- Fire Spin
+- Thunder Wave
+- Encore
+- Roost

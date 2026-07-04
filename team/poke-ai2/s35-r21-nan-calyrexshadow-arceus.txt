@@ -1,0 +1,60 @@
+Calyrex-Shadow @ Choice Specs
+Ability: As One (Spectrier)
+Tera Type: Ground
+EVs: 60 HP / 4 Def / 180 SpA / 12 SpD / 252 Spe
+Timid Nature
+- Astral Barrage
+- Psyshock
+- Grass Knot
+- Tera Blast
+
+Arceus @ Mental Herb
+Ability: Multitype
+Tera Type: Fire
+EVs: 92 HP / 252 Atk / 84 Def / 4 SpD / 76 Spe
+Adamant Nature
+- Extreme Speed
+- Earthquake
+- Dragon Dance
+- Healing Wish
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Electric
+EVs: 252 Atk / 4 Def / 252 Spe
+Adamant Nature
+- Icicle Crash
+- Sucker Punch
+- Ice Shard
+- Tera Blast
+
+Landorus-Therian @ Rocky Helmet
+Ability: Intimidate
+Tera Type: Water
+EVs: 244 HP / 12 Atk / 252 Def
+Relaxed Nature
+IVs: 0 Spe
+- Earthquake
+- U-turn
+- Stealth Rock
+- Taunt
+
+Glimmora @ Red Card
+Ability: Toxic Debris
+Tera Type: Fairy
+EVs: 236 HP / 244 Def / 28 Spe
+Bold Nature
+- Mortal Spin
+- Mud Shot
+- Dazzling Gleam
+- Endure
+
+Garganacl @ Leftovers
+Ability: Purifying Salt
+Tera Type: Grass
+EVs: 252 HP / 236 SpD / 20 Spe
+Careful Nature
+- Salt Cure
+- Protect
+- Substitute
+- Recover

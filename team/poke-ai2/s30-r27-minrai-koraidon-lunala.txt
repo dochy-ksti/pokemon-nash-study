@@ -1,0 +1,59 @@
+Koraidon @ Choice Scarf
+Ability: Orichalcum Pulse
+Tera Type: Fire
+EVs: 108 HP / 236 Atk / 4 Def / 132 SpD / 28 Spe
+Adamant Nature
+- Flare Blitz
+- Close Combat
+- Outrage
+- U-turn
+
+Lunala @ Rocky Helmet
+Ability: Shadow Shield
+Tera Type: Fairy
+EVs: 236 HP / 244 Def / 4 SpA / 4 SpD / 20 Spe
+Bold Nature
+- Moongeist Beam
+- Moonblast
+- Calm Mind
+- Moonlight
+
+Ting-Lu @ Assault Vest
+Ability: Vessel of Ruin
+Tera Type: Fairy
+EVs: 4 HP / 236 Atk / 4 Def / 252 SpD / 12 Spe
+Adamant Nature
+- Earthquake
+- Payback
+- Tera Blast
+- Ruination
+
+Chi-Yu @ Choice Specs
+Ability: Beads of Ruin
+Tera Type: Fire
+EVs: 228 HP / 164 SpA / 116 SpD
+Modest Nature
+- Flamethrower
+- Dark Pulse
+- Overheat
+- Psychic
+
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Steel
+EVs: 228 HP / 244 SpD / 36 Spe
+Careful Nature
+- Earthquake
+- Toxic
+- Substitute
+- Protect
+
+Weezing-Galar @ Sitrus Berry
+Ability: Neutralizing Gas
+Tera Type: Water
+EVs: 252 HP / 116 Def / 140 SpD
+Bold Nature
+- Strange Steam
+- Toxic
+- Toxic Spikes
+- Pain Split

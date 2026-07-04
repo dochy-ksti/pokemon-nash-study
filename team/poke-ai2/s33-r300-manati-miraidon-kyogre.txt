@@ -1,0 +1,60 @@
+Miraidon @ Choice Scarf
+Ability: Hadron Engine
+Tera Type: Electric
+EVs: 188 HP / 252 SpA / 68 Spe
+Modest Nature
+- Electro Drift
+- Volt Switch
+- Draco Meteor
+- Dragon Pulse
+
+Chien-Pao @ Choice Band
+Ability: Sword of Ruin
+Tera Type: Dark
+EVs: 252 Atk / 156 Def / 100 Spe
+Adamant Nature
+- Icicle Crash
+- Ice Shard
+- Crunch
+- Sucker Punch
+
+Ting-Lu @ Assault Vest
+Ability: Vessel of Ruin
+Tera Type: Poison
+EVs: 4 HP / 252 Atk / 4 Def / 236 SpD / 12 Spe
+Adamant Nature
+- Earthquake
+- Bulldoze
+- Stone Edge
+- Ruination
+
+Kyogre @ Sitrus Berry
+Ability: Drizzle
+Tera Type: Fairy
+EVs: 252 HP / 124 Def / 124 SpA / 4 SpD / 4 Spe
+Modest Nature
+- Surf
+- Thunder
+- Ice Beam
+- Thunder Wave
+
+Corviknight @ Covert Cloak
+Ability: Pressure
+Tera Type: Normal
+EVs: 252 HP / 196 Def / 60 SpD
+Relaxed Nature
+IVs: 0 Spe
+- Iron Head
+- U-turn
+- Roost
+- Taunt
+
+Iron Valiant @ Focus Sash
+Ability: Quark Drive
+Tera Type: Ghost
+EVs: 252 Atk / 4 SpA / 252 Spe
+Naive Nature
+- Close Combat
+- Spirit Break
+- Shadow Sneak
+- Vacuum Wave

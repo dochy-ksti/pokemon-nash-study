@@ -1,0 +1,59 @@
+Calyrex-Shadow @ Choice Specs
+Ability: As One (Spectrier)
+Tera Type: Grass
+EVs: 124 HP / 4 Def / 236 SpA / 4 SpD / 140 Spe
+Timid Nature
+- Astral Barrage
+- Psychic
+- Leaf Storm
+- Psyshock
+
+Terapagos @ Assault Vest
+Ability: Tera Shell
+Tera Type: Stellar
+EVs: 188 HP / 4 Def / 252 SpA / 4 SpD / 60 Spe
+Modest Nature
+- Tera Starstorm
+- Dark Pulse
+- Ice Beam
+- Earth Power
+
+Dondozo @ Leftovers
+Ability: Unaware
+Tera Type: Fairy
+EVs: 252 HP / 196 Def / 60 SpD
+Impish Nature
+- Wave Crash
+- Avalanche
+- Yawn
+- Protect
+
+Landorus-Therian @ Sitrus Berry
+Ability: Intimidate
+Tera Type: Steel
+EVs: 244 HP / 12 Def / 252 SpD
+Careful Nature
+- Earthquake
+- Brick Break
+- Protect
+- U-turn
+
+Urshifu-Rapid-Strike @ Choice Band
+Ability: Unseen Fist
+Tera Type: Fire
+EVs: 236 HP / 28 Atk / 244 Def
+Impish Nature
+- Surging Strikes
+- Close Combat
+- Aqua Jet
+- U-turn
+
+Chien-Pao @ Black Glasses
+Ability: Sword of Ruin
+Tera Type: Fire
+EVs: 124 HP / 252 Atk / 76 Def / 4 SpD / 52 Spe
+Adamant Nature
+- Swords Dance
+- Icicle Crash
+- Crunch
+- Sucker Punch

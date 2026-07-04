@@ -1,0 +1,61 @@
+Miraidon @ Assault Vest
+Ability: Hadron Engine
+Tera Type: Ice
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Electro Drift
+- Volt Switch
+- Tera Blast
+- Dragon Pulse
+
+Koraidon @ Choice Band
+Ability: Orichalcum Pulse
+Tera Type: Fire
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Low Kick
+- Scale Shot
+- Flare Blitz
+- Flame Charge
+
+Flutter Mane @ Focus Sash
+Ability: Protosynthesis
+Tera Type: Stellar
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Moonblast
+- Shadow Ball
+- Perish Song
+- Protect
+
+Dondozo @ Leftovers
+Ability: Unaware
+Tera Type: Grass
+EVs: 252 HP / 4 Atk / 236 Def / 4 SpD / 12 Spe
+Impish Nature
+- Yawn
+- Wave Crash
+- Fissure
+- Protect
+
+Muk-Alola @ Air Balloon
+Ability: Poison Touch
+Tera Type: Flying
+EVs: 252 HP / 4 Def / 252 SpD
+Careful Nature
+- Knock Off
+- Poison Fang
+- Shadow Sneak
+- Protect
+
+Chien-Pao @ Never-Melt Ice
+Ability: Sword of Ruin
+Tera Type: Fire
+EVs: 28 HP / 252 Atk / 60 Def / 4 SpD / 164 Spe
+Adamant Nature
+- Icicle Crash
+- Sucker Punch
+- Ice Shard
+- Swords Dance

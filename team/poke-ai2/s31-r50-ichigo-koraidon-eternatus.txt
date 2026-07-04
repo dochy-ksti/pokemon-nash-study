@@ -1,0 +1,60 @@
+Koraidon @ Choice Band
+Ability: Orichalcum Pulse
+Tera Type: Fairy
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Close Combat
+- Outrage
+- Flare Blitz
+- U-turn
+
+Eternatus @ Choice Specs
+Ability: Pressure
+Tera Type: Fire
+EVs: 76 HP / 252 SpA / 180 Spe
+Modest Nature
+IVs: 0 Atk
+- Draco Meteor
+- Dynamax Cannon
+- Sludge Bomb
+- Flamethrower
+
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Fairy
+EVs: 228 HP / 28 Def / 252 SpD
+Careful Nature
+- Protect
+- Substitute
+- Toxic
+- Earthquake
+
+Dondozo @ Leftovers
+Ability: Unaware
+Tera Type: Fairy
+EVs: 252 HP / 252 Def / 4 SpD
+Impish Nature
+- Protect
+- Yawn
+- Rest
+- Fissure
+
+Muk-Alola @ Black Sludge
+Ability: Poison Touch
+Tera Type: Poison
+EVs: 252 HP / 4 Def / 252 SpD
+Careful Nature
+- Protect
+- Shadow Sneak
+- Knock Off
+- Poison Jab
+
+Dugtrio @ Focus Sash
+Ability: Arena Trap
+Tera Type: Fairy
+EVs: 252 Atk / 4 SpA / 252 Spe
+Naughty Nature
+- Earthquake
+- Reversal
+- Endeavor
+- Sucker Punch

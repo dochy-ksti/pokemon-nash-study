@@ -1,0 +1,61 @@
+Calyrex-Shadow @ Choice Scarf
+Ability: As One (Spectrier)
+Tera Type: Fairy
+EVs: 124 HP / 132 Def / 100 SpA / 4 SpD / 148 Spe
+Modest Nature
+IVs: 0 Atk
+- Astral Barrage
+- Psychic
+- Draining Kiss
+- Trick
+
+Ho-Oh @ Heavy-Duty Boots
+Ability: Regenerator
+Tera Type: Normal
+EVs: 252 HP / 236 Def / 20 Spe
+Impish Nature
+- Sacred Fire
+- Protect
+- Whirlwind
+- Recover
+
+Urshifu-Rapid-Strike @ Choice Band
+Ability: Unseen Fist
+Tera Type: Fire
+EVs: 236 Atk / 196 Def / 76 Spe
+Adamant Nature
+- Surging Strikes
+- Close Combat
+- Aqua Jet
+- Drain Punch
+
+Ting-Lu @ Leftovers
+Ability: Vessel of Ruin
+Tera Type: Fairy
+EVs: 244 HP / 4 Atk / 116 Def / 132 SpD / 12 Spe
+Impish Nature
+- Earthquake
+- Spikes
+- Whirlwind
+- Rest
+
+Archaludon @ Sitrus Berry
+Ability: Stamina
+Tera Type: Normal
+EVs: 252 HP / 236 Def / 20 SpD
+Bold Nature
+IVs: 0 Atk
+- Draco Meteor
+- Body Press
+- Foul Play
+- Stealth Rock
+
+Clodsire @ Black Sludge
+Ability: Water Absorb
+Tera Type: Fairy
+EVs: 252 HP / 108 Def / 20 SpA / 124 SpD / 4 Spe
+Calm Nature
+- Earth Power
+- Protect
+- Toxic
+- Recover

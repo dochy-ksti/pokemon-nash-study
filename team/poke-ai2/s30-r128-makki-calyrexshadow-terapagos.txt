@@ -1,0 +1,56 @@
+Calyrex-Shadow @ Focus Sash
+Ability: As One (Spectrier)
+Tera Type: Ground
+EVs: 252 SpA / 252 Spe
+Timid Nature
+- Astral Barrage
+- Grass Knot
+- Mud Shot
+- Encore
+
+Terapagos @ Leftovers
+Ability: Tera Shift
+Tera Type: Stellar
+EVs: 220 HP / 244 Def / 4 SpA / 36 SpD / 4 Spe
+Bold Nature
+- Tera Starstorm
+- Toxic
+- Calm Mind
+- Protect
+
+Urshifu-Rapid-Strike @ Choice Band
+Ability: Unseen Fist
+Tera Type: Water
+EVs: 108 HP / 220 Atk / 132 Def / 4 SpD / 44 Spe
+Adamant Nature
+- Surging Strikes
+- Close Combat
+- Aqua Jet
+- U-turn
+
+Chien-Pao @ Never-Melt Ice
+Ability: Sword of Ruin
+Tera Type: Fire
+EVs: 28 HP / 252 Atk / 164 Def / 4 SpD / 60 Spe
+Adamant Nature
+- Icicle Crash
+- Sucker Punch
+- Ice Shard
+- Swords Dance
+
+Ursaluna-Bloodmoon @ Assault Vest
+Ability: Mind's Eye
+Tera Type: Fairy
+EVs: 252 HP / 4 Def / 116 SpA / 132 SpD / 4 Spe
+Modest Nature
+- Blood Moon
+- Earth Power
+- Moonblast
+- Vacuum Wave
+
+Ditto @ Choice Scarf
+Ability: Imposter
+Tera Type: Normal
+EVs: 252 HP
+Sassy Nature
+- Transform

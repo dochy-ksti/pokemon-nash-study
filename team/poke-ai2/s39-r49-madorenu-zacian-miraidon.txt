@@ -1,0 +1,61 @@
+Zacian-Crowned @ Rusted Sword
+Ability: Intrepid Sword
+Tera Type: Normal
+EVs: 172 HP / 156 Atk / 4 Def / 12 SpD / 164 Spe
+Jolly Nature
+- Behemoth Blade
+- Play Rough
+- Wild Charge
+- Crunch
+
+Ursaluna-Bloodmoon @ Focus Sash
+Ability: Mind's Eye
+Tera Type: Normal
+EVs: 36 HP / 140 Def / 252 SpA / 4 SpD / 76 Spe
+Modest Nature
+IVs: 0 Atk
+- Blood Moon
+- Earth Power
+- Vacuum Wave
+- Yawn
+
+Miraidon @ Electric Seed
+Ability: Hadron Engine
+Tera Type: Ice
+EVs: 124 HP / 12 Def / 252 SpA / 4 SpD / 116 Spe
+Modest Nature
+IVs: 0 Atk
+- Electro Drift
+- Tera Blast
+- Agility
+- Calm Mind
+
+Dragonite @ Choice Band
+Ability: Multiscale
+Tera Type: Normal
+EVs: 68 HP / 252 Atk / 188 Spe
+Adamant Nature
+- Outrage
+- Extreme Speed
+- Earthquake
+- Ice Spinner
+
+Mimikyu @ Mental Herb
+Ability: Disguise
+Tera Type: Normal
+EVs: 196 HP / 236 Atk / 4 Def / 4 SpD / 68 Spe
+Adamant Nature
+- Play Rough
+- Shadow Sneak
+- Protect
+- Curse
+
+Ting-Lu @ Sitrus Berry
+Ability: Vessel of Ruin
+Tera Type: Fairy
+EVs: 212 HP / 12 Atk / 36 Def / 244 SpD / 4 Spe
+Impish Nature
+- Earthquake
+- Ruination
+- Tera Blast
+- Stealth Rock

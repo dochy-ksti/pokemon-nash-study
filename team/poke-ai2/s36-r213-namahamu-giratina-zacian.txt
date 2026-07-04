@@ -1,0 +1,60 @@
+Giratina-Origin @ Griseous Core
+Ability: Levitate
+Tera Type: Fire
+EVs: 28 HP / 236 Atk / 156 Def / 84 SpA / 4 SpD
+Brave Nature
+IVs: 0 Spe
+- Poltergeist
+- Draco Meteor
+- Shadow Sneak
+- Curse
+
+Zacian-Crowned @ Rusted Sword
+Ability: Intrepid Sword
+Tera Type: Normal
+EVs: 188 HP / 148 Atk / 172 Spe
+Jolly Nature
+- Behemoth Blade
+- Play Rough
+- Close Combat
+- Swords Dance
+
+Breloom @ Focus Sash
+Ability: Technician
+Tera Type: Rock
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Bullet Seed
+- Mach Punch
+- Rock Tomb
+- Spore
+
+Garganacl @ Leftovers
+Ability: Purifying Salt
+Tera Type: Fairy
+EVs: 252 HP / 4 Atk / 156 Def / 68 SpD / 28 Spe
+Impish Nature
+- Salt Cure
+- Protect
+- Substitute
+- Recover
+
+Chien-Pao @ Icicle Plate
+Ability: Sword of Ruin
+Tera Type: Fire
+EVs: 76 HP / 252 Atk / 60 Def / 44 SpD / 76 Spe
+Adamant Nature
+- Icicle Crash
+- Sucker Punch
+- Ice Shard
+- Taunt
+
+Ting-Lu @ Assault Vest
+Ability: Vessel of Ruin
+Tera Type: Steel
+EVs: 100 HP / 156 Atk / 252 SpD
+Adamant Nature
+- Earthquake
+- Ruination
+- Heavy Slam
+- Payback

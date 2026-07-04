@@ -1,0 +1,59 @@
+Calyrex-Shadow @ Choice Specs
+Ability: As One (Spectrier)
+Tera Type: Fairy
+EVs: 124 HP / 4 Def / 204 SpA / 12 SpD / 164 Spe
+Timid Nature
+- Astral Barrage
+- Psychic
+- Draining Kiss
+- Grass Knot
+
+Koraidon @ Choice Scarf
+Ability: Orichalcum Pulse
+Tera Type: Fire
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Close Combat
+- Outrage
+- Flare Blitz
+- U-turn
+
+Ting-Lu @ Assault Vest
+Ability: Vessel of Ruin
+Tera Type: Steel
+EVs: 4 HP / 236 Atk / 4 Def / 188 SpD / 76 Spe
+Adamant Nature
+- Earthquake
+- Heavy Slam
+- Ruination
+- Fissure
+
+Dondozo @ Leftovers
+Ability: Unaware
+Tera Type: Normal
+EVs: 252 HP / 196 Def / 60 SpD
+Impish Nature
+- Wave Crash
+- Yawn
+- Protect
+- Rest
+
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Steel
+EVs: 228 HP / 28 Def / 252 SpD
+Careful Nature
+- Earthquake
+- Toxic
+- Substitute
+- Protect
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Ghost
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Icicle Crash
+- Sucker Punch
+- Sacred Sword
+- Sheer Cold

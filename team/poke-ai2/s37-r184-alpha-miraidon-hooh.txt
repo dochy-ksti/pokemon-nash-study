@@ -1,0 +1,62 @@
+Miraidon @ Choice Scarf
+Ability: Hadron Engine
+Tera Type: Ghost
+EVs: 236 HP / 4 Def / 252 SpA / 4 SpD / 12 Spe
+Modest Nature
+IVs: 0 Atk
+- Electro Drift
+- Draco Meteor
+- Volt Switch
+- Snarl
+
+Ho-Oh @ Leftovers
+Ability: Regenerator
+Tera Type: Fairy
+EVs: 252 HP / 236 Def / 20 SpD
+Impish Nature
+- Sacred Fire
+- Recover
+- Whirlwind
+- Protect
+
+Glimmora @ Air Balloon
+Ability: Toxic Debris
+Tera Type: Dark
+EVs: 244 HP / 4 SpA / 4 SpD / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Mortal Spin
+- Spikes
+- Power Gem
+- Mud Shot
+
+Clodsire @ Mental Herb
+Ability: Water Absorb
+Tera Type: Normal
+EVs: 252 HP / 252 SpD
+Careful Nature
+- Earthquake
+- Toxic
+- Haze
+- Recover
+
+Archaludon @ Sitrus Berry
+Ability: Stamina
+Tera Type: Water
+EVs: 252 HP / 236 Def / 20 SpD
+Bold Nature
+IVs: 0 Atk
+- Body Press
+- Dragon Pulse
+- Foul Play
+- Stealth Rock
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Ground
+EVs: 252 Atk / 84 Def / 172 Spe
+Adamant Nature
+- Icicle Crash
+- Tera Blast
+- Sucker Punch
+- Sacred Sword

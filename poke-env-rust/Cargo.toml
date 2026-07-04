@@ -1,0 +1,19 @@
+[package]
+name = "poke-env-rust"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+poke-sho-rust = { path = "../poke-sho-rust" }
+futures = "0.3"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tokio = { version = "1.52.3", features = ["rt-multi-thread", "sync", "process", "io-util", "macros", "time"] }
+thiserror = "1.0"
+rand = "0.8"
+rand_chacha = "0.3"
+
+[dev-dependencies]
+tokio = { version = "1.52.3", features = ["rt-multi-thread", "sync", "process", "io-util", "macros", "time", "test-util"] }
+rand = "0.8"
+rand_pcg = "0.3"

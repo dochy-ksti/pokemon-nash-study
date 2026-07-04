@@ -1,0 +1,59 @@
+Eternatus @ Choice Scarf
+Ability: Pressure
+Tera Type: Fairy
+EVs: 68 HP / 252 SpA / 188 Spe
+Modest Nature
+- Dynamax Cannon
+- Sludge Wave
+- Flamethrower
+- Shadow Ball
+
+Zacian-Crowned @ Rusted Sword
+Ability: Intrepid Sword
+Tera Type: Water
+EVs: 204 HP / 228 Atk / 4 Def / 4 SpD / 68 Spe
+Adamant Nature
+- Behemoth Blade
+- Play Rough
+- Tera Blast
+- Trailblaze
+
+Ting-Lu @ Assault Vest
+Ability: Vessel of Ruin
+Tera Type: Steel
+EVs: 252 HP / 244 SpD / 12 Spe
+Careful Nature
+- Earthquake
+- Payback
+- Ruination
+- Fissure
+
+Landorus-Therian @ Rocky Helmet
+Ability: Intimidate
+Tera Type: Water
+EVs: 252 HP / 4 Atk / 252 Def
+Impish Nature
+- Earthquake
+- U-turn
+- Stealth Rock
+- Taunt
+
+Urshifu-Rapid-Strike @ Choice Band
+Ability: Unseen Fist
+Tera Type: Normal
+EVs: 92 HP / 236 Atk / 172 Def / 4 SpD / 4 Spe
+Adamant Nature
+- Surging Strikes
+- Close Combat
+- Aqua Jet
+- U-turn
+
+Gholdengo @ Covert Cloak
+Ability: Good as Gold
+Tera Type: Normal
+EVs: 252 HP / 188 Def / 68 Spe
+Modest Nature
+- Make It Rain
+- Shadow Ball
+- Nasty Plot
+- Recover

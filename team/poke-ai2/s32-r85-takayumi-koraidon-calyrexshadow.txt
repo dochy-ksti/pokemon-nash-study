@@ -1,0 +1,59 @@
+Koraidon @ Loaded Dice
+Ability: Orichalcum Pulse
+Tera Type: Fire
+EVs: 252 HP / 212 Atk / 28 Def / 4 SpD / 12 Spe
+Adamant Nature
+- Flare Blitz
+- Scale Shot
+- Taunt
+- Swords Dance
+
+Calyrex-Shadow @ Focus Sash
+Ability: As One (Spectrier)
+Tera Type: Grass
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+- Astral Barrage
+- Psyshock
+- Grass Knot
+- Encore
+
+Flutter Mane @ Choice Specs
+Ability: Protosynthesis
+Tera Type: Fairy
+EVs: 4 HP / 68 Def / 180 SpA / 4 SpD / 252 Spe
+Timid Nature
+- Shadow Ball
+- Moonblast
+- Power Gem
+- Perish Song
+
+Ting-Lu @ Assault Vest
+Ability: Vessel of Ruin
+Tera Type: Steel
+EVs: 36 HP / 196 Atk / 4 Def / 220 SpD / 52 Spe
+Adamant Nature
+- Throat Chop
+- Earthquake
+- Heavy Slam
+- Bulldoze
+
+Dondozo @ Leftovers
+Ability: Unaware
+Tera Type: Fairy
+EVs: 252 HP / 252 Def / 4 SpD
+Impish Nature
+- Wave Crash
+- Yawn
+- Protect
+- Rest
+
+Clodsire @ Black Sludge
+Ability: Water Absorb
+Tera Type: Fairy
+EVs: 252 HP / 20 Def / 236 SpD
+Careful Nature
+- Poison Jab
+- Protect
+- Toxic Spikes
+- Recover

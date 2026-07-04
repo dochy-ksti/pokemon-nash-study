@@ -1,0 +1,59 @@
+Miraidon @ Choice Scarf
+Ability: Hadron Engine
+Tera Type: Fairy
+EVs: 236 HP / 4 Def / 244 SpA / 4 SpD / 20 Spe
+Modest Nature
+- Electro Drift
+- Draco Meteor
+- Dazzling Gleam
+- Volt Switch
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Stellar
+EVs: 252 HP / 132 Atk / 4 Def / 52 SpD / 68 Spe
+Adamant Nature
+- Icicle Crash
+- Sucker Punch
+- Ice Shard
+- Swords Dance
+
+Kyogre @ Electric Seed
+Ability: Drizzle
+Tera Type: Poison
+EVs: 252 HP / 244 Def / 12 Spe
+Bold Nature
+- Surf
+- Ice Beam
+- Thunder Wave
+- Roar
+
+Ogerpon-Hearthflame @ Hearthflame Mask
+Ability: Mold Breaker
+Tera Type: Fire
+EVs: 236 HP / 244 Atk / 4 Def / 4 SpD / 20 Spe
+Adamant Nature
+- Ivy Cudgel
+- Horn Leech
+- Quick Attack
+- Swords Dance
+
+Iron Treads @ Choice Band
+Ability: Quark Drive
+Tera Type: Normal
+EVs: 76 HP / 204 Atk / 4 Def / 76 SpD / 148 Spe
+Jolly Nature
+- Iron Head
+- Earthquake
+- Knock Off
+- Ice Spinner
+
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Steel
+EVs: 228 HP / 36 Def / 244 SpD
+Careful Nature
+- Earthquake
+- Toxic
+- Protect
+- Substitute

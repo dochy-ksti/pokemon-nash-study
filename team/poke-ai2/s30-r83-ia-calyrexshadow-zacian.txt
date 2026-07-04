@@ -1,0 +1,59 @@
+Calyrex-Shadow @ Life Orb
+Ability: As One (Spectrier)
+Tera Type: Grass
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+- Astral Barrage
+- Psyshock
+- Grass Knot
+- Nasty Plot
+
+Zacian-Crowned @ Rusted Sword
+Ability: Intrepid Sword
+Tera Type: Electric
+EVs: 188 HP / 252 Atk / 4 Def / 12 SpD / 52 Spe
+Adamant Nature
+- Behemoth Blade
+- Play Rough
+- Tera Blast
+- Trailblaze
+
+Roaring Moon @ Booster Energy
+Ability: Protosynthesis
+Tera Type: Ground
+EVs: 36 HP / 220 Atk / 252 Spe
+Jolly Nature
+- Knock Off
+- Outrage
+- Earthquake
+- Dragon Dance
+
+Ursaluna-Bloodmoon @ Rocky Helmet
+Ability: Mind's Eye
+Tera Type: Fire
+EVs: 244 HP / 252 Def / 12 SpA
+Bold Nature
+- Blood Moon
+- Earth Power
+- Yawn
+- Moonlight
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Stellar
+EVs: 4 Def / 252 Atk / 252 Spe
+Jolly Nature
+- Icicle Crash
+- Sucker Punch
+- Brick Break
+- Swords Dance
+
+Ogerpon-Hearthflame @ Hearthflame Mask
+Ability: Mold Breaker
+Tera Type: Fire
+EVs: 252 HP / 124 Atk / 52 Def / 4 SpD / 76 Spe
+Adamant Nature
+- Ivy Cudgel
+- Horn Leech
+- Rock Tomb
+- Taunt

@@ -1,0 +1,59 @@
+Miraidon @ Eject Pack
+Ability: Hadron Engine
+Tera Type: Fairy
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+- Electro Drift
+- Draco Meteor
+- Overheat
+- Protect
+
+Zacian-Crowned @ Rusted Sword
+Ability: Intrepid Sword
+Tera Type: Normal
+EVs: 252 HP / 252 Atk / 4 SpD
+Adamant Nature
+- Behemoth Blade
+- Play Rough
+- Wild Charge
+- Trailblaze
+
+Landorus-Therian @ Rocky Helmet
+Ability: Intimidate
+Tera Type: Water
+EVs: 252 HP / 4 Atk / 252 Def
+Relaxed Nature
+- Earthquake
+- U-turn
+- Stealth Rock
+- Taunt
+
+Incineroar @ Assault Vest
+Ability: Intimidate
+Tera Type: Normal
+EVs: 244 HP / 12 Def / 252 SpD
+Sassy Nature
+- Flare Blitz
+- Knock Off
+- Bulldoze
+- U-turn
+
+Urshifu-Rapid-Strike @ Choice Band
+Ability: Unseen Fist
+Tera Type: Normal
+EVs: 44 HP / 252 Atk / 212 Def
+Adamant Nature
+- Surging Strikes
+- Close Combat
+- Facade
+- Aqua Jet
+
+Ting-Lu @ Sitrus Berry
+Ability: Vessel of Ruin
+Tera Type: Poison
+EVs: 244 HP / 12 Def / 252 SpD
+Impish Nature
+- Earthquake
+- Stealth Rock
+- Spikes
+- Whirlwind

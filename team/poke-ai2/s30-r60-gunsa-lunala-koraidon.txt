@@ -1,0 +1,59 @@
+Lunala @ Rocky Helmet
+Ability: Shadow Shield
+Tera Type: Water
+EVs: 244 HP / 252 Def / 12 SpD
+Bold Nature
+- Moongeist Beam
+- Ice Beam
+- Calm Mind
+- Moonlight
+
+Koraidon @ Choice Scarf
+Ability: Orichalcum Pulse
+Tera Type: Fire
+EVs: 252 HP / 52 Atk / 52 SpD / 148 Spe
+Adamant Nature
+- Close Combat
+- Outrage
+- Flare Blitz
+- U-turn
+
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Steel
+EVs: 228 HP / 12 Atk / 252 SpD / 12 Spe
+Careful Nature
+- Earthquake
+- Toxic Spikes
+- Protect
+- Substitute
+
+Alomomola @ Assault Vest
+Ability: Regenerator
+Tera Type: Normal
+EVs: 244 HP / 12 Def / 252 SpD
+Sassy Nature
+- Flip Turn
+- Aqua Jet
+- Icy Wind
+- Mirror Coat
+
+Grimmsnarl @ Heavy-Duty Boots
+Ability: Prankster
+Tera Type: Normal
+EVs: 244 HP / 252 SpD / 12 Spe
+Careful Nature
+- Spirit Break
+- Sucker Punch
+- Parting Shot
+- Taunt
+
+Weezing-Galar @ Leftovers
+Ability: Neutralizing Gas
+Tera Type: Ground
+EVs: 252 HP / 84 Def / 172 SpD
+Bold Nature
+- Strange Steam
+- Toxic
+- Toxic Spikes
+- Pain Split

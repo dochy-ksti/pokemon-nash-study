@@ -1,0 +1,64 @@
+Calyrex-Ice @ Choice Band
+Ability: As One (Glastrier)
+Tera Type: Ice
+EVs: 252 HP / 236 Atk / 20 SpD
+Adamant Nature
+- Glacial Lance
+- High Horsepower
+- Seed Bomb
+- Icicle Spear
+
+Arceus-Flying @ Sky Plate
+Ability: Multitype
+Tera Type: Water
+EVs: 252 HP / 100 Def / 156 SpD
+Calm Nature
+IVs: 0 Atk
+- Judgment
+- Taunt
+- Healing Wish
+- Trick Room
+
+Archaludon @ Choice Specs
+Ability: Sturdy
+Tera Type: Ground
+EVs: 252 HP / 252 SpA / 4 Spe
+Modest Nature
+IVs: 0 Atk
+- Draco Meteor
+- Steel Beam
+- Electro Shot
+- Tera Blast
+
+Mimikyu @ Rocky Helmet
+Ability: Disguise
+Tera Type: Normal
+EVs: 228 HP / 244 Def / 36 SpD
+Relaxed Nature
+IVs: 0 Spe
+- Trick Room
+- Curse
+- Taunt
+- Play Rough
+
+Indeedee-M @ Focus Sash
+Ability: Psychic Surge
+Tera Type: Dragon
+EVs: 252 HP / 252 Def / 4 SpA
+Relaxed Nature
+IVs: 0 Spe
+- Trick Room
+- Healing Wish
+- Encore
+- Expanding Force
+
+Armarouge @ Power Herb
+Ability: Flash Fire
+Tera Type: Fairy
+EVs: 220 HP / 252 Def / 36 SpA
+Bold Nature
+IVs: 0 Spe
+- Trick Room
+- Armor Cannon
+- Psychic
+- Meteor Beam

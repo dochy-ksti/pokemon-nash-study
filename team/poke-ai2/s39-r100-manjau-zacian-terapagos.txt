@@ -1,0 +1,62 @@
+Zacian-Crowned @ Rusted Sword
+Ability: Intrepid Sword
+Tera Type: Dark
+EVs: 60 HP / 212 Atk / 236 Spe
+Jolly Nature
+- Behemoth Blade
+- Play Rough
+- Ice Fang
+- Crunch
+
+Terapagos @ Leftovers
+Ability: Tera Shift
+Tera Type: Stellar
+EVs: 172 HP / 220 SpA / 116 Spe
+Modest Nature
+IVs: 0 Atk
+- Tera Starstorm
+- Earth Power
+- Calm Mind
+- Rock Polish
+
+Landorus-Therian @ Focus Sash
+Ability: Intimidate
+Tera Type: Fairy
+EVs: 4 HP / 252 Atk / 252 Spe
+Jolly Nature
+- Earthquake
+- Bulldoze
+- Taunt
+- Stealth Rock
+
+Archaludon @ Jaboca Berry
+Ability: Sturdy
+Tera Type: Dragon
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Draco Meteor
+- Steel Beam
+- Roar
+- Stealth Rock
+
+Grimmsnarl @ Lagging Tail
+Ability: Prankster
+Tera Type: Ghost
+EVs: 172 HP / 44 Atk / 140 Def / 148 SpD / 4 Spe
+Careful Nature
+- Spirit Break
+- Foul Play
+- Taunt
+- Trick
+
+Glimmora @ Air Balloon
+Ability: Toxic Debris
+Tera Type: Flying
+EVs: 244 HP / 4 Def / 4 SpA / 4 SpD / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Mortal Spin
+- Power Gem
+- Earth Power
+- Spiky Shield

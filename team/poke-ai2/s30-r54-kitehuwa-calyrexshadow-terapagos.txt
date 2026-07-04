@@ -1,0 +1,61 @@
+Calyrex-Shadow @ Choice Specs
+Ability: As One (Spectrier)
+Tera Type: Water
+EVs: 124 HP / 4 Def / 124 SpA / 4 SpD / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Astral Barrage
+- Psyshock
+- Tera Blast
+- Grass Knot
+
+Terapagos @ Leftovers
+Ability: Tera Shell
+Tera Type: Stellar
+EVs: 180 HP / 252 Def / 76 SpD
+Bold Nature
+IVs: 0 Atk
+- Tera Starstorm
+- Toxic
+- Protect
+- Substitute
+
+Alomomola @ Rocky Helmet
+Ability: Regenerator
+Tera Type: Fairy
+EVs: 252 HP / 4 Atk / 252 Def
+Relaxed Nature
+- Flip Turn
+- Aqua Jet
+- Wish
+- Protect
+
+Rillaboom @ Assault Vest
+Ability: Grassy Surge
+Tera Type: Dragon
+EVs: 252 HP / 4 Atk / 252 SpD
+Careful Nature
+- Grassy Glide
+- Drum Beating
+- Knock Off
+- U-turn
+
+Urshifu-Rapid-Strike @ Punching Glove
+Ability: Unseen Fist
+Tera Type: Fire
+EVs: 12 HP / 252 Atk / 196 Def / 4 SpD / 44 Spe
+Adamant Nature
+- Surging Strikes
+- Focus Punch
+- Ice Punch
+- Substitute
+
+Roaring Moon @ Maranga Berry
+Ability: Protosynthesis
+Tera Type: Poison
+EVs: 244 HP / 12 Atk / 252 SpD
+Careful Nature
+- Jaw Lock
+- Dragon Dance
+- Taunt
+- Roost

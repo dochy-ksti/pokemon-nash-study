@@ -1,0 +1,59 @@
+Koraidon @ Loaded Dice
+Ability: Orichalcum Pulse
+Tera Type: Fire
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Flare Blitz
+- Scale Shot
+- Swords Dance
+- Flame Charge
+
+Calyrex-Shadow @ Choice Scarf
+Ability: As One (Spectrier)
+Tera Type: Fairy
+EVs: 124 HP / 84 Def / 116 SpA / 12 SpD / 172 Spe
+Timid Nature
+- Astral Barrage
+- Psychic
+- Draining Kiss
+- Trick
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Stellar
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Sucker Punch
+- Icicle Crash
+- Sacred Sword
+- Sheer Cold
+
+Ursaluna-Bloodmoon @ Assault Vest
+Ability: Mind's Eye
+Tera Type: Normal
+EVs: 100 HP / 4 Def / 164 SpA / 228 SpD / 12 Spe
+Modest Nature
+- Blood Moon
+- Earth Power
+- Hyper Voice
+- Vacuum Wave
+
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Steel
+EVs: 228 HP / 36 Def / 244 SpD
+Impish Nature
+- Earthquake
+- Toxic
+- Substitute
+- Protect
+
+Dondozo @ Leftovers
+Ability: Unaware
+Tera Type: Normal
+EVs: 252 HP / 196 Def / 60 SpD
+Bold Nature
+- Protect
+- Rest
+- Yawn
+- Fissure

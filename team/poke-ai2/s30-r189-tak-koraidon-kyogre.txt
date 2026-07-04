@@ -1,0 +1,56 @@
+Koraidon @ Loaded Dice
+Ability: Orichalcum Pulse
+Tera Type: Fire
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Flare Blitz
+- Scale Shot
+- Swords Dance
+- Flame Charge
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Ghost
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Icicle Crash
+- Sucker Punch
+- Sacred Sword
+- Sheer Cold
+
+Ting-Lu @ Leftovers
+Ability: Vessel of Ruin
+Tera Type: Fairy
+EVs: 252 HP / 4 Def / 252 SpD
+Careful Nature
+- Fissure
+- Ruination
+- Stealth Rock
+- Whirlwind
+
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Steel
+EVs: 244 HP / 12 Def / 252 Spe
+Jolly Nature
+- Earthquake
+- Toxic
+- Substitute
+- Protect
+
+Ditto @ Choice Scarf
+Ability: Imposter
+Tera Type: Normal
+EVs: 252 HP
+Sassy Nature
+- Transform
+
+Kyogre @ Choice Specs
+Ability: Drizzle
+Tera Type: Fairy
+EVs: 252 HP / 252 Def / 4 Spe
+Bold Nature
+- Water Spout
+- Thunder
+- Ice Beam
+- Surf

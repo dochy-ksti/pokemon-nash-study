@@ -1,0 +1,59 @@
+Arcanine-Hisui @ Heavy-Duty Boots
+Ability: Intimidate
+Tera Type: Normal
+EVs: 244 HP / 4 Atk / 188 Def / 4 SpD / 68 Spe
+Adamant Nature
+- Rock Tomb
+- Will-O-Wisp
+- Morning Sun
+- Substitute
+
+Eternatus @ Leftovers
+Ability: Pressure
+Tera Type: Fairy
+EVs: 124 Def / 252 SpA / 124 SpD
+Modest Nature
+- Dynamax Cannon
+- Toxic
+- Protect
+- Recover
+
+Kyogre @ Choice Scarf
+Ability: Drizzle
+Tera Type: Water
+EVs: 252 SpA / 252 Spe
+Timid Nature
+- Surf
+- Ice Beam
+- Thunder
+- Water Spout
+
+Ting-Lu @ Sitrus Berry
+Ability: Vessel of Ruin
+Tera Type: Poison
+EVs: 252 HP / 252 SpD
+Impish Nature
+- Ruination
+- Stealth Rock
+- Spikes
+- Whirlwind
+
+Landorus-Therian @ Rocky Helmet
+Ability: Intimidate
+Tera Type: Water
+EVs: 252 HP / 252 Def
+Impish Nature
+- Earthquake
+- U-turn
+- Taunt
+- Stealth Rock
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Dark
+EVs: 252 Atk / 252 Spe
+Jolly Nature
+- Crunch
+- Ice Shard
+- Sucker Punch
+- Swords Dance

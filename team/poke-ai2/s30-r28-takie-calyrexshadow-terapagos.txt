@@ -1,0 +1,59 @@
+Calyrex-Shadow @ Focus Sash
+Ability: As One (Spectrier)
+Tera Type: Grass
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+- Astral Barrage
+- Grass Knot
+- Encore
+- Nasty Plot
+
+Terapagos @ Leftovers
+Ability: Tera Shift
+Tera Type: Stellar
+EVs: 172 HP / 236 Def / 100 Spe
+Bold Nature
+- Tera Starstorm
+- Rapid Spin
+- Toxic
+- Protect
+
+Chien-Pao @ Black Glasses
+Ability: Sword of Ruin
+Tera Type: Fire
+EVs: 28 HP / 252 Atk / 228 Def
+Adamant Nature
+- Crunch
+- Ice Shard
+- Sucker Punch
+- Swords Dance
+
+Landorus-Therian @ Rocky Helmet
+Ability: Intimidate
+Tera Type: Fire
+EVs: 252 HP / 252 Def / 4 SpD
+Impish Nature
+- Earthquake
+- U-turn
+- Taunt
+- Stealth Rock
+
+Ting-Lu @ Sitrus Berry
+Ability: Vessel of Ruin
+Tera Type: Poison
+EVs: 244 HP / 4 Atk / 4 Def / 236 SpD / 20 Spe
+Impish Nature
+- Earthquake
+- Whirlwind
+- Spikes
+- Stealth Rock
+
+Ogerpon-Wellspring @ Wellspring Mask
+Ability: Water Absorb
+Tera Type: Water
+EVs: 252 HP / 36 Atk / 76 Def / 60 SpD / 84 Spe
+Adamant Nature
+- Ivy Cudgel
+- Knock Off
+- Leech Seed
+- Encore

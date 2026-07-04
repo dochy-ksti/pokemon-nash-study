@@ -1,0 +1,62 @@
+Ting-Lu @ Leftovers
+Ability: Vessel of Ruin
+Tera Type: Poison
+EVs: 244 HP / 84 Def / 180 SpD
+Impish Nature
+- Earthquake
+- Ruination
+- Spikes
+- Taunt
+
+Calyrex-Shadow @ Choice Scarf
+Ability: As One (Spectrier)
+Tera Type: Ghost
+EVs: 76 HP / 76 Def / 204 SpA / 12 SpD / 140 Spe
+Timid Nature
+IVs: 0 Atk
+- Astral Barrage
+- Psychic
+- Pollen Puff
+- Trick
+
+Arceus @ Lum Berry
+Ability: Multitype
+Tera Type: Flying
+EVs: 220 HP / 252 Atk / 20 Def / 12 SpA / 4 SpD
+Brave Nature
+IVs: 0 Spe
+- Extreme Speed
+- Earthquake
+- Grass Knot
+- Swords Dance
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Electric
+EVs: 252 Atk / 180 Def / 76 Spe
+Adamant Nature
+- Icicle Crash
+- Sucker Punch
+- Sacred Sword
+- Tera Blast
+
+Scizor @ Rocky Helmet
+Ability: Technician
+Tera Type: Normal
+EVs: 252 HP / 4 Atk / 252 Def
+Impish Nature
+IVs: 0 Spe
+- Bullet Punch
+- U-turn
+- Swords Dance
+- Defog
+
+Dragonite @ Covert Cloak
+Ability: Multiscale
+Tera Type: Normal
+EVs: 196 HP / 252 Atk / 4 Def / 36 SpD / 20 Spe
+Adamant Nature
+- Outrage
+- Dragon Tail
+- Extreme Speed
+- Dragon Dance

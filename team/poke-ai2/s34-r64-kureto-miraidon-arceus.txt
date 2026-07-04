@@ -1,0 +1,63 @@
+Miraidon @ Assault Vest
+Ability: Hadron Engine
+Tera Type: Ice
+EVs: 236 HP / 4 Def / 52 SpA / 164 SpD / 52 Spe
+Modest Nature
+IVs: 0 Atk
+- Electro Drift
+- Volt Switch
+- Tera Blast
+- Mirror Coat
+
+Arceus @ Covert Cloak
+Ability: Multitype
+Tera Type: Ghost
+EVs: 252 HP / 252 Atk / 4 Spe
+Adamant Nature
+- Extreme Speed
+- Shadow Claw
+- Recover
+- Swords Dance
+
+Wo-Chien @ Leftovers
+Ability: Tablets of Ruin
+Tera Type: Water
+EVs: 252 HP / 252 Def / 4 SpD
+Impish Nature
+IVs: 0 Atk
+- Foul Play
+- Leech Seed
+- Substitute
+- Protect
+
+Glimmora @ Focus Sash
+Ability: Toxic Debris
+Tera Type: Grass
+EVs: 4 HP / 252 SpA / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Mud Shot
+- Power Gem
+- Mortal Spin
+- Toxic Spikes
+
+Landorus-Therian @ Rocky Helmet
+Ability: Intimidate
+Tera Type: Steel
+EVs: 212 HP / 44 Atk / 252 Def
+Impish Nature
+- Earthquake
+- Stealth Rock
+- U-turn
+- Taunt
+
+Flutter Mane @ Booster Energy
+Ability: Protosynthesis
+Tera Type: Fairy
+EVs: 148 HP / 236 Def / 116 SpA / 4 SpD / 4 Spe
+Timid Nature
+IVs: 0 Atk
+- Moonblast
+- Shadow Ball
+- Pain Split
+- Taunt

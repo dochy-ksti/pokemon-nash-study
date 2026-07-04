@@ -1,0 +1,60 @@
+Calyrex-Shadow @ Choice Specs
+Ability: As One (Spectrier)
+Tera Type: Water
+EVs: 124 HP / 4 Def / 196 SpA / 4 SpD / 180 Spe
+Timid Nature
+- Astral Barrage
+- Psychic
+- Grass Knot
+- Tera Blast
+
+Landorus-Therian @ Rocky Helmet
+Ability: Intimidate
+Tera Type: Fairy
+EVs: 252 HP / 252 Def / 4 SpD
+Relaxed Nature
+- Earthquake
+- U-turn
+- Taunt
+- Stealth Rock
+
+Incineroar @ Assault Vest
+Ability: Intimidate
+Tera Type: Normal
+EVs: 252 HP / 4 Atk / 252 SpD
+Careful Nature
+IVs: 27 Spe
+- Knock Off
+- Flare Blitz
+- U-turn
+- Fake Out
+
+Zacian-Crowned @ Rusted Sword
+Ability: Intrepid Sword
+Tera Type: Electric
+EVs: 60 HP / 252 Atk / 196 Spe
+Jolly Nature
+- Behemoth Blade
+- Play Rough
+- Wild Charge
+- Ice Fang
+
+Urshifu-Rapid-Strike @ Punching Glove
+Ability: Unseen Fist
+Tera Type: Ground
+EVs: 252 Atk / 36 Def / 4 SpD / 212 Spe
+Adamant Nature
+- Surging Strikes
+- Focus Punch
+- Substitute
+- Aqua Jet
+
+Clodsire @ Leftovers
+Ability: Unaware
+Tera Type: Normal
+EVs: 252 HP / 4 Def / 252 SpD
+Careful Nature
+- Earthquake
+- Toxic
+- Recover
+- Protect

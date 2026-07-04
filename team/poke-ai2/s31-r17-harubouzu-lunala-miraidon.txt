@@ -1,0 +1,60 @@
+Lunala @ Rocky Helmet
+Ability: Shadow Shield
+Tera Type: Water
+EVs: 252 HP / 244 Def / 12 Spe
+Bold Nature
+- Moongeist Beam
+- Will-O-Wisp
+- Trick Room
+- Moonlight
+
+Miraidon @ Choice Specs
+Ability: Hadron Engine
+Tera Type: Fire
+EVs: 252 HP / 4 Def / 28 SpA / 172 SpD / 52 Spe
+Modest Nature
+- Electro Drift
+- Draco Meteor
+- Volt Switch
+- Overheat
+
+Urshifu-Rapid-Strike @ Choice Band
+Ability: Unseen Fist
+Tera Type: Water
+EVs: 12 HP / 236 Atk / 220 Def / 4 SpD / 36 Spe
+Adamant Nature
+- Surging Strikes
+- Close Combat
+- Aqua Jet
+- U-turn
+
+Mandibuzz @ Leftovers
+Ability: Overcoat
+Tera Type: Normal
+EVs: 252 HP / 60 Def / 196 SpD
+Sassy Nature
+IVs: 0 Spe
+- Snarl
+- U-turn
+- Toxic
+- Roost
+
+Iron Treads @ Assault Vest
+Ability: Quark Drive
+Tera Type: Normal
+EVs: 188 HP / 4 Atk / 4 Def / 236 SpD / 76 Spe
+Jolly Nature
+- Bulldoze
+- Iron Head
+- Knock Off
+- Rapid Spin
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Stellar
+EVs: 12 HP / 252 Atk / 92 Def / 4 SpD / 148 Spe
+Adamant Nature
+- Icicle Crash
+- Sucker Punch
+- Ice Shard
+- Swords Dance

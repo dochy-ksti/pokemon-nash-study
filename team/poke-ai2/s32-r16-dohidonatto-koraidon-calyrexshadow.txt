@@ -1,0 +1,59 @@
+Koraidon @ Choice Scarf
+Ability: Orichalcum Pulse
+Tera Type: Fire
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Flare Blitz
+- Close Combat
+- Outrage
+- U-turn
+
+Calyrex-Shadow @ Life Orb
+Ability: As One (Spectrier)
+Tera Type: Normal
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+- Astral Barrage
+- Psyshock
+- Grass Knot
+- Encore
+
+Landorus-Therian @ Choice Band
+Ability: Intimidate
+Tera Type: Normal
+EVs: 212 HP / 196 Atk / 28 Def / 68 SpD / 4 Spe
+Adamant Nature
+- Earthquake
+- Rock Slide
+- U-turn
+- Facade
+
+Archaludon @ Occa Berry
+Ability: Sturdy
+Tera Type: Ghost
+EVs: 4 HP / 252 SpA / 252 Spe
+Rash Nature
+- Draco Meteor
+- Flash Cannon
+- Electro Shot
+- Metal Burst
+
+Primarina @ Assault Vest
+Ability: Liquid Voice
+Tera Type: Steel
+EVs: 220 HP / 4 Def / 188 SpA / 92 SpD / 4 Spe
+Modest Nature
+- Moonblast
+- Psychic Noise
+- Shadow Ball
+- Aqua Jet
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Stellar
+EVs: 252 Atk / 4 Def / 252 Spe
+Adamant Nature
+- Icicle Crash
+- Sucker Punch
+- Ice Shard
+- Swords Dance

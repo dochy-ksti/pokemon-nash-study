@@ -1,0 +1,61 @@
+Miraidon @ Eject Pack
+Ability: Hadron Engine
+Tera Type: Fairy
+EVs: 4 HP / 252 SpA / 252 SpD
+Calm Nature
+IVs: 0 Atk
+- Electro Drift
+- Draco Meteor
+- Overheat
+- Protect
+
+Scizor @ Choice Band
+Ability: Technician
+Tera Type: Flying
+EVs: 252 HP / 252 Atk / 4 Def
+Adamant Nature
+- Bullet Punch
+- U-turn
+- Knock Off
+- Dual Wingbeat
+
+Ho-Oh @ Assault Vest
+Ability: Regenerator
+Tera Type: Fairy
+EVs: 204 HP / 108 Atk / 68 Def / 4 SpD / 124 Spe
+Adamant Nature
+- Sacred Fire
+- Brave Bird
+- Earthquake
+- Tera Blast
+
+Landorus-Therian @ Rocky Helmet
+Ability: Intimidate
+Tera Type: Water
+EVs: 252 HP / 4 Atk / 252 Def
+Impish Nature
+- Earthquake
+- U-turn
+- Taunt
+- Stealth Rock
+
+Glimmora @ Power Herb
+Ability: Toxic Debris
+Tera Type: Dark
+EVs: 4 HP / 252 SpA / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Meteor Beam
+- Power Gem
+- Mortal Spin
+- Earth Power
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Normal
+EVs: 252 Atk / 4 Def / 252 Spe
+Adamant Nature
+- Icicle Crash
+- Swords Dance
+- Sucker Punch
+- Ice Shard

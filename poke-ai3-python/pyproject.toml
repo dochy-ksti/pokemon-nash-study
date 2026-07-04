@@ -1,0 +1,37 @@
+[build-system]
+requires = ["maturin>=1.9,<2.0"]
+build-backend = "maturin"
+
+[project]
+name = "poke-ai3-python"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "flash-attn>=2.8,<3.0",
+    "maturin>=1.9,<2.0",
+    "torch>=2.7,<3.0",
+    "transformers==4.57.1",
+]
+
+[project.scripts]
+train-loop = "poke_ai3_train.train_loop:main"
+inspect-matchup = "poke_ai3_train.inspect_matchup:main"
+eval-vs-rule = "poke_ai3_train.eval_vs_rule:main"
+eval-curve = "poke_ai3_train.eval_curve:main"
+eval-ckpt-agreement = "poke_ai3_train.eval_ckpt_agreement:main"
+eval-ckpt-vs-ckpt = "poke_ai3_train.eval_ckpt_vs_ckpt:main"
+eval-hp-strategy = "poke_ai3_train.eval_hp_strategy:main"
+eval-hp-grid = "poke_ai3_train.eval_hp_grid:main"
+play-gui = "poke_ai3_train.play_gui:main"
+
+[tool.maturin]
+module-name = "poke_ai3._native"
+python-source = "python"
+
+[tool.uv.extra-build-dependencies]
+flash-attn = ["numpy", "torch==2.11.0"]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.3",
+]

@@ -1,0 +1,63 @@
+Calyrex-Shadow @ Choice Specs
+Ability: As One (Spectrier)
+Tera Type: Fairy
+EVs: 124 HP / 116 Def / 116 SpA / 4 SpD / 148 Spe
+Timid Nature
+IVs: 0 Atk
+- Astral Barrage
+- Psychic
+- Grass Knot
+- Draining Kiss
+
+Miraidon @ Electric Seed
+Ability: Hadron Engine
+Tera Type: Water
+EVs: 156 HP / 124 Def / 132 SpA / 4 SpD / 92 Spe
+Modest Nature
+IVs: 0 Atk
+- Electro Drift
+- Dragon Pulse
+- Tera Blast
+- Agility
+
+Sneasler @ Focus Sash
+Ability: Poison Touch
+Tera Type: Stellar
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Fake Out
+- Close Combat
+- Dire Claw
+- Toxic Spikes
+
+Garganacl @ Leftovers
+Ability: Purifying Salt
+Tera Type: Grass
+EVs: 252 HP / 4 Def / 252 SpD
+Calm Nature
+IVs: 0 Atk
+- Salt Cure
+- Protect
+- Substitute
+- Recover
+
+Flutter Mane @ Booster Energy
+Ability: Protosynthesis
+Tera Type: Normal
+EVs: 4 HP / 84 Def / 164 SpA / 4 SpD / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Moonblast
+- Shadow Ball
+- Protect
+- Substitute
+
+Landorus-Therian @ Choice Band
+Ability: Intimidate
+Tera Type: Flying
+EVs: 4 HP / 252 Atk / 252 Spe
+Adamant Nature
+- Earthquake
+- Tera Blast
+- Stealth Rock
+- U-turn

@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>人間 vs AI 対戦 (Stage3b)</title>
+<style>
+  body { font-family: system-ui, sans-serif; margin: 0; background: #0f1220; color: #e6e8f0; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 16px; }
+  h1 { font-size: 18px; }
+  .card { background: #1a1f36; border: 1px solid #2a3050; border-radius: 10px; padding: 14px; margin-bottom: 14px; }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  button { background: #2d3566; color: #e6e8f0; border: 1px solid #404a7d; border-radius: 8px;
+           padding: 8px 12px; cursor: pointer; font-size: 14px; }
+  button:hover:not(:disabled) { background: #3a4488; }
+  button:disabled { opacity: 0.35; cursor: default; }
+  select { background: #11152a; color: #e6e8f0; border: 1px solid #404a7d; border-radius: 6px; padding: 6px; }
+  .mon { display: flex; align-items: center; gap: 10px; margin: 6px 0; }
+  .name { width: 150px; font-weight: 600; }
+  .bar { flex: 1; height: 16px; background: #11152a; border-radius: 8px; overflow: hidden; position: relative; }
+  .fill { height: 100%; background: linear-gradient(90deg,#4ade80,#22c55e); transition: width .3s; }
+  .fill.low { background: linear-gradient(90deg,#f87171,#ef4444); }
+  .hp { width: 56px; text-align: right; font-variant-numeric: tabular-nums; }
+  .pol { display: flex; align-items: center; gap: 8px; margin: 3px 0; font-size: 13px; }
+  .pol .pname { width: 110px; }
+  .polbar { flex: 1; height: 12px; background: #11152a; border-radius: 6px; overflow: hidden; }
+  .polfill { height: 100%; background: #60a5fa; }
+  .pct { width: 52px; text-align: right; font-variant-numeric: tabular-nums; }
+  .chosen { color: #fbbf24; font-weight: 700; }
+  #log { height: 200px; overflow-y: auto; background: #11152a; border-radius: 8px; padding: 8px;
+         font-size: 13px; line-height: 1.5; white-space: pre-wrap; }
+  .muted { color: #8b93b8; font-size: 12px; }
+  .se { color: #fbbf24; }
+  .actions button { min-width: 130px; }
+  .winbanner { font-size: 20px; font-weight: 700; padding: 10px; text-align: center; border-radius: 8px; }
+  .win { background: #14532d; } .lose { background: #5b1717; } .tie { background: #44403c; }
+  label { font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>人間 vs AI 対戦 <span id="stage-tag"></span>(決定論・ネット単体)</h1>
+
+  <div class="card" id="setup">
+    <div class="row">
+      <label>あなたの side:
+        <select id="team">
+          <option value="team1">Team1 (Cloyster=電 / Goodra=地)</option>
+          <option value="team2">Team2 (Cloyster=地 / Goodra=電)</option>
+        </select>
+      </label>
+      <label>あなたの先発:
+        <select id="hlead"><option value="0">Cloyster</option><option value="1">Goodra (2体目)</option></select>
+      </label>
+      <label>AI の先発:
+        <select id="alead"><option value="0">Cloyster</option><option value="1">Goodra (2体目)</option></select>
+      </label>
+      <button onclick="randomizeSetup()">ランダム</button>
+      <button onclick="startGame()">対戦開始</button>
+    </div>
+    <div class="muted" style="margin-top:6px">クロスチーム固定: AI は必ず逆 side。先発 index は宣言順 (0=Cloyster, 1=2体目の Goodra)。stage は起動時 --stage で決定。</div>
+  </div>
+
+  <div class="card" id="board" style="display:none">
+    <div class="row" style="justify-content:space-between">
+      <div class="muted">ターン <span id="turn">-</span></div>
+      <label><input type="checkbox" id="reveal" onchange="render()" /> 神視点 (相手の手の内を表示)</label>
+    </div>
+    <div style="margin-top:8px">
+      <div class="muted">AI (相手)</div>
+      <div class="mon"><div class="name" id="ai-name"></div>
+        <div class="bar"><div class="fill" id="ai-fill"></div></div><div class="hp" id="ai-hp"></div></div>
+      <div class="muted" id="ai-bench"></div>
+    </div>
+    <hr style="border-color:#2a3050"/>
+    <div>
+      <div class="muted">あなた</div>
+      <div class="mon"><div class="name" id="me-name"></div>
+        <div class="bar"><div class="fill" id="me-fill"></div></div><div class="hp" id="me-hp"></div></div>
+      <div class="muted" id="me-bench"></div>
+    </div>
+  </div>
+
+  <div class="card" id="aibox" style="display:none">
+    <div class="row" style="justify-content:space-between">
+      <strong>AI の読み (着手前)</strong>
+      <div>盤面勝率 (AI視点): <span id="ai-value" class="se"></span></div>
+    </div>
+    <div id="policy"></div>
+  </div>
+
+  <div class="card actions" id="actions" style="display:none">
+    <div class="row" id="action-buttons"></div>
+  </div>
+
+  <div class="card" id="resultbox" style="display:none"><div id="banner" class="winbanner"></div>
+    <div class="row" style="justify-content:center;margin-top:8px"><button onclick="backToSetup()">もう一度</button></div>
+  </div>
+
+  <div class="card"><strong>ログ</strong><div id="log"></div></div>
+</div>
+
+<script>
+// 観測はグローバル ID (gid) で来る。表示名は gid→名前で引く (action index は個体の
+// moveset スロットなので、グローバル技順の固定配列で引くのは誤り)。
+const SPECIES_BY_GID = {149: "Cloyster", 956: "Goodra", 957: "Goodra-Hisui"};
+const MOVES_BY_GID = {
+  150: "Crunch", 156: "Dark Pulse", 736: "Shock Wave", 95: "Bulldoze",
+  951: "FightSpe60", 952: "FairyPhy60",
+};
+const speciesName = (gid) => SPECIES_BY_GID[gid] || `#${gid}`;
+const moveName = (gid) => MOVES_BY_GID[gid] || `#${gid}`;
+// 行動 index → ラベル。i < num_moves は active の moveset スロット i の技、以降は交代。
+function actionLabel(i, moveGids, numMoves) {
+  if (i < numMoves) {
+    const gid = (moveGids || [])[i];
+    return gid == null ? `技${i + 1}` : moveName(gid);
+  }
+  return "交代";
+}
+let cur = null;  // 現在の state
+
+function randomizeSetup() {
+  document.getElementById("team").value = Math.random() < 0.5 ? "team1" : "team2";
+  document.getElementById("hlead").value = Math.random() < 0.5 ? "0" : "1";
+  document.getElementById("alead").value = Math.random() < 0.5 ? "0" : "1";
+}
+
+function logLine(s) {
+  const el = document.getElementById("log");
+  el.textContent += s + "\n";
+  el.scrollTop = el.scrollHeight;
+}
+
+async function startGame() {
+  const body = {
+    human_team: document.getElementById("team").value,
+    human_lead: parseInt(document.getElementById("hlead").value),
+    ai_lead: parseInt(document.getElementById("alead").value),
+  };
+  const r = await fetch("/new", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(body)});
+  cur = await r.json();
+  document.getElementById("log").textContent = "";
+  document.getElementById("setup").style.display = "none";
+  document.getElementById("board").style.display = "";
+  document.getElementById("aibox").style.display = "";
+  document.getElementById("actions").style.display = "";
+  document.getElementById("resultbox").style.display = "none";
+  logLine("=== 対戦開始 ===");
+  render();
+}
+
+function backToSetup() {
+  document.getElementById("setup").style.display = "";
+  document.getElementById("board").style.display = "none";
+  document.getElementById("aibox").style.display = "none";
+  document.getElementById("actions").style.display = "none";
+  document.getElementById("resultbox").style.display = "none";
+}
+
+function hpBar(fillEl, hpEl, frac) {
+  const pct = Math.round(frac * 100);
+  fillEl.style.width = pct + "%";
+  fillEl.classList.toggle("low", frac <= 0.33);
+  hpEl.textContent = pct + "%";
+}
+
+function benchText(bench, reveal) {
+  // BenchSlot は空き枠が null。瀕死は hp_frac == 0 (present/alive フラグは持たない)。
+  const slots = (bench || []).filter(s => s);
+  if (!slots.length) return "控え: なし";
+  return "控え: " + slots.map(s => {
+    const nm = speciesName(s.species_gid);
+    const hp = Math.round(s.hp_frac * 100) + "%";
+    const dead = s.hp_frac <= 0 ? " (瀕死)" : "";
+    return `${nm} ${hp}${dead}`;
+  }).join(", ");
+}
+
+function render() {
+  if (!cur || !cur.human) return;
+  const reveal = document.getElementById("reveal").checked;
+  const h = cur.human, ai = cur.ai_view;
+  document.getElementById("turn").textContent = cur.turn;
+  if (cur.stage) document.getElementById("stage-tag").textContent = `— Stage${cur.stage} `;
+
+  const numMoves = cur.num_moves;
+  // AI 側 (相手): 通常は種族 + HP% のみ。神視点なら ai_view の "my_*" を出す。
+  document.getElementById("ai-name").textContent = speciesName(h.opp_species_gid);
+  hpBar(document.getElementById("ai-fill"), document.getElementById("ai-hp"), h.opp_quantized_hp_frac);
+  document.getElementById("ai-bench").textContent =
+    reveal ? benchText(ai.my_bench, true) : "控え: ? (非公開)";
+
+  // 自分側
+  document.getElementById("me-name").textContent = speciesName(h.my_species_gid);
+  hpBar(document.getElementById("me-fill"), document.getElementById("me-hp"), h.my_exact_hp_frac);
+  document.getElementById("me-bench").textContent = benchText(h.my_bench, true);
+
+  // AI policy / value
+  document.getElementById("ai-value").textContent = (cur.ai_value * 100).toFixed(1) + "%";
+  const pol = document.getElementById("policy");
+  pol.innerHTML = "";
+  const mask = ai.legal_action_mask;
+  const best = cur.ai_policy.reduce((bi, p, i) => (mask[i] && p > cur.ai_policy[bi]) ? i : bi,
+    mask.findIndex(Boolean));
+  cur.ai_policy.forEach((p, i) => {
+    if (!mask[i]) return;
+    const row = document.createElement("div");
+    row.className = "pol";
+    const star = i === best ? " ★" : "";
+    row.innerHTML = `<div class="pname${i === best ? ' chosen' : ''}">${actionLabel(i, ai.my_move_gids, numMoves)}${star}</div>`
+      + `<div class="polbar"><div class="polfill" style="width:${(p*100).toFixed(1)}%"></div></div>`
+      + `<div class="pct">${(p*100).toFixed(1)}%</div>`;
+    pol.appendChild(row);
+  });
+
+  // 行動ボタン (人間の合法手)
+  const ab = document.getElementById("action-buttons");
+  ab.innerHTML = "";
+  if (cur.done) { showResult(); return; }
+  h.legal_action_mask.forEach((legal, i) => {
+    if (!legal) return;
+    const b = document.createElement("button");
+    b.textContent = actionLabel(i, h.my_move_gids, numMoves);
+    b.onclick = () => sendAction(i);
+    ab.appendChild(b);
+  });
+}
+
+function nameTag(ref) {
+  const who = ref.player === 1 ? "あなた" : "AI";
+  return `${who}の${ref.name}`;
+}
+
+function logEvents(events, first) {
+  logLine(`-- 先手: ${first === 1 ? "あなた" : "AI"} --`);
+  for (const ev of events) {
+    if (ev === "Tie") { logLine("引き分け"); continue; }
+    const key = Object.keys(ev)[0], v = ev[key];
+    if (key === "Move") logLine(`${nameTag(v.user)} の ${v.move_id}`);
+    else if (key === "Crit") logLine(`  急所!`);
+    else if (key === "Damage") logLine(`  → ${nameTag(v.target)} に命中 (残り ${v.fainted ? 0 : Math.round(100*v.hp/v.max_hp)}%)`);
+    else if (key === "Faint") logLine(`  ${nameTag(v.target)} は倒れた`);
+    else if (key === "Switch") logLine(`${v.who.player === 1 ? "あなた" : "AI"} は ${v.species} を繰り出した`);
+    else if (key === "Win") logLine(`*** ${v.player === "P1" ? "あなた" : "AI"} の勝ち ***`);
+  }
+}
+
+async function sendAction(idx) {
+  document.querySelectorAll("#action-buttons button").forEach(b => b.disabled = true);
+  const r = await fetch("/action", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({action: idx})});
+  const res = await r.json();
+  if (res.error) { logLine("ERROR: " + res.error); return; }
+  logLine(`\n[あなた: ${actionLabel(res.human_action, cur.human.my_move_gids, cur.num_moves)}`
+    + ` / AI: ${actionLabel(res.ai_action, cur.ai_view.my_move_gids, cur.num_moves)}]`);
+  logEvents(res.events, res.first);
+  cur = res.next;
+  render();
+}
+
+function showResult() {
+  const box = document.getElementById("resultbox");
+  const banner = document.getElementById("banner");
+  box.style.display = "";
+  if (cur.draw) { banner.textContent = "引き分け"; banner.className = "winbanner tie"; }
+  else if (cur.winner === 1) { banner.textContent = "あなたの勝ち！"; banner.className = "winbanner win"; }
+  else if (cur.winner === 2) { banner.textContent = "AI の勝ち…"; banner.className = "winbanner lose"; }
+  else { banner.textContent = "終局"; banner.className = "winbanner tie"; }
+}
+</script>
+</body>
+</html>

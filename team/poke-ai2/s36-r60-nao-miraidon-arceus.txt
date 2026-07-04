@@ -1,0 +1,61 @@
+Miraidon @ Choice Scarf
+Ability: Hadron Engine
+Tera Type: Electric
+EVs: 124 HP / 28 Def / 196 SpA / 12 SpD / 148 Spe
+Modest Nature
+IVs: 0 Atk
+- Electro Drift
+- Draco Meteor
+- Volt Switch
+- U-turn
+
+Arceus @ Silk Scarf
+Ability: Multitype
+Tera Type: Normal
+EVs: 92 HP / 236 Atk / 4 Def / 52 SpD / 124 Spe
+Adamant Nature
+- Extreme Speed
+- Earthquake
+- Swords Dance
+- Recover
+
+Urshifu-Rapid-Strike @ Choice Band
+Ability: Unseen Fist
+Tera Type: Normal
+EVs: 124 HP / 236 Atk / 148 Def
+Adamant Nature
+- Surging Strikes
+- Close Combat
+- Facade
+- Aqua Jet
+
+Landorus-Therian @ Assault Vest
+Ability: Intimidate
+Tera Type: Normal
+EVs: 212 HP / 60 Atk / 236 SpD
+Careful Nature
+- Earthquake
+- Crunch
+- U-turn
+- Fissure
+
+Iron Crown @ Choice Specs
+Ability: Quark Drive
+Tera Type: Steel
+EVs: 76 HP / 20 Def / 220 SpA / 20 SpD / 172 Spe
+Modest Nature
+IVs: 0 Atk
+- Tachyon Cutter
+- Psyshock
+- Focus Blast
+- Volt Switch
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Ghost
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Icicle Crash
+- Crunch
+- Sacred Sword
+- Ice Shard

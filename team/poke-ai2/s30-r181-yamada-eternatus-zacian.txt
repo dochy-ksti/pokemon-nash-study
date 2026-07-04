@@ -1,0 +1,56 @@
+Eternatus @ Leftovers
+Ability: Pressure
+Tera Type: Fire
+EVs: 76 HP / 244 SpA / 188 Spe
+Timid Nature
+- Dynamax Cannon
+- Flamethrower
+- Protect
+- Substitute
+
+Zacian-Crowned @ Rusted Sword
+Ability: Intrepid Sword
+Tera Type: Normal
+EVs: 252 HP / 60 Atk / 4 Def / 12 SpD / 180 Spe
+Jolly Nature
+- Behemoth Blade
+- Wild Charge
+- Trailblaze
+- Play Rough
+
+Chien-Pao @ Focus Sash
+Ability: Sword of Ruin
+Tera Type: Ice
+EVs: 252 Atk / 4 Def / 252 Spe
+Adamant Nature
+- Icicle Crash
+- Ice Shard
+- Sucker Punch
+- Swords Dance
+
+Ting-Lu @ Assault Vest
+Ability: Vessel of Ruin
+Tera Type: Fire
+EVs: 4 HP / 252 Atk / 4 Def / 244 SpD / 4 Spe
+Adamant Nature
+- Earthquake
+- Ruination
+- Payback
+- Stone Edge
+
+Ditto @ Choice Scarf
+Ability: Imposter
+Tera Type: Normal
+EVs: 252 HP / 252 Spe
+Timid Nature
+- Transform
+
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Dark
+EVs: 228 HP / 60 Def / 220 Spe
+Jolly Nature
+- Substitute
+- Protect
+- Taunt
+- Knock Off

@@ -1,0 +1,61 @@
+Koraidon @ Choice Scarf
+Ability: Orichalcum Pulse
+Tera Type: Fire
+EVs: 252 Atk / 4 SpD / 252 Spe
+Jolly Nature
+- Flare Blitz
+- U-turn
+- Outrage
+- Close Combat
+
+Calyrex-Shadow @ Choice Specs
+Ability: As One (Spectrier)
+Tera Type: Fairy
+EVs: 124 HP / 4 Def / 164 SpA / 12 SpD / 204 Spe
+Timid Nature
+IVs: 0 Atk
+- Astral Barrage
+- Psychic
+- Draining Kiss
+- Grass Knot
+
+Landorus-Therian @ Sitrus Berry
+Ability: Intimidate
+Tera Type: Normal
+EVs: 244 HP / 92 Def / 172 SpD
+Careful Nature
+- Earthquake
+- U-turn
+- Taunt
+- Stealth Rock
+
+Alomomola @ Assault Vest
+Ability: Regenerator
+Tera Type: Normal
+EVs: 20 HP / 236 Def / 252 SpD
+Sassy Nature
+- Flip Turn
+- Aqua Jet
+- Scald
+- Mirror Coat
+
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Fairy
+EVs: 228 HP / 12 Def / 236 SpD / 28 Spe
+Calm Nature
+IVs: 0 Atk
+- Protect
+- Substitute
+- Toxic
+- Taunt
+
+Kingambit @ Black Glasses
+Ability: Supreme Overlord
+Tera Type: Grass
+EVs: 252 HP / 252 Def / 4 Spe
+Impish Nature
+- Kowtow Cleave
+- Sucker Punch
+- Foul Play
+- Swords Dance

@@ -1,0 +1,59 @@
+Miraidon @ Assault Vest
+Ability: Hadron Engine
+Tera Type: Ice
+EVs: 236 HP / 252 SpA / 20 Spe
+Modest Nature
+- Electro Drift
+- Draco Meteor
+- Volt Switch
+- Tera Blast
+
+Koraidon @ Focus Sash
+Ability: Orichalcum Pulse
+Tera Type: Fire
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Flare Blitz
+- Close Combat
+- Flame Charge
+- U-turn
+
+Sneasler @ Electric Seed
+Ability: Unburden
+Tera Type: Ghost
+EVs: 28 HP / 252 Atk / 4 Def / 4 SpD / 220 Spe
+Adamant Nature
+- Dire Claw
+- Close Combat
+- Shadow Claw
+- Swords Dance
+
+Azumarill @ Mental Herb
+Ability: Sap Sipper
+Tera Type: Normal
+EVs: 252 HP / 252 Def / 4 SpD
+Impish Nature
+- Knock Off
+- Protect
+- Whirlpool
+- Perish Song
+
+Scizor @ Rocky Helmet
+Ability: Technician
+Tera Type: Normal
+EVs: 252 HP / 4 Atk / 252 Def
+Impish Nature
+- Bullet Punch
+- Knock Off
+- U-turn
+- Swords Dance
+
+Ursaluna @ Flame Orb
+Ability: Guts
+Tera Type: Fairy
+EVs: 12 HP / 252 Atk / 4 Def / 4 SpD / 236 Spe
+Adamant Nature
+- Facade
+- Earthquake
+- Protect
+- Roar
