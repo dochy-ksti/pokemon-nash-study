@@ -1,5 +1,8 @@
 import init, { Battle } from "./pkg/poke_wasm.js";
 
+// ページ名からステージを決める (battle-3c.html → "3c"、それ以外 → "3b")。
+const STAGE = location.pathname.includes("battle-3c") ? "3c" : "3b";
+
 // ---- i18n ----------------------------------------------------------------
 const MON = {
   "Cloyster": { ja: "パルシェン", en: "Cloyster" },
@@ -51,6 +54,11 @@ const T = {
   win_rate: { ja: "AI評価によるあなたの勝率", en: "Your win rate (AI estimate)" },
   overview: { ja: "← 研究概要", en: "← Overview" },
 };
+// 3c はステージ固有の副題に差し替える (3b はデフォルトのまま)。
+if (STAGE === "3c") {
+  T.title = { ja: "真・極端な有利/不利対面 — ヌメルゴン vs パルシェン",
+              en: "A truly extreme matchup — Goodra vs Cloyster" };
+}
 // URL の ?lang= で言語指定 (ja/en)。未指定・不正はデフォルト英語。
 function langFromUrl() {
   return new URLSearchParams(location.search).get("lang") === "ja" ? "ja" : "en";
@@ -349,7 +357,7 @@ function finish(s) {
 // ---- landing / setup -----------------------------------------------------
 function teamMovesetLabel(teamId) {
   // 各チームの Cloyster / Goodra が持つ技を probe battle から読む。
-  const probe = new Battle("3b", teamId, 0, teamId === 0 ? 1 : 0, 0);
+  const probe = new Battle(STAGE, teamId, 0, teamId === 0 ? 1 : 0, 0);
   const s = probe.snapshot();
   const ms = s.p1.members.map((m) => `${monName(m.species)}=${moveName(m.moves[0].id)}`);
   probe.free();
@@ -365,7 +373,7 @@ function buildLanding() {
     tc.appendChild(chip);
   }
   const lc = el("lead-choices"); lc.innerHTML = "";
-  const probe = new Battle("3b", humanTeam, 0, humanTeam === 0 ? 1 : 0, 0);
+  const probe = new Battle(STAGE, humanTeam, 0, humanTeam === 0 ? 1 : 0, 0);
   const members = probe.snapshot().p1.members; probe.free();
   members.forEach((m, i) => {
     const chip = document.createElement("button");
@@ -380,7 +388,7 @@ function startBattle() {
   aiTeam = humanTeam === 0 ? 1 : 0; // クロスチーム限定: 相手は必ず反対の技構成
   aiLead = Math.random() < 0.5 ? 0 : 1;
   if (battle) battle.free();
-  battle = new Battle("3b", humanTeam, humanLead, aiTeam, aiLead);
+  battle = new Battle(STAGE, humanTeam, humanLead, aiTeam, aiLead);
   gameOver = false;
   lastAct = null; preHp = null;
   el("foe-act").classList.add("hidden");
@@ -397,12 +405,12 @@ function startBattle() {
 // ---- boot ----------------------------------------------------------------
 async function main() {
   await init();
-  META = await (await fetch("./policy_3b.meta.json")).json();
+  META = await (await fetch(`./policy_${STAGE}.meta.json`)).json();
   H = META.hp_buckets; PROB = META.prob_scale; SENT = META.sentinel;
   VSCALE = META.value_scale;
-  const buf = await (await fetch("./policy_3b.bin")).arrayBuffer();
+  const buf = await (await fetch(`./policy_${STAGE}.bin`)).arrayBuffer();
   TABLE = new Uint16Array(buf);
-  const vbuf = await (await fetch("./value_3b.bin")).arrayBuffer();
+  const vbuf = await (await fetch(`./value_${STAGE}.bin`)).arrayBuffer();
   VALUE_TABLE = new Uint16Array(vbuf);
 
   applyStaticI18n();

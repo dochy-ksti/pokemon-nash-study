@@ -4,9 +4,11 @@
   "version": "0.1.0",
   "files": [
     "poke_wasm_bg.wasm",
-    "poke_wasm.js"
+    "poke_wasm.js",
+    "poke_wasm.d.ts"
   ],
   "main": "poke_wasm.js",
+  "types": "poke_wasm.d.ts",
   "sideEffects": [
     "./snippets/*"
   ]

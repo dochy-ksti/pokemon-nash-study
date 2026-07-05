@@ -80,13 +80,13 @@
           resisted (½×) by Hisuian Goodra. As a result, "even in a favorable matchup, don't fire Shock
           Wave — bait a switch and hit Bulldoze instead" became a very strong line.</p>
         <div class="row">
-          <a class="play" data-battle href="./battle-3b.html">▶ Play this battle</a>
+          <a class="play" data-battle="3b" href="./battle-3b.html">▶ Play this battle</a>
           <a class="src" href="https://github.com/dochy-ksti/pokemon-nash-study">Source code ↗</a>
         </div>
       </article>
 
-      <article class="study soon">
-        <span class="k">Stage 3c · Coming soon</span>
+      <article class="study">
+        <span class="k">Stage 3c</span>
         <h2>A truly extreme matchup — Goodra vs Cloyster</h2>
         <p><b>Goal.</b> Build a <i>truly</i> extreme favorable/unfavorable matchup and test whether the
           decision collapses to a single option.</p>
@@ -100,7 +100,7 @@
           In the end, a favorable matchup did not collapse to "always attack," nor an unfavorable one
           to "always switch."</p>
         <div class="row">
-          <span class="play disabled">▶ Playable demo coming soon</span>
+          <a class="play" data-battle="3c" href="./battle-3c.html">▶ Play this battle</a>
           <a class="src" href="https://github.com/dochy-ksti/pokemon-nash-study">Source code ↗</a>
         </div>
       </article>
@@ -137,13 +137,13 @@
           ヒスイヌメルゴンに半減になってしまったこと。そのため「有利対面でもでんげきはを撃たずに釣り交換し、
           じならしを撃つ」という戦略が非常に効果的になりました。</p>
         <div class="row">
-          <a class="play" data-battle href="./battle-3b.html">▶ この対面で対戦する</a>
+          <a class="play" data-battle="3b" href="./battle-3b.html">▶ この対面で対戦する</a>
           <a class="src" href="https://github.com/dochy-ksti/pokemon-nash-study">ソースコード ↗</a>
         </div>
       </article>
 
-      <article class="study soon">
-        <span class="k">Stage 3c · 準備中</span>
+      <article class="study">
+        <span class="k">Stage 3c</span>
         <h2>真・極端な有利対面によるサイクル戦 — ヌメルゴン vs パルシェン</h2>
         <p><b>目的。</b>真に極端な「有利/不利」対面を作り、「交代/攻撃」の一択になるのかを調べる。</p>
         <p><b>概要。</b>とくぼう特化のヌメルゴンと、ぼうぎょ特化のパルシェンでチームを組ませました。さらに、
@@ -153,7 +153,7 @@
           どちらか一体だけを倒して交代を封じると有利になれるため、一匹を集中攻撃するための釣り交換が有効
           でした。結果として、有利対面でも攻撃一択にはならず、不利対面でも交代一択にはなりませんでした。</p>
         <div class="row">
-          <span class="play disabled">▶ 対戦ページは準備中</span>
+          <a class="play" data-battle="3c" href="./battle-3c.html">▶ この対面で対戦する</a>
           <a class="src" href="https://github.com/dochy-ksti/pokemon-nash-study">ソースコード ↗</a>
         </div>
       </article>
@@ -176,9 +176,9 @@
       document.getElementById("content-ja").classList.toggle("hidden", lang !== "ja");
       for (const b of document.querySelectorAll(".lg"))
         b.classList.toggle("on", b.dataset.lang === lang);
-      // 対戦ページへのリンクに現在の言語を引き継ぐ。
+      // 対戦ページへのリンクに現在の言語を引き継ぐ (data-battle=ステージ)。
       for (const a of document.querySelectorAll("a[data-battle]"))
-        a.href = "./battle-3b.html" + (lang === "ja" ? "?lang=ja" : "");
+        a.href = `./battle-${a.dataset.battle}.html` + (lang === "ja" ? "?lang=ja" : "");
     }
 
     for (const b of document.querySelectorAll(".lg")) {

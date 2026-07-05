@@ -1,3 +1,5 @@
+/* @ts-self-types="./poke_wasm.d.ts" */
+
 /**
  * 1 バトルのラッパ。`BattleState` は `Copy` なので `step` で丸ごと差し替える。
  */

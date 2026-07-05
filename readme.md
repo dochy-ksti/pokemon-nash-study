@@ -51,7 +51,7 @@ Cloyster, then gave them fictional moves — a 60-BP physical Fairy move and a
 60-BP special Fighting move. Real stats are identical and the type-effectiveness
 relationships are made perfectly symmetric, to see what happens.
 
-The playable demo is **coming soon**.
+[▶ Play this battle](https://pokemon-nash-study.pages.dev/battle-3c.html)
 
 **Result.** It became considerably simpler, yet complex mind games still emerged.
 Because you gain an edge by knocking out just one of the opponent's two Pokémon —
