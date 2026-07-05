@@ -65,3 +65,7 @@ The battle demos run a Rust battle simulator (poke-sho-rust) compiled to
 WebAssembly to resolve turns in the browser, while the AI's move comes from a
 lookup into a policy table pre-computed over every state. No server and no GPU are
 needed, so the whole thing runs on static hosting (Cloudflare Pages) alone.
+
+## License
+
+This project is released under the [MIT License](LICENSE).
