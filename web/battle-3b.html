@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ポケモンにおけるナッシュ均衡の研究</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <div class="brand">
+        <a class="overview-link" id="overview-link" href="./" data-i18n="overview">← 研究概要</a>
+        <span class="eyebrow" data-i18n="tag">ポケモンにおけるナッシュ均衡の研究</span>
+        <h1 data-i18n="title">完全有利/不利対面 — ヒスイヌメルゴン vs パルシェン</h1>
+      </div>
+      <div class="toggles">
+        <div class="lang" id="lang">
+          <button class="lg" data-lang="ja">日本語</button><button class="lg on" data-lang="en">EN</button>
+        </div>
+        <div class="tog on" id="tog-foe"><span class="sw"></span><span data-i18n="t_foe">相手のポリシー</span></div>
+        <div class="tog gold on" id="tog-self"><span class="sw"></span><span data-i18n="t_self">自分のAI推奨手</span></div>
+      </div>
+    </header>
+
+    <!-- ランディング (対戦設定) -->
+    <section class="landing" id="landing">
+      <div class="card">
+        <h2 data-i18n="pick_team">あなたのチームを選ぶ</h2>
+        <p class="desc" data-i18n="team_desc">同じ2体でも技構成が異なります。相手AIは必ず反対の技構成で、先発はランダムです。</p>
+        <div class="choices" id="team-choices"></div>
+      </div>
+      <div class="card">
+        <h2 data-i18n="pick_lead">先発を選ぶ</h2>
+        <div class="choices" id="lead-choices"></div>
+      </div>
+      <button class="big-btn" id="start-btn" data-i18n="start">対戦開始</button>
+    </section>
+
+    <!-- 対戦画面 -->
+    <section id="battle" class="hidden" style="display:flex;flex-direction:column;gap:16px">
+      <div class="banner hidden" id="banner"></div>
+      <div class="winrate hidden" id="winrate"></div>
+      <section class="field">
+        <span class="side-label"><span data-i18n="foe_ai">相手 AI</span> ／ <span id="foe-team"></span></span>
+        <div class="act-badge foe hidden" id="foe-act"></div>
+        <div class="mon foe" id="foe-mon"></div>
+      </section>
+      <section class="field">
+        <span class="side-label"><span data-i18n="you">あなた</span> ／ <span id="you-team"></span></span>
+        <div class="act-badge you hidden" id="you-act"></div>
+        <div class="mon you" id="you-mon"></div>
+      </section>
+      <section class="controls">
+        <span class="ctitle" id="ctitle" data-i18n="choose">あなたの手を選ぶ（同時手番 — 決定と同時に相手の手も開示）</span>
+        <div class="acts" id="acts"></div>
+        <span class="note" data-i18n="note">推定ダメージは相手が交代しなかった場合の通常時 min–max（急所・確定数は非表示）</span>
+      </section>
+      <button class="big-btn hidden" id="again-btn" data-i18n="again">もう一度</button>
+    </section>
+  </div>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

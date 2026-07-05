@@ -49,6 +49,7 @@ const T = {
   foe_act_label: { ja: "相手の行動", en: "Foe's move" },
   you_act_label: { ja: "あなたの行動", en: "Your move" },
   win_rate: { ja: "AI評価によるあなたの勝率", en: "Your win rate (AI estimate)" },
+  overview: { ja: "← 研究概要", en: "← Overview" },
 };
 // URL の ?lang= で言語指定 (ja/en)。未指定・不正はデフォルト英語。
 function langFromUrl() {
@@ -63,6 +64,9 @@ function applyStaticI18n() {
   document.documentElement.lang = lang;
   document.title = tr("tag");
   for (const el of document.querySelectorAll("[data-i18n]")) el.textContent = tr(el.dataset.i18n);
+  // 研究概要への戻りリンクに現在の言語を引き継ぐ。
+  const ov = document.getElementById("overview-link");
+  if (ov) ov.href = "./" + (lang === "ja" ? "?lang=ja" : "");
 }
 
 // ---- state ---------------------------------------------------------------

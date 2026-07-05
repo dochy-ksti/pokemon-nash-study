@@ -3,61 +3,194 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ポケモンにおけるナッシュ均衡の研究</title>
+  <title>A Study of Nash Equilibria in Pokémon</title>
+  <meta name="description" content="Building a Pokémon battle AI to find where the game's Nash equilibria actually lie — playable, GPU-free demos of learned policies.">
+  <meta property="og:title" content="A Study of Nash Equilibria in Pokémon">
+  <meta property="og:description" content="Building a Pokémon battle AI to find where the game's Nash equilibria actually lie.">
+  <meta property="og:type" content="website">
   <link rel="stylesheet" href="./style.css">
+  <style>
+    .lp{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+    .lp .hero{display:flex;flex-direction:column;gap:12px;padding:6px 0 2px}
+    .lp .hero p{color:var(--dim);margin:0;font-size:15px}
+    .lp h1{font-size:26px;line-height:1.25}
+    .lp h2{font-size:18px;margin:0 0 2px;font-weight:640}
+    .lp .study{background:var(--panel);border:1px solid var(--edge);border-radius:14px;
+      padding:20px;display:flex;flex-direction:column;gap:12px}
+    .lp .study.soon{opacity:.85}
+    .lp .study p{margin:0;font-size:14.5px;line-height:1.6}
+    .lp .study .k{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+      color:var(--cyan)}
+    .lp .study.soon .k{color:var(--gold)}
+    .lp .result{border-left:3px solid var(--good);padding-left:12px;color:var(--ink)}
+    .lp .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:4px}
+    .lp .play{background:linear-gradient(90deg,#2aa7c4,#38d0e0);color:#06121a;border:0;border-radius:9px;
+      padding:11px 18px;font-size:14.5px;font-weight:650;cursor:pointer;text-decoration:none;
+      font-family:var(--sans)}
+    .lp .play:hover{filter:brightness(1.08)}
+    .lp .play.disabled{background:var(--panel2);color:var(--faint);cursor:default;
+      border:1px solid var(--edge);pointer-events:none}
+    .lp a.src{color:var(--cyan);text-decoration:none;font-size:13.5px;font-family:var(--mono)}
+    .lp a.src:hover{text-decoration:underline}
+    .lp .sub{color:var(--dim);font-size:13.5px}
+    .lp footer{color:var(--faint);font-size:12.5px;border-top:1px solid var(--edge);padding-top:14px;
+      display:flex;gap:14px;flex-wrap:wrap}
+    .lp footer a{color:var(--dim);text-decoration:none} .lp footer a:hover{color:var(--cyan)}
+    .lang-ja,.lang-en{display:flex;flex-direction:column;gap:22px}
+  </style>
 </head>
 <body>
-  <div class="wrap">
+  <div class="wrap lp">
     <header class="top">
-      <div class="brand">
-        <span class="eyebrow" data-i18n="tag">ポケモンにおけるナッシュ均衡の研究</span>
-        <h1 data-i18n="title">完全有利/不利対面 — ヒスイヌメルゴン vs パルシェン</h1>
-      </div>
+      <span class="eyebrow">Pokémon Nash Study</span>
       <div class="toggles">
         <div class="lang" id="lang">
           <button class="lg" data-lang="ja">日本語</button><button class="lg on" data-lang="en">EN</button>
         </div>
-        <div class="tog on" id="tog-foe"><span class="sw"></span><span data-i18n="t_foe">相手のポリシー</span></div>
-        <div class="tog gold on" id="tog-self"><span class="sw"></span><span data-i18n="t_self">自分のAI推奨手</span></div>
       </div>
     </header>
 
-    <!-- ランディング (対戦設定) -->
-    <section class="landing" id="landing">
-      <div class="card">
-        <h2 data-i18n="pick_team">あなたのチームを選ぶ</h2>
-        <p class="desc" data-i18n="team_desc">同じ2体でも技構成が異なります。相手AIは必ず反対の技構成で、先発はランダムです。</p>
-        <div class="choices" id="team-choices"></div>
-      </div>
-      <div class="card">
-        <h2 data-i18n="pick_lead">先発を選ぶ</h2>
-        <div class="choices" id="lead-choices"></div>
-      </div>
-      <button class="big-btn" id="start-btn" data-i18n="start">対戦開始</button>
-    </section>
+    <!-- ============ English ============ -->
+    <main class="lang-en" id="content-en">
+      <section class="hero">
+        <h1>A Study of Nash Equilibria in Pokémon</h1>
+        <p>This project builds a Pokémon battle AI to investigate where the game's Nash equilibria
+          actually lie. There's no point keeping the findings to myself, so I'm sharing them here —
+          with playable, GPU-free demos of the learned policies.</p>
+      </section>
 
-    <!-- 対戦画面 -->
-    <section id="battle" class="hidden" style="display:flex;flex-direction:column;gap:16px">
-      <div class="banner hidden" id="banner"></div>
-      <div class="winrate hidden" id="winrate"></div>
-      <section class="field">
-        <span class="side-label"><span data-i18n="foe_ai">相手 AI</span> ／ <span id="foe-team"></span></span>
-        <div class="act-badge foe hidden" id="foe-act"></div>
-        <div class="mon foe" id="foe-mon"></div>
+      <article class="study">
+        <span class="k">Stage 3b</span>
+        <h2>Cycling in an extreme matchup — Goodra-Hisui vs Cloyster</h2>
+        <p><b>Goal.</b> Build an extreme favorable/unfavorable matchup and see whether the decision
+          collapses to a single option — always switch, or always attack.</p>
+        <p><b>Setup.</b> I paired a Special-Defense-focused Hisuian Goodra with a Defense-focused
+          Cloyster and tuned their movesets to create a perfectly favorable/unfavorable matchup.
+          The two share identical Attack and Special Attack, and every real stat is identical except
+          Defense and Special Defense, which are swapped between them. Shock Wave (Special / Electric /
+          60 BP) hits Cloyster for super-effective damage; Bulldoze (Physical / Ground / 60 BP) hits
+          Hisuian Goodra super-effectively — but each does very little to the other Pokémon, so
+          switching sharply cuts the damage taken. Movesets are mirrored across the two teams, so for
+          both sides "switching out of a bad matchup gives you a good one," making cycling battles
+          likely. Both Pokémon hold a Covert Cloak, which suppresses the added (secondary) effects of
+          moves. I trained the AI on this and studied the strategy it converged to.</p>
+        <p class="result"><b>Result.</b> Even in a seemingly clear-cut matchup, surprisingly complex
+          mind games emerged. The tricky part: constrained by real moves, I couldn't build a perfectly
+          symmetric relationship — Bulldoze is neutral (1×) against Cloyster while Shock Wave is
+          resisted (½×) by Hisuian Goodra. As a result, "even in a favorable matchup, don't fire Shock
+          Wave — bait a switch and hit Bulldoze instead" became a very strong line.</p>
+        <div class="row">
+          <a class="play" data-battle href="./battle-3b.html">▶ Play this battle</a>
+          <a class="src" href="https://github.com/dochy-ksti/pokemon-nash-study">Source code ↗</a>
+        </div>
+      </article>
+
+      <article class="study soon">
+        <span class="k">Stage 3c · Coming soon</span>
+        <h2>A truly extreme matchup — Goodra vs Cloyster</h2>
+        <p><b>Goal.</b> Build a <i>truly</i> extreme favorable/unfavorable matchup and test whether the
+          decision collapses to a single option.</p>
+        <p><b>Setup.</b> I paired a Special-Defense-focused Goodra with a Defense-focused Cloyster, then
+          gave them fictional moves — a 60-BP physical Fairy move and a 60-BP special Fighting move.
+          Real stats are identical and the type-effectiveness relationships are made perfectly
+          symmetric, to see what happens.</p>
+        <p class="result"><b>Result.</b> It became considerably simpler, yet complex mind games still
+          emerged. Because you gain an edge by knocking out just one of the opponent's two Pokémon —
+          thereby denying them a switch — bait-switching to focus-fire a single target was effective.
+          In the end, a favorable matchup did not collapse to "always attack," nor an unfavorable one
+          to "always switch."</p>
+        <div class="row">
+          <span class="play disabled">▶ Playable demo coming soon</span>
+          <a class="src" href="https://github.com/dochy-ksti/pokemon-nash-study">Source code ↗</a>
+        </div>
+      </article>
+
+      <footer>
+        <a href="https://github.com/dochy-ksti/pokemon-nash-study">GitHub repository</a>
+        <span>Built with a Rust battle simulator (WASM) + a pre-computed policy table — no server, no GPU.</span>
+      </footer>
+    </main>
+
+    <!-- ============ 日本語 ============ -->
+    <main class="lang-ja hidden" id="content-ja">
+      <section class="hero">
+        <h1>ポケモンにおけるナッシュ均衡の研究</h1>
+        <p>このプロジェクトはポケモンAIを作り、ナッシュ均衡がどこにあるのかを調べる試みです。
+          研究結果を己の胸のうちにとどめておいても仕方ないので公開していきます —
+          学習したポリシーは、GPU不要でその場で対戦できます。</p>
       </section>
-      <section class="field">
-        <span class="side-label"><span data-i18n="you">あなた</span> ／ <span id="you-team"></span></span>
-        <div class="act-badge you hidden" id="you-act"></div>
-        <div class="mon you" id="you-mon"></div>
-      </section>
-      <section class="controls">
-        <span class="ctitle" id="ctitle" data-i18n="choose">あなたの手を選ぶ（同時手番 — 決定と同時に相手の手も開示）</span>
-        <div class="acts" id="acts"></div>
-        <span class="note" data-i18n="note">推定ダメージは相手が交代しなかった場合の通常時 min–max（急所・確定数は非表示）</span>
-      </section>
-      <button class="big-btn hidden" id="again-btn" data-i18n="again">もう一度</button>
-    </section>
+
+      <article class="study">
+        <span class="k">Stage 3b</span>
+        <h2>極端な有利対面によるサイクル戦 — ヒスイヌメルゴン vs パルシェン</h2>
+        <p><b>目的。</b>極端な「有利/不利」対面を作り、「交代/攻撃」の一択になるのかを調べる。</p>
+        <p><b>概要。</b>とくぼう特化のヒスイヌメルゴンと、ぼうぎょ特化のパルシェンでチームを組ませ、
+          持ち技を工夫して完全な「有利/不利」対面を作りAIに学習させました。こうげきととくこうの数値を
+          一致させ、さらにぼうぎょ・とくぼう以外の実数値はすべて一致、ぼうぎょととくぼうだけを反転させた
+          二匹です。わざは、パルシェンに対して「でんげきは(特殊・でんき・威力60)」、ヒスイヌメルゴンに
+          対して「じならし(物理・じめん・威力60)」で弱点を突きますが、もう一匹には極端にダメージが
+          低くなるようにし、交代すればダメージを抑えられる状況にしました。持ち技をチームで反転させ、
+          お互いに「不利対面から交代すれば有利対面になる」という、サイクル戦が起こりやすい編成にして
+          学習させ、AIの戦略を調べました。もちものはお互いに隠密マントを持たせ、わざの追加効果を封じています。</p>
+        <p class="result"><b>結果。</b>有利対面に見えても、かなり複雑な読み合いが生じました。特に難しかった
+          のは、実在するわざの制限により完全な対称関係を作れず、じならしがパルシェンに等倍、でんげきはが
+          ヒスイヌメルゴンに半減になってしまったこと。そのため「有利対面でもでんげきはを撃たずに釣り交換し、
+          じならしを撃つ」という戦略が非常に効果的になりました。</p>
+        <div class="row">
+          <a class="play" data-battle href="./battle-3b.html">▶ この対面で対戦する</a>
+          <a class="src" href="https://github.com/dochy-ksti/pokemon-nash-study">ソースコード ↗</a>
+        </div>
+      </article>
+
+      <article class="study soon">
+        <span class="k">Stage 3c · 準備中</span>
+        <h2>真・極端な有利対面によるサイクル戦 — ヌメルゴン vs パルシェン</h2>
+        <p><b>目的。</b>真に極端な「有利/不利」対面を作り、「交代/攻撃」の一択になるのかを調べる。</p>
+        <p><b>概要。</b>とくぼう特化のヌメルゴンと、ぼうぎょ特化のパルシェンでチームを組ませました。さらに、
+          実在しない「威力60の物理フェアリー技」「威力60の特殊かくとう技」を覚えさせて対戦させています。
+          実数値は同じで、タイプ相性関係も完全に対称にしてどうなるかを調べました。</p>
+        <p class="result"><b>結果。</b>だいぶシンプルになりましたが、やはり複雑な読み合いが生じました。相手の
+          どちらか一体だけを倒して交代を封じると有利になれるため、一匹を集中攻撃するための釣り交換が有効
+          でした。結果として、有利対面でも攻撃一択にはならず、不利対面でも交代一択にはなりませんでした。</p>
+        <div class="row">
+          <span class="play disabled">▶ 対戦ページは準備中</span>
+          <a class="src" href="https://github.com/dochy-ksti/pokemon-nash-study">ソースコード ↗</a>
+        </div>
+      </article>
+
+      <footer>
+        <a href="https://github.com/dochy-ksti/pokemon-nash-study">GitHub リポジトリ</a>
+        <span>Rust製バトルシミュレータ(WASM)＋事前計算したポリシーテーブルで動作 — サーバもGPUも不要。</span>
+      </footer>
+    </main>
   </div>
-  <script type="module" src="./app.js"></script>
+
+  <script>
+    const langFromUrl = () =>
+      new URLSearchParams(location.search).get("lang") === "ja" ? "ja" : "en";
+    let lang = langFromUrl();
+
+    function apply() {
+      document.documentElement.lang = lang;
+      document.getElementById("content-en").classList.toggle("hidden", lang !== "en");
+      document.getElementById("content-ja").classList.toggle("hidden", lang !== "ja");
+      for (const b of document.querySelectorAll(".lg"))
+        b.classList.toggle("on", b.dataset.lang === lang);
+      // 対戦ページへのリンクに現在の言語を引き継ぐ。
+      for (const a of document.querySelectorAll("a[data-battle]"))
+        a.href = "./battle-3b.html" + (lang === "ja" ? "?lang=ja" : "");
+    }
+
+    for (const b of document.querySelectorAll(".lg")) {
+      b.addEventListener("click", () => {
+        lang = b.dataset.lang;
+        const u = new URL(location.href);
+        u.searchParams.set("lang", lang);
+        history.replaceState(null, "", u);
+        apply();
+      });
+    }
+    apply();
+  </script>
 </body>
 </html>
