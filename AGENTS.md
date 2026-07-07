@@ -8,15 +8,19 @@ This file provides guidance to AI agents when working in this repository.
 
 ## Repository Layout
 
-- `poke-sho-rust/` - New Rust battle simulator project. This is our code.
-- `poke-env-rust/` - New Rust environment/interface layer. This is our code.
-- `poke-ai3/` - New Rust-first AI training and inference project. This is our code.
-- `poke_ai2/` - Abandoned Python project. Keep for reference only; do not modify unless explicitly requested.
-- `poke_ai/` - Older abandoned project. Keep for reference only; do not modify.
-- `poke-env/` - Third-party Python library. Do not modify.
-- `pokemon-showdown/` - Third-party TypeScript simulator/server. Do not modify.
-- `poke_poke/` - Reference project with similar training ideas. Refer to this only when explicitly instructed.
-- `teams/` - Team data from the previous project. Treat as shared data; do not rewrite casually.
+This is the public, self-contained OSS repository (github.com/dochy-ksti/pokemon-nash-study).
+Development happens directly here. There is no separate private/upstream repository to
+sync with, and the project no longer depends on `pokemon-showdown` or `poke-env`.
+
+- `poke-sho-rust/` - Rust battle simulator (rules and battle transitions).
+- `poke-env-rust/` - Rust environment/interface layer on top of the simulator.
+- `poke-ai3/` - Rust-side AI training/inference tools.
+- `poke-ai3-python/` - Python training loop (PyTorch) bound to the Rust crates via maturin.
+- `poke-wasm/` - wasm bindings used by the static web app.
+- `web/` - Static web battle app (the published Nash-equilibrium study site).
+- `team/` - Team data. Treat as shared data; do not rewrite casually.
+- `scripts/` - Build/deploy helper scripts.
+- `docs/`, `experiments/` - Handoff docs and experiment records.
 
 ## New Project Direction
 
@@ -103,8 +107,8 @@ Only applies when explicitly asked to touch legacy Python projects:
 ## Workflow
 
 - Do not implement code changes until explicitly instructed by the user.
-- Do not use the auto-memory system. Do not write to or read from the memory
-  directory (`~/.claude/projects/-home-dochy-pokemon-ai-proj/memory/`). All
+- Do not use the auto-memory system. Do not write to or read from the
+  Claude memory directory under `~/.claude/projects/`. All
   context must come from this repository (code, AGENTS.md, CLAUDE.md, docs,
   experiment records, git history) or the current conversation.
 - If a command is expected to take more than five minutes, explain the exact command and all command-line arguments before running it.
