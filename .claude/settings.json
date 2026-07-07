@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR/scripts/check_experiment_has_command.sh\"",
+            "statusMessage": "実験記録のコマンド記載を検査中"
+          }
+        ]
+      }
+    ]
+  }
+}
