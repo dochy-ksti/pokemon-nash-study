@@ -34,7 +34,13 @@ import numpy as np
 
 from poke_ai3_train.bradley_terry import PairResult, bradley_terry_ratings
 
-DATA = Path("/home/dochy/pokemon_ai_proj/data/poke-ai3")
+# 出力先はリポジトリルート相対 (data/poke-ai3)。このファイルは
+# <repo>/poke-ai3-python/scripts/ckpt_tournament.py なので parents[2] がルート。
+# 環境変数 POKE_AI3_DATA_DIR があればそれを優先 (別ディスクへ退避する場合用)。
+import os
+
+DATA = Path(os.environ.get("POKE_AI3_DATA_DIR",
+                           Path(__file__).resolve().parents[2] / "data" / "poke-ai3"))
 TDIR = DATA / "tournament"
 
 _RESULT = re.compile(r"RESULT a_win=(\d+) b_win=(\d+) draw=(\d+)")
