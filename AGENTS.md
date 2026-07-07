@@ -130,6 +130,12 @@ YYYYMMDD_hhmm_このセッションでやったことを短くまとめた適切
 ## Experiments
 
 - Run benchmarks and training experiments one at a time.
+- Run long training/evaluation experiments in the background so a disconnected CLI
+  or terminal does not kill them. Prefer a self-contained driver script launched with
+  `setsid nohup bash scripts/<driver>.sh > "$LOGDIR/driver.log" 2>&1 &` (see the
+  existing `poke-ai3-python/scripts/run_*.sh` drivers), then poll the log. The driver
+  should be idempotent (skip arms whose `*_finalists.json` already exists) so it can be
+  safely re-run after an interruption.
 - Record experiment purpose, command, and result in `experiments/poke-ai3/` (repository root).
 - Store local training/evaluation data under `data/poke-ai3/` (repository root).
 - Checkpoint cleanup: after an experiment finishes you may delete its checkpoints,
