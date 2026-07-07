@@ -52,6 +52,7 @@ const T = {
   foe_act_label: { ja: "相手の行動", en: "Foe's move" },
   you_act_label: { ja: "あなたの行動", en: "Your move" },
   win_rate: { ja: "AI評価によるあなたの勝率", en: "Your win rate (AI estimate)" },
+  win_rate_foe: { ja: "相手AI評価による相手の勝率", en: "Foe's win rate (foe AI estimate)" },
   overview: { ja: "← 研究概要", en: "← Overview" },
 };
 // 3c はステージ固有の副題に差し替える (3b はデフォルトのまま)。
@@ -119,6 +120,17 @@ function pSwitch(aiSide, aiTeamId, oppSide) {
 function winRate(aiSide, aiTeamId, oppSide) {
   const v = VALUE_TABLE[denseIndex(aiTeamId, sideBuckets(aiSide), sideBuckets(oppSide))];
   return v === SENT ? null : v / VSCALE;
+}
+// 勝率帯を1つ描画。wv が null なら非表示。flip=true (相手側) は「あなた目線」で
+// 色を反転し、勝率が高い=あなたに不利=赤 とする。
+function renderWinrate(wr, wv, label, flip) {
+  if (wv === null) { wr.classList.add("hidden"); return; }
+  const good = flip ? wv < 0.5 : wv >= 0.5;
+  const pct = (wv * 100).toFixed(1);
+  wr.classList.remove("hidden");
+  wr.classList.toggle("hi", good);
+  wr.classList.toggle("lo", !good);
+  wr.innerHTML = `<span class="wr-label">${label}</span><span class="wr-val">${pct}%</span>`;
 }
 
 // ---- rendering -----------------------------------------------------------
@@ -224,18 +236,14 @@ function render() {
   const foeP = showFoe ? pSwitch(s.p2, aiTeam, s.p1) : null;
   const selfP = showSelf ? pSwitch(s.p1, humanTeam, s.p2) : null;
 
-  // 勝率帯 (自分=P1視点の value)。tog-self に連動して表示/非表示。
-  const wr = el("winrate");
-  const wv = showSelf ? winRate(s.p1, humanTeam, s.p2) : null;
-  if (wv === null) {
-    wr.classList.add("hidden");
-  } else {
-    const pct = (wv * 100).toFixed(1);
-    wr.classList.remove("hidden");
-    wr.classList.toggle("hi", wv >= 0.5);
-    wr.classList.toggle("lo", wv < 0.5);
-    wr.innerHTML = `<span class="wr-label">${tr("win_rate")}</span><span class="wr-val">${pct}%</span>`;
-  }
+  // 勝率帯を上下2箇所に分離表示。
+  //  相手勝率 (相手=P2 視点の value): 相手フィールド上・tog-foe 連動・あなた目線で色反転。
+  //  自分勝率 (自分=P1 視点の value): 味方フィールド下・tog-self 連動。
+  // 各値は表に無い(番兵)なら null → その帯だけ非表示。
+  renderWinrate(el("winrate-foe"), showFoe ? winRate(s.p2, aiTeam, s.p1) : null,
+    tr("win_rate_foe"), true);
+  renderWinrate(el("winrate-self"), showSelf ? winRate(s.p1, humanTeam, s.p2) : null,
+    tr("win_rate"), false);
 
   // ゴースト帯: 各サイドが今ターン失った割合。相手に与えた% は相手側のゴーストと一致。
   const ghFoe = ghostLost(s.p2, preHp?.p2); // 相手が失った = あなたが与えた
