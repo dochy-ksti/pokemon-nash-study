@@ -577,7 +577,143 @@ def rate(args) -> None:
     print(f"\n==> 優れた手法: {ranked[0]}", flush=True)
 
 
+# ---------------------------------------------------------------- exploit mode
+
+
+def exploit(args) -> None:
+    """固定 target への best-response (exploiter) を学習し exploitability を測る。
+
+    exploiter は shared_init 等から開始し、敵を target 1 体に固定 (self_play_ratio=0 で
+    全 game が exploiter vs target)。funnel と違い検出 peak を敵列へ積まない純 best-response。
+    --eval-every ごとに 1 ブロック学習し、その都度 exploiter vs target を policy-only で測る。
+    exploitability 推定値 = 学習カーブ上の exploiter 勝率の最大値 (低い target ほど
+    unexploitable)。--resume で予算を延長できる。"""
+    init_eval_seed(getattr(args, "eval_seed", None))
+    TDIR.mkdir(parents=True, exist_ok=True)
+    work = TDIR / f"{args.tag}.pt"
+    state_path = TDIR / f"{args.tag}_state.json"
+    target = args.target
+    if not target.exists():
+        raise SystemExit(f"target が見つかりません: {target}")
+
+    # 敵は target 1 体固定・全 game を exploiter vs target に (Q4=A: target は policy-only)。
+    args.self_play_ratio = 0.0
+    args.enemy_lookahead = False
+    # train_block_to は epochs_per_step を snapshot 間隔に使う。eval-every を 1 ブロックに。
+    args.epochs_per_step = args.eval_every
+
+    curve: list[list[float]] = []  # [[epoch, winrate], ...]
+    best: list[float] | None = None
+
+    if args.resume and state_path.exists():
+        st = json.loads(state_path.read_text())
+        base = st["base"]
+        epoch = st["epoch"]
+        curve = st["curve"]
+        best = st.get("best")
+        print(f"[exploit] resume: ep{epoch} base={base} evals={len(curve)} "
+              f"best={best}", flush=True)
+    else:
+        if args.start is not None:
+            shutil.copy(args.start, work)
+            import torch
+            base = int(torch.load(work, map_location="cpu").get("training_step", 0))
+            start_name = args.start.name
+        else:
+            if work.exists():
+                work.unlink()
+            base = 0
+            start_name = "<random-init>"
+        epoch = base
+        # 古い自前 snapshot を掃除。
+        for p in TDIR.glob(f"{args.tag}_ep*.pt"):
+            p.unlink()
+        print(f"[exploit] tag={args.tag} start={start_name} target={target.name} "
+              f"base={base} eval_every={args.eval_every} "
+              f"max_added_epochs={args.max_added_epochs} "
+              f"value_target={'expected' if getattr(args, 'value_target_expected', False) else 'max'}",
+              flush=True)
+
+    def save_state() -> None:
+        state_path.write_text(json.dumps({
+            "base": base, "epoch": epoch, "target": str(target),
+            "curve": curve, "best": best,
+        }, ensure_ascii=False, indent=2))
+
+    def eval_now() -> float:
+        w, l, d = head_to_head(work, target, args.n_per_side, args.stage,
+                               args.num_games, args.randomize, args.crit_enabled,
+                               battle_seed=draw_eval_seed())
+        decided = w + l
+        wr = w / decided if decided else 0.5
+        print(f"  [exploit] ep{epoch} exploiter vs {target.stem}: "
+              f"勝率={wr:.3f} (W={w} L={l} D={d})", flush=True)
+        return wr
+
+    while epoch - base < args.max_added_epochs:
+        block_target = min(epoch + args.eval_every, base + args.max_added_epochs)
+        if block_target <= epoch:
+            break
+        print(f"\n###### exploit train block -> ep{block_target} ######", flush=True)
+        configure_enemies(work, [target], args)  # self_play_ratio=0 → 全 game vs target
+        train_block_to(work, block_target, args)
+        epoch = block_target
+        # ブロック終了時の work (=最新 exploiter) を直接測る。中間 snapshot は不要なので掃除。
+        for p in TDIR.glob(f"{args.tag}_ep*.pt"):
+            p.unlink()
+        wr = eval_now()
+        curve.append([epoch, wr])
+        if best is None or wr > best[1]:
+            best = [epoch, wr]
+        print(f"  [exploit] best so far: 勝率={best[1]:.3f} @ep{int(best[0])}", flush=True)
+        save_state()
+
+    out = {
+        "tag": args.tag,
+        "target": str(target),
+        "start": str(args.start) if args.start else "<random-init>",
+        "value_target": "expected" if getattr(args, "value_target_expected", False) else "max",
+        "eval_every": args.eval_every,
+        "curve": curve,
+        "exploitability": best[1] if best else None,
+        "best_epoch": int(best[0]) if best else None,
+    }
+    out_path = TDIR / f"{args.tag}_exploit.json"
+    out_path.write_text(json.dumps(out, ensure_ascii=False, indent=2))
+    print(f"\n[exploit] 完了。exploitability (best 勝率) = "
+          f"{out['exploitability']} @ep{out['best_epoch']} → {out_path}", flush=True)
+
+
 # ---------------------------------------------------------------- cli
+
+
+def add_train_side_args(p: argparse.ArgumentParser) -> None:
+    """funnel / exploit 共有の学習側設定 (A/B の比較対象・生成器の探索設定)。"""
+    p.add_argument("--train-battle-seed", type=int, default=None,
+                   help="学習 rollout の battle_seed。既定 None=毎 run ランダム独立。"
+                        "対応比較 (両アームを同一 seed で回す) 用に固定できる。")
+    p.add_argument("--depth-skew", type=float, default=1.0)
+    p.add_argument("--search-turn-min", type=int, default=6)
+    p.add_argument("--search-turn-max", type=int, default=12)
+    p.add_argument("--sims", type=int, default=64)
+    p.add_argument("--sim-concurrency", type=int, default=16)
+    p.add_argument("--train-num-games", type=int, default=32)
+    p.add_argument("--train-max-batch-size", type=int, default=None,
+                   help="学習 train-loop の --max-batch-size。未指定なら train-loop 既定。")
+    p.add_argument("--train-trajectories-threshold", type=int, default=None,
+                   help="学習 train-loop の --trajectories-threshold。未指定なら train-loop 既定。")
+    p.add_argument("--train-minibatch-size", type=int, default=None,
+                   help="学習 train-loop の --minibatch-size。未指定なら train-loop 既定(256)。")
+    p.add_argument("--train-supervised-epochs", type=int, default=None,
+                   help="学習 train-loop の --supervised-epochs (1バッチを何パスなめるか)。"
+                        "未指定なら train-loop 既定(4)。")
+    p.add_argument("--nash-learning-rate", type=float, default=1.5,
+                   help="学習 train-loop の --nash-learning-rate (nash_weak 穏当化版の"
+                        "更新率)。既定は train-loop と同じ 1.5。A/B 用に振れる。")
+    p.add_argument("--value-target", dest="value_target_expected",
+                   default=False, type=_parse_value_target,
+                   help="value 教師の式。max (既定) は手ごと最大勝率、expected は均衡混合 "
+                        "training_pi による期待勝率。A/B 用。")
 
 
 def parse_args() -> argparse.Namespace:
@@ -647,33 +783,30 @@ def parse_args() -> argparse.Namespace:
     f.add_argument("--finalists-target", type=int, default=3, help="集める最終生存数")
     f.add_argument("--max-added-epochs", type=int, default=4000,
                    help="開始からの追加 epoch 上限 (無限ループ防止)")
-    f.add_argument("--train-battle-seed", type=int, default=None,
-                   help="学習 rollout の battle_seed。既定 None=毎 run ランダム独立。"
-                        "対応 A/B (両アームを同一 seed で回す) 用に固定できる。")
-    # 学習側設定 (A/B の比較対象)。
-    f.add_argument("--depth-skew", type=float, default=1.0)
-    f.add_argument("--search-turn-min", type=int, default=6)
-    f.add_argument("--search-turn-max", type=int, default=12)
-    f.add_argument("--sims", type=int, default=64)
-    f.add_argument("--sim-concurrency", type=int, default=16)
-    f.add_argument("--train-num-games", type=int, default=32)
-    f.add_argument("--train-max-batch-size", type=int, default=None,
-                   help="学習 train-loop の --max-batch-size。未指定なら train-loop 既定。")
-    f.add_argument("--train-trajectories-threshold", type=int, default=None,
-                   help="学習 train-loop の --trajectories-threshold。未指定なら train-loop 既定。")
-    f.add_argument("--train-minibatch-size", type=int, default=None,
-                   help="学習 train-loop の --minibatch-size。未指定なら train-loop 既定(256)。")
-    f.add_argument("--train-supervised-epochs", type=int, default=None,
-                   help="学習 train-loop の --supervised-epochs (1バッチを何パスなめるか)。"
-                        "未指定なら train-loop 既定(4)。")
-    f.add_argument("--nash-learning-rate", type=float, default=1.5,
-                   help="学習 train-loop の --nash-learning-rate (nash_weak 穏当化版の"
-                        "更新率)。既定は train-loop と同じ 1.5。A/B 用に funnel から振れる。")
-    f.add_argument("--value-target", dest="value_target_expected",
-                   default=False, type=_parse_value_target,
-                   help="value 教師の式。max (既定) は手ごと最大勝率、expected は均衡混合 "
-                        "training_pi による期待勝率。A/B 用。")
+    # 学習側設定 (--train-battle-seed 含む。A/B の比較対象)。exploit でも同一設定を共有する。
+    add_train_side_args(f)
     f.set_defaults(func=funnel)
+
+    x = sub.add_parser(
+        "exploit", parents=[common],
+        help="固定 target への best-response (exploiter) を学習し exploitability を測る")
+    x.add_argument("--target", type=Path, required=True,
+                   help="突く対象の固定 checkpoint。exploiter はこれ 1 体のみを敵に学習する。")
+    x.add_argument("--tag", type=str, required=True,
+                   help="exploiter ラベル (例 EXP_VEXP_s1)。work/state/結果 JSON の接頭辞。")
+    x.add_argument("--start", type=Path, default=None,
+                   help="exploiter の開始 checkpoint (推奨: shared_init.pt)。"
+                        "省略時はランダム初期状態から。")
+    x.add_argument("--resume", action="store_true",
+                   help="既存の <tag>_state.json から継続 (予算延長にも使う)。")
+    x.add_argument("--eval-every", type=int, default=50,
+                   help="exploiter vs target を測る間隔 (epoch)。この単位で 1 ブロック学習し、"
+                        "各ブロック後に policy-only 勝率を記録する。既定 50。")
+    x.add_argument("--max-added-epochs", type=int, default=200,
+                   help="開始からの追加 epoch 上限。固定 target への best-response は収束が"
+                        "速い想定で既定 200。まだ登っていれば --resume で延長する。")
+    add_train_side_args(x)
+    x.set_defaults(func=exploit)
 
     r = sub.add_parser("rate", parents=[common], help="複数手法の最終レート戦")
     r.add_argument("--funnel-json", type=Path, nargs="+", required=True,
