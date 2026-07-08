@@ -69,6 +69,43 @@ setsid nohup bash scripts/run_value_target_ab.sh > /tmp/vtab/driver.log 2>&1 &
 ドライバ (`scripts/run_value_target_ab.sh`) は冪等 (既存 _finalists.json はスキップ)。
 seed→battle_seed 対応は BSEED 連想配列、比較する seed は SEEDS 配列で管理。
 
-## 結果
+## 結果 (2026-07-08, 各1 seed)
 
-（未実行。ドライバ起動後に追記する。）
+VMAX_s1 (max) と VEXP_s1 (expected) を同一 shared_init.pt・同一 train-battle-seed
+20260708 で回し (対応比較)、6 finalists を eval_seed ランダム (base=4539352510365600688)
+で総当たり (各ペア n_per_side=512 → 1024 試合)。
+
+### Bradley-Terry レーティング (平均 0)
+
+| finalist | 手法 | レート | checkpoint |
+|---|---|---|---|
+| VEXP_s1#2 | expected | +12.8 | ep400 |
+| VMAX_s1#1 | max | +2.1 | ep370 |
+| VMAX_s1#0 | max | +2.1 | ep195 |
+| VEXP_s1#0 | expected | -4.1 | ep160 |
+| VMAX_s1#2 | max | -6.4 | ep545 |
+| VEXP_s1#1 | expected | -6.5 | ep335 |
+
+### 手法ごと平均レート
+
+- **VEXP (expected): +0.7** (n=3, [-4.1, -6.5, +12.8])
+- **VMAX (max): -0.7** (n=3, [+2.1, +2.1, -6.4])
+
+### 解釈
+
+- 手法差は **1.4 Elo**。前回把握した run 間 SD ~6.7 Elo・セル単位 SE ~1.56点 に対し
+  完全にノイズ帯。finalist 個体は両手法とも -6.5〜+12.8 に散らばり、**1 seed では
+  優劣判定不能** (ドライバの "優れた手法: VEXP" は平均の僅差を機械的に拾っただけ)。
+- クロス対戦 (VMAX vs VEXP の 9 ペア) はいずれも 460〜564 勝 = ±50% 近辺で拮抗。
+  value 式は着手分布 (training_pi/selection_pi) を変えないため、強さがほぼ動かないのは
+  設計通りの挙動。
+- **目的 (判定は強さのみ) の観点では理想的**: expected へ均衡値較正しても強さは
+  落ちていない (むしろ僅かに上)。「勝率過大評価を潰しても強さを損なわない」仮説は
+  少なくとも棄却されず。ただし白黒つけるには seed 2・3 を追加する必要がある
+  (ドライバ SEEDS=(1)→(1 2 3)、battle_seed は BSEED に用意済み)。
+
+### ログ
+
+- driver: /tmp/vtab/driver.log (VMAX 78分・VEXP 62分・rate、全 exit=0)
+- finalists: data/poke-ai3/tournament/{VMAX,VEXP}_s1_finalists.json
+  (`value_target` フィールドで max/expected を記録)
