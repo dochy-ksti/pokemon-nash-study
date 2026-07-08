@@ -29,6 +29,8 @@ import json
 import random
 import secrets
 import shutil
+import subprocess
+import sys
 import re
 from pathlib import Path
 
@@ -641,6 +643,10 @@ def exploit(args) -> None:
         }, ensure_ascii=False, indent=2))
 
     def eval_now() -> float:
+        # work は再学習で in-place 更新されるため、eval 前に stale な Agent を必ず捨てて
+        # ディスク上の最新重みを再ロードさせる (_eval_agent はパス永続キャッシュで mtime を
+        # 見ないため、これをしないと最初の eval 時点の重みを測り続けるバグになる)。
+        _AGENT_CACHE.pop(work, None)
         w, l, d = head_to_head(work, target, args.n_per_side, args.stage,
                                args.num_games, args.randomize, args.crit_enabled,
                                battle_seed=draw_eval_seed())
@@ -682,6 +688,156 @@ def exploit(args) -> None:
     out_path.write_text(json.dumps(out, ensure_ascii=False, indent=2))
     print(f"\n[exploit] 完了。exploitability (best 勝率) = "
           f"{out['exploitability']} @ep{out['best_epoch']} → {out_path}", flush=True)
+
+
+# ---------------------------------------------------------------- psro mode
+
+
+def _fwd_shared_args(args) -> list[str]:
+    """common + 学習側設定を子プロセス (exploit) へ引き継ぐ argv を作る。
+    exploiter も中心と同じ探索/学習設定・stage・random/crit で回すため。"""
+    argv = [
+        "--n-per-side", str(args.n_per_side),
+        "--num-games", str(args.num_games),
+        "--stage", args.stage,
+        "--random" if args.randomize else "--no-random",
+        "--crit" if args.crit_enabled else "--no-crit",
+        "--depth-skew", str(args.depth_skew),
+        "--search-turn-min", str(args.search_turn_min),
+        "--search-turn-max", str(args.search_turn_max),
+        "--sims", str(args.sims),
+        "--sim-concurrency", str(args.sim_concurrency),
+        "--train-num-games", str(args.train_num_games),
+        "--nash-learning-rate", str(args.nash_learning_rate),
+        "--value-target",
+        "expected" if getattr(args, "value_target_expected", False) else "max",
+    ]
+    for name, val in (
+        ("--train-max-batch-size", args.train_max_batch_size),
+        ("--train-trajectories-threshold", args.train_trajectories_threshold),
+        ("--train-minibatch-size", args.train_minibatch_size),
+        ("--train-supervised-epochs", args.train_supervised_epochs),
+    ):
+        if val is not None:
+            argv += [name, str(val)]
+    return argv
+
+
+def psro(args) -> None:
+    """PSRO ループ: 中心学習者 1 本を連続育成しつつ、毎イテレーションその時点の中心を
+    凍結 target にした専用 best-response (exploiter) を作り、敵プールへ積む。
+
+    中心学習者は常駐 TrainSession でプロセス内に生かし続け (optimizer/graph を温存)、
+    相手は「自己対戦 self_play_ratio ＋ 最新 pool_size 個の exploiter 一様」。funnel の
+    auto-peak 積みは使わず、敵は自作 exploiter プールに固定する。exploiter は別プロセスで
+    exploit サブコマンドを起動し (中心とは別ネットなので global session の衝突を避ける)、
+    その対 target 勝率 (exploitability) を毎 iter 記録する。iter を追って 50% へ下がれば
+    穴が塞がった (ナッシュへ寄った) 証拠。--resume で iter を延長できる。"""
+    init_eval_seed(getattr(args, "eval_seed", None))
+    TDIR.mkdir(parents=True, exist_ok=True)
+    ctag = args.tag
+    work = TDIR / f"{ctag}.pt"
+    state_path = TDIR / f"{ctag}_psro_state.json"
+    shared_init = args.shared_init
+    if not shared_init.exists():
+        raise SystemExit(f"shared-init が見つかりません: {shared_init}")
+
+    # 中心の敵設定: 自己対戦 r (--self-play-ratio) ＋ 敵 policy-only (auto-peak なし)。
+    args.enemy_lookahead = False
+    # train_block_to の snapshot 間隔 = 中心ブロック長 (末尾で 1 回だけ snapshot)。
+    args.epochs_per_step = args.central_epochs
+
+    pool: list[Path] = []           # 積んだ exploiter checkpoint (append-only)
+    curve: list[list[float]] = []   # [[iter, central_epoch, exploitability], ...]
+
+    if args.resume and state_path.exists():
+        st = json.loads(state_path.read_text())
+        base = st["base"]
+        epoch = st["epoch"]
+        it = st["iter"]
+        pool = [Path(p) for p in st["pool"]]
+        curve = st["curve"]
+        print(f"[psro] resume: iter={it} ep{epoch} pool={len(pool)} "
+              f"evals={len(curve)}", flush=True)
+    else:
+        shutil.copy(shared_init, work)
+        import torch
+        base = int(torch.load(work, map_location="cpu").get("training_step", 0))
+        epoch = base
+        it = 0
+        # 古い中心 snapshot を掃除。
+        for p in TDIR.glob(f"{ctag}_ep*.pt"):
+            p.unlink()
+        print(f"[psro] tag={ctag} shared_init={shared_init.name} base={base} "
+              f"central_epochs={args.central_epochs} exploiter_epochs={args.exploiter_epochs} "
+              f"pool_size={args.pool_size} self_play_ratio={args.self_play_ratio} "
+              f"max_iters={args.max_iters} "
+              f"value_target={'expected' if getattr(args, 'value_target_expected', False) else 'max'}",
+              flush=True)
+
+    def save_state() -> None:
+        state_path.write_text(json.dumps({
+            "base": base, "epoch": epoch, "iter": it,
+            "pool": [str(p) for p in pool], "curve": curve,
+        }, ensure_ascii=False, indent=2))
+
+    while it < args.max_iters:
+        # ---- 1) 中心学習者を central_epochs だけ前進 (敵=最新 pool_size 個) ----
+        window = pool[-args.pool_size:]
+        block_target = epoch + args.central_epochs
+        print(f"\n###### [psro] iter {it}: 中心学習 ep{epoch} -> ep{block_target} "
+              f"(敵 {len(window)} 体) ######", flush=True)
+        configure_enemies(work, window, args)
+        train_block_to(work, block_target, args)
+        epoch = block_target
+        for p in TDIR.glob(f"{ctag}_ep*.pt"):
+            p.unlink()
+
+        # ---- 2) 現時点の中心を凍結 target にし、別プロセスで exploiter を学習 ----
+        target = TDIR / f"{ctag}_iter{it}_target.pt"
+        shutil.copy(work, target)
+        exp_tag = f"{ctag}_exp{it}"
+        exp_json = TDIR / f"{exp_tag}_exploit.json"
+        cmd = [
+            sys.executable, str(Path(__file__).resolve()), "exploit",
+            "--target", str(target), "--tag", exp_tag,
+            "--start", str(shared_init),
+            "--eval-every", str(args.exploiter_eval_every),
+            "--max-added-epochs", str(args.exploiter_epochs),
+            "--train-battle-seed", str(args.exploiter_battle_seed),
+        ] + _fwd_shared_args(args)
+        print(f"\n###### [psro] iter {it}: exploiter 学習 (target={target.name}) ######\n"
+              f"  $ {' '.join(cmd)}", flush=True)
+        r = subprocess.run(cmd)
+        if r.returncode != 0 or not exp_json.exists():
+            raise SystemExit(f"[psro] iter {it} exploiter 失敗 (exit={r.returncode})")
+        exp = json.loads(exp_json.read_text())
+        exploitability = exp["exploitability"]
+        exp_ckpt = TDIR / f"{exp_tag}.pt"   # exploit が残す最終 exploiter ネット
+        pool.append(exp_ckpt)
+        curve.append([it, epoch, exploitability])
+        print(f"\n[psro] iter {it} 完了: exploitability={exploitability} "
+              f"(exploiter {exp_tag}, curve={exp['curve']})", flush=True)
+        it += 1
+        save_state()
+
+    out = {
+        "tag": ctag,
+        "shared_init": str(shared_init),
+        "central_epochs": args.central_epochs,
+        "exploiter_epochs": args.exploiter_epochs,
+        "pool_size": args.pool_size,
+        "self_play_ratio": args.self_play_ratio,
+        "value_target": "expected" if getattr(args, "value_target_expected", False) else "max",
+        "iters": it,
+        "pool": [str(p) for p in pool],
+        "curve": curve,   # [[iter, central_epoch, exploitability], ...]
+        "final_central": str(work),
+    }
+    out_path = TDIR / f"{ctag}_psro.json"
+    out_path.write_text(json.dumps(out, ensure_ascii=False, indent=2))
+    print(f"\n[psro] 完了。{it} iter。exploitability 推移: "
+          f"{[[c[0], c[2]] for c in curve]} → {out_path}", flush=True)
 
 
 # ---------------------------------------------------------------- cli
@@ -807,6 +963,33 @@ def parse_args() -> argparse.Namespace:
                         "速い想定で既定 200。まだ登っていれば --resume で延長する。")
     add_train_side_args(x)
     x.set_defaults(func=exploit)
+
+    p = sub.add_parser(
+        "psro", parents=[common],
+        help="PSRO ループ: 中心を育てつつ毎 iter exploiter を作り敵プールへ積む")
+    p.add_argument("--tag", type=str, required=True,
+                   help="中心学習者ラベル (work/state/結果 JSON の接頭辞)。")
+    p.add_argument("--shared-init", type=Path, required=True,
+                   help="中心・exploiter 両方の開始 checkpoint (shared_init.pt)。")
+    p.add_argument("--resume", action="store_true",
+                   help="既存の <tag>_psro_state.json から iter を継続 (延長にも使う)。")
+    p.add_argument("--max-iters", type=int, default=6,
+                   help="PSRO イテレーション数。既定 6 (パイロット)。--resume で延長。")
+    p.add_argument("--central-epochs", type=int, default=50,
+                   help="1 iter で中心学習者を前進させる epoch。既定 50。")
+    p.add_argument("--exploiter-epochs", type=int, default=50,
+                   help="各 iter の exploiter best-response の追加 epoch 上限。既定 50。")
+    p.add_argument("--exploiter-eval-every", type=int, default=25,
+                   help="exploiter の eval 間隔 (epoch)。既定 25 (ep25/ep50 の 2 点)。")
+    p.add_argument("--pool-size", type=int, default=4,
+                   help="中心の敵に混ぜる最新 exploiter 数 N (窓)。既定 4。")
+    p.add_argument("--self-play-ratio", type=float, default=0.5,
+                   help="中心学習の自己対戦 game 割合 r。既定 0.5 (残りを敵 N 個へ均等分割)。")
+    p.add_argument("--exploiter-battle-seed", type=int, default=20260711,
+                   help="exploiter の train_battle_seed (全 iter 固定で exploitability を "
+                        "iter 間比較可能に)。")
+    add_train_side_args(p)
+    p.set_defaults(func=psro)
 
     r = sub.add_parser("rate", parents=[common], help="複数手法の最終レート戦")
     r.add_argument("--funnel-json", type=Path, nargs="+", required=True,
