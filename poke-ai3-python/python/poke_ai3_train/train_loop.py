@@ -161,6 +161,7 @@ class TrainSession:
         infer_graph: bool = True,
         nash_weak: bool = True,
         nash_learning_rate: float = 1.5,
+        value_target_expected: bool = False,
         learning_rate: float | None = None,
         model_config: ModernBertAbsConfig | None = None,
         minibatch_size: int | None = None,
@@ -203,7 +204,10 @@ class TrainSession:
             battle_seed=battle_seed,
             nash_learning_rate=nash_learning_rate,
             nash_weak=nash_weak,
+            value_target_expected=value_target_expected,
         )
+        if value_target_expected:
+            print("value_target: expected (均衡混合 training_pi による期待勝率)")
         if nash_weak:
             print(f"nash_weak: enabled (穏当化版, nash_learning_rate={nash_learning_rate})")
         # 既存 checkpoint から再開する場合は保存済みの設定を優先する (サイズ不一致での
@@ -311,6 +315,7 @@ def run_train_loop(
     snapshot_every: int | None = None,
     nash_weak: bool = True,
     nash_learning_rate: float = 1.5,
+    value_target_expected: bool = False,
     learning_rate: float | None = None,
     model_config: ModernBertAbsConfig | None = None,
     minibatch_size: int | None = None,
@@ -337,6 +342,7 @@ def run_train_loop(
         infer_graph=infer_graph,
         nash_weak=nash_weak,
         nash_learning_rate=nash_learning_rate,
+        value_target_expected=value_target_expected,
         learning_rate=learning_rate,
         model_config=model_config,
         minibatch_size=minibatch_size,
@@ -503,6 +509,17 @@ def parse_args() -> argparse.Namespace:
         help="nash accumulation の learning rate (係数の鋭さ)。穏当化版では分布の鋭さを直接制御する。",
     )
     parser.add_argument(
+        "--value-target",
+        dest="value_target",
+        choices=["max", "expected"],
+        default="max",
+        help=(
+            "value 教師の式。max (既定) は手ごと最大勝率 max_i win_rates[i]。"
+            "expected は均衡混合 Σ_i training_pi[i]*win_rates[i]。max はゼロサム同時手番で "
+            "均衡値以上へ出る (勝率過大評価) ため expected で較正する A/B 用。"
+        ),
+    )
+    parser.add_argument(
         "--learning-rate",
         type=float,
         default=None,
@@ -579,6 +596,7 @@ def main() -> None:
         snapshot_every=args.snapshot_every,
         nash_weak=args.nash_weak,
         nash_learning_rate=args.nash_learning_rate,
+        value_target_expected=(args.value_target == "expected"),
         learning_rate=args.learning_rate,
         model_config=build_model_config(
             args.hidden_size,

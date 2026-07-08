@@ -22,7 +22,7 @@ pub struct PyRustAsyncExecutor {
 #[pymethods]
 impl PyRustAsyncExecutor {
     #[new]
-    #[pyo3(signature = (num_games, max_batch_size=None, trajectories_threshold=None, backend="local", randomize=true, crit_enabled=true, stage="3b", sims=64, sim_concurrency=1, search_turn_min=4, search_turn_max=8, eval_rule_opponent=false, eval_rule_p1=false, battle_seed=1, nash_learning_rate=1.5, nash_weak=true, depth_skew=1.0, policy_only=false))]
+    #[pyo3(signature = (num_games, max_batch_size=None, trajectories_threshold=None, backend="local", randomize=true, crit_enabled=true, stage="3b", sims=64, sim_concurrency=1, search_turn_min=4, search_turn_max=8, eval_rule_opponent=false, eval_rule_p1=false, battle_seed=1, nash_learning_rate=1.5, nash_weak=true, depth_skew=1.0, policy_only=false, value_target_expected=false))]
     #[allow(clippy::too_many_arguments)]
     fn py_new(
         num_games: usize,
@@ -43,6 +43,7 @@ impl PyRustAsyncExecutor {
         nash_weak: bool,
         depth_skew: f32,
         policy_only: bool,
+        value_target_expected: bool,
     ) -> PyResult<Self> {
         // 実験 (experiments/poke-ai3) で max_batch_size≈num_games*W/2 がスループット最適と判明。
         // num_games*W だとバリアが深くパイプラインが途切れて最遅になる。
@@ -77,6 +78,7 @@ impl PyRustAsyncExecutor {
             crit_enabled,
             nash_learning_rate,
             nash_weak,
+            value_target_expected,
             ..LookaheadConfig::default()
         };
         Ok(Self {
@@ -161,7 +163,7 @@ impl PyRustAsyncExecutor {
 }
 
 #[pyfunction]
-#[pyo3(signature = (num_games, max_batch_size=None, trajectories_threshold=None, backend="local", randomize=true, crit_enabled=true, stage="3b", sims=64, sim_concurrency=1, search_turn_min=4, search_turn_max=8, eval_rule_opponent=false, eval_rule_p1=false, battle_seed=1, nash_learning_rate=1.5, nash_weak=true, depth_skew=1.0, policy_only=false))]
+#[pyo3(signature = (num_games, max_batch_size=None, trajectories_threshold=None, backend="local", randomize=true, crit_enabled=true, stage="3b", sims=64, sim_concurrency=1, search_turn_min=4, search_turn_max=8, eval_rule_opponent=false, eval_rule_p1=false, battle_seed=1, nash_learning_rate=1.5, nash_weak=true, depth_skew=1.0, policy_only=false, value_target_expected=false))]
 #[allow(clippy::too_many_arguments)]
 pub fn get_rust_async_executor_wrapper(
     num_games: usize,
@@ -182,6 +184,7 @@ pub fn get_rust_async_executor_wrapper(
     nash_weak: bool,
     depth_skew: f32,
     policy_only: bool,
+    value_target_expected: bool,
 ) -> PyResult<PyRustAsyncExecutor> {
     PyRustAsyncExecutor::py_new(
         num_games,
@@ -202,6 +205,7 @@ pub fn get_rust_async_executor_wrapper(
         nash_weak,
         depth_skew,
         policy_only,
+        value_target_expected,
     )
 }
 

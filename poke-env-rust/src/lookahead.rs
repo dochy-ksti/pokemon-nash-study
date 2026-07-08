@@ -42,6 +42,11 @@ pub struct LookaheadConfig {
     /// strict 版 (崖あり) は 2 seed の A/B で weak と同等以下だったため非採用。
     /// しばらく様子見で残すが、採用機会が無ければ削除予定。
     pub nash_weak: bool,
+    /// value 教師の式。false (既定) は「手ごと最大勝率」= max_i win_rates[i]。
+    /// true は「均衡混合の期待勝率」= Σ_i training_pi[i] * win_rates[i]。
+    /// max はゼロサム同時手番で構造的に均衡値以上へ出る (自分の勝率を過大評価する) ため、
+    /// expected 版でそれを均衡値へ較正する A/B 用フラグ。
+    pub value_target_expected: bool,
     pub cutoff_coeff: f32,
     /// rollout 中の 16 段ダメージ乱数・急所 (本番と同じ設定にする)。
     pub randomize: bool,
@@ -61,6 +66,7 @@ impl Default for LookaheadConfig {
             nash_minimum_pi: 0.03,
             nash_pi_limit: 0.05,
             nash_weak: true,
+            value_target_expected: false,
             cutoff_coeff: 1.0,
             randomize: false,
             crit_enabled: false,
@@ -440,6 +446,20 @@ pub async fn run_lookahead<O: PolicyOracle>(
     let (training_pi, selection_pi) =
         nash_accumulation(predicted.policy, legal_mask, win_rates, cfg);
 
+    // value 教師: 既定は手ごと最大勝率 (rollouts が返した max)。expected 版は均衡混合
+    // training_pi による期待勝率へ差し替える。training_pi は legal で正規化済み・illegal は 0
+    // なので、そのまま重み付き和で正しい期待値になる。
+    let value = if cfg.value_target_expected {
+        let mut ev = 0.0f32;
+        for c in &legal {
+            let i = action_index(root_party, *c);
+            ev += training_pi[i] * win_rates[i];
+        }
+        ev.clamp(0.0, 1.0)
+    } else {
+        value
+    };
+
     LookaheadResult {
         training_pi,
         selection_pi,
@@ -602,6 +622,31 @@ mod tests {
             "switch should win more in unfavorable matchup: switch_wr={switch_wr} attack_wr={attack_wr} win_rates={:?}",
             r.win_rates
         );
+    }
+
+    #[tokio::test]
+    async fn expected_value_target_is_at_most_max() {
+        // 同一局面・同一 seed で value_target を max / expected に切替え、期待勝率版が
+        // 手ごと最大勝率以下 (均衡値 <= 最善手確定値) になることを確認する。過大評価較正の要。
+        let start = BattleState::new(Stage::Stage3a, SpeciesId::Cloyster, SpeciesId::GoodraHisui);
+        let base = LookaheadConfig {
+            sims: 64,
+            randomize: false,
+            crit_enabled: false,
+            ..LookaheadConfig::default()
+        };
+        let oracle = UniformOracle { value: 0.5 };
+        let r_max = run_lookahead(&oracle, start, Player::P1, 2024, &base).await;
+        let cfg_exp = LookaheadConfig { value_target_expected: true, ..base };
+        let r_exp = run_lookahead(&oracle, start, Player::P1, 2024, &cfg_exp).await;
+        assert!(
+            r_exp.value <= r_max.value + 1e-4,
+            "expected value {} exceeded max value {}",
+            r_exp.value,
+            r_max.value
+        );
+        // win_rates (rollout 自体) は seed 共有で不変。value 教師だけが変わる。
+        assert_eq!(r_exp.win_rates, r_max.win_rates);
     }
 
     #[test]

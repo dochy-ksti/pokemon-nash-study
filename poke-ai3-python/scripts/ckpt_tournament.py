@@ -47,6 +47,15 @@ TDIR = DATA / "tournament"
 
 _RESULT = re.compile(r"RESULT a_win=(\d+) b_win=(\d+) draw=(\d+)")
 
+
+def _parse_value_target(s: str) -> bool:
+    """--value-target の max/expected を bool (expected=True) へ。誤字は弾く。"""
+    if s == "expected":
+        return True
+    if s == "max":
+        return False
+    raise argparse.ArgumentTypeError("value-target は max か expected")
+
 # head-to-head は eval_ckpt_vs_ckpt を毎ペア subprocess 起動していたが、計測上 1 回 3s の
 # うち ~2.8s が torch import + Agent ロード + CUDA Graph 構築の固定費で、512 試合の実計算は
 # ~0.3s だった (experiments/poke-ai3 20260625)。全履歴比較 funnel では同じ checkpoint を
@@ -272,11 +281,12 @@ def _ensure_train_session(work: Path, args):
             search_turn_min=args.search_turn_min,
             search_turn_max=args.search_turn_max,
             depth_skew=args.depth_skew,
-            battle_seed=None,
+            battle_seed=getattr(args, "train_battle_seed", None),
             minibatch_size=(args.train_minibatch_size
                             if args.train_minibatch_size is not None else 256),
             supervised_epochs=args.train_supervised_epochs,
             nash_learning_rate=getattr(args, "nash_learning_rate", 1.5),
+            value_target_expected=getattr(args, "value_target_expected", False),
         )
     return _TRAIN_SESSION
 
@@ -413,7 +423,9 @@ def funnel(args) -> None:
               f"warmup_steps={args.warmup_steps} (~ep{warmup_until}) "
               f"peaks/rr={args.peaks_per_rr} finalists_target={args.finalists_target} "
               f"epochs/step={args.epochs_per_step} block_epochs={block_epochs} "
-              f"depth_skew={args.depth_skew}", flush=True)
+              f"depth_skew={args.depth_skew} "
+              f"value_target={'expected' if getattr(args, 'value_target_expected', False) else 'max'}",
+              flush=True)
 
     def save_state() -> None:
         state_path.write_text(json.dumps({
@@ -507,6 +519,7 @@ def funnel(args) -> None:
         "method": args.tag,
         "start": str(args.start) if args.start else "<random-init>",
         "depth_skew": args.depth_skew,
+        "value_target": "expected" if getattr(args, "value_target_expected", False) else "max",
         "search_turn": [args.search_turn_min, args.search_turn_max],
         "peaks_emitted": peaks_emitted,
         "finalists": [str(p) for p in finalists],
@@ -634,6 +647,9 @@ def parse_args() -> argparse.Namespace:
     f.add_argument("--finalists-target", type=int, default=3, help="集める最終生存数")
     f.add_argument("--max-added-epochs", type=int, default=4000,
                    help="開始からの追加 epoch 上限 (無限ループ防止)")
+    f.add_argument("--train-battle-seed", type=int, default=None,
+                   help="学習 rollout の battle_seed。既定 None=毎 run ランダム独立。"
+                        "対応 A/B (両アームを同一 seed で回す) 用に固定できる。")
     # 学習側設定 (A/B の比較対象)。
     f.add_argument("--depth-skew", type=float, default=1.0)
     f.add_argument("--search-turn-min", type=int, default=6)
@@ -653,6 +669,10 @@ def parse_args() -> argparse.Namespace:
     f.add_argument("--nash-learning-rate", type=float, default=1.5,
                    help="学習 train-loop の --nash-learning-rate (nash_weak 穏当化版の"
                         "更新率)。既定は train-loop と同じ 1.5。A/B 用に funnel から振れる。")
+    f.add_argument("--value-target", dest="value_target_expected",
+                   default=False, type=_parse_value_target,
+                   help="value 教師の式。max (既定) は手ごと最大勝率、expected は均衡混合 "
+                        "training_pi による期待勝率。A/B 用。")
     f.set_defaults(func=funnel)
 
     r = sub.add_parser("rate", parents=[common], help="複数手法の最終レート戦")
