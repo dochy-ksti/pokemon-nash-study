@@ -22,7 +22,7 @@ pub struct PyRustAsyncExecutor {
 #[pymethods]
 impl PyRustAsyncExecutor {
     #[new]
-    #[pyo3(signature = (num_games, max_batch_size=None, trajectories_threshold=None, backend="local", randomize=true, crit_enabled=true, stage="3b", sims=64, sim_concurrency=1, search_turn_min=4, search_turn_max=8, eval_rule_opponent=false, eval_rule_p1=false, battle_seed=1, nash_learning_rate=2.0, nash_weak=true, depth_skew=1.0, policy_only=false))]
+    #[pyo3(signature = (num_games, max_batch_size=None, trajectories_threshold=None, backend="local", randomize=true, crit_enabled=true, stage="3b", sims=64, sim_concurrency=1, search_turn_min=4, search_turn_max=8, eval_rule_opponent=false, eval_rule_p1=false, battle_seed=1, nash_learning_rate=1.5, nash_weak=true, depth_skew=1.0, policy_only=false))]
     #[allow(clippy::too_many_arguments)]
     fn py_new(
         num_games: usize,
@@ -161,7 +161,7 @@ impl PyRustAsyncExecutor {
 }
 
 #[pyfunction]
-#[pyo3(signature = (num_games, max_batch_size=None, trajectories_threshold=None, backend="local", randomize=true, crit_enabled=true, stage="3b", sims=64, sim_concurrency=1, search_turn_min=4, search_turn_max=8, eval_rule_opponent=false, eval_rule_p1=false, battle_seed=1, nash_learning_rate=2.0, nash_weak=true, depth_skew=1.0, policy_only=false))]
+#[pyo3(signature = (num_games, max_batch_size=None, trajectories_threshold=None, backend="local", randomize=true, crit_enabled=true, stage="3b", sims=64, sim_concurrency=1, search_turn_min=4, search_turn_max=8, eval_rule_opponent=false, eval_rule_p1=false, battle_seed=1, nash_learning_rate=1.5, nash_weak=true, depth_skew=1.0, policy_only=false))]
 #[allow(clippy::too_many_arguments)]
 pub fn get_rust_async_executor_wrapper(
     num_games: usize,

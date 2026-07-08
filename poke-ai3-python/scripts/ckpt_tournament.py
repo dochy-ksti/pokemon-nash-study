@@ -238,7 +238,7 @@ def _ensure_train_session(work: Path, args):
             minibatch_size=(args.train_minibatch_size
                             if args.train_minibatch_size is not None else 256),
             supervised_epochs=args.train_supervised_epochs,
-            nash_learning_rate=getattr(args, "nash_learning_rate", 2.0),
+            nash_learning_rate=getattr(args, "nash_learning_rate", 1.5),
         )
     return _TRAIN_SESSION
 
@@ -604,7 +604,7 @@ def parse_args() -> argparse.Namespace:
     f.add_argument("--train-supervised-epochs", type=int, default=None,
                    help="学習 train-loop の --supervised-epochs (1バッチを何パスなめるか)。"
                         "未指定なら train-loop 既定(4)。")
-    f.add_argument("--nash-learning-rate", type=float, default=2.0,
+    f.add_argument("--nash-learning-rate", type=float, default=1.5,
                    help="学習 train-loop の --nash-learning-rate (nash_weak 穏当化版の"
                         "更新率)。既定は train-loop と同じ 2.0。A/B 用に funnel から振れる。")
     f.set_defaults(func=funnel)

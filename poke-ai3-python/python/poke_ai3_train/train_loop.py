@@ -160,7 +160,7 @@ class TrainSession:
         mask_opp_obs: bool = False,
         infer_graph: bool = True,
         nash_weak: bool = True,
-        nash_learning_rate: float = 2.0,
+        nash_learning_rate: float = 1.5,
         learning_rate: float | None = None,
         model_config: ModernBertAbsConfig | None = None,
         minibatch_size: int | None = None,
@@ -310,7 +310,7 @@ def run_train_loop(
     infer_graph: bool = True,
     snapshot_every: int | None = None,
     nash_weak: bool = True,
-    nash_learning_rate: float = 2.0,
+    nash_learning_rate: float = 1.5,
     learning_rate: float | None = None,
     model_config: ModernBertAbsConfig | None = None,
     minibatch_size: int | None = None,
@@ -499,7 +499,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--nash-learning-rate",
         type=float,
-        default=2.0,
+        default=1.5,
         help="nash accumulation の learning rate (係数の鋭さ)。穏当化版では分布の鋭さを直接制御する。",
     )
     parser.add_argument(

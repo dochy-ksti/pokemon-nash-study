@@ -57,7 +57,7 @@ impl Default for LookaheadConfig {
             search_turn_max: 8,
             depth_skew: 1.0,
             policy_only: false,
-            nash_learning_rate: 2.0,
+            nash_learning_rate: 1.5,
             nash_minimum_pi: 0.03,
             nash_pi_limit: 0.05,
             nash_weak: true,
