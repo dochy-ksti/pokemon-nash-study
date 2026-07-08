@@ -26,6 +26,8 @@ from __future__ import annotations
 import argparse
 import itertools
 import json
+import random
+import secrets
 import shutil
 import re
 from pathlib import Path
@@ -62,6 +64,36 @@ _EXEC_FACTORY = None
 # 学習ブロックをまたいで使い回す常駐セッション (初回 train_block_to で遅延構築)。
 _TRAIN_SESSION = None
 
+# eval (head-to-head) 用 battle_seed 生成器。以前は head_to_head が Rust 既定 (battle_seed=1)
+# に静かに落ち、別 rate 呼び出しでも全ペアが seed=1 固定 → セル間ノイズが人為相関し
+# 「再現性が高い」と誤認する評価バグがあった (experiments 20260707_2053 参照)。対策として
+# eval seed は「既定ランダム (衝突しない) + 使った base を必ずログ + 再現時のみ --eval-seed で
+# 明示ピン」とし、head_to_head は battle_seed を必須引数にして暗黙既定を根絶する。
+_EVAL_RNG: "random.Random | None" = None
+
+
+def init_eval_seed(base: int | None) -> int:
+    """eval 用 battle_seed 生成器を初期化し、使った base をログして返す。base 省略時は
+    ランダム。draw_eval_seed() が base から per-call の独立 seed を払い出す (ペアごとに
+    独立。base を固定すれば総当たり全体を再現できる)。"""
+    global _EVAL_RNG
+    if base is None:
+        base = secrets.randbits(63)
+    _EVAL_RNG = random.Random(base)
+    print(f"[eval] battle_seed base = {base}  (--eval-seed で固定可 / 省略時ランダム・毎回独立)",
+          flush=True)
+    return base
+
+
+def draw_eval_seed() -> int:
+    """head-to-head 1 回分の battle_seed を払い出す。init_eval_seed 未呼び出しでも
+    取りこぼさないようその場でランダム初期化する。head_to_head は base と base+1 を
+    先後 2 サイドに使うので、払い出しは 62bit に抑えて衝突余地を残す。"""
+    global _EVAL_RNG
+    if _EVAL_RNG is None:
+        init_eval_seed(None)
+    return _EVAL_RNG.getrandbits(62)
+
 
 # ---------------------------------------------------------------- head-to-head
 
@@ -79,12 +111,16 @@ def _eval_agent(path: Path, num_games: int) -> "Agent":
 
 def head_to_head(
     new: Path, old: Path, n_per_side: int, stage: str, num_games: int,
-    randomize: bool = False, crit_enabled: bool = False,
+    randomize: bool = False, crit_enabled: bool = False, *, battle_seed: int,
 ) -> tuple[int, int, int]:
     """policy-only で new vs old を先後入れ替えて対戦。new 視点 (win, loss, draw)。
 
     in-process 評価: Agent をキャッシュし、executor をペア毎に生成して collect_results で
-    集計する (旧実装は eval_ckpt_vs_ckpt を毎ペア subprocess 起動していた)。"""
+    集計する (旧実装は eval_ckpt_vs_ckpt を毎ペア subprocess 起動していた)。
+
+    battle_seed は必須 (キーワード専用)。Rust 既定 (=1) への暗黙フォールバックを禁じ、
+    呼び出し側が draw_eval_seed() 等で明示的に seed を供給する。先後2サイドは
+    battle_seed と battle_seed+1 を使う。"""
     global _EXEC_FACTORY
     from poke_ai3_train.train_loop import get_rust_async_executor_wrapper
     from poke_ai3_train.eval_ckpt_vs_ckpt import collect_results
@@ -94,12 +130,12 @@ def head_to_head(
     a_new = _eval_agent(new, num_games)
     a_old = _eval_agent(old, num_games)
     win = loss = draw = 0
-    for new_is_p1 in (True, False):
+    for k, new_is_p1 in enumerate((True, False)):
         agent_a, agent_b = (a_new, a_old) if new_is_p1 else (a_old, a_new)
         executor = _EXEC_FACTORY(
             num_games, num_games, None, "local", randomize, crit_enabled, stage,
             _EVAL_SIMS, _EVAL_SIM_CONCURRENCY, _EVAL_SEARCH_MIN, _EVAL_SEARCH_MAX,
-            False, False, policy_only=True,
+            False, False, battle_seed=battle_seed + k, policy_only=True,
         )
         a_win, b_win, d = collect_results(
             executor, agent_a, agent_b, n_per_side, 0.0,
@@ -115,7 +151,8 @@ def head_to_head(
 def winrate_vs(new: Path, old: Path, args) -> float:
     """new の old に対する勝率 (引き分け除外)。"""
     w, l, d = head_to_head(new, old, args.n_per_side, args.stage, args.num_games,
-                           args.randomize, args.crit_enabled)
+                           args.randomize, args.crit_enabled,
+                           battle_seed=draw_eval_seed())
     decided = w + l
     wr = w / decided if decided else 0.5
     mark = "○新勝ち" if wr > 0.5 else "●旧勝ち"
@@ -133,7 +170,8 @@ def round_robin_winner(pool: list[Path], args) -> Path:
     decided = {p: 0 for p in pool}
     for a, b in itertools.combinations(pool, 2):
         w, l, d = head_to_head(a, b, args.n_per_side, args.stage, args.num_games,
-                               args.randomize, args.crit_enabled)
+                               args.randomize, args.crit_enabled,
+                               battle_seed=draw_eval_seed())
         score[a] += w
         score[b] += l
         decided[a] += w + l
@@ -304,6 +342,7 @@ def list_snapshots(work: Path, lo: int, hi: int) -> list[tuple[int, Path]]:
 
 
 def funnel(args) -> None:
+    init_eval_seed(getattr(args, "eval_seed", None))
     TDIR.mkdir(parents=True, exist_ok=True)
     # 作業用 ckpt は <tag>.pt。train-loop の --snapshot-every が <tag>_ep<epoch>.pt を
     # 自前で生成し、それをそのまま funnel の snapshot として使う (copy/rename 不要)。
@@ -483,6 +522,7 @@ def funnel(args) -> None:
 
 
 def rate(args) -> None:
+    init_eval_seed(getattr(args, "eval_seed", None))
     # 各 funnel JSON を読み、(label, method, path) のプールを作る。
     entries: list[tuple[str, str, Path]] = []
     for jp in args.funnel_json:
@@ -502,7 +542,8 @@ def rate(args) -> None:
     pairs: list[PairResult] = []
     for (la, _, pa), (lb, _, pb) in itertools.combinations(entries, 2):
         w, l, d = head_to_head(pa, pb, args.n_per_side, args.stage, args.num_games,
-                               args.randomize, args.crit_enabled)
+                               args.randomize, args.crit_enabled,
+                               battle_seed=draw_eval_seed())
         print(f"  {la} vs {lb}: {la}勝={w} {lb}勝={l} 引分={d}", flush=True)
         pairs.append(PairResult(la, lb, w, l, d))
 
@@ -547,6 +588,11 @@ def parse_args() -> argparse.Namespace:
                         action=argparse.BooleanOptionalAction, default=False,
                         help="学習(funnel)・評価(funnel選抜/rate)で急所を有効化。"
                              "既定 --no-crit。")
+    common.add_argument("--eval-seed", type=int, default=None,
+                        help="eval(head-to-head)の battle_seed base。省略時はランダム"
+                             "(毎回独立サンプル)で起動時にログ出力。再現したいときだけ整数を明示。"
+                             "全ペアはこの base から独立 seed を払い出す(旧実装のように全ペア"
+                             "seed=1 固定でノイズが人為相関する事故を防ぐ)。")
 
     f = sub.add_parser("funnel", parents=[common], help="1 手法を多段選抜")
     f.add_argument("--start", type=Path, default=None,
@@ -606,7 +652,7 @@ def parse_args() -> argparse.Namespace:
                         "未指定なら train-loop 既定(4)。")
     f.add_argument("--nash-learning-rate", type=float, default=1.5,
                    help="学習 train-loop の --nash-learning-rate (nash_weak 穏当化版の"
-                        "更新率)。既定は train-loop と同じ 2.0。A/B 用に funnel から振れる。")
+                        "更新率)。既定は train-loop と同じ 1.5。A/B 用に funnel から振れる。")
     f.set_defaults(func=funnel)
 
     r = sub.add_parser("rate", parents=[common], help="複数手法の最終レート戦")
