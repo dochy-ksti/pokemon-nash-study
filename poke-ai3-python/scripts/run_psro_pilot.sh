@@ -45,10 +45,12 @@ run_psro() {
     echo "[driver] $tag state.json あり -> --resume で継続"
     resume=(--resume)
   fi
-  # ELA=1 で敵探索あり (敵も lookahead + σ 行列も探索込み。コスト ~2 倍)。
+  # ELA=1 で学習中の敵探索あり (敵も lookahead)。MLA=1 で σ 行列も探索込み (高コスト、iter² で
+  # 効く)。既定は行列 policy-only (最終 σ 混合の探索込み exploitability は別途 1 回測る)。
   local ela=()
-  [ "${ELA:-0}" = "1" ] && ela=(--enemy-lookahead)
-  echo "[driver] === $tag start $(date -Is) (meta=${META:-nash} ela=${ELA:-0}) ==="
+  [ "${ELA:-0}" = "1" ] && ela+=(--enemy-lookahead)
+  [ "${MLA:-0}" = "1" ] && ela+=(--matrix-lookahead)
+  echo "[driver] === $tag start $(date -Is) (meta=${META:-nash} ela=${ELA:-0} mla=${MLA:-0}) ==="
   uv run python scripts/ckpt_tournament.py psro --tag "$tag" \
     --shared-init "$PUB/shared_init.pt" "${resume[@]}" "${ela[@]}" \
     --meta-strategy "${META:-nash}" --nash-eps 0.02 --matrix-n-per-side "${MNPS:-256}" \

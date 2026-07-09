@@ -760,10 +760,11 @@ def _extend_payoff(pool: list[Path], matrix: list[list[float]], args) -> np.ndar
     (新しい行/列) のペアだけ head_to_head で埋める。対角は 0.5。行列サイズを抑えるため
     matrix 用の試合数は --matrix-n-per-side を使う。
 
-    --enemy-lookahead 時は学習も探索込みなので、σ を決めるこの行列も探索込み
-    (policy_only=False, 両者 lookahead) で測り、学習と評価の探索有無を揃える
-    (sim_concurrency は探索並列を効かせるため args.sim_concurrency で上書き)。"""
-    search = getattr(args, "enemy_lookahead", False)
+    --matrix-lookahead 時は σ を決めるこの行列も探索込み (policy_only=False, 両者
+    lookahead) で測り、学習 (--enemy-lookahead) と σ の探索有無を揃える。ただし探索込み
+    行列は 1 ペア ~101s (policy-only の ~37 倍) で iter² で効くため、既定は policy-only。
+    sim_concurrency は探索並列を効かせるため args.sim_concurrency で上書き。"""
+    search = getattr(args, "matrix_lookahead", False)
     sc = args.sim_concurrency if search else None
     n = len(pool)
     M = np.full((n, n), np.nan)
@@ -1097,10 +1098,13 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--central-epochs", type=int, default=50,
                    help="iter1 以降で 1 iter に中心学習者を前進させる epoch。既定 50。")
     p.add_argument("--enemy-lookahead", action="store_true",
-                   help="敵 (旧 Π) も lookahead 探索で着手し、σ を決める勝率行列も探索込み "
-                        "(両者 lookahead) で測る。学習と評価の探索有無を揃え『探索込みの Π への "
-                        "真の best-response』を学習・評価する。既定 off (敵 policy-only、行列も "
-                        "policy-only)。コストは概ね 2 倍。")
+                   help="学習中に敵 (旧 Π) も lookahead 探索で着手する。中心は『探索込みの Π への "
+                        "best-response』を学習する。学習コストは概ね 2 倍。既定 off (敵 policy-only)。")
+    p.add_argument("--matrix-lookahead", action="store_true",
+                   help="σ を決める Π 勝率行列も探索込み (両者 lookahead) で測る。--enemy-lookahead と "
+                        "併せると学習も σ も探索込みで完全一致。ただし探索込み 1 ペア ~101s "
+                        "(policy-only の ~37 倍)、行列は iter² で効くので高コスト。既定 off "
+                        "(行列は policy-only。最終 σ 混合の探索込み exploitability は別途 1 回測る)。")
     # 旧 exploiter オラクル方式 (集団=exploiter 列) の名残。現行のメタ Nash PSRO は
     # exploiter サブプロセスを廃したため下記は無視されるが、既存 driver の引数互換のため受理する。
     p.add_argument("--exploiter-epochs", type=int, default=200, help="(deprecated: 無視)")
