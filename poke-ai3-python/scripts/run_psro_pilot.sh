@@ -16,7 +16,9 @@
 #   cd poke-ai3-python
 #   setsid nohup bash scripts/run_psro_pilot.sh > /tmp/psro/driver.log 2>&1 &
 # 冪等: <tag>_psro.json があれば skip、途中 state があれば --resume で継続。
-# env: TAG=tag, MAX_ITERS=n, META=nash|latest (既定 nash), SPR=self-play-ratio (既定 0=教科書)。
+# env: TAG=tag, MAX_ITERS=n, META=nash|latest (既定 nash), SPR=self-play-ratio (既定 0=教科書),
+#   ELA=1 で敵探索あり (敵も lookahead + σ 行列も探索込み。学習と評価の探索有無を揃える。
+#   コスト ~2 倍)、MNPS=matrix-n-per-side (既定 256。探索込み行列のコスト調整用に下げられる)。
 #   nash=σ サポートを σ 比で敵に。latest=直近 pool_size 個一様 (忘却ありのベースライン)。
 set -u
 
@@ -43,10 +45,13 @@ run_psro() {
     echo "[driver] $tag state.json あり -> --resume で継続"
     resume=(--resume)
   fi
-  echo "[driver] === $tag start $(date -Is) (meta=${META:-nash}) ==="
+  # ELA=1 で敵探索あり (敵も lookahead + σ 行列も探索込み。コスト ~2 倍)。
+  local ela=()
+  [ "${ELA:-0}" = "1" ] && ela=(--enemy-lookahead)
+  echo "[driver] === $tag start $(date -Is) (meta=${META:-nash} ela=${ELA:-0}) ==="
   uv run python scripts/ckpt_tournament.py psro --tag "$tag" \
-    --shared-init "$PUB/shared_init.pt" "${resume[@]}" \
-    --meta-strategy "${META:-nash}" --nash-eps 0.02 --matrix-n-per-side 256 \
+    --shared-init "$PUB/shared_init.pt" "${resume[@]}" "${ela[@]}" \
+    --meta-strategy "${META:-nash}" --nash-eps 0.02 --matrix-n-per-side "${MNPS:-256}" \
     --max-iters "${MAX_ITERS:-6}" --warmup-epochs 200 --central-epochs 50 \
     --pool-size 4 --self-play-ratio "${SPR:-0}" \
     --value-target expected --nash-learning-rate 1.5 \

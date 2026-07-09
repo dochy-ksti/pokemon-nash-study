@@ -757,8 +757,14 @@ def _solve_meta_nash(payoff: np.ndarray, iters: int = 20000) -> np.ndarray:
 
 def _extend_payoff(pool: list[Path], matrix: list[list[float]], args) -> np.ndarray:
     """プール総当り勝率行列を差分更新。既存 matrix (k×k) を n×n に広げ、未測定
-    (新しい行/列) のペアだけ policy-only head_to_head で埋める。対角は 0.5。
-    行列サイズを抑えるため matrix 用の試合数は --matrix-n-per-side を使う。"""
+    (新しい行/列) のペアだけ head_to_head で埋める。対角は 0.5。行列サイズを抑えるため
+    matrix 用の試合数は --matrix-n-per-side を使う。
+
+    --enemy-lookahead 時は学習も探索込みなので、σ を決めるこの行列も探索込み
+    (policy_only=False, 両者 lookahead) で測り、学習と評価の探索有無を揃える
+    (sim_concurrency は探索並列を効かせるため args.sim_concurrency で上書き)。"""
+    search = getattr(args, "enemy_lookahead", False)
+    sc = args.sim_concurrency if search else None
     n = len(pool)
     M = np.full((n, n), np.nan)
     k = len(matrix)
@@ -772,7 +778,8 @@ def _extend_payoff(pool: list[Path], matrix: list[list[float]], args) -> np.ndar
             if np.isnan(M[i, j]):
                 w, l, d = head_to_head(pool[i], pool[j], npps, args.stage,
                                        args.num_games, args.randomize, args.crit_enabled,
-                                       battle_seed=draw_eval_seed())
+                                       battle_seed=draw_eval_seed(),
+                                       policy_only=not search, sim_concurrency=sc)
                 dec = w + l
                 wr = w / dec if dec else 0.5
                 M[i, j] = wr
@@ -807,8 +814,10 @@ def psro(args) -> None:
     if not shared_init.exists():
         raise SystemExit(f"shared-init が見つかりません: {shared_init}")
 
-    # 中心の敵設定: 自己対戦 r (--self-play-ratio) ＋ 敵 policy-only (auto-peak なし)。
-    args.enemy_lookahead = False
+    # 敵 (旧 Π の相手取る部分) の探索有無は --enemy-lookahead が決める。off (既定) なら
+    # 敵は policy-only (高速)、on なら敵も lookahead で着手し σ を決める行列も探索込みで測る
+    # (学習と評価の探索有無を揃える。コストは概ね 2 倍)。
+    args.enemy_lookahead = getattr(args, "enemy_lookahead", False)
     # train_block_to の snapshot 間隔 = 中心ブロック長 (末尾で 1 回だけ snapshot)。
     args.epochs_per_step = args.central_epochs
 
@@ -1087,6 +1096,11 @@ def parse_args() -> argparse.Namespace:
                         "既定 200。ep50 程度の未熟な中心を突くのは早すぎるため。")
     p.add_argument("--central-epochs", type=int, default=50,
                    help="iter1 以降で 1 iter に中心学習者を前進させる epoch。既定 50。")
+    p.add_argument("--enemy-lookahead", action="store_true",
+                   help="敵 (旧 Π) も lookahead 探索で着手し、σ を決める勝率行列も探索込み "
+                        "(両者 lookahead) で測る。学習と評価の探索有無を揃え『探索込みの Π への "
+                        "真の best-response』を学習・評価する。既定 off (敵 policy-only、行列も "
+                        "policy-only)。コストは概ね 2 倍。")
     # 旧 exploiter オラクル方式 (集団=exploiter 列) の名残。現行のメタ Nash PSRO は
     # exploiter サブプロセスを廃したため下記は無視されるが、既存 driver の引数互換のため受理する。
     p.add_argument("--exploiter-epochs", type=int, default=200, help="(deprecated: 無視)")
