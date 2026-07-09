@@ -14,6 +14,8 @@
 #   cd poke-ai3-python
 #   setsid nohup bash scripts/run_psro_pilot.sh > /tmp/psro/driver.log 2>&1 &
 # 冪等: <tag>_psro.json があれば skip、途中 state があれば --resume で継続。
+# env: TAG=tag, MAX_ITERS=n, META=latest|nash。META=nash はプール全保持＋総当り勝率
+#   行列のメタ Nash σ で中心の敵を重み付け (忘却を防ぐ)。行列は matrix-n-per-side=256戦/ペア。
 set -u
 
 cd "$(dirname "$0")/.." || exit 1
@@ -39,9 +41,10 @@ run_psro() {
     echo "[driver] $tag state.json あり -> --resume で継続"
     resume=(--resume)
   fi
-  echo "[driver] === $tag start $(date -Is) ==="
+  echo "[driver] === $tag start $(date -Is) (meta=${META:-latest}) ==="
   uv run python scripts/ckpt_tournament.py psro --tag "$tag" \
     --shared-init "$PUB/shared_init.pt" "${resume[@]}" \
+    --meta-strategy "${META:-latest}" --nash-eps 0.02 --matrix-n-per-side 256 \
     --max-iters "${MAX_ITERS:-6}" --warmup-epochs 200 --central-epochs 50 \
     --exploiter-epochs 200 --exploiter-eval-every 25 --exploiter-patience 1 \
     --exploiter-init target \
