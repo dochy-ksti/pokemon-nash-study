@@ -3,8 +3,11 @@
 # した専用 best-response (exploiter) を作り、敵プール (最新 N) に積む。exploiter の対
 # target 勝率 (exploitability) が iter を追って 50% へ下がれば穴が塞がった証拠。
 #
-# 規模 (grill-me で確定): 中心 50ep/iter・exploiter +50ep(eval ep25/50)・N=4・
-# self_play_ratio 0.5・6 iter・shared_init 発・value 教師 expected。
+# 規模: 中心は warmup 200ep 育ててから最初の exploit、以降 50ep/iter・N=4・
+# self_play_ratio 0.5・6 iter・shared_init 発・value 教師 expected。exploiter は 25ep ごとに
+# eval し、勝率がピークアウト (patience=1 回更新なしで即) したら early-stop しピーク重みを採用
+# (上限 200ep)。exploiter の初期値は target 自身 (--exploiter-init target): 始点 ~0.5 から
+# 自分に勝つ方向へ微調整するので弱すぎる個体にならず収束も速い。学習/探索は A/B と同一。
 # 学習/探索は A/B と同一 (nash_lr 1.5, depth_skew 2.0, search-turn 4-8, sims 64,
 # sim_concurrency 16, train_num_games 64, stage 3b, random, crit)。
 # 使い方:
@@ -39,8 +42,9 @@ run_psro() {
   echo "[driver] === $tag start $(date -Is) ==="
   uv run python scripts/ckpt_tournament.py psro --tag "$tag" \
     --shared-init "$PUB/shared_init.pt" "${resume[@]}" \
-    --max-iters 6 --central-epochs 50 \
-    --exploiter-epochs 50 --exploiter-eval-every 25 \
+    --max-iters "${MAX_ITERS:-6}" --warmup-epochs 200 --central-epochs 50 \
+    --exploiter-epochs 200 --exploiter-eval-every 25 --exploiter-patience 1 \
+    --exploiter-init target \
     --pool-size 4 --self-play-ratio 0.5 \
     --value-target expected --nash-learning-rate 1.5 \
     --exploiter-battle-seed 20260711 \

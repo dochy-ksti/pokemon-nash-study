@@ -588,11 +588,15 @@ def exploit(args) -> None:
     exploiter は shared_init 等から開始し、敵を target 1 体に固定 (self_play_ratio=0 で
     全 game が exploiter vs target)。funnel と違い検出 peak を敵列へ積まない純 best-response。
     --eval-every ごとに 1 ブロック学習し、その都度 exploiter vs target を policy-only で測る。
+    勝率が更新されるたびピーク重みを <tag>_peak.pt に退避し、最終的な exploiter はこの
+    ピーク重みとする (最終 epoch ではなくカーブ最大の重みを採用)。--patience>0 なら勝率が
+    patience 回連続で更新されなくなった時点で early-stop する (ピークアウト検出)。
     exploitability 推定値 = 学習カーブ上の exploiter 勝率の最大値 (低い target ほど
     unexploitable)。--resume で予算を延長できる。"""
     init_eval_seed(getattr(args, "eval_seed", None))
     TDIR.mkdir(parents=True, exist_ok=True)
     work = TDIR / f"{args.tag}.pt"
+    peak_path = TDIR / f"{args.tag}_peak.pt"   # カーブ最大勝率時点の重みを退避
     state_path = TDIR / f"{args.tag}_state.json"
     target = args.target
     if not target.exists():
@@ -603,9 +607,11 @@ def exploit(args) -> None:
     args.enemy_lookahead = False
     # train_block_to は epochs_per_step を snapshot 間隔に使う。eval-every を 1 ブロックに。
     args.epochs_per_step = args.eval_every
+    patience = getattr(args, "patience", 0)  # 0=early-stop 無効 (固定予算)
 
     curve: list[list[float]] = []  # [[epoch, winrate], ...]
     best: list[float] | None = None
+    no_improve = 0                 # 連続で best を更新できなかった eval 数
 
     if args.resume and state_path.exists():
         st = json.loads(state_path.read_text())
@@ -613,8 +619,9 @@ def exploit(args) -> None:
         epoch = st["epoch"]
         curve = st["curve"]
         best = st.get("best")
+        no_improve = st.get("no_improve", 0)
         print(f"[exploit] resume: ep{epoch} base={base} evals={len(curve)} "
-              f"best={best}", flush=True)
+              f"best={best} no_improve={no_improve}", flush=True)
     else:
         if args.start is not None:
             shutil.copy(args.start, work)
@@ -627,19 +634,21 @@ def exploit(args) -> None:
             base = 0
             start_name = "<random-init>"
         epoch = base
-        # 古い自前 snapshot を掃除。
+        # 古い自前 snapshot / ピーク退避を掃除。
         for p in TDIR.glob(f"{args.tag}_ep*.pt"):
             p.unlink()
+        if peak_path.exists():
+            peak_path.unlink()
         print(f"[exploit] tag={args.tag} start={start_name} target={target.name} "
               f"base={base} eval_every={args.eval_every} "
-              f"max_added_epochs={args.max_added_epochs} "
+              f"max_added_epochs={args.max_added_epochs} patience={patience} "
               f"value_target={'expected' if getattr(args, 'value_target_expected', False) else 'max'}",
               flush=True)
 
     def save_state() -> None:
         state_path.write_text(json.dumps({
             "base": base, "epoch": epoch, "target": str(target),
-            "curve": curve, "best": best,
+            "curve": curve, "best": best, "no_improve": no_improve,
         }, ensure_ascii=False, indent=2))
 
     def eval_now() -> float:
@@ -671,8 +680,24 @@ def exploit(args) -> None:
         curve.append([epoch, wr])
         if best is None or wr > best[1]:
             best = [epoch, wr]
-        print(f"  [exploit] best so far: 勝率={best[1]:.3f} @ep{int(best[0])}", flush=True)
+            no_improve = 0
+            shutil.copy(work, peak_path)   # ピーク重みを退避 (最終採用はこれ)
+        else:
+            no_improve += 1
+        print(f"  [exploit] best so far: 勝率={best[1]:.3f} @ep{int(best[0])} "
+              f"(no_improve={no_improve})", flush=True)
         save_state()
+        if patience and no_improve >= patience:
+            print(f"  [exploit] ピークアウト検出 (no_improve={no_improve} >= "
+                  f"patience={patience}) → early-stop。ピーク @ep{int(best[0])} を採用。",
+                  flush=True)
+            break
+
+    # 最終的な exploiter はカーブ最大勝率時点 (ピーク) の重み。work をピークで上書きし、
+    # 下流 (psro のプール) が最終 epoch ではなくピーク重みを使うようにする。
+    if peak_path.exists():
+        shutil.copy(peak_path, work)
+        _AGENT_CACHE.pop(work, None)
 
     out = {
         "tag": args.tag,
@@ -680,6 +705,7 @@ def exploit(args) -> None:
         "start": str(args.start) if args.start else "<random-init>",
         "value_target": "expected" if getattr(args, "value_target_expected", False) else "max",
         "eval_every": args.eval_every,
+        "patience": patience,
         "curve": curve,
         "exploitability": best[1] if best else None,
         "best_epoch": int(best[0]) if best else None,
@@ -687,7 +713,8 @@ def exploit(args) -> None:
     out_path = TDIR / f"{args.tag}_exploit.json"
     out_path.write_text(json.dumps(out, ensure_ascii=False, indent=2))
     print(f"\n[exploit] 完了。exploitability (best 勝率) = "
-          f"{out['exploitability']} @ep{out['best_epoch']} → {out_path}", flush=True)
+          f"{out['exploitability']} @ep{out['best_epoch']} (採用=ピーク重み) → {out_path}",
+          flush=True)
 
 
 # ---------------------------------------------------------------- psro mode
@@ -769,6 +796,7 @@ def psro(args) -> None:
         for p in TDIR.glob(f"{ctag}_ep*.pt"):
             p.unlink()
         print(f"[psro] tag={ctag} shared_init={shared_init.name} base={base} "
+              f"warmup_epochs={args.warmup_epochs} "
               f"central_epochs={args.central_epochs} exploiter_epochs={args.exploiter_epochs} "
               f"pool_size={args.pool_size} self_play_ratio={args.self_play_ratio} "
               f"max_iters={args.max_iters} "
@@ -782,11 +810,15 @@ def psro(args) -> None:
         }, ensure_ascii=False, indent=2))
 
     while it < args.max_iters:
-        # ---- 1) 中心学習者を central_epochs だけ前進 (敵=最新 pool_size 個) ----
+        # ---- 1) 中心学習者を前進 (敵=最新 pool_size 個) ----
+        # iter0 は warmup_epochs だけ育ててから最初の exploit (ep50 の未熟な中心を突くのは
+        # 早すぎるため)。以降の iter は central_epochs ずつ。
+        inc = args.warmup_epochs if it == 0 else args.central_epochs
         window = pool[-args.pool_size:]
-        block_target = epoch + args.central_epochs
+        block_target = epoch + inc
         print(f"\n###### [psro] iter {it}: 中心学習 ep{epoch} -> ep{block_target} "
-              f"(敵 {len(window)} 体) ######", flush=True)
+              f"({'warmup' if it == 0 else 'central'} {inc}ep, 敵 {len(window)} 体) ######",
+              flush=True)
         configure_enemies(work, window, args)
         train_block_to(work, block_target, args)
         epoch = block_target
@@ -798,12 +830,16 @@ def psro(args) -> None:
         shutil.copy(work, target)
         exp_tag = f"{ctag}_exp{it}"
         exp_json = TDIR / f"{exp_tag}_exploit.json"
+        # exploiter の初期値: target 自身 (既定) から自分に勝つ方向へ微調整すると、始点が
+        # 約 0.5 で「弱すぎる個体」にならず収束も速い。shared-init は 0.05 から長く登る旧方式。
+        exp_start = target if args.exploiter_init == "target" else shared_init
         cmd = [
             sys.executable, str(Path(__file__).resolve()), "exploit",
             "--target", str(target), "--tag", exp_tag,
-            "--start", str(shared_init),
+            "--start", str(exp_start),
             "--eval-every", str(args.exploiter_eval_every),
             "--max-added-epochs", str(args.exploiter_epochs),
+            "--patience", str(args.exploiter_patience),
             "--train-battle-seed", str(args.exploiter_battle_seed),
         ] + _fwd_shared_args(args)
         print(f"\n###### [psro] iter {it}: exploiter 学習 (target={target.name}) ######\n"
@@ -813,7 +849,7 @@ def psro(args) -> None:
             raise SystemExit(f"[psro] iter {it} exploiter 失敗 (exit={r.returncode})")
         exp = json.loads(exp_json.read_text())
         exploitability = exp["exploitability"]
-        exp_ckpt = TDIR / f"{exp_tag}.pt"   # exploit が残す最終 exploiter ネット
+        exp_ckpt = TDIR / f"{exp_tag}.pt"   # exploit が残すピーク重み exploiter ネット
         pool.append(exp_ckpt)
         curve.append([it, epoch, exploitability])
         print(f"\n[psro] iter {it} 完了: exploitability={exploitability} "
@@ -824,8 +860,11 @@ def psro(args) -> None:
     out = {
         "tag": ctag,
         "shared_init": str(shared_init),
+        "warmup_epochs": args.warmup_epochs,
         "central_epochs": args.central_epochs,
         "exploiter_epochs": args.exploiter_epochs,
+        "exploiter_patience": args.exploiter_patience,
+        "exploiter_init": args.exploiter_init,
         "pool_size": args.pool_size,
         "self_play_ratio": args.self_play_ratio,
         "value_target": "expected" if getattr(args, "value_target_expected", False) else "max",
@@ -960,7 +999,12 @@ def parse_args() -> argparse.Namespace:
                         "各ブロック後に policy-only 勝率を記録する。既定 50。")
     x.add_argument("--max-added-epochs", type=int, default=200,
                    help="開始からの追加 epoch 上限。固定 target への best-response は収束が"
-                        "速い想定で既定 200。まだ登っていれば --resume で延長する。")
+                        "速い想定で既定 200。まだ登っていれば --resume で延長する。"
+                        "--patience>0 のときは early-stop の上限 (安全弁) として働く。")
+    x.add_argument("--patience", type=int, default=0,
+                   help="ピークアウト early-stop の忍耐。勝率が patience 回連続で best を "
+                        "更新できなくなったら停止し、ピーク重み (<tag>_peak.pt) を採用。"
+                        "既定 0=無効 (max-added-epochs までの固定予算)。ノイズ耐性のため 2 推奨。")
     add_train_side_args(x)
     x.set_defaults(func=exploit)
 
@@ -975,12 +1019,24 @@ def parse_args() -> argparse.Namespace:
                    help="既存の <tag>_psro_state.json から iter を継続 (延長にも使う)。")
     p.add_argument("--max-iters", type=int, default=6,
                    help="PSRO イテレーション数。既定 6 (パイロット)。--resume で延長。")
+    p.add_argument("--warmup-epochs", type=int, default=200,
+                   help="最初の exploit の前に中心を自己対戦で育てる epoch (iter0 の学習量)。"
+                        "既定 200。ep50 程度の未熟な中心を突くのは早すぎるため。")
     p.add_argument("--central-epochs", type=int, default=50,
-                   help="1 iter で中心学習者を前進させる epoch。既定 50。")
-    p.add_argument("--exploiter-epochs", type=int, default=50,
-                   help="各 iter の exploiter best-response の追加 epoch 上限。既定 50。")
+                   help="iter1 以降で 1 iter に中心学習者を前進させる epoch。既定 50。")
+    p.add_argument("--exploiter-epochs", type=int, default=200,
+                   help="各 iter の exploiter best-response の追加 epoch 上限 (early-stop の"
+                        "安全弁)。既定 200。ピークアウトで早期停止するので大きめでよい。")
     p.add_argument("--exploiter-eval-every", type=int, default=25,
-                   help="exploiter の eval 間隔 (epoch)。既定 25 (ep25/ep50 の 2 点)。")
+                   help="exploiter の eval 間隔 (epoch)。既定 25。この単位でピーク検出する。")
+    p.add_argument("--exploiter-init", choices=["target", "shared-init"], default="target",
+                   help="exploiter の初期値。target (既定)=その時点の中心自身から始めて自分に"
+                        "勝つ方向へ微調整 (始点 ~0.5、弱すぎる個体にならず速い)。shared-init="
+                        "共通初期値から (始点 ~0.05、長く登る旧方式)。")
+    p.add_argument("--exploiter-patience", type=int, default=1,
+                   help="exploiter のピークアウト early-stop 忍耐 (子 exploit へ --patience で"
+                        "渡す)。勝率が patience 回連続で更新されなければ停止しピーク重みを採用。"
+                        "既定 1 (更新なしで即停止)。ノイズが気になれば 2 以上。")
     p.add_argument("--pool-size", type=int, default=4,
                    help="中心の敵に混ぜる最新 exploiter 数 N (窓)。既定 4。")
     p.add_argument("--self-play-ratio", type=float, default=0.5,
