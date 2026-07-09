@@ -14,8 +14,10 @@
 #   cd poke-ai3-python
 #   setsid nohup bash scripts/run_psro_pilot.sh > /tmp/psro/driver.log 2>&1 &
 # 冪等: <tag>_psro.json があれば skip、途中 state があれば --resume で継続。
-# env: TAG=tag, MAX_ITERS=n, META=latest|nash。META=nash はプール全保持＋総当り勝率
-#   行列のメタ Nash σ で中心の敵を重み付け (忘却を防ぐ)。行列は matrix-n-per-side=256戦/ペア。
+# env: TAG=tag, MAX_ITERS=n, META=latest|nash, SPR=self-play-ratio (既定 0.5)。
+#   META=nash はプール全保持＋総当り勝率行列のメタ Nash σ で中心の敵を重み付け (忘却を
+#   防ぐ)。行列は matrix-n-per-side=256戦/ペア。教科書形 PSRO は SPR=0 (中心=σ混合への
+#   純 best-response。warmup はプール空なので自動的に全自己対戦)。
 set -u
 
 cd "$(dirname "$0")/.." || exit 1
@@ -48,7 +50,7 @@ run_psro() {
     --max-iters "${MAX_ITERS:-6}" --warmup-epochs 200 --central-epochs 50 \
     --exploiter-epochs 200 --exploiter-eval-every 25 --exploiter-patience 1 \
     --exploiter-init target \
-    --pool-size 4 --self-play-ratio 0.5 \
+    --pool-size 4 --self-play-ratio "${SPR:-0.5}" \
     --value-target expected --nash-learning-rate 1.5 \
     --exploiter-battle-seed 20260711 \
     --depth-skew 2.0 --search-turn-min 4 --search-turn-max 8 \
