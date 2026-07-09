@@ -123,8 +123,12 @@ def _eval_agent(path: Path, num_games: int) -> "Agent":
 def head_to_head(
     new: Path, old: Path, n_per_side: int, stage: str, num_games: int,
     randomize: bool = False, crit_enabled: bool = False, *, battle_seed: int,
+    policy_only: bool = True, sim_concurrency: int | None = None,
 ) -> tuple[int, int, int]:
-    """policy-only で new vs old を先後入れ替えて対戦。new 視点 (win, loss, draw)。
+    """new vs old を先後入れ替えて対戦。new 視点 (win, loss, draw)。
+
+    policy_only=True (既定) は policy net 単発着手の高速対戦。False にすると両者とも
+    lookahead 探索で着手する実運用相当の対戦になる (sim_concurrency で探索並列度を上書き可)。
 
     in-process 評価: Agent をキャッシュし、executor をペア毎に生成して collect_results で
     集計する (旧実装は eval_ckpt_vs_ckpt を毎ペア subprocess 起動していた)。
@@ -145,8 +149,10 @@ def head_to_head(
         agent_a, agent_b = (a_new, a_old) if new_is_p1 else (a_old, a_new)
         executor = _EXEC_FACTORY(
             num_games, num_games, None, "local", randomize, crit_enabled, stage,
-            _EVAL_SIMS, _EVAL_SIM_CONCURRENCY, _EVAL_SEARCH_MIN, _EVAL_SEARCH_MAX,
-            False, False, battle_seed=battle_seed + k, policy_only=True,
+            _EVAL_SIMS,
+            sim_concurrency if sim_concurrency is not None else _EVAL_SIM_CONCURRENCY,
+            _EVAL_SEARCH_MIN, _EVAL_SEARCH_MAX,
+            False, False, battle_seed=battle_seed + k, policy_only=policy_only,
         )
         a_win, b_win, d = collect_results(
             executor, agent_a, agent_b, n_per_side, 0.0,
@@ -602,9 +608,13 @@ def exploit(args) -> None:
     if not target.exists():
         raise SystemExit(f"target が見つかりません: {target}")
 
-    # 敵は target 1 体固定・全 game を exploiter vs target に (Q4=A: target は policy-only)。
+    # 敵は target 1 体固定・全 game を exploiter vs target に。
     args.self_play_ratio = 0.0
-    args.enemy_lookahead = False
+    # --eval-lookahead: target を「探索込みの実運用方策」として突く。学習中も target を
+    # 探索着手させ (enemy_lookahead=True)、eval も両者探索込み (policy_only=False) にする。
+    # 既定 off では従来どおり target は policy-only ネット単体を突く。
+    eval_lookahead = getattr(args, "eval_lookahead", False)
+    args.enemy_lookahead = eval_lookahead
     # train_block_to は epochs_per_step を snapshot 間隔に使う。eval-every を 1 ブロックに。
     args.epochs_per_step = args.eval_every
     patience = getattr(args, "patience", 0)  # 0=early-stop 無効 (固定予算)
@@ -642,6 +652,7 @@ def exploit(args) -> None:
         print(f"[exploit] tag={args.tag} start={start_name} target={target.name} "
               f"base={base} eval_every={args.eval_every} "
               f"max_added_epochs={args.max_added_epochs} patience={patience} "
+              f"eval_lookahead={eval_lookahead} "
               f"value_target={'expected' if getattr(args, 'value_target_expected', False) else 'max'}",
               flush=True)
 
@@ -658,7 +669,10 @@ def exploit(args) -> None:
         _AGENT_CACHE.pop(work, None)
         w, l, d = head_to_head(work, target, args.n_per_side, args.stage,
                                args.num_games, args.randomize, args.crit_enabled,
-                               battle_seed=draw_eval_seed())
+                               battle_seed=draw_eval_seed(),
+                               policy_only=not eval_lookahead,
+                               sim_concurrency=(args.sim_concurrency
+                                                if eval_lookahead else None))
         decided = w + l
         wr = w / decided if decided else 0.5
         print(f"  [exploit] ep{epoch} exploiter vs {target.stem}: "
@@ -706,6 +720,7 @@ def exploit(args) -> None:
         "value_target": "expected" if getattr(args, "value_target_expected", False) else "max",
         "eval_every": args.eval_every,
         "patience": patience,
+        "eval_lookahead": eval_lookahead,
         "curve": curve,
         "exploitability": best[1] if best else None,
         "best_epoch": int(best[0]) if best else None,
@@ -1005,6 +1020,11 @@ def parse_args() -> argparse.Namespace:
                    help="ピークアウト early-stop の忍耐。勝率が patience 回連続で best を "
                         "更新できなくなったら停止し、ピーク重み (<tag>_peak.pt) を採用。"
                         "既定 0=無効 (max-added-epochs までの固定予算)。ノイズ耐性のため 2 推奨。")
+    x.add_argument("--eval-lookahead", action="store_true",
+                   help="target を『探索込みの実運用方策』として突く。学習中も target を "
+                        "lookahead 着手させ (enemy_lookahead=True)、eval も両者探索込み "
+                        "(policy_only=False) で測る。既定 off=target は policy-only ネット単体。"
+                        "探索込みの真の exploitability を測るためのモード。")
     add_train_side_args(x)
     x.set_defaults(func=exploit)
 
