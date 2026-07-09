@@ -9,6 +9,10 @@ use crate::async_executor::{ACTION_DIM, ExecutorEnum};
 #[derive(Debug, Clone, Deserialize, PartialEq, Serialize)]
 pub struct PlayerObservation {
     pub game_id: usize,
+    /// この game_id スロットで何ゲーム目か (1 始まり)。同一スロットは前ゲーム終了後に
+    /// 次ゲームを逐次開始するので、(game_id, game_index) が 1 バトルを一意に識別する。
+    /// Python 側の敵混合学習が「新ゲーム開始」を検知して敵を σ 配分で割り当てる鍵。
+    pub game_index: u32,
     pub player: Player,
     /// このゲーム内で一意な推論リクエスト ID。応答 (`InferencedDataItem`) が
     /// 同じ ID を返し、game_task 側で待機中の oneshot へルーティングする。
@@ -46,6 +50,9 @@ pub struct TrajectoryItem {
 #[derive(Debug, Clone, PartialEq, Serialize)]
 pub struct Trajectory {
     pub game_id: usize,
+    /// この game_id スロットで何ゲーム目か (1 始まり)。観測と同じ値を持ち、Python 側が
+    /// (game_id, game_index) で敵割り当てを引いて敵別勝率を集計する。
+    pub game_index: u32,
     /// この trajectory を生成した player。1 実バトルは P1/P2 の 2 本を生むため、
     /// 評価時の実試合数集計では P1 側だけを数えて二重計上を避ける。
     pub player: Player,

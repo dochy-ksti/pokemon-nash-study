@@ -23,6 +23,8 @@ pub struct EncodedBatch {
     pub rows: usize,
     // ルーティング (実観測、行順はテンソルと一致)
     pub game_id: Vec<i64>,
+    /// (game_id スロットの何ゲーム目か。敵混合の per-game 割り当て鍵。実観測のみ。)
+    pub game_index: Vec<i64>,
     pub player: Vec<i64>,
     pub request_id: Vec<i64>,
     // gid 系 (i64)
@@ -129,6 +131,7 @@ pub fn encode_batch(observations: &[PlayerObservation]) -> EncodedBatch {
         };
         b.rows += 1;
         b.game_id.push(obs.game_id as i64);
+        b.game_index.push(obs.game_index as i64);
         b.player.push(obs.player.index() as i64);
         b.request_id.push(obs.request_id as i64);
 
@@ -189,6 +192,7 @@ pub fn encode_states(states: &[StateForPlayer]) -> EncodedBatch {
         .enumerate()
         .map(|(i, state)| PlayerObservation {
             game_id: i,
+            game_index: 0,
             player: Player::P1,
             request_id: i as u64,
             state: Some(state.clone()),
@@ -205,6 +209,7 @@ mod tests {
     fn obs(game_id: usize, request_id: u64, state: Option<StateForPlayer>) -> PlayerObservation {
         PlayerObservation {
             game_id,
+            game_index: 0,
             player: Player::P2,
             request_id,
             state,

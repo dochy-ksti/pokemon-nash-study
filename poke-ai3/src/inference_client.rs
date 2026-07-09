@@ -23,6 +23,7 @@ pub(crate) type PendingMap = Arc<Mutex<HashMap<u64, oneshot::Sender<InferencedDa
 #[derive(Clone)]
 pub(crate) struct InferenceClient {
     game_id: usize,
+    game_index: u32,
     root_sender: UnboundedSender<RootEnumFromGame>,
     pending: PendingMap,
     counter: Arc<AtomicU64>,
@@ -31,11 +32,13 @@ pub(crate) struct InferenceClient {
 impl InferenceClient {
     pub(crate) fn new(
         game_id: usize,
+        game_index: u32,
         root_sender: UnboundedSender<RootEnumFromGame>,
         pending: PendingMap,
     ) -> Self {
         Self {
             game_id,
+            game_index,
             root_sender,
             pending,
             counter: Arc::new(AtomicU64::new(0)),
@@ -78,6 +81,7 @@ impl InferenceClient {
         }
         let observation = PlayerObservation {
             game_id: self.game_id,
+            game_index: self.game_index,
             player,
             request_id,
             state,

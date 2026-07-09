@@ -52,16 +52,21 @@ def _format_rate(rate: float) -> str:
 
 
 def _format_enemy_by(
-    enemy_win_by_game: dict[int, tuple[int, int, int]],
-    enemy_labels: dict[int, str] | None,
+    enemy_win_by_game: dict[tuple[int, int], tuple[int, int, int]],
+    sampler: Any | None,
 ) -> str:
-    """敵 game を敵ラベル (K>=2 は敵ごと、無ければ game_id) で集計し、学習側 P1 の
-    敵別勝率を "K1_ep400=0.53(n=812) ..." 形式で返す。"""
+    """敵 game を敵ラベルで集計し、学習側 P1 の敵別勝率を "exp0=0.53(n=812) ..." 形式で
+    返す。キーは (game_id, game_index)。ラベルは sampler の割り当てテーブルから解決し、
+    解決後にそのキーを pop してテーブルを進行中ゲームぶんに保つ。"""
     from collections import defaultdict
 
     agg: dict[str, list[int]] = defaultdict(lambda: [0, 0, 0])
-    for gid, (w, l, d) in enemy_win_by_game.items():
-        label = (enemy_labels or {}).get(gid, f"g{gid}")
+    for (gid, gindex), (w, l, d) in enemy_win_by_game.items():
+        label = sampler.label_for(gid, gindex) if sampler is not None else None
+        if sampler is not None:
+            sampler.pop(gid, gindex)
+        if label is None:
+            label = f"g{gid}"
         a = agg[label]
         a[0] += w
         a[1] += l
@@ -76,7 +81,7 @@ def _format_enemy_by(
 
 def print_stats(
     stats: SupervisedStats | None,
-    enemy_labels: dict[int, str] | None = None,
+    enemy_sampler: Any | None = None,
 ) -> None:
     if stats is None:
         print("update skipped: no examples")
@@ -87,8 +92,10 @@ def print_stats(
         f"win_rate={stats.win_rate:.4f} "
         + (f"enemy_win_rate={stats.enemy_win_rate:.4f}(n={stats.enemy_games}) "
            if stats.enemy_games > 0 else "")
-        + (f"enemy_by[{_format_enemy_by(stats.enemy_win_by_game, enemy_labels)}] "
+        + (f"enemy_by[{_format_enemy_by(stats.enemy_win_by_game, enemy_sampler)}] "
            if stats.enemy_games > 0 and stats.enemy_win_by_game else "")
+        + (f"{enemy_sampler.alloc_str()} "
+           if enemy_sampler is not None and enemy_sampler.enemies else "")
         +
         f"weakness_move_rate={stats.weakness_move_rate:.4f} "
         f"vs_cloyster_weakness_rate={_format_rate(stats.vs_cloyster_weakness_rate)} "
@@ -185,9 +192,9 @@ class TrainSession:
         # 敵混合学習用の推論フック。None なら単一モデル (agent.infer_step)。funnel が
         # プール推論 (学習者 + 凍結敵を game_id ルーティング) を注入するとそれを使う。
         self.infer_fn: Any | None = None
-        # 敵別勝率ログ用の game_id -> 敵ラベル (checkpoint stem) マップ。configure_enemies
-        # が設定する。空なら enemy_by ログは game_id 表示にフォールバック。
-        self.enemy_labels: dict[int, str] = {}
+        # per-game 敵割り当て器 (EnemySampler)。configure_enemies が設定する。None なら
+        # 単一モデル自己対戦で、enemy_by / alloc ログは出さない。
+        self.enemy_sampler: Any | None = None
         self.executor = get_rust_async_executor_wrapper()(
             num_games,
             max_batch_size,
@@ -268,7 +275,7 @@ class TrainSession:
             if executor.trajectories_ready():
                 py_obj_with_trajectories = json.loads(executor.recv_trajectories())
                 stats = agent.learn(py_obj_with_trajectories)
-                print_stats(stats, self.enemy_labels)
+                print_stats(stats, self.enemy_sampler)
                 self.epochs += 1
                 # 10ep ごと等のスナップショット保存 (勝率曲線を後で eval するため)。
                 # checkpoint_path=foo.pt なら foo_ep10.pt のように epoch 番号を挟む。

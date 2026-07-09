@@ -34,6 +34,7 @@ pub fn encoded_batch_to_dict<'py>(
 
     // ルーティング (1 次元)
     dict.set_item("game_id", batch.game_id.into_pyarray(py))?;
+    dict.set_item("game_index", batch.game_index.into_pyarray(py))?;
     dict.set_item("player", batch.player.into_pyarray(py))?;
     dict.set_item("request_id", batch.request_id.into_pyarray(py))?;
     dict.set_item("empty_game_id", batch.empty_game_id.into_pyarray(py))?;
@@ -120,6 +121,7 @@ pub fn packed_batch_to_dict<'py>(
     )?;
 
     dict.set_item("game_id", batch.game_id.into_pyarray(py))?;
+    dict.set_item("game_index", batch.game_index.into_pyarray(py))?;
     dict.set_item("player", batch.player.into_pyarray(py))?;
     dict.set_item("request_id", batch.request_id.into_pyarray(py))?;
     dict.set_item("empty_game_id", batch.empty_game_id.into_pyarray(py))?;

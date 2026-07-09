@@ -83,16 +83,70 @@ def infer_step_split(executor: Any, agent_a: Agent, agent_b: Agent) -> None:
     )
 
 
+class EnemySampler:
+    """敵混合学習の per-game 敵割り当て。
+
+    敵は「(game_id, game_index) 単位で σ 比に配分」する。旧実装は game_id スロットへ敵を
+    固定していたため、実効ゲーム数シェアが「σ ÷ 平均ゲーム長」に歪む (短い試合の敵ほど
+    速く回って過剰露出) バグがあった。ここでは各ゲーム開始 (新しい game_index) を鍵に、
+    不足カウンタ (Hamilton ストリーミング: w_i*(total+1) - assigned_i が最大の敵を選ぶ)
+    で 1 体を割り当てる。累積シェアは常に σ から ±1 ゲーム以内に張り付き、ゲーム長に依らない。
+
+    同一ゲーム中 (同じ game_index の連続手番) は割り当てを固定。trajectory 消費時に pop して
+    テーブルを進行中ゲームぶん (≦ num_games) に保つ。deficit カウンタ (assigned/total) は
+    iter 全体で累積し pop では減らさない。"""
+
+    def __init__(
+        self, enemies: list[Agent], labels: list[str],
+        weights: list[float], enemy_gids: set[int],
+    ) -> None:
+        self.enemies = enemies
+        self.labels = labels
+        w = np.asarray(weights, dtype=float)
+        self.w = w / w.sum() if w.sum() > 0 else np.ones(len(w)) / max(len(w), 1)
+        self.enemy_gids = {int(g) for g in enemy_gids}
+        self.assigned = np.zeros(len(enemies), dtype=float)
+        self.total = 0
+        self.table: dict[tuple[int, int], int] = {}
+
+    def idx_for(self, gid: int, gindex: int) -> int:
+        key = (gid, gindex)
+        idx = self.table.get(key)
+        if idx is None:
+            idx = int(np.argmax(self.w * (self.total + 1) - self.assigned))
+            self.table[key] = idx
+            self.assigned[idx] += 1.0
+            self.total += 1
+        return idx
+
+    def label_for(self, gid: int, gindex: int) -> str | None:
+        idx = self.table.get((gid, gindex))
+        return self.labels[idx] if idx is not None else None
+
+    def pop(self, gid: int, gindex: int) -> None:
+        self.table.pop((gid, gindex), None)
+
+    def alloc_str(self) -> str:
+        """実効割り当てシェア vs σ を "exp0=.41/σ.41 ..." で返す (露出が σ 通りか検証用)。"""
+        if self.total == 0:
+            return "alloc[none]"
+        share = self.assigned / self.total
+        parts = [f"{self.labels[i]}={share[i]:.2f}/σ{self.w[i]:.2f}"
+                 for i in range(len(self.enemies))]
+        return f"alloc[{' '.join(parts)}](n={self.total})"
+
+
 def infer_step_pool(
-    executor: Any, learner: Agent, enemy_by_game: dict[int, Agent] | None,
+    executor: Any, learner: Agent, router: EnemySampler | None,
 ) -> None:
-    """敵混合学習用の推論ステップ。(game_id, player) で担当エージェントへルーティングする。
+    """敵混合学習用の推論ステップ。(game_id, game_index, player) で担当エージェントへ
+    ルーティングする。
 
     - P1 行 (player==0) は常に学習者 learner。
-    - P2 行 (player==1) は、その game_id が敵ゲームなら enemy_by_game[game_id] の凍結敵、
-      そうでなければ (自己対戦) learner。
-    enemy_by_game が空/None のときは全行 learner (agent.infer_step と等価)。
-    複数 game_id が同一敵を指しうるので、敵は identity でまとめて 1 回 forward する。"""
+    - P2 行 (player==1) は、その game_id が敵スロットなら router が (game_id, game_index) 単位で
+      σ 配分して選んだ凍結敵、そうでなければ (自己対戦) learner。
+    router が None のときは全行 learner (agent.infer_step と等価)。
+    同一敵に割り当たった行はまとめて 1 回 forward する。"""
     obs = executor.recv_observations()
     player = obs["player"]
     n = int(player.shape[0])
@@ -106,18 +160,20 @@ def infer_step_pool(
     policy = np.empty((n, ACTION_DIM), dtype=np.float32)
     value = np.empty((n,), dtype=np.float32)
     learner_mask = np.ones(n, dtype=bool)
-    if enemy_by_game:
+    if router is not None and router.enemies:
         game_id = obs["game_id"]
-        is_p2 = player == 1
-        # 敵エージェントを identity でまとめ、担当 game_id 群をベクトルでスライスする。
-        by_agent: dict[int, tuple[Agent, list[int]]] = {}
-        for gid, ag in enemy_by_game.items():
-            by_agent.setdefault(id(ag), (ag, []))[1].append(gid)
-        for _key, (ag, gids) in by_agent.items():
-            idx = np.nonzero(is_p2 & np.isin(game_id, gids))[0]
+        game_index = obs["game_index"]
+        # P2 かつ敵スロットの行に、(game_id, game_index) 単位で敵 idx を割り当てる。
+        enemy_of = np.full(n, -1, dtype=np.int64)
+        for r in np.nonzero(player == 1)[0]:
+            gid = int(game_id[r])
+            if gid in router.enemy_gids:
+                enemy_of[r] = router.idx_for(gid, int(game_index[r]))
+        for e in range(len(router.enemies)):
+            idx = np.nonzero(enemy_of == e)[0]
             if idx.size == 0:
                 continue
-            pol, val = ag.infer_encoded(_slice_obs(obs, idx))
+            pol, val = router.enemies[e].infer_encoded(_slice_obs(obs, idx))
             policy[idx] = pol
             value[idx] = val
             learner_mask[idx] = False

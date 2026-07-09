@@ -216,7 +216,7 @@ async fn run_one_game<T: ShowdownTrait + Send + 'static>(
     inference_rx: &mut UnboundedReceiver<InferencedDataItem>,
 ) -> bool {
     let pending: PendingMap = Arc::new(Mutex::new(HashMap::new()));
-    let client = InferenceClient::new(game_id, sender.clone(), pending.clone());
+    let client = InferenceClient::new(game_id, iter, sender.clone(), pending.clone());
 
     let p1_rng =
         ChaCha8Rng::seed_from_u64(((game_id as u64) << 32) ^ (iter as u64) ^ 0x5051_5031);
@@ -260,6 +260,7 @@ async fn run_one_game<T: ShowdownTrait + Send + 'static>(
 
     let p1_traj = Trajectory {
         game_id,
+        game_index: iter,
         player: Player::P1,
         winner,
         enemy_game,
@@ -267,6 +268,7 @@ async fn run_one_game<T: ShowdownTrait + Send + 'static>(
     };
     let p2_traj = Trajectory {
         game_id,
+        game_index: iter,
         player: Player::P2,
         winner,
         enemy_game,

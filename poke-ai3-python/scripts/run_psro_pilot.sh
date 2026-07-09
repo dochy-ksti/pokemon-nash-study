@@ -1,23 +1,23 @@
 #!/usr/bin/env bash
-# PSRO パイロット: 中心学習者 1 本を育てつつ、毎 iter その時点の中心を凍結 target に
-# した専用 best-response (exploiter) を作り、敵プール (最新 N) に積む。exploiter の対
-# target 勝率 (exploitability) が iter を追って 50% へ下がれば穴が塞がった証拠。
+# メタ Nash PSRO パイロット (double-oracle)。集団 Π = 中心スナップショット列。中心学習者
+# 1 本を warm-start 継続で育て、毎 iter「旧 Π の σ 混合」を相手に central_epochs 学習した
+# 中心をスナップショットして Π に積む。σ = Π 総当り勝率行列の対称ゼロサム Nash。
+# exploitability = 新中心 c_k が旧 σ 混合に取る勝率 (= Σ σ_prev·winrate(c_k vs Π_i))。
+# c_k は旧混合への best-response なので、これが 0.5 へ近づけば double-oracle gap が閉じて
+# Nash へ収束した証拠。解 = Π 上の σ 混合 (単一ネットでなく混合戦略が Nash 解)。
 #
-# 規模: 中心は warmup 200ep 育ててから最初の exploit、以降 50ep/iter・N=4・
-# self_play_ratio 0.5・6 iter・shared_init 発・value 教師 expected。exploiter は 25ep ごとに
-# eval し、勝率がピークアウト (patience=1 回更新なしで即) したら early-stop しピーク重みを採用
-# (上限 200ep)。exploiter の初期値は target 自身 (--exploiter-init target): 始点 ~0.5 から
-# 自分に勝つ方向へ微調整するので弱すぎる個体にならず収束も速い。学習/探索は A/B と同一。
-# 学習/探索は A/B と同一 (nash_lr 1.5, depth_skew 2.0, search-turn 4-8, sims 64,
-# sim_concurrency 16, train_num_games 64, stage 3b, random, crit)。
+# 敵 (旧 Π の相手取る部分) の各ゲームは EnemySampler が (game_id, game_index) 単位で σ 比に
+# 厳密配分する (旧: game_id スロット固定 → 実効シェアが σ÷平均ゲーム長 に歪むバグを解消)。
+#
+# 規模: 中心 warmup 200ep → 以降 50ep/iter、行列 matrix-n-per-side=256戦/ペア、6 iter、
+# shared_init 発、value 教師 expected。学習/探索は A/B と同一 (nash_lr 1.5, depth_skew 2.0,
+# search-turn 4-8, sims 64, sim_concurrency 16, train_num_games 64, stage 3b, random, crit)。
 # 使い方:
 #   cd poke-ai3-python
 #   setsid nohup bash scripts/run_psro_pilot.sh > /tmp/psro/driver.log 2>&1 &
 # 冪等: <tag>_psro.json があれば skip、途中 state があれば --resume で継続。
-# env: TAG=tag, MAX_ITERS=n, META=latest|nash, SPR=self-play-ratio (既定 0.5)。
-#   META=nash はプール全保持＋総当り勝率行列のメタ Nash σ で中心の敵を重み付け (忘却を
-#   防ぐ)。行列は matrix-n-per-side=256戦/ペア。教科書形 PSRO は SPR=0 (中心=σ混合への
-#   純 best-response。warmup はプール空なので自動的に全自己対戦)。
+# env: TAG=tag, MAX_ITERS=n, META=nash|latest (既定 nash), SPR=self-play-ratio (既定 0=教科書)。
+#   nash=σ サポートを σ 比で敵に。latest=直近 pool_size 個一様 (忘却ありのベースライン)。
 set -u
 
 cd "$(dirname "$0")/.." || exit 1
@@ -43,16 +43,13 @@ run_psro() {
     echo "[driver] $tag state.json あり -> --resume で継続"
     resume=(--resume)
   fi
-  echo "[driver] === $tag start $(date -Is) (meta=${META:-latest}) ==="
+  echo "[driver] === $tag start $(date -Is) (meta=${META:-nash}) ==="
   uv run python scripts/ckpt_tournament.py psro --tag "$tag" \
     --shared-init "$PUB/shared_init.pt" "${resume[@]}" \
-    --meta-strategy "${META:-latest}" --nash-eps 0.02 --matrix-n-per-side 256 \
+    --meta-strategy "${META:-nash}" --nash-eps 0.02 --matrix-n-per-side 256 \
     --max-iters "${MAX_ITERS:-6}" --warmup-epochs 200 --central-epochs 50 \
-    --exploiter-epochs 200 --exploiter-eval-every 25 --exploiter-patience 1 \
-    --exploiter-init target \
-    --pool-size 4 --self-play-ratio "${SPR:-0.5}" \
+    --pool-size 4 --self-play-ratio "${SPR:-0}" \
     --value-target expected --nash-learning-rate 1.5 \
-    --exploiter-battle-seed 20260711 \
     --depth-skew 2.0 --search-turn-min 4 --search-turn-max 8 \
     --sims 64 --sim-concurrency 16 --train-num-games 64 --train-max-batch-size 512 \
     --train-trajectories-threshold 128 --train-minibatch-size 256 \

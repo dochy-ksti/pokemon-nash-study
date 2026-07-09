@@ -58,7 +58,7 @@ class SupervisedStats:
     enemy_games: int
     # 敵ゲームの game_id 別 (wins, losses, draws)。呼び出し側が game_id→敵の対応から
     # 敵別勝率を集計するための生データ。
-    enemy_win_by_game: dict[int, tuple[int, int, int]]
+    enemy_win_by_game: dict[tuple[int, int], tuple[int, int, int]]
     # マッチアップ (P1視点 my_v_opp) ごとの (勝率, 試合数)。先発対面で集計 (自己対戦のみ)。
     matchup_win_rates: dict[str, tuple[float, int]]
     # (active技_v_相手種族) ごとの (モデル交代確率, 教師交代確率, 該当数)。攻撃率は 1-交代率。
@@ -78,7 +78,7 @@ def build_examples(
     trajectories: dict[str, Any],
 ) -> tuple[
     list[dict[str, Any]], float, dict[str, tuple[float, int]],
-    float, int, dict[int, tuple[int, int, int]],
+    float, int, dict[tuple[int, int], tuple[int, int, int]],
 ]:
     """trajectory を学習サンプルに展開する。
 
@@ -100,7 +100,7 @@ def build_examples(
     enemy_wins = 0
     enemy_losses = 0
     enemy_draws = 0
-    enemy_win_by_game: dict[int, tuple[int, int, int]] = {}
+    enemy_win_by_game: dict[tuple[int, int], tuple[int, int, int]] = {}
     for trajectory in trajectories.get("vec", []):
         items = trajectory.get("items", [])
         is_enemy_game = bool(trajectory.get("enemy_game", False))
@@ -112,8 +112,12 @@ def build_examples(
             winner = trajectory.get("winner")
             won = winner is not None and str(winner) == LEARNING_PLAYER
             if is_enemy_game:
+                # 敵は (game_id, game_index) 単位で σ 配分されるので、勝敗もこの複合キーで
+                # 集計する。呼び出し側が割り当てテーブルからキー→敵ラベルを解決する。
                 gid = int(trajectory.get("game_id", -1))
-                w, l, d = enemy_win_by_game.get(gid, (0, 0, 0))
+                gindex = int(trajectory.get("game_index", 0))
+                key = (gid, gindex)
+                w, l, d = enemy_win_by_game.get(key, (0, 0, 0))
                 if winner is None:
                     enemy_draws += 1
                     d += 1
@@ -123,7 +127,7 @@ def build_examples(
                 else:
                     enemy_losses += 1
                     l += 1
-                enemy_win_by_game[gid] = (w, l, d)
+                enemy_win_by_game[key] = (w, l, d)
             else:
                 if winner is None:
                     draws += 1
@@ -159,7 +163,7 @@ def train_supervised(
     matchup_win_rates: dict[str, tuple[float, int]] | None = None,
     enemy_win_rate: float = -1.0,
     enemy_games: int = 0,
-    enemy_win_by_game: dict[int, tuple[int, int, int]] | None = None,
+    enemy_win_by_game: dict[tuple[int, int], tuple[int, int, int]] | None = None,
 ) -> SupervisedStats | None:
     if not examples:
         return None

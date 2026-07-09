@@ -29,8 +29,6 @@ import json
 import random
 import secrets
 import shutil
-import subprocess
-import sys
 import re
 from pathlib import Path
 
@@ -299,67 +297,47 @@ def _ensure_train_session(work: Path, args):
     return _TRAIN_SESSION
 
 
-def _apportion(total: int, weights: list[float]) -> list[int]:
-    """total 個を weights 比で整数配分 (Hamilton 最大剰余法)。合計は必ず total。"""
-    w = np.asarray(weights, dtype=float)
-    w = w / w.sum() if w.sum() > 0 else np.ones(len(w)) / len(w)
-    exact = w * total
-    base = np.floor(exact).astype(int)
-    rem = int(total - base.sum())
-    if rem > 0:
-        for k in np.argsort(-(exact - base))[:rem]:
-            base[k] += 1
-    return base.tolist()
-
-
 def configure_enemies(work: Path, enemies: list[Path], args,
                       weights: list[float] | None = None) -> None:
-    """敵混合学習: 敵を game_id ルーティングに割り当て、常駐セッションに役割テーブルと
-    infer_fn を設定する。しきい値方式: 自己対戦=round(n*r) game を先頭 gid に割り当て
-    (role 0)、残りを敵へ配分 (role 1)。weights=None なら round-robin 均等 (従来)、
-    weights 指定時は _apportion で weights 比の連続ブロック配分 (メタ Nash σ 重み付け用)。
-    r=--self-play-ratio。K=1,r=0.5,weights=None は従来の 50/50 と一致。E=0 (敵なし/warmup)
-    では全自己対戦に戻す。"""
-    from poke_ai3_train.eval_ckpt_vs_ckpt import infer_step_pool
+    """敵混合学習: 敵スロットを役割テーブルに立て、per-game 敵割り当て器 (EnemySampler) を
+    常駐セッションに設定する。しきい値方式: 自己対戦=round(n*r) game を先頭 gid に割り当て
+    (role 0)、残りの gid [s, n) を敵スロット (role 1/2) にする。敵スロットの各ゲームは
+    開始時に EnemySampler が σ (weights) 比の不足カウンタで敵を 1 体選ぶ。weights=None は
+    一様。r=--self-play-ratio。E=0 (敵なし/warmup) では全自己対戦に戻す。
+
+    旧実装は敵を game_id スロットへ固定していたため、実効ゲーム数シェアが σ÷平均ゲーム長 に
+    歪むバグがあった。per-game 割り当て (game_index 検知 + 不足カウンタ) でシェアを σ に
+    厳密一致させる。"""
+    from poke_ai3_train.eval_ckpt_vs_ckpt import EnemySampler, infer_step_pool
 
     sess = _ensure_train_session(work, args)
     n = sess.num_games
     e = len(enemies)
     roles = np.zeros(n, dtype=np.int64)
-    enemy_by_game = {}
-    enemy_labels: dict[int, str] = {}
+    sampler = None
     if e > 0:
         # 敵 Agent は _AGENT_CACHE を流用 (gate/finalist と同一インスタンス = peak 二役)。
         # CUDA Graph 上限は eval と揃え (args.num_games)、超過行は eager フォールバックで安全。
         agents = [_eval_agent(p, args.num_games) for p in enemies]
+        labels = [p.stem for p in enemies]
         r = getattr(args, "self_play_ratio", 0.5)
         s = round(n * r)  # 自己対戦 game 数 (先頭 gid に割当)
         # role: 1=敵 policy-only (従来) / 2=敵も先読み (--enemy-lookahead)。
         enemy_role = 2 if getattr(args, "enemy_lookahead", False) else 1
-        if weights is not None:
-            # σ 重み配分: 敵 game (n-s) 個を weights 比で連続ブロックに割当。
-            counts = _apportion(n - s, weights)
-            gid = s
-            for idx, c in enumerate(counts):
-                for _ in range(c):
-                    roles[gid] = enemy_role
-                    enemy_by_game[gid] = agents[idx]
-                    enemy_labels[gid] = enemies[idx].stem
-                    gid += 1
-        else:
-            for gid in range(s, n):
-                idx = (gid - s) % e
-                roles[gid] = enemy_role
-                enemy_by_game[gid] = agents[idx]
-                enemy_labels[gid] = enemies[idx].stem
-    sess.enemy_labels = enemy_labels
+        enemy_gids = set(range(s, n))
+        for gid in enemy_gids:
+            roles[gid] = enemy_role
+        w = weights if weights is not None else [1.0] * e
+        sampler = EnemySampler(agents, labels, w, enemy_gids)
+    sess.enemy_sampler = sampler
     sess.executor.set_roles(roles)
-    if enemy_by_game:
+    if sampler is not None and sampler.enemies:
         agent = sess.agent
-        sess.infer_fn = lambda ex: infer_step_pool(ex, agent, enemy_by_game)
+        sess.infer_fn = lambda ex: infer_step_pool(ex, agent, sampler)
         print(f"  [enemy] {e} 敵混合 (r={getattr(args, 'self_play_ratio', 0.5)}): "
               f"自己対戦={int((roles == 0).sum())}/{n} game, "
-              f"敵={[p.stem for p in enemies]}", flush=True)
+              f"敵={[p.stem for p in enemies]} "
+              f"σ={[round(x, 3) for x in sampler.w.tolist()]}", flush=True)
     else:
         sess.infer_fn = None
 
@@ -761,36 +739,6 @@ def exploit(args) -> None:
 # ---------------------------------------------------------------- psro mode
 
 
-def _fwd_shared_args(args) -> list[str]:
-    """common + 学習側設定を子プロセス (exploit) へ引き継ぐ argv を作る。
-    exploiter も中心と同じ探索/学習設定・stage・random/crit で回すため。"""
-    argv = [
-        "--n-per-side", str(args.n_per_side),
-        "--num-games", str(args.num_games),
-        "--stage", args.stage,
-        "--random" if args.randomize else "--no-random",
-        "--crit" if args.crit_enabled else "--no-crit",
-        "--depth-skew", str(args.depth_skew),
-        "--search-turn-min", str(args.search_turn_min),
-        "--search-turn-max", str(args.search_turn_max),
-        "--sims", str(args.sims),
-        "--sim-concurrency", str(args.sim_concurrency),
-        "--train-num-games", str(args.train_num_games),
-        "--nash-learning-rate", str(args.nash_learning_rate),
-        "--value-target",
-        "expected" if getattr(args, "value_target_expected", False) else "max",
-    ]
-    for name, val in (
-        ("--train-max-batch-size", args.train_max_batch_size),
-        ("--train-trajectories-threshold", args.train_trajectories_threshold),
-        ("--train-minibatch-size", args.train_minibatch_size),
-        ("--train-supervised-epochs", args.train_supervised_epochs),
-    ):
-        if val is not None:
-            argv += [name, str(val)]
-    return argv
-
-
 def _solve_meta_nash(payoff: np.ndarray, iters: int = 20000) -> np.ndarray:
     """対称ゼロサム行列ゲームの Nash 混合を fictitious play で近似。
     payoff[i][j] = 戦略 i が j に勝つ確率 (対称: payoff[j][i]=1-payoff[i][j])。
@@ -832,30 +780,24 @@ def _extend_payoff(pool: list[Path], matrix: list[list[float]], args) -> np.ndar
     return M
 
 
-def _nash_window(pool: list[Path], sigma: np.ndarray,
-                 eps: float) -> tuple[list[Path], list[float]]:
-    """σ が eps 以上の戦略だけを敵としてホスト (σ≈0 は捨てメモリ/推論を節約)。
-    ゼロサム行列 Nash はサポートが疎になりがちなので実効敵数はこれで頭打ちになる。"""
-    idx = [i for i, s in enumerate(sigma) if s >= eps]
-    if not idx:
-        idx = [int(np.argmax(sigma))]
-    return [pool[i] for i in idx], [float(sigma[i]) for i in idx]
-
-
 def psro(args) -> None:
-    """PSRO ループ: 中心学習者 1 本を連続育成しつつ、毎イテレーションその時点の中心を
-    凍結 target にした専用 best-response (exploiter) を作り、敵プールへ積む。
+    """メタ Nash PSRO (double-oracle)。集団 Π = 中心スナップショット列。
 
-    中心学習者は常駐 TrainSession でプロセス内に生かし続け (optimizer/graph を温存)、
-    exploiter は別プロセスで exploit サブコマンドを起動する (中心とは別ネットなので global
-    session の衝突を避ける)。その対 target 勝率 (exploitability) を毎 iter 記録する。iter を
-    追って 50% へ下がれば穴が塞がった (ナッシュへ寄った) 証拠。--resume で iter を延長できる。
+    教科書 PSRO のオラクルは 1 種類「現在のメタ Nash 混合 σ への best-response」で、それを
+    集団に追加する。ここでは常駐 TrainSession の中心学習者 1 本を warm-start 継続で育て、
+    毎 iter「旧 Π の σ 混合」を相手に central_epochs 学習した中心をスナップショットして Π に
+    積む。σ = Π 総当り勝率行列の対称ゼロサム Nash。解 = Π 上の σ 混合 (単一ネットではなく
+    混合戦略が Nash 解)。--resume で iter を延長できる。
 
-    敵の混ぜ方 (--meta-strategy):
-    - latest (既定): 「自己対戦 ＋ 最新 pool_size 個の exploiter 一様」。忘却リスクあり。
-    - nash: プールを全保持し、プール総当り勝率行列の対称ゼロサム Nash 混合 σ を解いて、
-      中心の敵を「σ 重み付き全プール」にする。忘れた穴を突く古い exploiter がまだ有効なら
-      σ が自動でそこへ重みを乗せるため忘却を構造的に防ぐ (double-oracle の列プレイヤー混合)。"""
+    exploitability = 新中心 c_k が「学習相手だった旧 σ 混合」に対して取る勝率
+    (= Σᵢ w_i·winrate(c_k vs Π_i))。c_k は旧混合への BR なので、これが 0.5 へ近づけば
+    「旧混合を破る戦略がもう無い」= double-oracle gap が閉じて Nash へ収束した証拠。
+
+    敵 (旧 Π のうち中心が相手取る部分) の選び方 (--meta-strategy):
+    - nash: σ≥nash_eps の Nash サポートを σ 比で。忘れた穴を突く古い中心がまだ有効なら σ が
+      自動でそこへ重みを乗せ、忘却を構造的に防ぐ (double-oracle の列プレイヤー混合)。
+    - latest: 直近 pool_size 個を一様。忘却リスクありのベースライン。
+    敵の各ゲームは EnemySampler が (game_id, game_index) 単位で σ 比に厳密配分する。"""
     init_eval_seed(getattr(args, "eval_seed", None))
     TDIR.mkdir(parents=True, exist_ok=True)
     ctag = args.tag
@@ -870,11 +812,11 @@ def psro(args) -> None:
     # train_block_to の snapshot 間隔 = 中心ブロック長 (末尾で 1 回だけ snapshot)。
     args.epochs_per_step = args.central_epochs
 
-    meta = getattr(args, "meta_strategy", "latest")
-    pool: list[Path] = []           # 積んだ exploiter checkpoint (append-only)
+    meta = getattr(args, "meta_strategy", "nash")
+    pool: list[Path] = []           # 集団 Π = 中心スナップショット列 (append-only)
     curve: list[list[float]] = []   # [[iter, central_epoch, exploitability], ...]
-    matrix: list[list[float]] = []  # プール総当り勝率行列 (nash 用、差分更新)
-    sigma: list[float] = []         # 直近のメタ Nash 混合 (プール上の分布)
+    matrix: list[list[float]] = []  # Π 総当り勝率行列 (差分更新)
+    sigma: list[float] = []         # 直近のメタ Nash 混合 (Π 上の分布)
 
     if args.resume and state_path.exists():
         st = json.loads(state_path.read_text())
@@ -898,8 +840,9 @@ def psro(args) -> None:
             p.unlink()
         print(f"[psro] tag={ctag} shared_init={shared_init.name} base={base} "
               f"meta={meta} warmup_epochs={args.warmup_epochs} "
-              f"central_epochs={args.central_epochs} exploiter_epochs={args.exploiter_epochs} "
+              f"central_epochs={args.central_epochs} "
               f"pool_size={args.pool_size} self_play_ratio={args.self_play_ratio} "
+              f"nash_eps={args.nash_eps} matrix_n_per_side={args.matrix_n_per_side} "
               f"max_iters={args.max_iters} "
               f"value_target={'expected' if getattr(args, 'value_target_expected', False) else 'max'}",
               flush=True)
@@ -912,66 +855,60 @@ def psro(args) -> None:
         }, ensure_ascii=False, indent=2))
 
     while it < args.max_iters:
-        # ---- 1) 中心学習者を前進 (敵=最新 pool_size 個) ----
-        # iter0 は warmup_epochs だけ育ててから最初の exploit (ep50 の未熟な中心を突くのは
-        # 早すぎるため)。以降の iter は central_epochs ずつ。
+        # ---- 1) 旧 Π の σ 混合を相手に中心を前進 (warm-start 継続) ----
+        # iter0 は Π 空なので自己対戦 warmup。以降は central_epochs ずつ、旧 Π を相手取る。
         inc = args.warmup_epochs if it == 0 else args.central_epochs
-        # 敵の選び方: nash なら σ 重み付き全プール、latest なら最新 pool_size 個一様。
-        if meta == "nash" and pool and sigma:
-            window, weights = _nash_window(pool, np.asarray(sigma), args.nash_eps)
+        # 敵 = 旧 Π のうち中心が相手取る部分 (win_idx) とその重み (weights)。
+        if pool:
+            if meta == "nash" and sigma:
+                win_idx = [i for i, s in enumerate(sigma) if s >= args.nash_eps] \
+                    or [int(np.argmax(sigma))]
+                weights = [float(sigma[i]) for i in win_idx]
+            else:  # latest: 直近 pool_size 個 一様
+                win_idx = list(range(max(0, len(pool) - args.pool_size), len(pool)))
+                weights = [1.0] * len(win_idx)
+            window = [pool[i] for i in win_idx]
         else:
-            window, weights = pool[-args.pool_size:], None
+            win_idx, weights, window = [], None, []
         block_target = epoch + inc
-        wdesc = (f"nash σ重み {len(window)}/{len(pool)} 体" if weights is not None
-                 else f"最新 {len(window)} 体")
+        wdesc = (f"σ重み {len(window)}/{len(pool)} 体" if window
+                 else "自己対戦 (Π 空 warmup)")
         print(f"\n###### [psro] iter {it}: 中心学習 ep{epoch} -> ep{block_target} "
               f"({'warmup' if it == 0 else 'central'} {inc}ep, 敵 {wdesc}) ######",
               flush=True)
-        if weights is not None:
-            print(f"  [psro] σ = {[round(w, 3) for w in weights]} "
-                  f"(敵={[p.stem for p in window]})", flush=True)
+        if window:
+            wn = np.asarray(weights) / sum(weights)
+            print(f"  [psro] 敵 σ = {[round(float(w), 3) for w in wn]} "
+                  f"(={[p.stem for p in window]})", flush=True)
         configure_enemies(work, window, args, weights=weights)
         train_block_to(work, block_target, args)
         epoch = block_target
         for p in TDIR.glob(f"{ctag}_ep*.pt"):
             p.unlink()
 
-        # ---- 2) 現時点の中心を凍結 target にし、別プロセスで exploiter を学習 ----
-        target = TDIR / f"{ctag}_iter{it}_target.pt"
-        shutil.copy(work, target)
-        exp_tag = f"{ctag}_exp{it}"
-        exp_json = TDIR / f"{exp_tag}_exploit.json"
-        # exploiter の初期値: target 自身 (既定) から自分に勝つ方向へ微調整すると、始点が
-        # 約 0.5 で「弱すぎる個体」にならず収束も速い。shared-init は 0.05 から長く登る旧方式。
-        exp_start = target if args.exploiter_init == "target" else shared_init
-        cmd = [
-            sys.executable, str(Path(__file__).resolve()), "exploit",
-            "--target", str(target), "--tag", exp_tag,
-            "--start", str(exp_start),
-            "--eval-every", str(args.exploiter_eval_every),
-            "--max-added-epochs", str(args.exploiter_epochs),
-            "--patience", str(args.exploiter_patience),
-            "--train-battle-seed", str(args.exploiter_battle_seed),
-        ] + _fwd_shared_args(args)
-        print(f"\n###### [psro] iter {it}: exploiter 学習 (target={target.name}) ######\n"
-              f"  $ {' '.join(cmd)}", flush=True)
-        r = subprocess.run(cmd)
-        if r.returncode != 0 or not exp_json.exists():
-            raise SystemExit(f"[psro] iter {it} exploiter 失敗 (exit={r.returncode})")
-        exp = json.loads(exp_json.read_text())
-        exploitability = exp["exploitability"]
-        exp_ckpt = TDIR / f"{exp_tag}.pt"   # exploit が残すピーク重み exploiter ネット
-        pool.append(exp_ckpt)
+        # ---- 2) 中心スナップショットを Π に追加 ----
+        snap = TDIR / f"{ctag}_c{it}.pt"
+        shutil.copy(work, snap)
+        pool.append(snap)
+
+        # ---- 3) Π 勝率行列を差分更新し、メタ Nash σ を解く ----
+        print(f"\n###### [psro] iter {it}: Π 勝率行列を差分更新 "
+              f"(|Π|={len(pool)}) → メタ Nash σ ######", flush=True)
+        matrix = _extend_payoff(pool, matrix, args).tolist()
+        sigma = _solve_meta_nash(np.asarray(matrix)).tolist()
+
+        # ---- 4) exploitability = 新中心 c_it が旧 σ 混合に対して取る勝率 → 0.5 で収束 ----
+        if win_idx:
+            new_row = matrix[-1]                       # c_it vs 全 Π (自身含む)
+            wn = np.asarray(weights) / sum(weights)
+            exploitability = float(sum(w * new_row[i] for w, i in zip(wn, win_idx)))
+        else:
+            exploitability = None                      # iter0 (旧 Π 空)
         curve.append([it, epoch, exploitability])
-        # ---- 3) nash: プール勝率行列を差分更新し、次 iter 用のメタ Nash σ を解く ----
-        if meta == "nash":
-            print(f"\n###### [psro] iter {it}: プール勝率行列を差分更新 "
-                  f"(pool={len(pool)}) → メタ Nash σ を計算 ######", flush=True)
-            matrix = _extend_payoff(pool, matrix, args).tolist()
-            sigma = _solve_meta_nash(np.asarray(matrix)).tolist()
-            print(f"  [psro] σ = {[round(s, 3) for s in sigma]}", flush=True)
-        print(f"\n[psro] iter {it} 完了: exploitability={exploitability} "
-              f"(exploiter {exp_tag}, curve={exp['curve']})", flush=True)
+        print(f"  [psro] σ = {[round(s, 3) for s in sigma]}", flush=True)
+        el = "n/a (warmup)" if exploitability is None else f"{exploitability:.3f}"
+        print(f"\n[psro] iter {it} 完了: exploitability={el} "
+              f"(c{it} が旧 σ 混合に取る勝率、0.5 で double-oracle 収束)", flush=True)
         it += 1
         save_state()
 
@@ -981,17 +918,16 @@ def psro(args) -> None:
         "meta_strategy": meta,
         "warmup_epochs": args.warmup_epochs,
         "central_epochs": args.central_epochs,
-        "exploiter_epochs": args.exploiter_epochs,
-        "exploiter_patience": args.exploiter_patience,
-        "exploiter_init": args.exploiter_init,
         "pool_size": args.pool_size,
         "self_play_ratio": args.self_play_ratio,
+        "nash_eps": args.nash_eps,
+        "matrix_n_per_side": args.matrix_n_per_side,
         "value_target": "expected" if getattr(args, "value_target_expected", False) else "max",
         "iters": it,
-        "pool": [str(p) for p in pool],
+        "pool": [str(p) for p in pool],   # 集団 Π = 中心スナップショット列
         "curve": curve,   # [[iter, central_epoch, exploitability], ...]
-        "matrix": matrix,  # nash: プール総当り勝率行列 (最終)
-        "sigma": sigma,    # nash: 最終メタ Nash 混合
+        "matrix": matrix,  # Π 総当り勝率行列 (最終)
+        "sigma": sigma,    # 最終メタ Nash 混合 (= Π 上の Nash 解、成果物)
         "final_central": str(work),
     }
     out_path = TDIR / f"{ctag}_psro.json"
@@ -1136,11 +1072,12 @@ def parse_args() -> argparse.Namespace:
 
     p = sub.add_parser(
         "psro", parents=[common],
-        help="PSRO ループ: 中心を育てつつ毎 iter exploiter を作り敵プールへ積む")
+        help="メタ Nash PSRO: 集団 Π=中心スナップショット列を育て、毎 iter σ 混合への "
+             "best-response を積む (double-oracle)")
     p.add_argument("--tag", type=str, required=True,
                    help="中心学習者ラベル (work/state/結果 JSON の接頭辞)。")
     p.add_argument("--shared-init", type=Path, required=True,
-                   help="中心・exploiter 両方の開始 checkpoint (shared_init.pt)。")
+                   help="中心の開始 checkpoint (shared_init.pt)。")
     p.add_argument("--resume", action="store_true",
                    help="既存の <tag>_psro_state.json から iter を継続 (延長にも使う)。")
     p.add_argument("--max-iters", type=int, default=6,
@@ -1150,30 +1087,25 @@ def parse_args() -> argparse.Namespace:
                         "既定 200。ep50 程度の未熟な中心を突くのは早すぎるため。")
     p.add_argument("--central-epochs", type=int, default=50,
                    help="iter1 以降で 1 iter に中心学習者を前進させる epoch。既定 50。")
-    p.add_argument("--exploiter-epochs", type=int, default=200,
-                   help="各 iter の exploiter best-response の追加 epoch 上限 (early-stop の"
-                        "安全弁)。既定 200。ピークアウトで早期停止するので大きめでよい。")
-    p.add_argument("--exploiter-eval-every", type=int, default=25,
-                   help="exploiter の eval 間隔 (epoch)。既定 25。この単位でピーク検出する。")
+    # 旧 exploiter オラクル方式 (集団=exploiter 列) の名残。現行のメタ Nash PSRO は
+    # exploiter サブプロセスを廃したため下記は無視されるが、既存 driver の引数互換のため受理する。
+    p.add_argument("--exploiter-epochs", type=int, default=200, help="(deprecated: 無視)")
+    p.add_argument("--exploiter-eval-every", type=int, default=25, help="(deprecated: 無視)")
     p.add_argument("--exploiter-init", choices=["target", "shared-init"], default="target",
-                   help="exploiter の初期値。target (既定)=その時点の中心自身から始めて自分に"
-                        "勝つ方向へ微調整 (始点 ~0.5、弱すぎる個体にならず速い)。shared-init="
-                        "共通初期値から (始点 ~0.05、長く登る旧方式)。")
-    p.add_argument("--exploiter-patience", type=int, default=1,
-                   help="exploiter のピークアウト early-stop 忍耐 (子 exploit へ --patience で"
-                        "渡す)。勝率が patience 回連続で更新されなければ停止しピーク重みを採用。"
-                        "既定 1 (更新なしで即停止)。ノイズが気になれば 2 以上。")
-    p.add_argument("--pool-size", type=int, default=4,
-                   help="中心の敵に混ぜる最新 exploiter 数 N (窓)。既定 4。")
-    p.add_argument("--self-play-ratio", type=float, default=0.5,
-                   help="中心学習の自己対戦 game 割合 r。既定 0.5 (残りを敵 N 個へ均等分割)。")
+                   help="(deprecated: 無視)")
+    p.add_argument("--exploiter-patience", type=int, default=1, help="(deprecated: 無視)")
     p.add_argument("--exploiter-battle-seed", type=int, default=20260711,
-                   help="exploiter の train_battle_seed (全 iter 固定で exploitability を "
-                        "iter 間比較可能に)。")
-    p.add_argument("--meta-strategy", choices=["latest", "nash"], default="latest",
-                   help="中心の敵の混ぜ方。latest (既定)=最新 pool_size 個一様 (従来)。"
-                        "nash=プール全保持し総当り勝率行列のメタ Nash σ 重みで全プールを敵に "
-                        "(忘却を防ぐ double-oracle 列混合)。")
+                   help="(deprecated: 無視)")
+    p.add_argument("--pool-size", type=int, default=4,
+                   help="latest モードで中心の敵に混ぜる直近スナップショット数 N (窓)。既定 4。"
+                        "nash モードでは σ サポートを使うため無視。")
+    p.add_argument("--self-play-ratio", type=float, default=0.0,
+                   help="中心学習の自己対戦 game 割合 r。既定 0.0 (教科書 PSRO: 全 game を "
+                        "旧 Π の σ 混合への best-response に使う)。")
+    p.add_argument("--meta-strategy", choices=["latest", "nash"], default="nash",
+                   help="敵 (旧 Π の相手取る部分) の選び方。nash (既定)=Π 勝率行列のメタ "
+                        "Nash σ サポートを σ 比で。latest=直近 pool_size 個一様 (忘却ありの"
+                        "ベースライン)。")
     p.add_argument("--nash-eps", type=float, default=0.02,
                    help="nash: σ がこの値未満の戦略は敵からホストしない (σ≈0 を捨てて "
                         "実効敵数=サポートに抑える)。既定 0.02。")

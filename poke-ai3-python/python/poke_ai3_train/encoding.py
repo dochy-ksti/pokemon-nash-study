@@ -70,7 +70,8 @@ class EncodedObservations:
 
 # Rust が返す dict のうちテンソルでないルーティング系キー (encoded.rs と一致させる)。
 _ROUTING_KEYS = frozenset(
-    {"game_id", "player", "request_id", "empty_game_id", "empty_player", "empty_request_id"}
+    {"game_id", "game_index", "player", "request_id",
+     "empty_game_id", "empty_player", "empty_request_id"}
 )
 
 # 相手側拡張観測 (神視点) のマスク対象。A/B ベースライン (旧観測相当) 用。

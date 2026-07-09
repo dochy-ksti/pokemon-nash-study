@@ -49,6 +49,8 @@ pub struct PackedBatch {
     /// (B, ACTION_DIM) 行優先。
     pub legal_action_mask: Vec<bool>,
     pub game_id: Vec<i64>,
+    /// game_id スロットの何ゲーム目か (実観測のみ)。敵混合の per-game 割り当て鍵。
+    pub game_index: Vec<i64>,
     pub player: Vec<i64>,
     pub request_id: Vec<i64>,
     pub empty_game_id: Vec<i64>,
@@ -76,6 +78,7 @@ pub fn pack_batch(batch: EncodedBatch) -> PackedBatch {
         packed_f32,
         legal_action_mask: batch.legal_action_mask,
         game_id: batch.game_id,
+        game_index: batch.game_index,
         player: batch.player,
         request_id: batch.request_id,
         empty_game_id: batch.empty_game_id,
