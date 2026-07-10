@@ -42,8 +42,16 @@ def export_mixture(
     hp_buckets: int,
     dense_batch: int,
     infer_chunk: int,
+    value_agents: list[Agent] | None = None,
+    value_weights: np.ndarray | None = None,
 ) -> tuple[np.ndarray, np.ndarray]:
-    """σ 加重平均した P(交代)/value テーブル (u16) を返す。"""
+    """σ 加重平均した P(交代)/value テーブル (u16) を返す。
+
+    value_agents を渡すと value 列だけ別構成 (別ネット/別混合) で焼く。着手 (policy) は
+    σ混合のまま、勝率表示 (value) だけ自己対戦較正の単一ネット等に差し替える用途
+    (BR 群の value は「倒すべき相手前提」で互角局面を過大評価するため)。"""
+    if value_agents is None:
+        value_agents, value_weights = agents, weights
     total = 8 * hp_buckets**4
     ptable = np.full(total, SENTINEL, dtype=np.uint16)
     vtable = np.full(total, SENTINEL, dtype=np.uint16)
@@ -59,8 +67,10 @@ def export_mixture(
             p_acc = np.zeros(hi - lo, dtype=np.float64)
             v_acc = np.zeros(hi - lo, dtype=np.float64)
             for agent, w in zip(agents, weights):
-                policy, value = agent.infer_encoded(sub)
+                policy, _ = agent.infer_encoded(sub)
                 p_acc += w * policy[:, MAX_MOVE_SLOTS:].sum(axis=1)
+            for agent, w in zip(value_agents, value_weights):
+                _, value = agent.infer_encoded(sub)
                 v_acc += w * np.asarray(value).reshape(-1)
             pv = np.rint(p_acc * PROB_SCALE).clip(0, PROB_SCALE).astype(np.uint16)
             vv = np.rint(v_acc * VALUE_SCALE).clip(0, VALUE_SCALE).astype(np.uint16)
@@ -79,6 +89,10 @@ def main() -> None:
     ap.add_argument("--stage", default="3b")
     ap.add_argument("--hp-buckets", type=int, default=26, help="HP離散化段数 (4%%→26)")
     ap.add_argument("--out-dir", type=Path, default=Path("../web"))
+    ap.add_argument("--value-checkpoint", type=Path, default=None,
+                    help="value 列だけこの単一 checkpoint から焼く (policy はσ混合のまま)。"
+                         "BR 群の value は互角局面を過大評価するため、自己対戦較正の "
+                         "warmup ネット (例 PSRO_nash3_c0.pt) を指定して勝率表示を自然にする。")
     ap.add_argument("--dense-batch", type=int, default=32768)
     ap.add_argument("--infer-chunk", type=int, default=16384)
     ap.add_argument("--device", default="cuda")
@@ -102,8 +116,18 @@ def main() -> None:
     args.out_dir.mkdir(parents=True, exist_ok=True)
 
     agents = [Agent(device=args.device, checkpoint_path=m, infer_graph=False) for m in members]
+    value_agents = value_weights = None
+    if args.value_checkpoint is not None:
+        if not args.value_checkpoint.exists():
+            raise SystemExit(f"value checkpoint not found: {args.value_checkpoint}")
+        print(f"value 列は単一ネット {args.value_checkpoint.stem} から焼く "
+              f"(policy はσ混合のまま)", flush=True)
+        value_agents = [Agent(device=args.device, checkpoint_path=args.value_checkpoint,
+                              infer_graph=False)]
+        value_weights = np.array([1.0])
     ptable, vtable = export_mixture(
-        agents, weights, args.stage, args.hp_buckets, args.dense_batch, args.infer_chunk
+        agents, weights, args.stage, args.hp_buckets, args.dense_batch, args.infer_chunk,
+        value_agents=value_agents, value_weights=value_weights,
     )
 
     bin_path = args.out_dir / f"policy_{args.stage}.bin"
@@ -130,6 +154,9 @@ def main() -> None:
                 for i, w in zip(keep, weights)
             ],
         },
+        # policy はσ混合。value 列の出所 (勝率表示用)。混合と同一なら None。
+        "value_source": (args.value_checkpoint.stem
+                         if args.value_checkpoint is not None else None),
         "cross_team_only": True,
         "radix": [
             {"name": "ai_team", "size": 2},
