@@ -5,7 +5,89 @@
   "value_scale": 1000,
   "sentinel": 65535,
   "max_move_slots": 4,
-  "checkpoint": "K1b5_ep280",
+  "checkpoint": "PSRO_nash3_psro_sigma_mix15",
+  "mixture": {
+    "psro_json": "PSRO_nash3_psro.json",
+    "sigma_floor": 0.005,
+    "cover": 0.9808977556109727,
+    "members": [
+      {
+        "ckpt": "PSRO_nash3_c0",
+        "sigma": 0.19830423940149625,
+        "weight": 0.20216606498194942
+      },
+      {
+        "ckpt": "PSRO_nash3_c2",
+        "sigma": 0.05276807980049875,
+        "weight": 0.053795698377993584
+      },
+      {
+        "ckpt": "PSRO_nash3_c10",
+        "sigma": 0.022094763092269327,
+        "weight": 0.02252504194844155
+      },
+      {
+        "ckpt": "PSRO_nash3_c11",
+        "sigma": 0.024538653366583542,
+        "weight": 0.02501652514364163
+      },
+      {
+        "ckpt": "PSRO_nash3_c14",
+        "sigma": 0.06678304239401496,
+        "weight": 0.06808359180352874
+      },
+      {
+        "ckpt": "PSRO_nash3_c15",
+        "sigma": 0.035461346633416456,
+        "weight": 0.036151929628311374
+      },
+      {
+        "ckpt": "PSRO_nash3_c16",
+        "sigma": 0.01541147132169576,
+        "weight": 0.01571159810850663
+      },
+      {
+        "ckpt": "PSRO_nash3_c21",
+        "sigma": 0.08159600997506235,
+        "weight": 0.08318503076219047
+      },
+      {
+        "ckpt": "PSRO_nash3_c22",
+        "sigma": 0.0114214463840399,
+        "weight": 0.011643870442873848
+      },
+      {
+        "ckpt": "PSRO_nash3_c24",
+        "sigma": 0.010124688279301746,
+        "weight": 0.010321858951543193
+      },
+      {
+        "ckpt": "PSRO_nash3_c31",
+        "sigma": 0.007231920199501247,
+        "weight": 0.0073727563939594235
+      },
+      {
+        "ckpt": "PSRO_nash3_c40",
+        "sigma": 0.13556109725685786,
+        "weight": 0.13820104743987388
+      },
+      {
+        "ckpt": "PSRO_nash3_c42",
+        "sigma": 0.03685785536159601,
+        "weight": 0.03757563431128286
+      },
+      {
+        "ckpt": "PSRO_nash3_c43",
+        "sigma": 0.07456359102244389,
+        "weight": 0.07601566075151268
+      },
+      {
+        "ckpt": "PSRO_nash3_c49",
+        "sigma": 0.20817955112219452,
+        "weight": 0.2122336909543906
+      }
+    ]
+  },
   "cross_team_only": true,
   "radix": [
     {
