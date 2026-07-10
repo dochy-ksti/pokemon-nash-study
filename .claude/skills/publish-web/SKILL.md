@@ -8,8 +8,13 @@ allowed-tools: [Bash, Read, Edit, Grep, Glob]
 
 # publish-web
 
-学習済み policy-only AI と GPU 不要で対戦できる静的Webアプリ (`web/`) を、
+学習済み policy AI と GPU 不要で対戦できる静的Webアプリ (`web/`) を、
 変更に応じて再ビルドし、整合を確認してから公開するスキル。
+
+> **配信中の 3b AI は PSRO_nash3 の σ 混合 (メタ Nash・15 体/カバー 98.1%)**。単一ネットではなく、
+> PSRO 集団 Π の Nash 混合 σ を各状態で σ 加重平均した 1 枚テーブル。生成は
+> `scripts/export_policy_table_mixture.py` (手順 3)。過去の単一ネット版 (K1b5_ep280.pt +
+> `export_policy_table.py`) は下位互換で残るが、既定は混合版。
 
 - **このリポジトリが開発元かつ公開先を兼ねる** (github.com/dochy-ksti/pokemon-nash-study)。
   wasm もポリシーテーブルもここでビルドし、`web/` をそのまま配信する。別リポジトリへの同期は無い。
@@ -22,8 +27,10 @@ allowed-tools: [Bash, Read, Edit, Grep, Glob]
   テーブルは `opp_team = 1 - ai_team` を次元に持たない (radix 7 次元、総数 8·H^4)。app.js の
   `denseIndex` と meta.json の radix、列挙器 (policy_table.rs) はこの前提で一致していること。
 - **配信バトル規則**: 乱数あり・急所あり・命中100%。ターン解決はブラウザ内 WASM (poke-sho-rust)。
-- **HP 4% 離散化 (26 バケット)**。埋め込みは素のポリシー。3b 個体 = `data/poke-ai3/tournament/K1b5_ep280.pt`。
-  ローカル学習資産 (`data/`, checkpoint) は gitignore 対象で再生成前提。手元に無ければ先に学習/選抜で用意する。
+- **HP 4% 離散化 (26 バケット)**。埋め込みは素のポリシー。配信 3b AI = PSRO_nash3 の σ 混合
+  (`data/poke-ai3/tournament/PSRO_nash3_psro.json` の Π + σ)。ローカル学習資産 (`data/`,
+  checkpoint, PSRO 結果 JSON, 中心スナップショット群) は gitignore 対象で再生成前提。手元に
+  無ければ先に PSRO (ckpt_tournament.py psro) を回して用意する。単一ネット版なら任意の checkpoint。
 - push は**ユーザーの認証**で行う。Claude は push を代行せず、`deploy-web.sh` の実行はユーザーに促す
   (または実行してよいか確認する)。
 
@@ -33,7 +40,7 @@ allowed-tools: [Bash, Read, Edit, Grep, Glob]
 |---|---|
 | `web/app.js` `web/index.html` `web/style.css` のみ | なし → 5. deploy だけ |
 | `poke-wasm/` または `poke-sho-rust/` (sim/damage/turn/types 等) | 2. wasm 再生成 (+ 観測/モデルに波及するなら 3 も) |
-| `poke-ai3-python/src/policy_table.rs`・モデル・観測 (`poke-env-rust`)・checkpoint・ステージ | 3. テーブル再計算 |
+| `poke-ai3-python/src/policy_table.rs`・モデル・観測 (`poke-env-rust`)・配信AI(σ混合/checkpoint)・ステージ | 3. テーブル再計算 |
 | 引数 `--rebuild all` 指定時 | 2 と 3 の両方 |
 
 `--rebuild` 未指定なら、直近の変更 (git status / 会話) から上表で判断する。迷ったら `all`。
@@ -53,20 +60,39 @@ wasm-pack build poke-wasm --target web --release --out-dir ../web/pkg   # リポ
 生成物 `web/pkg/poke_wasm.js` `poke_wasm_bg.wasm` が更新される (約84KB)。
 初回のみ `rustup target add wasm32-unknown-unknown` と `cargo install wasm-pack` が要る (ネット取得。実行前に確認)。
 
-### 3. ポリシーテーブル再計算 (モデル/観測/enumerator/checkpoint/ステージを変えた場合)
-GPU + checkpoint が要る。5分未満だが、実行前にコマンドと引数をユーザーに説明すること。
+### 3. ポリシーテーブル再計算 (モデル/観測/enumerator/配信AI/ステージを変えた場合)
+GPU が要る。実行前にコマンドと引数をユーザーに説明すること。出力は `web/policy_{stage}.bin`・
+`web/value_{stage}.bin` (同じ列挙順・長さの u16 = round(value*1000)、勝率テーブル)・
+`web/policy_{stage}.meta.json` の 3 点。3b は valid ≈ 3,380,000 / total 3,655,808、各 bin ≈ 7.3MB。
+
+**(既定) σ 混合版** — PSRO 結果の Π + σ から σ 加重平均テーブルを焼く。各状態で全サポートネットを
+推論するのでコストはサポート数に比例 (単一ネットの N 倍)。裾は `--sigma-floor` で刈って再正規化
+(既定 0.005)。15 体規模で ~30〜60 分なので **バックグラウンド実行推奨** (setsid nohup + ログ poll)。
+実行前に旧 `web/policy_3b.bin`/`value_3b.bin`/`meta.json` をバックアップしておく。
 ```bash
-cd poke-ai3-python && make export-policy-table ARGS="--checkpoint ../data/poke-ai3/tournament/K1b5_ep280.pt \
+cd poke-ai3-python && uv run python scripts/export_policy_table_mixture.py \
+  --psro-json ../data/poke-ai3/tournament/PSRO_nash3_psro.json \
+  --sigma-floor 0.005 --stage 3b --hp-buckets 26 --out-dir ../web
+```
+meta には `value_scale` と `mixture` (psro_json / sigma_floor / cover / members[ckpt,sigma,weight])
+が入る。手順 4 の検証はこの `mixture.members` を読んで σ 加重平均で突き合わせる。
+
+**(下位互換) 単一ネット版** — 任意の 1 checkpoint をそのまま焼く。5 分未満。
+```bash
+cd poke-ai3-python && make export-policy-table ARGS="--checkpoint <path.pt> \
   --stage 3b --hp-buckets 26 --out-dir ../web"
 ```
-- 3b: valid ≈ 3,380,000 / total 3,655,808、`web/policy_3b.bin` ≈ 7.3MB。
-  同時に `web/value_3b.bin` (同じ列挙順・長さの u16 = round(value*1000)、勝率テーブル) も出力される。
-- 3c を出す場合は 3c 個体の checkpoint を指定し `--stage 3c` に (別途 funnel で選抜が必要。app.js の
-  ステージ対応も要一般化)。
+注意: 現行の `export_policy_table.py` は policy のみ出力し value・value_scale を書かない
+(配信には value_3b.bin が要る)。単一ネット配信に戻すなら value も出す形へ要拡張。
+
+3c を出す場合は 3c 個体を指定し `--stage 3c` に (別途 funnel で選抜が必要。app.js のステージ対応も
+要一般化)。
 
 ### 4. 整合検証 (テーブルを作り直したら必須)
-「JS の denseIndex = Rust の列挙 index」かつ「テーブル値 = 同 checkpoint を直接 infer した P(交代)」が
-一致することを、有効 index の無作為サンプルでスポット検証する。`poke-ai3-python` から:
+「JS の denseIndex = Rust の列挙 index」かつ「テーブル値 = 配信AIを直接 infer した P(交代)/value」が
+一致することを、有効 index の無作為サンプルでスポット検証する。σ 混合版は meta の `mixture.members`
+を読んで **σ 加重平均**で突き合わせる (単一ネット版なら members が 1 体・weight 1.0 と同じ形)。
+`poke-ai3-python` から:
 ```bash
 uv run python - <<'PY'
 import numpy as np, json
@@ -74,18 +100,23 @@ from pathlib import Path
 from poke_ai3 import enumerate_policy_batch, MAX_MOVE_SLOTS
 from poke_ai3_train.agent import Agent
 meta=json.load(open('../web/policy_3b.meta.json')); H=meta['hp_buckets']; PROB=meta['prob_scale']; SENT=meta['sentinel']; VSCALE=meta['value_scale']
+PUB=Path('../data/poke-ai3/tournament')
 tab=np.fromfile('../web/policy_3b.bin',dtype=np.uint16)
 vtab=np.fromfile('../web/value_3b.bin',dtype=np.uint16)
+# 配信AIの構成: σ混合なら mixture.members、単一ネットなら checkpoint 1 体を weight 1.0 とみなす
+mix=meta.get('mixture',{}).get('members') or [{'ckpt':meta['checkpoint'],'weight':1.0}]
 # JS denseIndex mirror (cross-team, radix: ai_team,ai_active,ai_hp_c,ai_hp_g,opp_active,opp_hp_c,opp_hp_g)
 def jsindex(at,aa,ac,ag,oa,oc,og):
     k=at;k=k*2+aa;k=k*H+ac;k=k*H+ag;k=k*2+oa;k=k*H+oc;k=k*H+og;return k
-agent=Agent(device='cuda',checkpoint_path=Path('../data/poke-ai3/tournament/K1b5_ep280.pt'),infer_graph=False)
+agents=[(Agent(device='cuda',checkpoint_path=PUB/(m['ckpt']+'.pt'),infer_graph=False),m['weight']) for m in mix]
 ok=True
 for k in np.random.default_rng(0).choice(np.where(tab!=SENT)[0],6,replace=False):
     r=int(k); og=r%H;r//=H; oc=r%H;r//=H; oa=r%2;r//=2; ag=r%H;r//=H; ac=r%H;r//=H; aa=r%2;r//=2; at=r%2
     obs,idx=enumerate_policy_batch('3b',H,int(k),1); assert idx[0]==k
-    pol,val=agent.infer_encoded(obs)
-    p=float(pol[:,MAX_MOVE_SLOTS:].sum(1)[0]); v=float(val[0])
+    p=v=0.0
+    for ag_,w in agents:
+        pol,val=ag_.infer_encoded(obs)
+        p+=w*float(pol[:,MAX_MOVE_SLOTS:].sum(1)[0]); v+=w*float(val[0])
     # value head は [0,1] 外に僅かに出る (負けきり局面で負値等)。テーブルは clip 済みなので比較も clip する。
     exp_p=min(max(round(p*PROB),0),PROB); exp_v=min(max(round(v*VSCALE),0),VSCALE)
     m=(jsindex(at,aa,ac,ag,oa,oc,og)==k) and abs(exp_p-int(tab[k]))<=1 and abs(exp_v-int(vtab[k]))<=1; ok&=m
