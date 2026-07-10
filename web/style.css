@@ -48,7 +48,7 @@ h1{font-size:19px;margin:0;font-weight:650;letter-spacing:.01em}
   border:1px solid var(--edge);background:var(--panel);font-size:15px}
 .act-badge .who{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--faint)}
 .act-badge .what{font-size:20px;font-weight:720;letter-spacing:.02em}
-.act-badge .res{margin-left:auto;font-family:var(--mono);font-size:15px;color:var(--dim);
+.act-badge .res{font-family:var(--mono);font-size:20px;color:var(--dim);
   font-variant-numeric:tabular-nums}
 .act-badge .res b{color:var(--se)} .act-badge .res b.ko{color:var(--bad)}
 .act-badge .res .crit{color:var(--gold);font-weight:600;margin-left:4px}
