@@ -1,0 +1,29 @@
+name: web assets
+
+# Cloudflare Pages の上限違反を push 時点で検出する。
+#
+# Pages は上限超過のアセットが1つでもあるとデプロイ「全体」を失敗させるが、Git 連携での
+# 失敗は静かで、サイトは最後に成功したビルドのまま残り続ける。2026-07 に policy_3d.bin
+# (27.89MiB) がこれを踏み、サイトが3c時代のまま5コミット分凍結していたのに気づかなかった。
+# deploy-web.sh も同じ検査をするが、そのスクリプトを通さない普通のコミットでも push できる
+# (実際 3d はそれで入った) ため、最後の砦として CI でも回す。
+
+on:
+  push:
+    paths:
+      - "web/**"
+      - "scripts/check-web-assets.sh"
+      - ".github/workflows/web-assets.yml"
+  pull_request:
+    paths:
+      - "web/**"
+      - "scripts/check-web-assets.sh"
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Cloudflare Pages の制約を検査
+        run: scripts/check-web-assets.sh

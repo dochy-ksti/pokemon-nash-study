@@ -186,8 +186,26 @@ scripts/deploy-web.sh "変更内容の短い説明"
 ```
 
 このスクリプトは`web/`等をcommitしてpushし、Cloudflare Pagesの再デプロイを開始する。
+`scripts/check-web-assets.sh`をcommit前に、`scripts/verify-deploy.sh`をpush後に自動で実行する。
 既にコミット済みなら、意図したブランチとcommitを確認して通常の`git push`を使う。公開依頼が
 なければpushしない。
+
+### 9. 公開後の検証（必須）
+
+**pushしただけで公開できたと判断してはいけない。**
+
+```bash
+scripts/verify-deploy.sh
+```
+
+Cloudflare PagesのGit連携はデプロイが失敗しても静かで、サイトは最後に成功したビルドのまま
+残り続ける。さらにPagesは未知のパスにフォールバックの`index.html`を**200**で返すため、
+HTTPステータスによる疎通確認は当てにならない（存在しない`policy_3d.bin`にも200が返る）。
+中身を突き合わせる`verify-deploy.sh`だけが本当の確認手段である。
+
+実際、2026-07に`policy_3d.bin`（27.89MiB）が25MiB上限を踏んでデプロイが静かに失敗し、
+サイトが3c時代のまま5コミット分凍結していたのに数日気づかなかった。発覚したのは
+配信中の`app.js`が3c時代のコミットと完全一致していたからである。
 
 ## URL
 
@@ -195,5 +213,6 @@ scripts/deploy-web.sh "変更内容の短い説明"
 - 3b: `/battle-3b.html`
 - 3c: `/battle-3c.html`
 - 3d: `/battle-3d.html`
+- 3e: `/battle-3e.html`
 
 各対戦ページも`?lang=ja`に対応する。
