@@ -169,6 +169,7 @@ class TrainSession:
         nash_weak: bool = True,
         nash_learning_rate: float = 1.5,
         value_target_expected: bool = False,
+        max_turns: int = 100,
         learning_rate: float | None = None,
         model_config: ModernBertAbsConfig | None = None,
         minibatch_size: int | None = None,
@@ -212,6 +213,7 @@ class TrainSession:
             nash_learning_rate=nash_learning_rate,
             nash_weak=nash_weak,
             value_target_expected=value_target_expected,
+            max_turns=max_turns,
         )
         if value_target_expected:
             print("value_target: expected (均衡混合 training_pi による期待勝率)")
@@ -323,6 +325,7 @@ def run_train_loop(
     nash_weak: bool = True,
     nash_learning_rate: float = 1.5,
     value_target_expected: bool = False,
+    max_turns: int = 100,
     learning_rate: float | None = None,
     model_config: ModernBertAbsConfig | None = None,
     minibatch_size: int | None = None,
@@ -350,6 +353,7 @@ def run_train_loop(
         nash_weak=nash_weak,
         nash_learning_rate=nash_learning_rate,
         value_target_expected=value_target_expected,
+        max_turns=max_turns,
         learning_rate=learning_rate,
         model_config=model_config,
         minibatch_size=minibatch_size,
@@ -428,6 +432,12 @@ def parse_args() -> argparse.Namespace:
         "3a (タイプ相性導入・4技1v1, Cloyster vs Goodra-Hisui) / "
         "3b (交代学習・非対称2チーム・各個体1技) / "
         "3c (対称対面の交代学習・FightSpe60/FairyPhy60・各個体1技).",
+    )
+    parser.add_argument(
+        "--max-turns",
+        type=int,
+        default=100,
+        help="ターン上限 (到達で引き分け終局)。0 で上限なし (打ち切りしない)。",
     )
     parser.add_argument(
         "--sims",
@@ -604,6 +614,7 @@ def main() -> None:
         nash_weak=args.nash_weak,
         nash_learning_rate=args.nash_learning_rate,
         value_target_expected=(args.value_target == "expected"),
+        max_turns=args.max_turns,
         learning_rate=args.learning_rate,
         model_config=build_model_config(
             args.hidden_size,

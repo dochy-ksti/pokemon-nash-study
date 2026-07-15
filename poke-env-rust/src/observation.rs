@@ -12,7 +12,7 @@
 
 use serde::{Deserialize, Serialize};
 
-pub use poke_sho_rust::battle::{BattleState, Choice, Player};
+pub use poke_sho_rust::battle::{BattleState, Choice, MAX_TURNS, Player};
 pub use poke_sho_rust::event::Event;
 pub use poke_sho_rust::global_ids::{move_meta, species_meta};
 pub use poke_sho_rust::party::{MAX_PARTY, Party, PokemonState};

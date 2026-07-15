@@ -10,9 +10,10 @@ pub use crate::party::{MAX_PARTY, PokemonState};
 pub use crate::turn::{TurnResult, apply_forced_switches, apply_turn, execute_action};
 use crate::scenario::MoveId;
 
-/// 1 バトルの最大ターン数。これを超えると無条件引き分け (`winner()=None`) で終局する。
-/// 交代を撃ち合うと理論上は無限戦になり得るため、その上限としても機能する。
-/// 正常な対戦は十数ターンで決着するので十分な余裕がある。
+/// 最大ターン数の既定値。`BattleState::max_turns` の初期値として使う。これを超えると
+/// 無条件引き分け (`winner()=None`) で終局する。交代を撃ち合うと理論上は無限戦になり得る
+/// ため、その上限としても機能する。正常な対戦は十数ターンで決着するので十分な余裕がある。
+/// `max_turns = 0` にすると上限なし (引き分けによる打ち切りをしない)。
 pub const MAX_TURNS: u32 = 100;
 
 /// バトルのプレイヤー。
@@ -56,6 +57,8 @@ pub struct BattleState {
     pub turn: u32,
     /// 瀕死により強制交代待ちのサイド。`true` の側は次に交代手だけが合法。
     pub forced_switch: [bool; 2],
+    /// ターン上限 (到達で引き分け終局)。`0` は上限なし (打ち切りしない)。既定は `MAX_TURNS`。
+    pub max_turns: u32,
 }
 
 impl BattleState {
@@ -90,9 +93,18 @@ impl BattleState {
         }
     }
 
-    /// バトルが終局したか。全滅決着に加え、`MAX_TURNS` 到達 (引き分け) も終局扱い。
+    /// バトルが終局したか。全滅決着に加え、`max_turns` 到達 (引き分け) も終局扱い。
+    /// `max_turns == 0` のときは上限なし (全滅決着だけで終局)。
     pub fn is_done(&self) -> bool {
-        self.is_lost(Player::P1) || self.is_lost(Player::P2) || self.turn >= MAX_TURNS
+        self.is_lost(Player::P1)
+            || self.is_lost(Player::P2)
+            || (self.max_turns != 0 && self.turn >= self.max_turns)
+    }
+
+    /// ターン上限を差し替えた状態を返す (`0` で上限なし)。生成後に web/CLI 側で設定する用。
+    pub fn with_max_turns(mut self, max_turns: u32) -> Self {
+        self.max_turns = max_turns;
+        self
     }
 
     /// ターン上限による引き分けで終局したか (勝者なしの終局)。

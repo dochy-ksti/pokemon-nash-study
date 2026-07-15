@@ -8,7 +8,7 @@
 //! および `BattleState::new` (チームテキストから実数ステータスを解決する) を置く。
 //! 戦闘の進行ロジックそのものは `battle` モジュールにある。
 
-use crate::battle::BattleState;
+use crate::battle::{BattleState, MAX_TURNS};
 use crate::moves::{
     BULLDOZE, CRUNCH, DARK_PULSE, FAIRY_PHY_60, FIGHT_SPE_60, MoveData, SHOCK_WAVE,
 };
@@ -280,6 +280,7 @@ impl BattleState {
             parties: [build_single_party(stage, p1), build_single_party(stage, p2)],
             turn: 0,
             forced_switch: [false, false],
+            max_turns: MAX_TURNS,
         }
     }
 
@@ -301,6 +302,7 @@ impl BattleState {
             ],
             turn: 0,
             forced_switch: [false, false],
+            max_turns: MAX_TURNS,
         }
     }
 }

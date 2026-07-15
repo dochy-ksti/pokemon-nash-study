@@ -74,7 +74,7 @@ fn species_from_index(stage: Stage, idx: usize) -> SpeciesId {
 /// game_id と iter から初期構成を決定論的に選ぶ。
 /// 1v1 ステージは両側の先発種族 4 通りを巡回。Stage3b は各側 (チーム×先発)=4 通り、
 /// 両側で 16 通りを巡回し、`new_with_teams` で初期状態を組む。
-fn pick_config(game_id: usize, iter: u32, stage: Stage) -> GameConfig {
+fn pick_config(game_id: usize, iter: u32, stage: Stage, max_turns: u32) -> GameConfig {
     let mix = (game_id as u32).wrapping_add(iter.wrapping_mul(0x9e37_79b9));
     if !stage.is_party() {
         let k = mix % 4;
@@ -83,7 +83,7 @@ fn pick_config(game_id: usize, iter: u32, stage: Stage) -> GameConfig {
         return GameConfig {
             p1_species: p1,
             p2_species: p2,
-            initial: BattleState::new(stage, p1, p2),
+            initial: BattleState::new(stage, p1, p2).with_max_turns(max_turns),
             p1_team_text: p1.team_text(stage).to_string(),
             p2_team_text: p2.team_text(stage).to_string(),
         };
@@ -101,7 +101,8 @@ fn pick_config(game_id: usize, iter: u32, stage: Stage) -> GameConfig {
     GameConfig {
         p1_species: species_from_index(stage, active1),
         p2_species: species_from_index(stage, active2),
-        initial: BattleState::new_with_teams(stage, (team1, active1), (team2, active2)),
+        initial: BattleState::new_with_teams(stage, (team1, active1), (team2, active2))
+            .with_max_turns(max_turns),
         p1_team_text: team1.team_text(stage).to_string(),
         p2_team_text: team2.team_text(stage).to_string(),
     }
@@ -132,6 +133,7 @@ pub async fn game_start(
     randomize: bool,
     crit_enabled: bool,
     stage: Stage,
+    max_turns: u32,
     lookahead: LookaheadConfig,
     eval_rule_opponent: bool,
     eval_rule_p1: bool,
@@ -153,7 +155,7 @@ pub async fn game_start(
         let enemy_game = role != 0;
         let enemy_lookahead = role == 2;
         let seed = battle_seed(run_seed, game_id, iter);
-        let cfg = pick_config(game_id, iter, stage);
+        let cfg = pick_config(game_id, iter, stage, max_turns);
         let GameConfig {
             p1_species,
             p2_species,
@@ -644,7 +646,7 @@ mod tests {
         let mut seen = std::collections::HashSet::new();
         for game_id in 0..50 {
             for iter in 1..200u32 {
-                let c = pick_config(game_id, iter, Stage::Stage3b);
+                let c = pick_config(game_id, iter, Stage::Stage3b, poke_env_rust::observation::MAX_TURNS);
                 assert_ne!(
                     c.p1_team_text, c.p2_team_text,
                     "pick_config must pair Team1 vs Team2 (game_id={game_id}, iter={iter})"

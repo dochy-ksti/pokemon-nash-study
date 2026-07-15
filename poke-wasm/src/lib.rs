@@ -63,11 +63,14 @@ impl Battle {
     #[wasm_bindgen(constructor)]
     pub fn new(stage: &str, team1: u8, active1: u8, team2: u8, active2: u8) -> Battle {
         let stage = Stage::from_short_name(stage).expect("unknown stage");
+        // web 版はターン上限による引き分けを入れない (人間には分かりにくいため)。
+        // max_turns=0 で上限なし。通常の対戦は全滅で決着する。
         let state = BattleState::new_with_teams(
             stage,
             (team_of(team1), active1 as usize),
             (team_of(team2), active2 as usize),
-        );
+        )
+        .with_max_turns(0);
         Battle { state }
     }
 
