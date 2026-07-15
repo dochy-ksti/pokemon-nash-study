@@ -59,7 +59,7 @@ pub struct Battle {
 
 #[wasm_bindgen]
 impl Battle {
-    /// 満タンで開始する。`stage` は "3b"/"3c"、team は 0=Team1/1=Team2、active は先発 index。
+    /// 満タンで開始する。`stage` は "3b"/"3c"/"3d"、team は 0=Team1/1=Team2。
     #[wasm_bindgen(constructor)]
     pub fn new(stage: &str, team1: u8, active1: u8, team2: u8, active2: u8) -> Battle {
         let stage = Stage::from_short_name(stage).expect("unknown stage");
@@ -162,7 +162,7 @@ impl Battle {
         self.state = result.state;
         let mut events = result.events;
 
-        // 瀕死強制交代: 3b/3c は控え 1 体なので交代先は一意 → 自動解決。
+        // 瀕死強制交代: 現 party stage は控え 1 体なので交代先は一意 → 自動解決。
         if self.state.any_forced_switch() {
             let pick = |p: Player| {
                 if self.state.needs_forced_switch(p) {

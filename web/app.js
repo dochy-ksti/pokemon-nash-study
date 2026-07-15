@@ -1,7 +1,7 @@
 import init, { Battle } from "./pkg/poke_wasm.js";
 
-// ページ名からステージを決める (battle-3c.html → "3c"、それ以外 → "3b")。
-const STAGE = location.pathname.includes("battle-3c") ? "3c" : "3b";
+// ページ名からステージを決める (battle-3d.html → "3d")。
+const STAGE = location.pathname.match(/battle-(3[bcd])/u)?.[1] ?? "3b";
 
 // ---- i18n ----------------------------------------------------------------
 const MON = {
@@ -60,6 +60,10 @@ if (STAGE === "3c") {
   T.title = { ja: "真・極端な有利/不利対面 — ヌメルゴン vs パルシェン",
               en: "A truly extreme matchup — Goodra vs Cloyster" };
 }
+if (STAGE === "3d") {
+  T.title = { ja: "等倍打撃のある有利/不利対面 — ヒスイヌメルゴン vs パルシェン",
+              en: "Neutral coverage in a hard-counter matchup — Goodra-Hisui vs Cloyster" };
+}
 // URL の ?lang= で言語指定 (ja/en)。未指定・不正はデフォルト英語。
 function langFromUrl() {
   return new URLSearchParams(location.search).get("lang") === "ja" ? "ja" : "en";
@@ -79,7 +83,7 @@ function applyStaticI18n() {
 }
 
 // ---- state ---------------------------------------------------------------
-let META, TABLE, VALUE_TABLE, H, PROB, VSCALE, SENT;
+let META, TABLE, VALUE_TABLE, H, PROB, VSCALE, SENT, POLICY_WIDTH;
 let battle = null, humanTeam = 0, humanLead = 0, aiTeam = 0, aiLead = 0;
 let showFoe = true, showSelf = true, gameOver = false;
 // 直前ターンの各サイドの手 {p1,p2:{kind,label,crit,ko}} と、ターン開始時の全メンバーHP。
@@ -111,10 +115,21 @@ function denseIndex(aiTeamId, ai, opp) {
   k = k * H + opp.g;
   return k;
 }
-// aiSide の P(交代)。表に無い(番兵)なら null。相手は必ず反対チーム。
-function pSwitch(aiSide, aiTeamId, oppSide) {
-  const v = TABLE[denseIndex(aiTeamId, sideBuckets(aiSide), sideBuckets(oppSide))];
-  return v === SENT ? null : v / PROB;
+// aiSide の行動分布。3b/3cの旧テーブル(P交代)も完全方策へ展開する。
+function policyFor(aiSide, aiTeamId, oppSide) {
+  const idx = denseIndex(aiTeamId, sideBuckets(aiSide), sideBuckets(oppSide));
+  const moves = aiSide.members[aiSide.active].moves;
+  if (POLICY_WIDTH === 1) {
+    const raw = TABLE[idx];
+    if (raw === SENT) return null;
+    return { moves: [1 - raw / PROB], switch: raw / PROB };
+  }
+  const off = idx * POLICY_WIDTH;
+  if (TABLE[off] === SENT) return null;
+  return {
+    moves: moves.map((_, i) => TABLE[off + i] / PROB),
+    switch: TABLE[off + POLICY_WIDTH - 1] / PROB,
+  };
 }
 // aiSide 視点の勝率 (value head 0..1)。表に無いなら null。
 function winRate(aiSide, aiTeamId, oppSide) {
@@ -169,33 +184,33 @@ function monCardHtml(side, incomingHtml, lostPct) {
   </div>`;
 }
 
-function policyPanelHtml(kind, activeMove, pSw) {
+function policyPanelHtml(kind, activeMoves, policy) {
   const cls = kind === "foe" ? "foe" : "self";
   const cap = kind === "foe" ? tr("foe_prob") : tr("ai_rec");
-  if (pSw === null) return "";
-  const pMove = 1 - pSw;
-  const recMove = pMove >= pSw;
+  if (policy === null) return "";
+  const probs = [...policy.moves, policy.switch];
+  const best = probs.indexOf(Math.max(...probs));
   const row = (label, p, rec) =>
     `<div class="prow ${rec ? "rec" : ""}"><div class="top-l"><span>${label}</span>
        <span class="pct">${(p * 100).toFixed(1)}%</span></div>
        <div class="track"><i style="width:${Math.round(p * 100)}%"></i></div></div>`;
   const b = kind; void b;
   return `<div class="policy ${cls}"><div class="cap">◈ ${cap}</div>
-    ${row(activeMove.label, pMove, recMove)}
-    ${row(activeMove.switchLabel, pSw, !recMove)}</div>`;
+    ${activeMoves.map((move, i) => row(move.label, policy.moves[i], i === best)).join("")}
+    ${row(activeMoves[0].switchLabel, policy.switch, best === activeMoves.length)}</div>`;
 }
 
-function activeMoveInfo(side) {
+function activeMoveInfos(side) {
   const a = side.members[side.active];
-  const mv = a.moves[0]; // 3b は 1 技
   const b = benchOf(side);
-  return {
+  return a.moves.map((mv) => ({
     slot: mv.slot,
     label: moveName(mv.id),
     switchLabel: `${monName(b.mon.species)} ${tr("switch_to")}`,
     benchIdx: b.idx,
     benchAlive: b.mon.hp > 0,
-  };
+    moveType: mv.move_type,
+  }));
 }
 
 // 現在アクティブが「ターン開始時の同じメンバーの HP」から失った割合 (%)。
@@ -225,16 +240,18 @@ function badgeHtml(kind, act, dmgPct) {
 function render() {
   const s = battle.snapshot();
   // 相手 = P2, あなた = P1
-  const foeMv = activeMoveInfo(s.p2);
-  const youMv = activeMoveInfo(s.p1);
+  const foeMoves = activeMoveInfos(s.p2);
+  const youMoves = activeMoveInfos(s.p1);
+  const foePolicy = showFoe ? policyFor(s.p2, aiTeam, s.p1) : null;
+  const selfPolicy = showSelf ? policyFor(s.p1, humanTeam, s.p2) : null;
 
-  // 相手が撃った場合のダメージ (attacker=1)
+  // 相手の最頻攻撃が当たった場合のダメージ (attacker=1)。
+  const foeMoveIdx = foePolicy
+    ? foePolicy.moves.indexOf(Math.max(...foePolicy.moves)) : 0;
+  const foeMv = foeMoves[Math.max(0, foeMoveIdx)];
   const foeDmg = battle.damageRange(1, foeMv.slot);
   const incoming = `<div class="incoming">${tr("if_foe")} <b>${foeMv.label}</b> ${tr("if_hits")}
      <span class="dmg-in">${foeDmg.min_pct.toFixed(0)}–${foeDmg.max_pct.toFixed(0)}%</span></div>`;
-
-  const foeP = showFoe ? pSwitch(s.p2, aiTeam, s.p1) : null;
-  const selfP = showSelf ? pSwitch(s.p1, humanTeam, s.p2) : null;
 
   // 勝率帯を上下2箇所に分離表示。
   //  相手勝率 (相手=P2 視点の value): 相手フィールド上・tog-foe 連動・あなた目線で色反転。
@@ -262,28 +279,30 @@ function render() {
   }
 
   el("foe-mon").innerHTML = monCardHtml(s.p2, incoming, ghFoe) +
-    (showFoe ? policyPanelHtml("foe", foeMv, foeP) : "");
-  el("you-mon").innerHTML = (showSelf ? policyPanelHtml("self", youMv, selfP) : "") +
+    (showFoe ? policyPanelHtml("foe", foeMoves, foePolicy) : "");
+  el("you-mon").innerHTML = (showSelf ? policyPanelHtml("self", youMoves, selfPolicy) : "") +
     monCardHtml(s.p1, "", ghYou);
 
-  renderActions(s.p1, youMv, selfP);
+  renderActions(s.p1, youMoves, selfPolicy);
   if (s.done) finish(s);
 }
 
-function renderActions(you, youMv, selfP) {
-  const youDmg = battle.damageRange(0, youMv.slot);
-  const recBadge = (selfP !== null && (1 - selfP) >= selfP)
-    ? `<span class="rec-badge">${tr("rec")} ${((1 - selfP) * 100).toFixed(1)}%</span>` : "";
-  const a = you.members[you.active];
-  const mtype = a.moves[0].move_type;
-  let html = `<button class="act" data-kind="0" data-arg="${youMv.slot}">
-      <div class="a-top"><span class="a-name">${youMv.label}</span>
-        <span style="display:flex;gap:8px;align-items:center">${recBadge}<span class="a-type t-${mtype}">${mtype}</span></span></div>
-      <div class="a-meta"><span>${tr("if_stay")} <span class="dmg">${youDmg.min_pct.toFixed(0)}–${youDmg.max_pct.toFixed(0)}%</span></span></div>
+function renderActions(you, youMoves, policy) {
+  const probs = policy ? [...policy.moves, policy.switch] : [];
+  const best = probs.length ? probs.indexOf(Math.max(...probs)) : -1;
+  let html = youMoves.map((move, i) => {
+    const dmg = battle.damageRange(0, move.slot);
+    const recBadge = i === best
+      ? `<span class="rec-badge">${tr("rec")} ${(policy.moves[i] * 100).toFixed(1)}%</span>` : "";
+    return `<button class="act" data-kind="0" data-arg="${move.slot}">
+      <div class="a-top"><span class="a-name">${move.label}</span>
+        <span style="display:flex;gap:8px;align-items:center">${recBadge}<span class="a-type t-${move.moveType}">${move.moveType}</span></span></div>
+      <div class="a-meta"><span>${tr("if_stay")} <span class="dmg">${dmg.min_pct.toFixed(0)}–${dmg.max_pct.toFixed(0)}%</span></span></div>
     </button>`;
+  }).join("");
   const b = benchOf(you);
-  const recSw = (selfP !== null && selfP > (1 - selfP))
-    ? `<span class="rec-badge">${tr("rec")} ${(selfP * 100).toFixed(1)}%</span>` : "";
+  const recSw = policy !== null && best === youMoves.length
+    ? `<span class="rec-badge">${tr("rec")} ${(policy.switch * 100).toFixed(1)}%</span>` : "";
   html += `<button class="act switch" data-kind="1" data-arg="${b.idx}" ${b.mon.hp <= 0 ? "disabled" : ""}>
       <div class="a-top"><span class="a-name">${monName(b.mon.species)} ${tr("switch_to")}</span>
         <span style="display:flex;gap:8px;align-items:center">${recSw}<span class="a-type">Switch</span></span></div>
@@ -304,15 +323,21 @@ function parseLegal(flat) {
   return out;
 }
 function sampleAi(s) {
-  const foeMv = activeMoveInfo(s.p2);
+  const foeMoves = activeMoveInfos(s.p2);
   const legal = parseLegal(battle.legal(1));
-  const canSwitch = legal.some((c) => c.kind === 1);
-  const p = pSwitch(s.p2, aiTeam, s.p1);
-  if (canSwitch && p !== null && Math.random() < p) {
-    const sw = legal.find((c) => c.kind === 1);
-    return { kind: 1, arg: sw.arg };
+  const policy = policyFor(s.p2, aiTeam, s.p1);
+  if (policy === null) return legal[Math.floor(Math.random() * legal.length)];
+  const weighted = [];
+  foeMoves.forEach((move, i) => weighted.push({ kind: 0, arg: move.slot, p: policy.moves[i] }));
+  const sw = legal.find((c) => c.kind === 1);
+  if (sw) weighted.push({ ...sw, p: policy.switch });
+  const available = weighted.filter((x) => legal.some((c) => c.kind === x.kind && c.arg === x.arg));
+  let x = Math.random() * available.reduce((sum, a) => sum + a.p, 0);
+  for (const action of available) {
+    x -= action.p;
+    if (x <= 0) return { kind: action.kind, arg: action.arg };
   }
-  return { kind: 0, arg: foeMv.slot };
+  return { kind: available[available.length - 1].kind, arg: available[available.length - 1].arg };
 }
 
 function onHumanChoice(kind, arg) {
@@ -339,7 +364,7 @@ function computeActions(choices, events, pre) {
     } else {
       const mv = events.find((e) => "Move" in e && e.Move.user.player === me);
       label = mv ? moveName(mv.Move.move_id)
-        : moveName(pre[side].members[pre[side].active].moves[0].id);
+        : moveName(pre[side].members[pre[side].active].moves.find((m) => m.slot === ch.arg)?.id);
     }
     return {
       kind: ch.kind,
@@ -367,7 +392,8 @@ function teamMovesetLabel(teamId) {
   // 各チームの Cloyster / Goodra が持つ技を probe battle から読む。
   const probe = new Battle(STAGE, teamId, 0, teamId === 0 ? 1 : 0, 0);
   const s = probe.snapshot();
-  const ms = s.p1.members.map((m) => `${monName(m.species)}=${moveName(m.moves[0].id)}`);
+  const ms = s.p1.members.map((m) =>
+    `${monName(m.species)}=${m.moves.map((move) => moveName(move.id)).join("・")}`);
   probe.free();
   return ms.join(" / ");
 }
@@ -415,6 +441,7 @@ async function main() {
   await init();
   META = await (await fetch(`./policy_${STAGE}.meta.json`)).json();
   H = META.hp_buckets; PROB = META.prob_scale; SENT = META.sentinel;
+  POLICY_WIDTH = META.policy_width ?? 1;
   VSCALE = META.value_scale;
   const buf = await (await fetch(`./policy_${STAGE}.bin`)).arrayBuffer();
   TABLE = new Uint16Array(buf);

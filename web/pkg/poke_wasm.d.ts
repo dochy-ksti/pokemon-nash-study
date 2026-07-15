@@ -17,7 +17,7 @@ export class Battle {
      */
     legal(player: number): Uint8Array;
     /**
-     * 満タンで開始する。`stage` は "3b"/"3c"、team は 0=Team1/1=Team2、active は先発 index。
+     * 満タンで開始する。`stage` は "3b"/"3c"/"3d"、team は 0=Team1/1=Team2。
      */
     constructor(stage: string, team1: number, active1: number, team2: number, active2: number);
     /**

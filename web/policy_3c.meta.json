@@ -5,6 +5,10 @@
   "value_scale": 1000,
   "sentinel": 65535,
   "max_move_slots": 4,
+  "policy_width": 1,
+  "policy_actions": [
+    "switch"
+  ],
   "source": "nash_geo_backward",
   "solver": {
     "method": "geometric-cutoff stationary Nash (Shapley) via cached backward VI",

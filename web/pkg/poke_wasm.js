@@ -37,7 +37,7 @@ export class Battle {
         return v1;
     }
     /**
-     * 満タンで開始する。`stage` は "3b"/"3c"、team は 0=Team1/1=Team2、active は先発 index。
+     * 満タンで開始する。`stage` は "3b"/"3c"/"3d"、team は 0=Team1/1=Team2。
      * @param {string} stage
      * @param {number} team1
      * @param {number} active1
