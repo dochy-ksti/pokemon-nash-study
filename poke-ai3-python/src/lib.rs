@@ -1,8 +1,17 @@
 mod encoded;
 mod human_game;
+mod nash_vi_back;
+mod nash_vi_cache;
+mod nash_vi_eval;
+mod nash_vi_game;
+mod nash_vi_solve;
+mod nash_vi_trans;
 mod policy_table;
 
 use encoded::{encode_observation_states, packed_batch_to_dict};
+use nash_vi_back::{solve_nash_backward, solve_nash_layers};
+use nash_vi_cache::solve_nash_cached;
+use nash_vi_solve::{debug_nash_matrices, solve_nash_vi};
 use policy_table::enumerate_policy_batch;
 use poke_ai3::packed::packed_layout_json;
 use human_game::PyHumanGame;
@@ -236,6 +245,11 @@ fn _native(_py: Python<'_>, module: &Bound<'_, PyModule>) -> PyResult<()> {
     module.add_function(wrap_pyfunction!(get_rust_async_executor_wrapper, module)?)?;
     module.add_function(wrap_pyfunction!(encode_observation_states, module)?)?;
     module.add_function(wrap_pyfunction!(enumerate_policy_batch, module)?)?;
+    module.add_function(wrap_pyfunction!(solve_nash_vi, module)?)?;
+    module.add_function(wrap_pyfunction!(solve_nash_backward, module)?)?;
+    module.add_function(wrap_pyfunction!(solve_nash_layers, module)?)?;
+    module.add_function(wrap_pyfunction!(solve_nash_cached, module)?)?;
+    module.add_function(wrap_pyfunction!(debug_nash_matrices, module)?)?;
     // 観測・行動空間の定数とグローバル ID 表。Python 側 (encoding.py) はここから
     // import し、Rust の定義を唯一の正とする。
     module.add("NUM_MOVES", NUM_MOVES)?;
