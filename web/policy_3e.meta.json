@@ -1,0 +1,61 @@
+{
+  "stage": "3e",
+  "hp_buckets": 26,
+  "prob_scale": 1000,
+  "value_scale": 1000,
+  "sentinel": 65535,
+  "max_move_slots": 4,
+  "policy_width": 4,
+  "policy_actions": [
+    "crunch",
+    "darkpulse",
+    "coverage",
+    "switch"
+  ],
+  "source": "nash_geo_backward",
+  "solver": {
+    "method": "geometric-cutoff stationary Nash (Shapley) via cached backward VI",
+    "discount": 0.99,
+    "hp_buckets": 26,
+    "tiebreak": "alive-count then summed HP-fraction",
+    "exploit_mean": 1.8440330222802004e-06,
+    "exploit_max": 9.810924530029297e-05,
+    "note": "deployed WITHOUT cutoff rule; table is exact Nash of the geometric-cutoff game (in-game BR gap ~0). value column = equilibrium win-prob V of the geometric game."
+  },
+  "cross_team_only": true,
+  "radix": [
+    {
+      "name": "ai_team",
+      "size": 2
+    },
+    {
+      "name": "ai_active",
+      "size": 2
+    },
+    {
+      "name": "ai_hp_cloyster",
+      "size": 26
+    },
+    {
+      "name": "ai_hp_goodra",
+      "size": 26
+    },
+    {
+      "name": "opp_active",
+      "size": 2
+    },
+    {
+      "name": "opp_hp_cloyster",
+      "size": 26
+    },
+    {
+      "name": "opp_hp_goodra",
+      "size": 26
+    }
+  ],
+  "total": 3655808,
+  "species_order": [
+    "Cloyster",
+    "Goodra"
+  ]
+}

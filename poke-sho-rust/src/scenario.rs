@@ -73,6 +73,19 @@ const STAGE3D_TEAM2: &str = include_str!(concat!(
     env!("CARGO_MANIFEST_DIR"),
     "/../team/poke-ai3/scenario/stage3d_team2.txt"
 ));
+/// Stage 3e — Stage 3c に等倍の物理/特殊打撃を追加した比較実験 (3b→3d と同じ操作)。
+/// 種族・実数値・チーム間の弱点技割当は 3c と同一で、全個体が Crunch / Dark Pulse も持つ。
+/// 3c の完全対称性は保たれる (両個体・両チームに一様に足すため)。
+/// 技の宣言順は 3d と同じく Crunch / Dark Pulse / coverage で固定する。`poke-env-rust` の
+/// 行動 index は習得技スロット相対なので、この順序が方策テーブルのスロット割当を決める。
+const STAGE3E_TEAM1: &str = include_str!(concat!(
+    env!("CARGO_MANIFEST_DIR"),
+    "/../team/poke-ai3/scenario/stage3e_team1.txt"
+));
+const STAGE3E_TEAM2: &str = include_str!(concat!(
+    env!("CARGO_MANIFEST_DIR"),
+    "/../team/poke-ai3/scenario/stage3e_team2.txt"
+));
 
 /// シナリオの難易度ステージ識別子。タイプ相性 1v1 (Stage3a) と交代 (Stage3b)。
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Deserialize, Serialize)]
@@ -86,6 +99,8 @@ pub enum Stage {
     Stage3c,
     /// 3b の各個体に Crunch / Dark Pulse を加え、弱点でない打撃を選べるようにする。
     Stage3d,
+    /// 3c の各個体に Crunch / Dark Pulse を加える (3b→3d と同じ操作を対称版に適用)。
+    Stage3e,
 }
 
 impl Stage {
@@ -96,12 +111,16 @@ impl Stage {
             Stage::Stage3b => "3b",
             Stage::Stage3c => "3c",
             Stage::Stage3d => "3d",
+            Stage::Stage3e => "3e",
         }
     }
 
     /// 交代を伴う (複数体パーティの) ステージか。
     pub fn is_party(self) -> bool {
-        matches!(self, Stage::Stage3b | Stage::Stage3c | Stage::Stage3d)
+        matches!(
+            self,
+            Stage::Stage3b | Stage::Stage3c | Stage::Stage3d | Stage::Stage3e
+        )
     }
 
     /// 短い名前からパースする (大文字小文字を無視)。
@@ -111,6 +130,7 @@ impl Stage {
             "3b" => Some(Stage::Stage3b),
             "3c" => Some(Stage::Stage3c),
             "3d" => Some(Stage::Stage3d),
+            "3e" => Some(Stage::Stage3e),
             _ => None,
         }
     }
@@ -144,8 +164,8 @@ impl SpeciesId {
             (Stage::Stage3a, SpeciesId::Cloyster) => STAGE3A_CLOYSTER_TEAM,
             (Stage::Stage3a, SpeciesId::GoodraHisui) => STAGE3A_GOODRA_TEAM,
             (Stage::Stage3a, SpeciesId::Goodra) => STAGE3A_GOODRA_PLAIN_TEAM,
-            (Stage::Stage3b | Stage::Stage3c | Stage::Stage3d, _) => {
-                panic!("party scenario (3b/3c/3d); use TeamId::team_text / new_with_teams")
+            (Stage::Stage3b | Stage::Stage3c | Stage::Stage3d | Stage::Stage3e, _) => {
+                panic!("party scenario (3b/3c/3d/3e); use TeamId::team_text / new_with_teams")
             }
         }
     }
@@ -189,6 +209,8 @@ impl TeamId {
             (Stage::Stage3c, TeamId::Team2) => STAGE3C_TEAM2,
             (Stage::Stage3d, TeamId::Team1) => STAGE3D_TEAM1,
             (Stage::Stage3d, TeamId::Team2) => STAGE3D_TEAM2,
+            (Stage::Stage3e, TeamId::Team1) => STAGE3E_TEAM1,
+            (Stage::Stage3e, TeamId::Team2) => STAGE3E_TEAM2,
             (Stage::Stage3a, _) => {
                 panic!("Stage3a is not a party scenario; use SpeciesId::team_text")
             }
@@ -505,6 +527,39 @@ mod tests {
     }
 
     #[test]
+    fn stage3e_keeps_stage3c_members_and_adds_two_neutral_moves() {
+        let t1 = BattleState::new_with_teams(Stage::Stage3e, (TeamId::Team1, 0), (TeamId::Team1, 1));
+        let cloy = t1.pokemon(Player::P1);
+        let goodra = t1.pokemon(Player::P2);
+        assert_eq!((cloy.name, goodra.name), ("Cloyster", "Goodra"));
+        assert!(cloy.moves[MoveId::FightSpe60.index()]);
+        assert!(goodra.moves[MoveId::FairyPhy60.index()]);
+        for mon in [cloy, goodra] {
+            assert!(mon.moves[MoveId::Crunch.index()]);
+            assert!(mon.moves[MoveId::DarkPulse.index()]);
+            assert_eq!(mon.moves.iter().filter(|m| **m).count(), 3);
+        }
+        let t2 = BattleState::new_with_teams(Stage::Stage3e, (TeamId::Team2, 0), (TeamId::Team2, 1));
+        assert!(t2.pokemon(Player::P1).moves[MoveId::FairyPhy60.index()]);
+        assert!(t2.pokemon(Player::P2).moves[MoveId::FightSpe60.index()]);
+    }
+
+    /// 3e は 3c の実数値をそのまま引き継ぐ (等倍打撃の追加以外は同一であることの保証)。
+    #[test]
+    fn stage3e_stats_match_stage3c_exactly() {
+        for team in [TeamId::Team1, TeamId::Team2] {
+            let c = BattleState::new_with_teams(Stage::Stage3c, (team, 0), (team, 1));
+            let e = BattleState::new_with_teams(Stage::Stage3e, (team, 0), (team, 1));
+            for p in [Player::P1, Player::P2] {
+                assert_eq!(c.pokemon(p).name, e.pokemon(p).name);
+                assert_eq!(c.pokemon(p).stats, e.pokemon(p).stats);
+                assert_eq!(c.pokemon(p).types, e.pokemon(p).types);
+                assert_eq!(c.pokemon(p).max_hp, e.pokemon(p).max_hp);
+            }
+        }
+    }
+
+    #[test]
     fn stage_short_name_round_trips() {
         assert_eq!(Stage::Stage3a.short_name(), "3a");
         assert_eq!(Stage::Stage3b.short_name(), "3b");
@@ -514,6 +569,9 @@ mod tests {
         assert_eq!(Stage::from_short_name("3C"), Some(Stage::Stage3c));
         assert_eq!(Stage::Stage3d.short_name(), "3d");
         assert_eq!(Stage::from_short_name("3D"), Some(Stage::Stage3d));
+        assert_eq!(Stage::Stage3e.short_name(), "3e");
+        assert_eq!(Stage::from_short_name("3E"), Some(Stage::Stage3e));
+        assert!(Stage::Stage3e.is_party());
         assert_eq!(Stage::from_short_name("2a"), None);
     }
 

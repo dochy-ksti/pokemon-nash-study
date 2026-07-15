@@ -27,7 +27,7 @@ OUT.mkdir(parents=True, exist_ok=True)
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--stage", choices=("3b", "3c", "3d"), required=True)
+    parser.add_argument("--stage", choices=("3b", "3c", "3d", "3e"), required=True)
     parser.add_argument("--hp-buckets", type=int, default=H)
     return parser.parse_args()
 
@@ -39,8 +39,10 @@ def main() -> None:
     output = OUT / f"nash_geo_h{h}_{stage}.npz"
     t0 = time.time()
     print(f"[h{h}:{stage}] start H={h} discount=0.99 (cached)", flush=True)
-    solver = solve_nash_cached_full if stage == "3d" else solve_nash_cached
-    if stage == "3d":
+    # 3d/3e は各個体が3技 (Crunch/Dark Pulse/coverage) を持つので4行動の完全方策を解く。
+    full = stage in ("3d", "3e")
+    solver = solve_nash_cached_full if full else solve_nash_cached
+    if full:
         pol, val, br, em, ex = solver(
             stage, h, True, True, 3000, 0.99, 5e-6, 1e-6, 3000, True
         )
@@ -67,14 +69,14 @@ def main() -> None:
     s0 = state_idx(0, 0, h - 1, h - 1, 0, h - 1, h - 1)
     s1 = state_idx(1, 0, h - 1, h - 1, 0, h - 1, h - 1)
     for name, s in (("team0", s0), ("team1", s1)):
-        if stage == "3d":
+        if full:
             p = pol.reshape(-1, 4)[s].astype(float) / 1000.0
             print(f"[h{h}] start {name}: V={val[s]/1000:.3f} BR={br[s]/1000:.3f} "
                   f"policy={p.tolist()}", flush=True)
         else:
             print(f"[h{h}] start {name}: V={val[s]/1000:.3f} BR={br[s]/1000:.3f} "
                   f"pswitch={pol[s]/1000:.3f}", flush=True)
-    if stage == "3d":
+    if full:
         p4 = pol.reshape(-1, 4)
         valid = p4[:, 0] != 0xFFFF
         ps = p4[valid, 3].astype(float) / 1000.0

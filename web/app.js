@@ -1,7 +1,7 @@
 import init, { Battle } from "./pkg/poke_wasm.js";
 
 // ページ名からステージを決める (battle-3d.html → "3d")。
-const STAGE = location.pathname.match(/battle-(3[bcd])/u)?.[1] ?? "3b";
+const STAGE = location.pathname.match(/battle-(3[bcde])/u)?.[1] ?? "3b";
 
 // ---- i18n ----------------------------------------------------------------
 const MON = {
@@ -63,6 +63,10 @@ if (STAGE === "3c") {
 if (STAGE === "3d") {
   T.title = { ja: "等倍打撃のある有利/不利対面 — ヒスイヌメルゴン vs パルシェン",
               en: "Neutral coverage in a hard-counter matchup — Goodra-Hisui vs Cloyster" };
+}
+if (STAGE === "3e") {
+  T.title = { ja: "等倍打撃のある真・極端な有利/不利対面 — ヌメルゴン vs パルシェン",
+              en: "Neutral coverage in a truly extreme matchup — Goodra vs Cloyster" };
 }
 // URL の ?lang= で言語指定 (ja/en)。未指定・不正はデフォルト英語。
 function langFromUrl() {

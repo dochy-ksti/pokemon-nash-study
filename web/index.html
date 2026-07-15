@@ -123,6 +123,29 @@
         </div>
       </article>
 
+      <article class="study">
+        <span class="k">Stage 3e</span>
+        <h2>Neutral coverage in a truly extreme matchup — Goodra vs Cloyster</h2>
+        <p><b>Goal.</b> Stage 3d added neutral coverage to Stage 3b. Stage 3e applies the same change
+          to Stage 3c, completing a 2×2 grid. That grid isolates a question Stage 3d alone could not
+          answer: did 3d's dramatic collapse in switching come from the neutral attacks themselves, or
+          from the asymmetry that was baked into Stage 3b?</p>
+        <p><b>Setup.</b> Species, stats, and the super-effective move assignment are identical to
+          Stage 3c. Every Pokémon now also carries 80-BP physical Crunch and 80-BP special Dark Pulse.
+          Because the matchup stays perfectly symmetric, the equilibrium must satisfy
+          <i>V(s) + V(mirror of s) = 1</i> — a strict check on the solver that Stage 3d could not
+          provide. It holds to within one quantization step across all 3,380,000 states.</p>
+        <p class="result"><b>Result.</b> The answer is the neutral attacks. Switching fell 54.1% →
+          24.5% and battles shortened 31.3 → 11.1 turns — almost exactly Stage 3d's numbers, with the
+          asymmetry removed. A neat surprise also appeared: an attack that looks strictly worse on
+          every damage roll is still played, because when the foe is nearly fainted, the excess damage
+          of the "better" move is wasted and only the damage carried into the switch-in matters.</p>
+        <div class="row">
+          <a class="play" data-battle="3e" href="./battle-3e.html">▶ Play this battle</a>
+          <a class="src" href="https://github.com/dochy-ksti/pokemon-nash-study">Source code ↗</a>
+        </div>
+      </article>
+
       <footer>
         <a href="https://github.com/dochy-ksti/pokemon-nash-study">GitHub repository</a>
         <span>Built with a Rust battle simulator (WASM) + a pre-computed policy table — no server, no GPU.</span>
@@ -189,6 +212,28 @@
           等倍攻撃を54.7%使用しました。</p>
         <div class="row">
           <a class="play" data-battle="3d" href="./battle-3d.html">▶ この対面で対戦する</a>
+          <a class="src" href="https://github.com/dochy-ksti/pokemon-nash-study">ソースコード ↗</a>
+        </div>
+      </article>
+
+      <article class="study">
+        <span class="k">Stage 3e</span>
+        <h2>等倍打撃のある真・極端な有利対面 — ヌメルゴン vs パルシェン</h2>
+        <p><b>目的。</b>Stage 3dは Stage 3b に等倍打撃を足したものでした。Stage 3eは同じ操作を
+          Stage 3c に施し、2×2の格子を完成させます。これによりStage 3d単独では答えられなかった問いが
+          切り分けられます — 3dで交代が激減したのは、等倍打撃そのもののせいなのか、それとも
+          Stage 3bに元々あった非対称性のせいなのか。</p>
+        <p><b>概要。</b>種族・実数値・弱点技の割当はStage 3cと同一です。各個体がこれに加えて威力80の
+          物理技「かみくだく」と特殊技「あくのはどう」を持ちます。対面が完全対称のままなので、均衡は
+          <i>V(s) + V(sの鏡像) = 1</i> を満たさねばならず、これはStage 3dでは不可能だった厳密な
+          検算になります。実際、全3,380,000状態で量子化1刻み以内に収まりました。</p>
+        <p class="result"><b>結果。</b>答えは「等倍打撃そのもの」でした。交代率は54.1%→24.5%、
+          平均ターン数は31.3→11.1と、非対称性を取り除いてもStage 3dとほぼ同じ数字になりました。
+          面白い驚きもありました。どのダメージ乱数でも劣って見える技が、それでも使われるのです。
+          相手が瀕死寸前のときは「優れた技」の超過ダメージが無駄になり、交代先へ持ち越せる
+          ダメージだけが物を言うからです。</p>
+        <div class="row">
+          <a class="play" data-battle="3e" href="./battle-3e.html">▶ この対面で対戦する</a>
           <a class="src" href="https://github.com/dochy-ksti/pokemon-nash-study">ソースコード ↗</a>
         </div>
       </article>

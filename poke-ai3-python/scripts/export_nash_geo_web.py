@@ -1,6 +1,6 @@
 """幾何打ち切りゲームの厳密 Nash テーブルを web 形式へ書き出す。
 
-policy（3b/3cはP(交代)、3dは4行動完全方策）と value（均衡値 V）を u16 で書き、
+policy（3b/3cはP(交代)、3d/3eは4行動完全方策）と value（均衡値 V）を u16 で書き、
 meta.json を更新する。dense index / radix / sentinel は
 既存 policy_table と同一なので配列はそのまま tofile する。
 
@@ -29,7 +29,7 @@ SENTINEL = 0xFFFF
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--stage", choices=("3b", "3c", "3d"), required=True)
+    parser.add_argument("--stage", choices=("3b", "3c", "3d", "3e"), required=True)
     return parser.parse_args()
 
 
@@ -40,6 +40,7 @@ def main() -> None:
         "3b": ["Cloyster", "Goodra-Hisui"],
         "3c": ["Cloyster", "Goodra"],
         "3d": ["Cloyster", "Goodra-Hisui"],
+        "3e": ["Cloyster", "Goodra"],
     }[stage]
     npz = DATA / f"nash_geo_h26_{stage}.npz"
     if stage == "3b" and not npz.exists():
@@ -48,7 +49,9 @@ def main() -> None:
     policy = np.asarray(d["policy"], dtype=np.uint16)
     value = np.asarray(d["value"], dtype=np.uint16)
     total = 8 * H**4
-    policy_width = 4 if stage == "3d" else 1
+    # 3d/3e は各個体3技なので4行動の完全方策。3b/3c は P(交代) の1値。
+    full = stage in ("3d", "3e")
+    policy_width = 4 if full else 1
     expected_policy_shape = (total * policy_width,)
     assert policy.shape == expected_policy_shape, (policy.shape, expected_policy_shape)
     assert value.shape == (total,)
@@ -66,7 +69,7 @@ def main() -> None:
         "policy_width": policy_width,
         "policy_actions": (
             ["crunch", "darkpulse", "coverage", "switch"]
-            if stage == "3d" else ["switch"]
+            if full else ["switch"]
         ),
         "source": "nash_geo_backward",
         "solver": {
@@ -106,7 +109,7 @@ def main() -> None:
     print(f"valid={int(valid.sum())} exploit mean={float(d['exploit_mean']):.5f} "
           f"max={float(d['exploit_max']):.5f}")
     probs = rows[valid].astype(float) / 1000.0
-    if stage == "3d":
+    if full:
         sums = rows[valid].astype(np.int64).sum(axis=1)
         assert int(sums.min()) >= 999 and int(sums.max()) <= 1001
         print(f"mean policy={probs.mean(axis=0).tolist()}")

@@ -61,12 +61,12 @@ struct GameConfig {
 }
 
 /// SpeciesId index (Cloyster=0, GoodraHisui=1) から SpeciesId へ。
-/// パーティ宣言順インデックス (0=Cloyster, 1=2 体目) から先発種族を引く。3b は 2 体目が
-/// Goodra-Hisui、3c は通常 Goodra。3a も含め idx 0 は常に Cloyster。
+/// パーティ宣言順インデックス (0=Cloyster, 1=2 体目) から先発種族を引く。3b/3d は 2 体目が
+/// Goodra-Hisui、3c/3e は通常 Goodra。3a も含め idx 0 は常に Cloyster。
 fn species_from_index(stage: Stage, idx: usize) -> SpeciesId {
     match idx {
         0 => SpeciesId::Cloyster,
-        _ if stage == Stage::Stage3c => SpeciesId::Goodra,
+        _ if matches!(stage, Stage::Stage3c | Stage::Stage3e) => SpeciesId::Goodra,
         _ => SpeciesId::GoodraHisui,
     }
 }

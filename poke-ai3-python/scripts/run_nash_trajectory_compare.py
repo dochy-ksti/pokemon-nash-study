@@ -1,4 +1,9 @@
-"""Stage 3b/3d の厳密 Nash 方策同士を対戦させ、到達局面上の行動頻度を比較する。"""
+"""2 ステージの厳密 Nash 方策同士を対戦させ、到達局面上の行動頻度を比較する。
+
+既定は Stage 3b vs 3d。`--stages 3c 3e` で対称版の比較に切り替える。方策の形式
+(1技=P(交代) か 3技=4行動完全方策か) は npz の policy 配列長から導出するので、
+ステージ固有の分岐を持たない。
+"""
 
 from __future__ import annotations
 
@@ -20,6 +25,10 @@ ACTION_NAMES = ("Crunch", "Dark Pulse", "coverage", "Switch")
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--stages", nargs=2, metavar=("A", "B"), default=["3b", "3d"],
+        help="比較する2ステージ (既定: 3b 3d)",
+    )
     parser.add_argument("--games-per-config", type=int, default=2_000)
     parser.add_argument("--seed", type=int, default=20260715)
     parser.add_argument("--output", type=Path, required=True)
@@ -51,8 +60,10 @@ def dense_index(team: int, own: dict, opp: dict, species: tuple[int, int], h: in
     return k
 
 
-def sample_action(rng: random.Random, probs: np.ndarray, legal: list[bool], stage: str) -> int:
-    env_slots = (0, 4) if stage == "3b" else (0, 1, 2, 4)
+def sample_action(rng: random.Random, probs: np.ndarray, legal: list[bool], full: bool) -> int:
+    # env の行動 index は習得技スロット相対。技1本なら (技, 交代)、3本なら
+    # (Crunch, Dark Pulse, coverage, 交代) で、交代は常に MAX_MOVE_SLOTS=4。
+    env_slots = (0, 1, 2, 4) if full else (0, 4)
     p = np.asarray(probs, dtype=np.float64).copy()
     for i, slot in enumerate(env_slots):
         if not legal[slot]:
@@ -89,7 +100,9 @@ def run_stage(stage: str, games_per_config: int, seed: int) -> dict:
         path = DATA / "nash_geo_h26.npz"
     data = np.load(path)
     raw_policy = data["policy"]
-    if stage == "3d":
+    # 4行動完全方策か P(交代) 単値かを配列長から導出する (ステージ名に依存しない)。
+    full = raw_policy.size == data["value"].size * 4
+    if full:
         raw4 = raw_policy.reshape(-1, 4)
         valid = raw4[:, 0] != 0xFFFF
         table = raw4.astype(np.float64) / 1000.0
@@ -104,7 +117,7 @@ def run_stage(stage: str, games_per_config: int, seed: int) -> dict:
         "mean_policy": {
             name: float(prob)
             for name, prob in zip(
-                ACTION_NAMES if stage == "3d" else ("coverage", "Switch"),
+                ACTION_NAMES if full else ("coverage", "Switch"),
                 mean_policy,
                 strict=True,
             )
@@ -156,20 +169,16 @@ def run_stage(stage: str, games_per_config: int, seed: int) -> dict:
                         k1 = dense_index(team, o1, o2, species)
                         k2 = dense_index(1 - team, o2, o1, species)
                         p1, p2 = table[k1], table[k2]
-                        a1 = sample_action(rng, p1, o1["legal_action_mask"], stage)
-                        a2 = sample_action(rng, p2, o2["legal_action_mask"], stage)
+                        a1 = sample_action(rng, p1, o1["legal_action_mask"], full)
+                        a2 = sample_action(rng, p2, o2["legal_action_mask"], full)
                         active1 = 0 if o1["my_species_gid"] == species[0] else 1
                         active2 = 0 if o2["my_species_gid"] == species[0] else 1
                         for side_team, own, opp, action, k in (
                             (team, active1, active2, a1, k1),
                             (1 - team, active2, active1, a2, k2),
                         ):
-                            if stage == "3d":
-                                ai = (
-                                    0 if action == 0 else 1 if action == 1
-                                    else 2 if action == 2 else 3
-                                )
-                                name = ACTION_NAMES[ai]
+                            if full:
+                                name = ACTION_NAMES[3 if action == 4 else action]
                             else:
                                 name = "Switch" if action == 4 else "coverage"
                             favorable = (side_team == 0 and own == opp) or (
@@ -223,8 +232,8 @@ def main() -> None:
         "games_per_config": args.games_per_config,
         "seed": args.seed,
         "stages": [
-            run_stage("3b", args.games_per_config, args.seed),
-            run_stage("3d", args.games_per_config, args.seed + 1),
+            run_stage(stage, args.games_per_config, args.seed + i)
+            for i, stage in enumerate(args.stages)
         ],
     }
     args.output.parent.mkdir(parents=True, exist_ok=True)
