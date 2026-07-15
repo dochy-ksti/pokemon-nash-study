@@ -63,6 +63,16 @@ const STAGE3C_TEAM2: &str = include_str!(concat!(
     env!("CARGO_MANIFEST_DIR"),
     "/../team/poke-ai3/scenario/stage3c_team2.txt"
 ));
+/// Stage 3d — Stage 3b に等倍の物理/特殊打撃を追加した比較実験。
+/// 種族・実数値・弱点技の割当は 3b と同一で、全個体が Crunch / Dark Pulse も持つ。
+const STAGE3D_TEAM1: &str = include_str!(concat!(
+    env!("CARGO_MANIFEST_DIR"),
+    "/../team/poke-ai3/scenario/stage3d_team1.txt"
+));
+const STAGE3D_TEAM2: &str = include_str!(concat!(
+    env!("CARGO_MANIFEST_DIR"),
+    "/../team/poke-ai3/scenario/stage3d_team2.txt"
+));
 
 /// シナリオの難易度ステージ識別子。タイプ相性 1v1 (Stage3a) と交代 (Stage3b)。
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Deserialize, Serialize)]
@@ -74,6 +84,8 @@ pub enum Stage {
     /// 対称対面の交代学習。両側 {Cloyster, 通常 Goodra} の 2 体・各 1 技 (FightSpe60/
     /// FairyPhy60)。3b の非対称性を除去し、ナッシュ均衡の変化を観察する。先発はランダム。
     Stage3c,
+    /// 3b の各個体に Crunch / Dark Pulse を加え、弱点でない打撃を選べるようにする。
+    Stage3d,
 }
 
 impl Stage {
@@ -83,12 +95,13 @@ impl Stage {
             Stage::Stage3a => "3a",
             Stage::Stage3b => "3b",
             Stage::Stage3c => "3c",
+            Stage::Stage3d => "3d",
         }
     }
 
     /// 交代を伴う (複数体パーティの) ステージか。
     pub fn is_party(self) -> bool {
-        matches!(self, Stage::Stage3b | Stage::Stage3c)
+        matches!(self, Stage::Stage3b | Stage::Stage3c | Stage::Stage3d)
     }
 
     /// 短い名前からパースする (大文字小文字を無視)。
@@ -97,6 +110,7 @@ impl Stage {
             "3a" => Some(Stage::Stage3a),
             "3b" => Some(Stage::Stage3b),
             "3c" => Some(Stage::Stage3c),
+            "3d" => Some(Stage::Stage3d),
             _ => None,
         }
     }
@@ -130,8 +144,8 @@ impl SpeciesId {
             (Stage::Stage3a, SpeciesId::Cloyster) => STAGE3A_CLOYSTER_TEAM,
             (Stage::Stage3a, SpeciesId::GoodraHisui) => STAGE3A_GOODRA_TEAM,
             (Stage::Stage3a, SpeciesId::Goodra) => STAGE3A_GOODRA_PLAIN_TEAM,
-            (Stage::Stage3b | Stage::Stage3c, _) => {
-                panic!("party scenario (3b/3c); use TeamId::team_text / new_with_teams")
+            (Stage::Stage3b | Stage::Stage3c | Stage::Stage3d, _) => {
+                panic!("party scenario (3b/3c/3d); use TeamId::team_text / new_with_teams")
             }
         }
     }
@@ -173,6 +187,8 @@ impl TeamId {
             (Stage::Stage3b, TeamId::Team2) => STAGE3B_TEAM2,
             (Stage::Stage3c, TeamId::Team1) => STAGE3C_TEAM1,
             (Stage::Stage3c, TeamId::Team2) => STAGE3C_TEAM2,
+            (Stage::Stage3d, TeamId::Team1) => STAGE3D_TEAM1,
+            (Stage::Stage3d, TeamId::Team2) => STAGE3D_TEAM2,
             (Stage::Stage3a, _) => {
                 panic!("Stage3a is not a party scenario; use SpeciesId::team_text")
             }
@@ -314,7 +330,7 @@ fn build_single_party(stage: Stage, lead: SpeciesId) -> Party {
     Party::single(PokemonState::from_resolved(lead, &resolved))
 }
 
-/// パーティステージ (3b/3c) の 2 体パーティを `team` の技構成で構築し、`active` を場に
+/// パーティステージ (3b/3c/3d) の 2 体パーティを `team` の技構成で構築し、`active` を場に
 /// 出す。メンバーは **team ファイルの宣言順**に配置する (`active`/lead も宣言順 index)。
 /// 旧実装は `slots[sid.index()]` で species index 順に置いていたが、通常 Goodra は
 /// SpeciesId=2 で MAX_PARTY=2 を超え overflow するため宣言順配置に変更した。3b は
@@ -471,6 +487,24 @@ mod tests {
     }
 
     #[test]
+    fn stage3d_keeps_stage3b_members_and_adds_two_neutral_moves() {
+        let t1 = BattleState::new_with_teams(Stage::Stage3d, (TeamId::Team1, 0), (TeamId::Team1, 1));
+        let cloy = t1.pokemon(Player::P1);
+        let goodra = t1.pokemon(Player::P2);
+        assert_eq!((cloy.name, goodra.name), ("Cloyster", "Goodra-Hisui"));
+        assert!(cloy.moves[MoveId::ShockWave.index()]);
+        assert!(goodra.moves[MoveId::Bulldoze.index()]);
+        for mon in [cloy, goodra] {
+            assert!(mon.moves[MoveId::Crunch.index()]);
+            assert!(mon.moves[MoveId::DarkPulse.index()]);
+            assert_eq!(mon.moves.iter().filter(|m| **m).count(), 3);
+        }
+        let t2 = BattleState::new_with_teams(Stage::Stage3d, (TeamId::Team2, 0), (TeamId::Team2, 1));
+        assert!(t2.pokemon(Player::P1).moves[MoveId::Bulldoze.index()]);
+        assert!(t2.pokemon(Player::P2).moves[MoveId::ShockWave.index()]);
+    }
+
+    #[test]
     fn stage_short_name_round_trips() {
         assert_eq!(Stage::Stage3a.short_name(), "3a");
         assert_eq!(Stage::Stage3b.short_name(), "3b");
@@ -478,6 +512,8 @@ mod tests {
         assert_eq!(Stage::from_short_name("3b"), Some(Stage::Stage3b));
         assert_eq!(Stage::Stage3c.short_name(), "3c");
         assert_eq!(Stage::from_short_name("3C"), Some(Stage::Stage3c));
+        assert_eq!(Stage::Stage3d.short_name(), "3d");
+        assert_eq!(Stage::from_short_name("3D"), Some(Stage::Stage3d));
         assert_eq!(Stage::from_short_name("2a"), None);
     }
 

@@ -13,7 +13,7 @@ use poke_env_rust::observation::{
     BattleState, Choice, Player, Stage, TeamId, action_to_choice, observation_for,
 };
 use poke_sho_rust::battle::{apply_forced_switches, apply_turn};
-use poke_sho_rust::battle_rng::MaxRoll;
+use poke_sho_rust::battle_rng::{BattleRng, MaxRoll, crit_denominator};
 use pyo3::exceptions::PyValueError;
 use pyo3::prelude::*;
 
@@ -42,12 +42,12 @@ fn parse_stage(name: &str) -> PyResult<Stage> {
         .filter(|s| s.is_party())
         .ok_or_else(|| {
             PyValueError::new_err(format!(
-                "stage must be a party stage ('3b' or '3c'), got '{name}'"
+                "stage must be a party stage ('3b', '3c', or '3d'), got '{name}'"
             ))
         })
 }
 
-/// 強制交代待ちの側について、唯一の合法交代手を返す (3b/3c は控え 1 体なので一択)。
+/// 強制交代待ちの側について、唯一の合法交代手を返す (party stage は控え 1 体なので一択)。
 fn forced_choice(state: &BattleState, player: Player) -> Option<Choice> {
     if state.needs_forced_switch(player) {
         state.legal_choices(player).first().copied()
@@ -64,6 +64,26 @@ fn winner_num(state: &BattleState) -> Option<u8> {
 #[pyclass(name = "HumanGame")]
 pub struct PyHumanGame {
     state: BattleState,
+    rng_state: u64,
+}
+
+struct SeededBattleRng<'a>(&'a mut u64);
+
+impl SeededBattleRng<'_> {
+    fn next(&mut self) -> u64 {
+        *self.0 = self.0.wrapping_add(0x9E3779B97F4A7C15);
+        let mut z = *self.0;
+        z = (z ^ (z >> 30)).wrapping_mul(0xBF58476D1CE4E5B9);
+        z = (z ^ (z >> 27)).wrapping_mul(0x94D049BB133111EB);
+        z ^ (z >> 31)
+    }
+}
+
+impl BattleRng for SeededBattleRng<'_> {
+    fn damage_roll(&mut self) -> u8 { 85 + (self.next() % 16) as u8 }
+    fn is_crit(&mut self, stage: u8) -> bool {
+        self.next().is_multiple_of(crit_denominator(stage) as u64)
+    }
 }
 
 #[pymethods]
@@ -72,8 +92,15 @@ impl PyHumanGame {
     /// AI (P2) は必ず逆チーム。`human_lead`/`ai_lead` は先発の**宣言順**種族 index
     /// (Cloyster=0, Goodra=1)。`stage` は "3b" または "3c" (デフォルト "3b")。
     #[new]
-    #[pyo3(signature = (human_team, human_lead, ai_lead, stage = "3b"))]
-    fn new(human_team: &str, human_lead: usize, ai_lead: usize, stage: &str) -> PyResult<Self> {
+    #[pyo3(signature = (human_team, human_lead, ai_lead, stage = "3b", seed = 1, max_turns = 100))]
+    fn new(
+        human_team: &str,
+        human_lead: usize,
+        ai_lead: usize,
+        stage: &str,
+        seed: u64,
+        max_turns: u32,
+    ) -> PyResult<Self> {
         let stage = parse_stage(stage)?;
         let human = parse_team(human_team)?;
         let ai = match human {
@@ -85,8 +112,9 @@ impl PyHumanGame {
                 "lead index must be 0 (Cloyster) or 1 (Goodra)",
             ));
         }
-        let state = BattleState::new_with_teams(stage, (human, human_lead), (ai, ai_lead));
-        Ok(Self { state })
+        let state = BattleState::new_with_teams(stage, (human, human_lead), (ai, ai_lead))
+            .with_max_turns(max_turns);
+        Ok(Self { state, rng_state: seed })
     }
 
     /// 指定 player 視点の観測 (`StateForPlayer`) を JSON で返す。
@@ -145,6 +173,41 @@ impl PyHumanGame {
         }
         self.state = state;
 
+        let out = serde_json::json!({
+            "events": events,
+            "done": self.state.is_done(),
+            "winner": winner_num(&self.state),
+            "draw": self.state.is_draw(),
+            "first": if human_first { 1 } else { 2 },
+        });
+        serde_json::to_string(&out).map_err(|e| PyValueError::new_err(e.to_string()))
+    }
+
+    /// seed付きの16段階ダメージ乱数・通常急所で1ターン進める。実験専用。
+    fn step_random(
+        &mut self,
+        human_action: usize,
+        ai_action: usize,
+        human_first: bool,
+    ) -> PyResult<String> {
+        if self.state.is_done() {
+            return Err(PyValueError::new_err("game is already over"));
+        }
+        let c1 = action_to_choice(self.state.party(Player::P1), human_action);
+        let c2 = action_to_choice(self.state.party(Player::P2), ai_action);
+        let first = if human_first { Player::P1 } else { Player::P2 };
+        let mut rng = SeededBattleRng(&mut self.rng_state);
+        let res = apply_turn(self.state, c1, c2, first, &mut rng);
+        let mut events = res.events;
+        let mut state = res.state;
+        if state.any_forced_switch() {
+            let fc1 = forced_choice(&state, Player::P1);
+            let fc2 = forced_choice(&state, Player::P2);
+            let forced = apply_forced_switches(state, fc1, fc2);
+            events.extend(forced.events);
+            state = forced.state;
+        }
+        self.state = state;
         let out = serde_json::json!({
             "events": events,
             "done": self.state.is_done(),

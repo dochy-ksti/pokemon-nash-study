@@ -6,7 +6,7 @@
 //! 継続は `γ·V(s') + (1-γ)·tiebreak(s')` (幾何打ち切りゲーム。γ=1 で素の undiscounted)。
 
 use poke_sho_rust::battle::{Choice, Player};
-use poke_sho_rust::scenario::Stage;
+use poke_sho_rust::scenario::{MoveId, Stage};
 use pyo3::exceptions::PyValueError;
 use pyo3::prelude::*;
 use rayon::prelude::*;
@@ -17,6 +17,17 @@ use crate::nash_vi_trans::{TransCfg, transition};
 
 const SENTINEL: u16 = 0xFFFF;
 const SCALE: f32 = 1000.0;
+/// 3d の完全方策スロット: Crunch / Dark Pulse / 現個体の弱点技 / Switch。
+pub const FULL_ACTIONS: usize = 4;
+
+fn action_code(choice: Choice) -> usize {
+    match choice {
+        Choice::Move(MoveId::Crunch) => 0,
+        Choice::Move(MoveId::DarkPulse) => 1,
+        Choice::Move(_) => 2,
+        Choice::Switch(_) => 3,
+    }
+}
 
 /// 全 valid 状態の遷移分布を平坦格納したキャッシュ。
 pub struct TransCache {
@@ -28,6 +39,8 @@ pub struct TransCache {
     pub row_sw: Vec<bool>,      // 平坦: 各 vi の行が交代か (len = Σ nrows)
     pub row_off: Vec<usize>,    // vi -> row_sw への offset (len valid+1)
     pub col_sw: Vec<bool>,      // 平坦: 各 vi の列が交代か (len = Σ ncols)
+    pub row_action: Vec<u8>,    // 平坦: FULL_ACTIONS の意味スロット
+    pub col_action: Vec<u8>,
     pub col_off: Vec<usize>,    // vi -> col_sw への offset
     pub cell_base: Vec<usize>,  // vi -> 最初のセル番号 (セル(vi,i,j)=cell_base[vi]+i*ncols+j)
     pub cell_off: Vec<usize>,   // セル番号 -> entries offset (len ncells+1)
@@ -45,6 +58,8 @@ struct CellBuild {
 struct StateBuild {
     row_sw: Vec<bool>,
     col_sw: Vec<bool>,
+    row_action: Vec<u8>,
+    col_action: Vec<u8>,
     cells: Vec<CellBuild>, // nrows*ncols, row-major
 }
 
@@ -67,6 +82,8 @@ impl TransCache {
                 let a2 = legal(&st, Player::P2);
                 let row_sw = a1.iter().map(|c| matches!(c, Choice::Switch(_))).collect();
                 let col_sw = a2.iter().map(|c| matches!(c, Choice::Switch(_))).collect();
+                let row_action = a1.iter().map(|&c| action_code(c) as u8).collect();
+                let col_action = a2.iter().map(|&c| action_code(c) as u8).collect();
                 let mut cells = Vec::with_capacity(a1.len() * a2.len());
                 for &c1 in &a1 {
                     for &c2 in &a2 {
@@ -82,7 +99,7 @@ impl TransCache {
                         cells.push(CellBuild { idx, term });
                     }
                 }
-                StateBuild { row_sw, col_sw, cells }
+                StateBuild { row_sw, col_sw, row_action, col_action, cells }
             })
             .collect();
 
@@ -93,6 +110,8 @@ impl TransCache {
         let mut row_sw = Vec::new();
         let mut row_off = Vec::with_capacity(n + 1);
         let mut col_sw = Vec::new();
+        let mut row_action = Vec::new();
+        let mut col_action = Vec::new();
         let mut col_off = Vec::with_capacity(n + 1);
         let mut cell_base = Vec::with_capacity(n + 1);
         let mut cell_off = vec![0usize];
@@ -107,6 +126,8 @@ impl TransCache {
             ncols.push(b.col_sw.len() as u8);
             row_sw.extend_from_slice(&b.row_sw);
             col_sw.extend_from_slice(&b.col_sw);
+            row_action.extend_from_slice(&b.row_action);
+            col_action.extend_from_slice(&b.col_action);
             for c in &b.cells {
                 for &(k2, w) in &c.idx {
                     ek.push(k2);
@@ -130,6 +151,7 @@ impl TransCache {
         }
         TransCache {
             h, total, valid, nrows, ncols, row_sw, row_off, col_sw, col_off,
+            row_action, col_action,
             cell_base, cell_off, ek, ew, term, tb,
         }
     }
@@ -154,6 +176,92 @@ impl TransCache {
             .map(|i| (0..nc).map(|j| self.cell_value(base + i * nc + j, v, discount)).collect())
             .collect()
     }
+}
+
+fn strat_full(codes: &[u8], policy: &[f32], k: usize) -> Vec<f32> {
+    codes.iter().map(|&code| policy[k * FULL_ACTIONS + code as usize]).collect()
+}
+
+fn solve_state_full(
+    c: &TransCache,
+    vi: usize,
+    v: &[f32],
+    discount: f32,
+) -> (f32, [f32; FULL_ACTIONS]) {
+    let m = c.matrix(vi, v, discount);
+    let (val, strat) = solve_zero_sum(&m);
+    let mut full = [0.0; FULL_ACTIONS];
+    let off = c.row_off[vi];
+    for (i, &p) in strat.iter().enumerate() {
+        full[c.row_action[off + i] as usize] += p;
+    }
+    (val, full)
+}
+
+fn run_vi_full(
+    c: &TransCache,
+    discount: f32,
+    horizon: u32,
+    tol: f32,
+    verbose: bool,
+) -> (Vec<f32>, Vec<f32>) {
+    let mut v = c.tb.clone();
+    for layer in 1..=horizon {
+        let nv: Vec<f32> = c.valid.par_iter().enumerate()
+            .map(|(vi, _)| solve_state_full(c, vi, &v, discount).0).collect();
+        let mut delta = 0.0f32;
+        for (vi, &k) in c.valid.iter().enumerate() {
+            delta = delta.max((nv[vi] - v[k as usize]).abs());
+            v[k as usize] = nv[vi];
+        }
+        if verbose && (layer % 20 == 0 || delta < tol) {
+            println!("[cache-full-vi] layer {layer}/{horizon}: max|ΔV|={delta:.2e}");
+        }
+        if delta < tol { break; }
+    }
+    let mut policy = vec![0.0f32; c.total * FULL_ACTIONS];
+    let solved: Vec<[f32; FULL_ACTIONS]> = c.valid.par_iter().enumerate()
+        .map(|(vi, _)| solve_state_full(c, vi, &v, discount).1).collect();
+    for (vi, &k) in c.valid.iter().enumerate() {
+        policy[k as usize * FULL_ACTIONS..(k as usize + 1) * FULL_ACTIONS]
+            .copy_from_slice(&solved[vi]);
+    }
+    (v, policy)
+}
+
+fn eval_fixed_full(
+    c: &TransCache,
+    policy: &[f32],
+    discount: f32,
+    tol: f32,
+    iters: u32,
+    br: bool,
+) -> Vec<f32> {
+    let mut v = c.tb.clone();
+    for _ in 0..iters {
+        let nv: Vec<f32> = c.valid.par_iter().enumerate().map(|(vi, &k)| {
+            let m = c.matrix(vi, &v, discount);
+            let d = Dims::decompose(k, c.h);
+            let mirror = d.swap().compose(c.h) as usize;
+            let co = c.col_off[vi];
+            let s2 = strat_full(&c.col_action[co..c.col_off[vi + 1]], policy, mirror);
+            let rowval = |row: &[f32]| row.iter().zip(&s2).map(|(x, p)| x * p).sum::<f32>();
+            if br {
+                m.iter().map(|row| rowval(row)).fold(f32::NEG_INFINITY, f32::max)
+            } else {
+                let ro = c.row_off[vi];
+                let s1 = strat_full(&c.row_action[ro..c.row_off[vi + 1]], policy, k as usize);
+                m.iter().zip(&s1).map(|(row, p)| rowval(row) * p).sum()
+            }
+        }).collect();
+        let mut delta = 0.0f32;
+        for (vi, &k) in c.valid.iter().enumerate() {
+            delta = delta.max((nv[vi] - v[k as usize]).abs());
+            v[k as usize] = nv[vi];
+        }
+        if delta < tol { break; }
+    }
+    v
 }
 
 /// 交代マスクと P(交代) から着手分布 (技均等・交代質量を交代手に等分)。
@@ -360,4 +468,58 @@ pub fn solve_nash_cached(
         br[ki] = (v_br[ki] * SCALE).round().clamp(0.0, SCALE) as u16;
     }
     Ok((policy, value, br, em, ex))
+}
+
+/// 多技 party stage 用。方策は状態ごとに
+/// [Crunch, Dark Pulse, 弱点技, Switch] の4要素を持つ平坦配列。
+#[pyfunction]
+#[pyo3(signature = (stage, hp_buckets, crit=true, randomize=true, horizon=3000,
+                    discount=0.99, vi_tol=5e-6, eval_tol=1e-6, eval_iters=3000,
+                    verbose=true))]
+#[allow(clippy::too_many_arguments)]
+pub fn solve_nash_cached_full(
+    stage: &str,
+    hp_buckets: u64,
+    crit: bool,
+    randomize: bool,
+    horizon: u32,
+    discount: f32,
+    vi_tol: f32,
+    eval_tol: f32,
+    eval_iters: u32,
+    verbose: bool,
+) -> PyResult<(Vec<u16>, Vec<u16>, Vec<u16>, f32, f32)> {
+    let stage = Stage::from_short_name(stage)
+        .ok_or_else(|| PyValueError::new_err("unknown stage"))?;
+    if !stage.is_party() {
+        return Err(PyValueError::new_err("needs a party stage"));
+    }
+    let cfg = TransCfg { h: hp_buckets, crit, randomize };
+    let c = TransCache::build(stage, hp_buckets, &cfg, verbose);
+    let (_v, policy) = run_vi_full(&c, discount, horizon, vi_tol, verbose);
+    let v_true = eval_fixed_full(&c, &policy, discount, eval_tol, eval_iters, false);
+    let v_br = eval_fixed_full(&c, &policy, discount, eval_tol, eval_iters, true);
+    let (mut em, mut ex) = (0.0f32, 0.0f32);
+    for &k in &c.valid {
+        let gap = (v_br[k as usize] - v_true[k as usize]).max(0.0);
+        em += gap;
+        ex = ex.max(gap);
+    }
+    em /= c.valid.len() as f32;
+    if verbose {
+        println!("[cache-full] exploitability mean={em:.5} max={ex:.5}");
+    }
+    let mut out_policy = vec![SENTINEL; c.total * FULL_ACTIONS];
+    let mut value = vec![SENTINEL; c.total];
+    let mut br_value = vec![SENTINEL; c.total];
+    for &k in &c.valid {
+        let ki = k as usize;
+        for a in 0..FULL_ACTIONS {
+            out_policy[ki * FULL_ACTIONS + a] =
+                (policy[ki * FULL_ACTIONS + a] * SCALE).round().clamp(0.0, SCALE) as u16;
+        }
+        value[ki] = (v_true[ki] * SCALE).round().clamp(0.0, SCALE) as u16;
+        br_value[ki] = (v_br[ki] * SCALE).round().clamp(0.0, SCALE) as u16;
+    }
+    Ok((out_policy, value, br_value, em, ex))
 }

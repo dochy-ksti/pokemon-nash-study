@@ -1,6 +1,6 @@
 //! 静的Web対戦アプリ用ポリシーテーブルの状態列挙器。
 //!
-//! 3b/3c は「両サイド2体(Cloyster/Goodra)の各HP + どちらがアクティブ + チーム構成」だけで
+//! party stage は「両サイド2体(Cloyster/Goodra)の各HP + どちらがアクティブ + チーム構成」だけで
 //! 状態が決まる。HP を `hp_buckets` 段に離散化し、正準列挙順(= 密 index)で全状態を回して
 //! AI(=P1 視点)の観測 `StateForPlayer` を作る。Python ドライバがこれを infer して
 //! P(交代) を密配列へ焼く。runtime(JS)は同じ index 式でテーブルを引く。
@@ -44,7 +44,7 @@ pub fn enumerate_policy_batch<'py>(
     let stage = Stage::from_short_name(stage_str)
         .ok_or_else(|| PyValueError::new_err(format!("unknown stage '{stage_str}'")))?;
     if !stage.is_party() {
-        return Err(PyValueError::new_err("policy table needs a party stage (3b/3c)"));
+        return Err(PyValueError::new_err("policy table needs a party stage"));
     }
     let h = hp_buckets;
     let total = 8 * h * h * h * h;

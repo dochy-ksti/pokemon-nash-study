@@ -47,7 +47,7 @@ pub(crate) fn solve_zero_sum(m: &[Vec<f32>]) -> (f32, Vec<f32>) {
     // 退化(denom≈0)を安全に扱うため、gap がしきい値未満なら純戦略とみなす (誤差 < gap で
     // nonexpansive)。gap がしきい値以上のときだけ 2×2 混合式 (denom は 0 から十分離れる) や
     // FP を使う。これで VI 作用素が確実に γ-縮小になる。
-    const SADDLE_EPS: f32 = 1e-4;
+    const SADDLE_EPS: f32 = 1e-7;
     let row_min: Vec<f32> = m.iter()
         .map(|r| r.iter().cloned().fold(f32::INFINITY, f32::min))
         .collect();
@@ -84,12 +84,85 @@ pub(crate) fn solve_zero_sum(m: &[Vec<f32>]) -> (f32, Vec<f32>) {
         let val = (a * d - b * c) / denom;
         return (val, vec![p, 1.0 - p]);
     }
-    fictitious_play(m, rows, cols)
+    support_enumeration(m, rows, cols).unwrap_or_else(|| fictitious_play(m, rows, cols))
+}
+
+/// 4×4 以下を主対象にした support enumeration。支持集合上で無差別条件を解き、
+/// 支持外を含む minmax 不等式を満たす候補だけを採用する。
+fn support_enumeration(m: &[Vec<f32>], rows: usize, cols: usize) -> Option<(f32, Vec<f32>)> {
+    let max_k = rows.min(cols);
+    for k in 2..=max_k {
+        for rm in 1usize..(1usize << rows) {
+            if rm.count_ones() as usize != k { continue; }
+            let ri: Vec<usize> = (0..rows).filter(|i| rm & (1 << i) != 0).collect();
+            for cm in 1usize..(1usize << cols) {
+                if cm.count_ones() as usize != k { continue; }
+                let cj: Vec<usize> = (0..cols).filter(|j| cm & (1 << j) != 0).collect();
+                // M[I,J]^T p = v1, sum(p)=1。
+                let mut ap = vec![vec![0.0f64; k + 2]; k + 1];
+                for (eq, &j) in cj.iter().enumerate() {
+                    for (x, &i) in ri.iter().enumerate() { ap[eq][x] = m[i][j] as f64; }
+                    ap[eq][k] = -1.0;
+                }
+                for x in 0..k { ap[k][x] = 1.0; }
+                ap[k][k + 1] = 1.0;
+                let Some(xp) = solve_linear(ap) else { continue };
+                // M[I,J] q = v1, sum(q)=1。
+                let mut aq = vec![vec![0.0f64; k + 2]; k + 1];
+                for (eq, &i) in ri.iter().enumerate() {
+                    for (x, &j) in cj.iter().enumerate() { aq[eq][x] = m[i][j] as f64; }
+                    aq[eq][k] = -1.0;
+                }
+                for x in 0..k { aq[k][x] = 1.0; }
+                aq[k][k + 1] = 1.0;
+                let Some(xq) = solve_linear(aq) else { continue };
+                let (vp, vq) = (xp[k], xq[k]);
+                const EPS: f64 = 2e-6;
+                if xp[..k].iter().any(|&x| x < -EPS)
+                    || xq[..k].iter().any(|&x| x < -EPS)
+                    || (vp - vq).abs() > EPS
+                { continue; }
+                let row_pay = |i: usize| -> f64 {
+                    cj.iter().enumerate().map(|(x, &j)| m[i][j] as f64 * xq[x]).sum()
+                };
+                let col_pay = |j: usize| -> f64 {
+                    ri.iter().enumerate().map(|(x, &i)| xp[x] * m[i][j] as f64).sum()
+                };
+                if (0..rows).any(|i| row_pay(i) > vp + EPS)
+                    || (0..cols).any(|j| col_pay(j) < vp - EPS)
+                { continue; }
+                let mut strat = vec![0.0f32; rows];
+                for (x, &i) in ri.iter().enumerate() { strat[i] = xp[x].max(0.0) as f32; }
+                let sum: f32 = strat.iter().sum();
+                if sum <= 0.0 { continue; }
+                for p in &mut strat { *p /= sum; }
+                return Some((vp as f32, strat));
+            }
+        }
+    }
+    None
+}
+
+fn solve_linear(mut a: Vec<Vec<f64>>) -> Option<Vec<f64>> {
+    let n = a.len();
+    for col in 0..n {
+        let pivot = (col..n).max_by(|&x, &y| a[x][col].abs().total_cmp(&a[y][col].abs()))?;
+        if a[pivot][col].abs() < 1e-10 { return None; }
+        a.swap(col, pivot);
+        let div = a[col][col];
+        for j in col..=n { a[col][j] /= div; }
+        for i in 0..n {
+            if i == col { continue; }
+            let f = a[i][col];
+            for j in col..=n { a[i][j] -= f * a[col][j]; }
+        }
+    }
+    Some((0..n).map(|i| a[i][n]).collect())
 }
 
 /// 一般ゼロ和の fictitious play (3c 以降の >2 行動用フォールバック)。
 fn fictitious_play(m: &[Vec<f32>], rows: usize, cols: usize) -> (f32, Vec<f32>) {
-    let iters = 5000;
+    let iters = 1000;
     let mut row_cnt = vec![0.0f32; rows];
     let mut col_cnt = vec![0.0f32; cols];
     let mut col_hist = vec![0.0f32; cols];
@@ -366,5 +439,26 @@ mod tests {
         let (v, s) = solve_zero_sum(&m);
         assert!((v - 0.6).abs() < 1e-6);
         assert!((s[1] - 1.0).abs() < 1e-6);
+    }
+
+    #[test]
+    fn zero_sum_3x3_full_support() {
+        let m = vec![vec![0.5, 1.0, 0.0], vec![0.0, 0.5, 1.0], vec![1.0, 0.0, 0.5]];
+        let (v, s) = solve_zero_sum(&m);
+        assert!((v - 0.5).abs() < 1e-4);
+        for p in s { assert!((p - 1.0 / 3.0).abs() < 1e-4); }
+    }
+
+    #[test]
+    fn zero_sum_4x4_can_ignore_dominated_action() {
+        let m = vec![
+            vec![1.0, 0.0, 1.0, 0.0],
+            vec![0.0, 1.0, 0.0, 1.0],
+            vec![0.2, 0.2, 0.2, 0.2],
+            vec![0.1, 0.1, 0.1, 0.1],
+        ];
+        let (v, s) = solve_zero_sum(&m);
+        assert!((v - 0.5).abs() < 1e-4);
+        assert!((s[0] - 0.5).abs() < 1e-4 && (s[1] - 0.5).abs() < 1e-4);
     }
 }
