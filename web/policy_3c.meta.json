@@ -5,7 +5,16 @@
   "value_scale": 1000,
   "sentinel": 65535,
   "max_move_slots": 4,
-  "checkpoint": "c3W50_ep445",
+  "source": "nash_geo_backward",
+  "solver": {
+    "method": "geometric-cutoff stationary Nash (Shapley) via cached backward VI",
+    "discount": 0.99,
+    "hp_buckets": 26,
+    "tiebreak": "alive-count then summed HP-fraction",
+    "exploit_mean": 1.2569270438689273e-05,
+    "exploit_max": 0.008860588073730469,
+    "note": "deployed WITHOUT cutoff rule; table is exact Nash of the geometric-cutoff game (in-game BR gap ~0). value column = equilibrium win-prob V of the geometric game."
+  },
   "cross_team_only": true,
   "radix": [
     {

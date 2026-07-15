@@ -6,11 +6,13 @@ solve_nash_backward(discount=0.99) は幾何打ち切りゲームの定常 Shapl
 
 使い方:
     cd poke-ai3-python
-    setsid nohup uv run python scripts/run_nash_geo_h26.py > /tmp/psro/nash_geo_h26.log 2>&1 &
+    setsid nohup uv run python scripts/run_nash_geo_h26.py --stage 3c \
+      > /tmp/psro/nash_geo_h26_3c.log 2>&1 &
 """
 
 from __future__ import annotations
 
+import argparse
 import time
 from pathlib import Path
 
@@ -34,21 +36,30 @@ def idx(t: int, aa: int, ac: int, ag: int, oa: int, oc: int, og: int) -> int:
     return k
 
 
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--stage", choices=("3b", "3c"), required=True)
+    return parser.parse_args()
+
+
 def main() -> None:
+    args = parse_args()
+    stage = args.stage
+    output = OUT / f"nash_geo_h26_{stage}.npz"
     t0 = time.time()
-    print(f"[h26] start H={H} discount=0.99 (cached)", flush=True)
+    print(f"[h26:{stage}] start H={H} discount=0.99 (cached)", flush=True)
     pol, val, br, em, ex = solve_nash_cached(
-        "3b", H, True, True, 3000, 0.99, 1e-6, 3000, True
+        stage, H, True, True, 3000, 0.99, 1e-6, 3000, True
     )
     pol = np.array(pol, dtype=np.uint16)
     val = np.array(val, dtype=np.uint16)
     br = np.array(br, dtype=np.uint16)
     np.savez_compressed(
-        OUT / "nash_geo_h26.npz",
+        output,
         policy=pol, value=val, br=br,
         exploit_mean=em, exploit_max=ex, hp_buckets=H, discount=0.99,
     )
-    print(f"[h26] saved -> {OUT / 'nash_geo_h26.npz'}", flush=True)
+    print(f"[h26:{stage}] saved -> {output}", flush=True)
     print(f"[h26] exploit mean={em:.5f} max={ex:.5f}", flush=True)
     s0 = idx(0, 0, H - 1, H - 1, 0, H - 1, H - 1)
     s1 = idx(1, 0, H - 1, H - 1, 0, H - 1, H - 1)
