@@ -243,7 +243,7 @@ fn eval_fixed(c: &TransCache, ps: &[f32], discount: f32, tol: f32, iters: u32, b
 /// これで「時計を見られないテーブル」が実ゲームで本当に付け入られるかを正確に測る。
 #[pyfunction]
 #[pyo3(signature = (stage, hp_buckets, table_ps, crit=true, randomize=true,
-                    draw_value=0.5, horizon=100, verbose=true))]
+                    draw_value=0.5, horizon=100, seed_tiebreak=false, verbose=true))]
 #[allow(clippy::too_many_arguments)]
 pub fn best_response_vs_table(
     stage: &str,
@@ -253,6 +253,7 @@ pub fn best_response_vs_table(
     randomize: bool,
     draw_value: f32,
     horizon: u32,
+    seed_tiebreak: bool,
     verbose: bool,
 ) -> PyResult<(Vec<u16>, Vec<u16>)> {
     let stage = Stage::from_short_name(stage)
@@ -263,9 +264,12 @@ pub fn best_response_vs_table(
     if ps.len() != c.total {
         return Err(PyValueError::new_err("table_ps length != total"));
     }
-    // 種 = 引き分け値 (100手到達時は勝敗なし)。P1 は最大化、P2 は固定 σ、割引なし。
+    // 100手到達時の種: seed_tiebreak なら残HPタイブレーク、そうでなければ draw_value(引き分け)。
+    // P1 は最大化、P2 は固定 σ、割引なし。
     let mut v = vec![0.0f32; c.total];
-    for &k in &c.valid { v[k as usize] = draw_value; }
+    for &k in &c.valid {
+        v[k as usize] = if seed_tiebreak { c.tb[k as usize] } else { draw_value };
+    }
     let mut br_row_switch = vec![0.0f32; c.total];
     for layer in 1..=horizon {
         let res: Vec<(f32, f32)> = c.valid.par_iter().enumerate()
