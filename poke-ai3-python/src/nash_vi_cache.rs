@@ -238,6 +238,78 @@ fn eval_fixed(c: &TransCache, ps: &[f32], discount: f32, tol: f32, iters: u32, b
     v
 }
 
+/// 配信実物ゲーム (打ち切り無し=100手で引き分け) で、固定テーブル σ に対する P1 best-response を
+/// 有限ホライズン (draw_value 種) で解く。P2 は table_ps を指す。返り (BR価値, BRの交代確率)*1000。
+/// これで「時計を見られないテーブル」が実ゲームで本当に付け入られるかを正確に測る。
+#[pyfunction]
+#[pyo3(signature = (stage, hp_buckets, table_ps, crit=true, randomize=true,
+                    draw_value=0.5, horizon=100, verbose=true))]
+#[allow(clippy::too_many_arguments)]
+pub fn best_response_vs_table(
+    stage: &str,
+    hp_buckets: u64,
+    table_ps: Vec<u16>,
+    crit: bool,
+    randomize: bool,
+    draw_value: f32,
+    horizon: u32,
+    verbose: bool,
+) -> PyResult<(Vec<u16>, Vec<u16>)> {
+    let stage = Stage::from_short_name(stage)
+        .ok_or_else(|| PyValueError::new_err("unknown stage"))?;
+    let cfg = TransCfg { h: hp_buckets, crit, randomize };
+    let c = TransCache::build(stage, hp_buckets, &cfg, verbose);
+    let ps: Vec<f32> = table_ps.iter().map(|&x| x as f32 / SCALE).collect();
+    if ps.len() != c.total {
+        return Err(PyValueError::new_err("table_ps length != total"));
+    }
+    // 種 = 引き分け値 (100手到達時は勝敗なし)。P1 は最大化、P2 は固定 σ、割引なし。
+    let mut v = vec![0.0f32; c.total];
+    for &k in &c.valid { v[k as usize] = draw_value; }
+    let mut br_row_switch = vec![0.0f32; c.total];
+    for layer in 1..=horizon {
+        let res: Vec<(f32, f32)> = c.valid.par_iter().enumerate()
+            .map(|(vi, &k)| {
+                let (nr, nc) = (c.nrows[vi] as usize, c.ncols[vi] as usize);
+                let base = c.cell_base[vi];
+                let d = Dims::decompose(k, c.h);
+                let co = c.col_off[vi];
+                let s2 = strat_mask(&c.col_sw[co..c.col_off[vi + 1]], ps[d.swap().compose(c.h) as usize]);
+                let ro = c.row_off[vi];
+                // P1 の各行 i の期待値 Σ_j s2[j]·M[i][j]、最大の行を採用 (割引=1 で cont=v[k2])。
+                let mut best_val = f32::NEG_INFINITY;
+                let mut best_sw = 0.0f32;
+                for i in 0..nr {
+                    let mut rv = 0.0f32;
+                    for j in 0..nc {
+                        rv += s2[j] * c.cell_value(base + i * nc + j, &v, 1.0);
+                    }
+                    if rv > best_val {
+                        best_val = rv;
+                        best_sw = if c.row_sw[ro + i] { 1.0 } else { 0.0 };
+                    }
+                }
+                (best_val, best_sw)
+            }).collect();
+        let mut delta = 0.0f32;
+        for (vi, &k) in c.valid.iter().enumerate() {
+            delta = delta.max((res[vi].0 - v[k as usize]).abs());
+            v[k as usize] = res[vi].0;
+            br_row_switch[k as usize] = res[vi].1;
+        }
+        if verbose && (layer % 10 == 0 || layer == horizon) {
+            println!("[br-vs-table] layer {layer}/{horizon}: max|ΔV|={delta:.2e}");
+        }
+    }
+    let mut brv = vec![SENTINEL; c.total];
+    let mut brp = vec![SENTINEL; c.total];
+    for &k in &c.valid {
+        brv[k as usize] = (v[k as usize] * SCALE).round().clamp(0.0, SCALE) as u16;
+        brp[k as usize] = (br_row_switch[k as usize] * SCALE).round() as u16;
+    }
+    Ok((brv, brp))
+}
+
 /// キャッシュ版 b&c/幾何打ち切り Nash。web 形式 (P(交代), V, BR)*1000 u16 を返す。
 #[pyfunction]
 #[pyo3(signature = (stage, hp_buckets, crit=true, randomize=true, horizon=3000,

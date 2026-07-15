@@ -10,7 +10,7 @@ mod policy_table;
 
 use encoded::{encode_observation_states, packed_batch_to_dict};
 use nash_vi_back::{solve_nash_backward, solve_nash_layers};
-use nash_vi_cache::solve_nash_cached;
+use nash_vi_cache::{best_response_vs_table, solve_nash_cached};
 use nash_vi_solve::{debug_nash_matrices, solve_nash_vi};
 use policy_table::enumerate_policy_batch;
 use poke_ai3::packed::packed_layout_json;
@@ -249,6 +249,7 @@ fn _native(_py: Python<'_>, module: &Bound<'_, PyModule>) -> PyResult<()> {
     module.add_function(wrap_pyfunction!(solve_nash_backward, module)?)?;
     module.add_function(wrap_pyfunction!(solve_nash_layers, module)?)?;
     module.add_function(wrap_pyfunction!(solve_nash_cached, module)?)?;
+    module.add_function(wrap_pyfunction!(best_response_vs_table, module)?)?;
     module.add_function(wrap_pyfunction!(debug_nash_matrices, module)?)?;
     // 観測・行動空間の定数とグローバル ID 表。Python 側 (encoding.py) はここから
     // import し、Rust の定義を唯一の正とする。
