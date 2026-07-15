@@ -450,7 +450,9 @@ async function main() {
   POLICY_WIDTH = META.policy_width ?? 1;
   VSCALE = META.value_scale;
   const buf = await (await fetch(`./policy_${STAGE}.bin`)).arrayBuffer();
-  TABLE = new Uint16Array(buf);
+  // 完全方策 (4行動) は u8 で焼く。u16 だと 27.9MiB になり Cloudflare Pages の
+  // 1ファイル 25MiB 上限を超えてデプロイが失敗するため。旧テーブルは u16。
+  TABLE = META.policy_dtype === "u8" ? new Uint8Array(buf) : new Uint16Array(buf);
   const vbuf = await (await fetch(`./value_${STAGE}.bin`)).arrayBuffer();
   VALUE_TABLE = new Uint16Array(vbuf);
 

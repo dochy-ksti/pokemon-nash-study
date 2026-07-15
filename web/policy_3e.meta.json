@@ -1,9 +1,10 @@
 {
   "stage": "3e",
   "hp_buckets": 26,
-  "prob_scale": 1000,
+  "prob_scale": 254,
   "value_scale": 1000,
-  "sentinel": 65535,
+  "sentinel": 255,
+  "policy_dtype": "u8",
   "max_move_slots": 4,
   "policy_width": 4,
   "policy_actions": [

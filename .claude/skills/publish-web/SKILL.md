@@ -110,7 +110,13 @@ wasm-pack build poke-wasm --target web --out-dir ../web/pkg
 
 ### 6. テーブル整合検証
 
-Web binがNPZとbyte-for-byte一致すること、shape、meta、代表局面を確認する。
+shape、meta、量子化の整合を確認する。`value` はNPZとbyte-for-byte一致するが、
+`policy` は完全方策 (4行動) のみ u8 へ量子化して焼くのでNPZとは一致しない。
+
+**Cloudflare Pages は 1ファイル 25MiB を超えるアセットがあるとデプロイ全体が失敗する。**
+u16×4行動だと 27.9MiB でこれを超えるため u8 (scale 254 / 番兵 255、13.95MiB) にしている。
+過去に 3d を u16 で焼いてデプロイが静かに失敗し、サイトが3c時代のまま数コミット分
+凍結した事故があった。サイズ検査は exporter が assert しているが、下でも必ず確認する。
 
 ```bash
 cd poke-ai3-python
@@ -119,13 +125,13 @@ import json
 from pathlib import Path
 import numpy as np
 
-stage = "3d"
+stage = "3e"
 root = Path(".."); data = root / "data/poke-ai3/nash_geo"
 meta = json.loads((root / f"web/policy_{stage}.meta.json").read_text())
 npz = np.load(data / f"nash_geo_h26_{stage}.npz")
-policy = np.fromfile(root / f"web/policy_{stage}.bin", dtype=np.uint16)
+dtype = np.uint8 if meta.get("policy_dtype", "u16") == "u8" else np.uint16
+policy = np.fromfile(root / f"web/policy_{stage}.bin", dtype=dtype)
 value = np.fromfile(root / f"web/value_{stage}.bin", dtype=np.uint16)
-assert np.array_equal(policy, npz["policy"])
 assert np.array_equal(value, npz["value"])
 assert policy.size == meta["total"] * meta["policy_width"]
 assert value.size == meta["total"]
@@ -134,9 +140,19 @@ valid = rows[:, 0] != meta["sentinel"]
 assert int(valid.sum()) == 3_380_000
 if meta["policy_width"] == 4:
     sums = rows[valid].astype(np.int64).sum(axis=1)
-    assert sums.min() >= 999 and sums.max() <= 1001
+    assert (sums == meta["prob_scale"]).all()
+    assert rows[valid].max() < meta["sentinel"]      # 番兵と衝突しない
+    ref = npz["policy"].reshape(meta["total"], 4)[valid].astype(float)
+    ref /= ref.sum(axis=1, keepdims=True)
+    err = np.abs(rows[valid] / meta["prob_scale"] - ref).max()
+    assert err <= 1 / meta["prob_scale"], err
+else:
+    assert np.array_equal(policy, npz["policy"])     # u16 は無損失
 print("ALL OK")
 PY
+
+# 25MiB 超の配信物が無いこと (1件でもあればデプロイ全体が失敗する)
+find ../web -type f -size +25M | grep . && echo "NG: 25MiB 超のファイルがある" || echo "size OK"
 ```
 
 3bのNPZは環境によって旧名`nash_geo_h26.npz`なので、3b検証時はexporterと同じfallbackを使う。

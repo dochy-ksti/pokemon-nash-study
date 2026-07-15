@@ -25,6 +25,39 @@ DATA = ROOT / "data" / "poke-ai3" / "nash_geo"
 WEB = ROOT / "web"
 H = 26
 SENTINEL = 0xFFFF
+# u8 方策の量子化スケールと番兵。有効行の値は 0..254 に収まるので 255 と衝突しない。
+U8_SCALE = 254
+U8_SENTINEL = 255
+
+
+def quantize_u8(rows: np.ndarray) -> np.ndarray:
+    """完全方策 (u16, 0..1000) を u8 (0..254、番兵 255) へ量子化する。
+
+    有効状態の各行は和が厳密に `U8_SCALE` になるよう最大剰余法で丸める。単純な四捨五入
+    では和が 253〜255 に散り、255 が番兵と衝突しうる。確率が厳密に 0 の行動には増分を
+    配らないので、「控えが瀕死なら交代確率 0」といった構造的な 0 は保存される。
+    """
+    valid = rows[:, 0] != SENTINEL
+    out = np.full(rows.shape, U8_SENTINEL, dtype=np.uint8)
+    v = rows[valid].astype(np.float64)
+    v /= v.sum(axis=1, keepdims=True)  # 量子化和 999〜1001 を正規化してから配る
+
+    target = v * U8_SCALE
+    floor = np.floor(target).astype(np.int64)
+    deficit = U8_SCALE - floor.sum(axis=1)  # 各行に配るべき残り (0..width-1)
+
+    # 剰余の大きい順に +1。確率 0 の行動は候補から外す (剰余 -1 で最後尾へ落とす)。
+    rem = np.where(v > 0.0, target - floor, -1.0)
+    order = np.argsort(-rem, axis=1, kind="stable")
+    ranks = np.empty_like(order)
+    np.put_along_axis(ranks, order, np.arange(rows.shape[1])[None, :], axis=1)
+    floor += (ranks < deficit[:, None]).astype(np.int64)
+
+    assert (floor.sum(axis=1) == U8_SCALE).all(), "u8 量子化の行和が一致しない"
+    assert floor.max() <= U8_SCALE and floor.min() >= 0
+    assert not ((v == 0.0) & (floor != 0)).any(), "確率 0 の行動に増分が配られた"
+    out[valid] = floor.astype(np.uint8)
+    return out
 
 
 def parse_args() -> argparse.Namespace:
@@ -56,15 +89,26 @@ def main() -> None:
     assert policy.shape == expected_policy_shape, (policy.shape, expected_policy_shape)
     assert value.shape == (total,)
 
-    (WEB / f"policy_{stage}.bin").write_bytes(policy.tobytes())
+    # 完全方策 (u16×4) は 27.9MiB になり Cloudflare Pages の 1ファイル 25MiB 上限を
+    # 超えてデプロイ全体を失敗させる。u8 へ量子化して 7.0MiB に落とす。
+    # 3b/3c の P(交代) は 7.0MiB なので u16 のまま据え置く。
+    if full:
+        out_policy = quantize_u8(policy.reshape(total, policy_width))
+        prob_scale, sentinel, dtype = U8_SCALE, U8_SENTINEL, "u8"
+    else:
+        out_policy = policy
+        prob_scale, sentinel, dtype = 1000, SENTINEL, "u16"
+
+    (WEB / f"policy_{stage}.bin").write_bytes(out_policy.tobytes())
     (WEB / f"value_{stage}.bin").write_bytes(value.tobytes())
 
     meta = {
         "stage": stage,
         "hp_buckets": H,
-        "prob_scale": 1000,
+        "prob_scale": prob_scale,
         "value_scale": 1000,
-        "sentinel": SENTINEL,
+        "sentinel": sentinel,
+        "policy_dtype": dtype,
         "max_move_slots": 4,
         "policy_width": policy_width,
         "policy_actions": (
@@ -100,20 +144,30 @@ def main() -> None:
         json.dumps(meta, ensure_ascii=False, indent=2) + "\n"
     )
 
-    rows = policy.reshape(total, policy_width)
-    valid = rows[:, 0] != SENTINEL
+    rows = out_policy.reshape(total, policy_width)
+    valid = rows[:, 0] != sentinel
+    mib = out_policy.nbytes / 1048576
     print(
-        f"wrote web/policy_{stage}.bin ({policy.nbytes} bytes), "
-        f"value_{stage}.bin ({value.nbytes} bytes)"
+        f"wrote web/policy_{stage}.bin ({out_policy.nbytes} bytes = {mib:.2f} MiB, "
+        f"{dtype}), value_{stage}.bin ({value.nbytes} bytes)"
     )
+    # Cloudflare Pages は 1 ファイル 25MiB 超のアセットがあるとデプロイ全体を失敗させる。
+    assert mib < 25.0, f"policy_{stage}.bin が {mib:.2f} MiB で Pages の 25MiB 上限を超える"
     print(f"valid={int(valid.sum())} exploit mean={float(d['exploit_mean']):.5f} "
           f"max={float(d['exploit_max']):.5f}")
-    probs = rows[valid].astype(float) / 1000.0
+    probs = rows[valid].astype(float) / prob_scale
     if full:
         sums = rows[valid].astype(np.int64).sum(axis=1)
-        assert int(sums.min()) >= 999 and int(sums.max()) <= 1001
+        assert (sums == prob_scale).all(), "u8 方策の行和が scale と一致しない"
+        # 量子化誤差が方策を壊していないか、元の u16 と直接突き合わせる。
+        ref = policy.reshape(total, policy_width)[valid].astype(float)
+        ref /= ref.sum(axis=1, keepdims=True)
+        err = np.abs(probs - ref)
         print(f"mean policy={probs.mean(axis=0).tolist()}")
         print(f"mixed={int(((probs > .02).sum(axis=1) >= 2).sum())}")
+        print(f"u8 量子化誤差: max={err.max():.5f} mean={err.mean():.6f} "
+              f"(1/{prob_scale}={1 / prob_scale:.5f})")
+        assert err.max() <= 1.0 / prob_scale, "量子化誤差が 1 刻みを超えた"
     else:
         ps = probs[:, 0]
         print(f"mixed(.02-.98)={int(((ps > .02) & (ps < .98)).sum())}")
