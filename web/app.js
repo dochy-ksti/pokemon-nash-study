@@ -245,13 +245,15 @@ function render() {
   const foePolicy = showFoe ? policyFor(s.p2, aiTeam, s.p1) : null;
   const selfPolicy = showSelf ? policyFor(s.p1, humanTeam, s.p2) : null;
 
-  // 相手の最頻攻撃が当たった場合のダメージ (attacker=1)。
-  const foeMoveIdx = foePolicy
-    ? foePolicy.moves.indexOf(Math.max(...foePolicy.moves)) : 0;
-  const foeMv = foeMoves[Math.max(0, foeMoveIdx)];
-  const foeDmg = battle.damageRange(1, foeMv.slot);
-  const incoming = `<div class="incoming">${tr("if_foe")} <b>${foeMv.label}</b> ${tr("if_hits")}
-     <span class="dmg-in">${foeDmg.min_pct.toFixed(0)}–${foeDmg.max_pct.toFixed(0)}%</span></div>`;
+  // 方策上0%でない相手の攻撃が当たった場合のダメージ (attacker=1)。
+  // 方策を隠した場合や表にない局面では、従来どおり先頭の技だけを表示する。
+  const incomingMoves = foePolicy
+    ? foeMoves.filter((_, i) => foePolicy.moves[i] > 0) : foeMoves.slice(0, 1);
+  const incoming = incomingMoves.map((move) => {
+    const dmg = battle.damageRange(1, move.slot);
+    return `<div class="incoming">${tr("if_foe")} <b>${move.label}</b> ${tr("if_hits")}
+       <span class="dmg-in">${dmg.min_pct.toFixed(0)}–${dmg.max_pct.toFixed(0)}%</span></div>`;
+  }).join("");
 
   // 勝率帯を上下2箇所に分離表示。
   //  相手勝率 (相手=P2 視点の value): 相手フィールド上・tog-foe 連動・あなた目線で色反転。
