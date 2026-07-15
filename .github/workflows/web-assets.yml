@@ -1,29 +1,32 @@
 name: web assets
 
-# Cloudflare Pages の上限違反を push 時点で検出する。
-#
-# Pages は上限超過のアセットが1つでもあるとデプロイ「全体」を失敗させるが、Git 連携での
-# 失敗は静かで、サイトは最後に成功したビルドのまま残り続ける。2026-07 に policy_3d.bin
-# (27.89MiB) がこれを踏み、サイトが3c時代のまま5コミット分凍結していたのに気づかなかった。
-# deploy-web.sh も同じ検査をするが、そのスクリプトを通さない普通のコミットでも push できる
-# (実際 3d はそれで入った) ため、最後の砦として CI でも回す。
+# Cloudflare Pages は 25MiB 超のアセットが1つでもあるとデプロイ「全体」を静かに
+# 失敗させ、サイトは最後に成功したビルドのまま残る。2026-07 に policy_3d.bin
+# (27.89MiB, u16×4行動) がこれを踏み、サイトが3c時代のまま5コミット分凍結した。
+# exporter (export_nash_geo_web.py) にも同じ assert があるが、export を経ずに
+# web/ へ直接ファイルを置いたコミットも push できるため、CI でも検査する。
 
 on:
   push:
     paths:
       - "web/**"
-      - "scripts/check-web-assets.sh"
-      - ".github/workflows/web-assets.yml"
   pull_request:
     paths:
       - "web/**"
-      - "scripts/check-web-assets.sh"
-  workflow_dispatch:
 
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Cloudflare Pages の制約を検査
-        run: scripts/check-web-assets.sh
+      - name: 25MiB 超の配信物が無いこと
+        run: |
+          over="$(find web -type f -size +$((25 * 1024 * 1024))c -printf '%s\t%p\n')"
+          if [ -n "$over" ]; then
+            echo "NG: Cloudflare Pages の 25MiB/ファイル上限を超える配信物があります。" >&2
+            echo "    デプロイ全体が静かに失敗し、サイトが古いまま凍結します。" >&2
+            echo "$over" >&2
+            echo "    方策テーブルは export_nash_geo_web.py が u8 で焼けば収まります。" >&2
+            exit 1
+          fi
+          echo "OK: 25MiB 超の配信物なし"

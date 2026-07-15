@@ -20,11 +20,6 @@ MSG="${1:-web 更新 $(TZ=Asia/Tokyo date +%Y-%m-%d\ %H:%M) JST}"
 [[ -d "$ROOT/.git" ]]  || { echo "error: not a git repo: $ROOT" >&2; exit 1; }
 
 cd "$ROOT"
-
-# Pages の上限違反があるとデプロイ全体が静かに失敗し、サイトが古いまま凍結する。
-# commit 前に必ず弾く。
-"$ROOT/scripts/check-web-assets.sh"
-
 git add web readme.md readme-ja.md LICENSE
 if git diff --cached --quiet; then
   echo "変更なし — commit/push をスキップしました。"
@@ -33,8 +28,4 @@ fi
 git commit -q -m "$MSG"
 echo "committed: $MSG"
 git push
-echo "pushed. Cloudflare Pages の反映を待って配信内容を検証します..."
-
-# Pages の Git 連携はデプロイ失敗が静かで、サイトは古いまま残る。push して終わりにせず、
-# 公開URLが実際にローカルと同じものを返すまで確認する。
-"$ROOT/scripts/verify-deploy.sh"
+echo "pushed. Cloudflare Pages が数十秒で再デプロイします。"

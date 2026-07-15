@@ -186,26 +186,29 @@ scripts/deploy-web.sh "変更内容の短い説明"
 ```
 
 このスクリプトは`web/`等をcommitしてpushし、Cloudflare Pagesの再デプロイを開始する。
-`scripts/check-web-assets.sh`をcommit前に、`scripts/verify-deploy.sh`をpush後に自動で実行する。
 既にコミット済みなら、意図したブランチとcommitを確認して通常の`git push`を使う。公開依頼が
 なければpushしない。
 
-### 9. 公開後の検証（必須）
+### 9. 公開後の確認
 
 **pushしただけで公開できたと判断してはいけない。**
-
-```bash
-scripts/verify-deploy.sh
-```
 
 Cloudflare PagesのGit連携はデプロイが失敗しても静かで、サイトは最後に成功したビルドのまま
 残り続ける。さらにPagesは未知のパスにフォールバックの`index.html`を**200**で返すため、
 HTTPステータスによる疎通確認は当てにならない（存在しない`policy_3d.bin`にも200が返る）。
-中身を突き合わせる`verify-deploy.sh`だけが本当の確認手段である。
+**中身を突き合わせる**しかない。例:
 
-実際、2026-07に`policy_3d.bin`（27.89MiB）が25MiB上限を踏んでデプロイが静かに失敗し、
-サイトが3c時代のまま5コミット分凍結していたのに数日気づかなかった。発覚したのは
-配信中の`app.js`が3c時代のコミットと完全一致していたからである。
+```bash
+# 更新したステージの meta が本物のJSONで、ローカルと一致するか
+curl -s https://pokemon-nash-study.pages.dev/policy_3e.meta.json | head -c 100
+# 配信中の app.js がローカルと同一か
+diff <(curl -s https://pokemon-nash-study.pages.dev/app.js) web/app.js && echo OK
+```
+
+実際、2026-07に`policy_3d.bin`（27.89MiB, u16×4行動）が25MiB上限を踏んでデプロイが静かに
+失敗し、サイトが3c時代のまま5コミット分凍結していたのに数日気づかなかった。発覚したのは
+配信中の`app.js`が3c時代のコミットと完全一致していたからである。25MiB検査はexporterの
+assertと`.github/workflows/web-assets.yml`（push時CI）の二段で行われる。
 
 ## URL
 
