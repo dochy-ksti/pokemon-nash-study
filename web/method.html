@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How the AI is computed — A Study of Nash Equilibria in Pokémon</title>
+  <meta name="description" content="How the unexploitable battle AI is computed: solving a zero-sum stochastic game position by position, explained for a math-minded high schooler.">
+  <link rel="stylesheet" href="./style.css">
+  <style>
+    .doc{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+    .doc h1{font-size:25px;line-height:1.25;margin:0}
+    .doc .lead{color:var(--dim);font-size:15px;margin:0}
+    .doc h2{font-size:18px;margin:22px 0 0;font-weight:640}
+    .doc .step{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan)}
+    .doc p{margin:8px 0 0;font-size:14.5px;line-height:1.68}
+    .doc b{color:var(--ink)}
+    .doc .note{border-left:3px solid var(--gold);padding-left:12px;color:var(--dim);font-size:14px}
+    .doc .key{border-left:3px solid var(--good);padding-left:12px;color:var(--ink)}
+    .doc figure{margin:14px 0 0;background:var(--panel);border:1px solid var(--edge);border-radius:12px;
+      padding:16px 18px;overflow-x:auto}
+    .doc figcaption{font-size:13px;color:var(--dim);margin-top:10px;line-height:1.6}
+    .doc table.mx{border-collapse:collapse;font-family:var(--mono);font-size:13.5px;margin:0 auto}
+    .doc table.mx th{color:var(--faint);font-weight:500;padding:5px 12px;font-size:12px;letter-spacing:.05em}
+    .doc table.mx td{border:1px solid var(--edge);padding:9px 16px;text-align:center;
+      font-variant-numeric:tabular-nums;color:var(--ice)}
+    .doc table.mx td.lab{border:0;color:var(--faint);font-size:12px;text-align:right;padding-right:12px}
+    .doc code,.doc .fx{font-family:var(--mono);color:var(--ice);font-size:13.5px;
+      background:var(--panel2);border:1px solid var(--edge);border-radius:5px;padding:1px 6px}
+    .doc .fx{display:block;padding:12px 14px;margin:12px 0 0;overflow-x:auto;color:var(--ink)}
+    .doc ul{margin:8px 0 0;padding-left:20px;font-size:14.5px;line-height:1.66;color:var(--ink)}
+    .doc .nums{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+    .doc .nums span{font-family:var(--mono);font-size:12px;color:var(--dim);background:var(--panel);
+      border:1px solid var(--edge);border-radius:7px;padding:6px 10px}
+    .doc .nums b{color:var(--cyan)}
+    .doc footer{color:var(--faint);font-size:12.5px;border-top:1px solid var(--edge);padding-top:14px;
+      margin-top:10px;display:flex;gap:14px;flex-wrap:wrap}
+    .doc footer a{color:var(--dim);text-decoration:none} .doc footer a:hover{color:var(--cyan)}
+  </style>
+</head>
+<body>
+  <div class="wrap doc">
+    <header class="top">
+      <div class="brand">
+        <a class="overview-link" id="overview-link" href="./">← <span data-i18n="overview">Overview</span></a>
+        <span class="eyebrow">Pokémon Nash Study</span>
+      </div>
+      <div class="toggles">
+        <div class="lang" id="lang">
+          <button class="lg" data-lang="ja">日本語</button><button class="lg on" data-lang="en">EN</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ============ English ============ -->
+    <main class="lang-en" id="content-en">
+      <h1>How the AI is computed</h1>
+      <p class="lead">The battle AI on this site does not "think" while you play — every move is read
+        from a table that was computed once, in advance. Here is how that table is built, aimed at a
+        high-school student who likes math. The only tools you need are probability, expected value,
+        and the patience to let an equation solve itself.</p>
+
+      <h2><span class="step">1 · One position is a tiny game</span></h2>
+      <p>Look at a single moment in the battle. Both players choose <b>at the same time</b> — attack, or
+        switch — and only then is the choice revealed. Because you move blind, no single choice is always
+        best: if you always attack, the opponent switches to dodge it; if you always switch, they punish
+        you. This is exactly rock–paper–scissors, and the right answer is to <b>mix</b> — to choose
+        randomly with carefully tuned probabilities.</p>
+      <figure>
+        <table class="mx">
+          <tr><td class="lab"></td><th>opp attacks</th><th>opp switches</th></tr>
+          <tr><td class="lab">you attack</td><td>0.30</td><td>0.60</td></tr>
+          <tr><td class="lab">you switch</td><td>0.70</td><td>0.40</td></tr>
+        </table>
+        <figcaption>Each number is <b>your probability of eventually winning</b> after that pair of
+          choices. There is no "safe" row: the best win probability you can guarantee with a fixed row is 0.40, but the
+          opponent can hold you to 0.60 — the gap means the solution must be a mix.</figcaption>
+      </figure>
+      <p>For a 2×2 game like this there is a formula. With the four entries named
+        <code>a b / c d</code> (top-left to bottom-right), the probability you should <b>attack</b> and the
+        resulting win probability of the position are:</p>
+      <span class="fx">p(attack) = (d − c) / (a − b − c + d)&nbsp;&nbsp;&nbsp;
+        win prob = (a·d − b·c) / (a − b − c + d)</span>
+      <p>Here that gives <code>p = 0.5</code> and <code>win prob = 0.5</code>: attack half the time, and the
+        position is a coin-flip. This mix is the <b>Nash equilibrium</b> of the little game — neither
+        player can do better by deviating, so a mixed strategy is not weakness, it is the exact answer.</p>
+
+      <h2><span class="step">2 · Positions point at each other</span></h2>
+      <p>There is a catch hiding in that table. The number 0.30 for "both attack" is itself
+        "your win probability in <b>the position you reach next</b>" — after the damage is dealt. So the
+        win probability of a position is defined in terms of the win probabilities of <i>other</i> positions. Everything refers
+        to everything else. Writing <code>V(s)</code> for the win probability of position <code>s</code>:</p>
+      <span class="fx">V(s) = the equilibrium win probability of the little matrix whose entries are the
+        (averaged) V of wherever the turn sends you</span>
+      <p>"Averaged", because the game has dice: critical hits (1 in 24), a damage roll (16 equally likely
+        rolls), and a coin flip for who moves first. Each cell of the matrix is the <b>expected value</b>
+        over all those outcomes — an ordinary weighted average.</p>
+
+      <h2><span class="step">3 · Let the equation solve itself</span></h2>
+      <p>An equation where <code>V</code> appears on both sides looks circular, but it can be solved by
+        <b>repetition</b>. Start from the positions whose win probability is already obvious — someone has fainted,
+        so <code>V = 1</code> or <code>V = 0</code>. Then sweep over <i>every</i> position and recompute
+        its win probability from the current guesses of its neighbours. Repeat. Each pass pushes the truth one step
+        further back from the decided positions, and the numbers stop moving once they are consistent
+        everywhere. This is <b>value iteration</b>, and the strategy (the switch probabilities) falls out
+        of the same matrix solves.</p>
+
+      <h2><span class="step">4 · The trap: games that never end</span></h2>
+      <p>Two Pokémon can just keep switching, forever, and never take damage. What is the win probability of a game
+        that never ends? If we call it a draw worth 0.5, something breaks: a losing player escapes to 0.5
+        simply by stalling, and the whole table collapses — <b>every</b> position becomes 0.5 and the AI
+        refuses to fight. A single table can't fix this on its own, because it has no clock: it cannot
+        tell turn 3 from turn 80, so it cannot say "stop stalling, the end is near."</p>
+      <p>The fix is two small rule changes to the <i>math</i> of the game:</p>
+      <ul>
+        <li><b>If a game drags on, decide it by health.</b> Whoever has more Pokémon left — and then more
+          total HP — wins. A staller who is behind now <i>loses</i> by stalling, so stalling stops being a
+          free escape.</li>
+        <li><b>Give every turn a tiny chance of being the last.</b> Model a small probability (here 1%)
+          that the battle simply ends and is settled by that health tiebreak. This is called
+          <b>discounting</b>, and it is the magic ingredient.</li>
+      </ul>
+      <p class="key">A theorem of Lloyd Shapley (1953) says that <i>with</i> that per-turn ending chance,
+        a game like this always has an optimal strategy that depends only on the position — exactly the
+        single clock-free table we want. Remove the ending chance and the guarantee is gone; the true
+        optimal play would have to count how long the opponent has been stalling, which no single table
+        can do.</p>
+
+      <h2><span class="step">5 · The result</span></h2>
+      <p>Enumerate every position — each side's active Pokémon and both Pokémon's HP, bucketed into 26
+        levels — and run value iteration to convergence. That yields, for all <b>3.38 million</b>
+        positions, a probability of switching. We then check it honestly: we let a perfect opponent
+        <b>best-respond</b> to the table and measure how much they gain. The answer is essentially zero —
+        the table is <b>unexploitable</b> in this game.</p>
+      <div class="nums">
+        <span>positions solved: <b>3,380,000</b></span>
+        <span>genuinely mixed: <b>1,105,681</b></span>
+        <span>exploitability: <b>≈ 0</b></span>
+        <span>solve time: <b>~3.6 min</b></span>
+      </div>
+      <p class="note">One honesty note. The playable battles here do <b>not</b> impose the "1% sudden
+        ending" rule — being told a match can just stop feels unfair to a human. So the table is the exact
+        equilibrium of the game <i>with</i> that rule, deployed in the game <i>without</i> it. In ordinary
+        play, which resolves in around ten turns, the ending almost never fires and the AI plays
+        near-optimally anyway. In theory a player who deliberately stalls forever could gain an edge —
+        whether a human can actually pull that off is the next thing to test.</p>
+
+      <footer>
+        <a href="./">← Back to the studies</a>
+        <a href="https://github.com/dochy-ksti/pokemon-nash-study">Source code ↗</a>
+      </footer>
+    </main>
+
+    <!-- ============ 日本語 ============ -->
+    <main class="lang-ja hidden" id="content-ja">
+      <h1>このAIの作り方</h1>
+      <p class="lead">このサイトの対戦AIは、あなたと対戦している最中には何も「考えて」いません。すべての手は、
+        あらかじめ一度だけ計算した表から読み出しているだけです。その表をどう作るのかを、数学が好きな高校生に
+        向けて説明します。必要なのは確率と期待値、そして「方程式が自分で解けるまで待つ」根気だけです。</p>
+
+      <h2><span class="step">1 · 一つの局面は小さなゲーム</span></h2>
+      <p>対戦のある一瞬を切り取ります。両プレイヤーは<b>同時に</b>手を選び — 攻撃か、交代か — 選んでから
+        初めて相手の手が公開されます。相手が見えないまま動くので、どれか一つの手が常に最善ということはありません。
+        いつも攻撃すれば相手は交代でかわし、いつも交代すれば相手はそこを咎める。これはまさにじゃんけんで、
+        正解は<b>混ぜる</b>こと — 確率をうまく調整してランダムに選ぶことです。</p>
+      <figure>
+        <table class="mx">
+          <tr><td class="lab"></td><th>相手 攻撃</th><th>相手 交代</th></tr>
+          <tr><td class="lab">自分 攻撃</td><td>0.30</td><td>0.60</td></tr>
+          <tr><td class="lab">自分 交代</td><td>0.70</td><td>0.40</td></tr>
+        </table>
+        <figcaption>各数字は、その手の組み合わせの後の<b>自分の最終的な勝率</b>です。「安全な行」はありません。
+          行を固定したとき保証できる自分の勝率は最大でも0.40ですが、相手はあなたを0.60に抑えられる — この差が、
+          解が混合戦略でなければならないことを意味します。</figcaption>
+      </figure>
+      <p>このような2×2のゲームには公式があります。4つの数字を <code>a b / c d</code>(左上から右下)と
+        名づけると、自分が<b>攻撃</b>すべき確率と、その局面の勝率は次で求まります:</p>
+      <span class="fx">p(攻撃) = (d − c) / (a − b − c + d)&nbsp;&nbsp;&nbsp;
+        勝率 = (a·d − b·c) / (a − b − c + d)</span>
+      <p>ここでは <code>p = 0.5</code>、<code>勝率 = 0.5</code> になります。半分の確率で攻撃し、局面は五分。
+        この混合が、この小さなゲームの<b>ナッシュ均衡</b>です — どちらもここから外れて得することはできないので、
+        混合戦略は弱さではなく、厳密な正解なのです。</p>
+
+      <h2><span class="step">2 · 局面は互いを指し示す</span></h2>
+      <p>この表には仕掛けが隠れています。「両者攻撃」の 0.30 という数字自体、実は「ダメージが入った後に
+        <b>次に到達する局面</b>での自分の勝率」です。つまりある局面の勝率は、<i>他の</i>局面の勝率で定義されている。
+        すべてがすべてを参照しています。局面 <code>s</code> の勝率を <code>V(s)</code> と書くと:</p>
+      <span class="fx">V(s) = 「その手番で行き着く先の V(を平均したもの)」を成分とする
+        小さな行列の均衡での勝率(ナッシュ勝率)</span>
+      <p>「平均」というのは、このゲームにサイコロがあるからです — 急所(24分の1)、ダメージ乱数(等確率の16通り)、
+        どちらが先に動くかのコイン。行列の各マスは、それらすべての結果にわたる<b>期待値</b>、ただの加重平均です。</p>
+
+      <h2><span class="step">3 · 方程式を自分で解かせる</span></h2>
+      <p><code>V</code> が両辺に現れる方程式は堂々巡りに見えますが、<b>繰り返し</b>で解けます。まず勝率が
+        明らかな局面から始めます — 誰かが倒れていれば <code>V = 1</code> か <code>V = 0</code>。次に
+        <i>すべての</i>局面を掃いて、今の隣接局面の勝率の見積もりから各局面の勝率を計算し直す。これを繰り返す。
+        一巡ごとに、決着済みの局面から真実が一歩ずつ手前へ伝わり、全体が整合すると数字は動かなくなります。
+        これが<b>価値反復</b>で、戦略(交代確率)も同じ行列を解く過程から出てきます。</p>
+
+      <h2><span class="step">4 · 罠 — 終わらない対戦</span></h2>
+      <p>2匹のポケモンは、ただ永遠に交代し続けて、一度もダメージを受けないこともできます。では、決して
+        終わらない対戦の勝率は何でしょう? これを引き分け=0.5とすると、何かが壊れます。負けているプレイヤーが
+        交代し続けるだけで0.5に逃げられ、表全体が崩壊して — <b>すべての</b>局面が0.5になり、AIは戦うのを
+        やめてしまう。1枚の表だけではこれを直せません。時計を持たないからです。3ターン目と80ターン目を
+        区別できないので、「交代をやめろ、もう終わりが近い」と言えないのです。</p>
+      <p>直し方は、ゲームの<i>数学</i>への2つの小さなルール変更です:</p>
+      <ul>
+        <li><b>長引いたら残りHPで決着させる。</b>残りのポケモンが多い方 — 同じなら残りHP合計が多い方 — の勝ち。
+          負けている側は交代し続けると<i>負ける</i>ので、交代がもはやタダの逃げ道でなくなります。</li>
+        <li><b>毎ターン、ごく小さな確率でそのターンが最後になるとする。</b>小さな確率(ここでは1%)で対戦が
+          単に終わり、上の残HP判定で決着する、とモデル化します。これは<b>割引</b>と呼ばれ、魔法の材料です。</li>
+      </ul>
+      <p class="key">ロイド・シャープレイの定理(1953)は、その「毎ターン終わる確率」が<i>あれば</i>、
+        こうしたゲームには必ず「局面だけで決まる最適戦略」が存在すると言います — まさに私たちが欲しい、
+        時計のいらない1枚の表です。終わる確率を取り除くとこの保証は消え、本当の最適手は「相手が何ターン
+        交代し続けているか」を数える必要が出てきて、1枚の表では表せなくなります。</p>
+
+      <h2><span class="step">5 · 結果</span></h2>
+      <p>すべての局面 — 各陣営の場のポケモンと、両ポケモンのHP(26段階に離散化)— を列挙し、価値反復を
+        収束まで回します。すると<b>338万</b>すべての局面について交代確率が得られます。そして正直に検算します。
+        完璧な相手に表へ<b>ベストレスポンス</b>させ、どれだけ得できるかを測る。答えは実質ゼロ —
+        この表はこのゲームで<b>exploit不能(付け入る隙がない)</b>です。</p>
+      <div class="nums">
+        <span>解いた局面: <b>3,380,000</b></span>
+        <span>実際に混合: <b>1,105,681</b></span>
+        <span>付け入る隙: <b>≈ 0</b></span>
+        <span>計算時間: <b>約3.6分</b></span>
+      </div>
+      <p class="note">一つ正直に。ここで遊べる対戦には「1%で突然終了」ルールは<b>入れていません</b> —
+        対戦が突然止まると言われても人間には不自然だからです。つまり表は、そのルール<i>あり</i>のゲームの
+        厳密な均衡を、ルール<i>なし</i>のゲームに載せています。普通の対戦は10ターンほどで決着するので終了は
+        ほとんど発火せず、AIはそれでもほぼ最適に指します。理論上は、意図的に永遠に交代し続けるプレイヤーが
+        有利を取れる余地があります — それを人間が実際にやり遂げられるかどうかが、次に確かめることです。</p>
+
+      <footer>
+        <a href="./?lang=ja">← 研究一覧に戻る</a>
+        <a href="https://github.com/dochy-ksti/pokemon-nash-study">ソースコード ↗</a>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    const langFromUrl = () =>
+      new URLSearchParams(location.search).get("lang") === "ja" ? "ja" : "en";
+    let lang = langFromUrl();
+
+    function apply() {
+      document.documentElement.lang = lang;
+      document.getElementById("content-en").classList.toggle("hidden", lang !== "en");
+      document.getElementById("content-ja").classList.toggle("hidden", lang !== "ja");
+      for (const b of document.querySelectorAll(".lg"))
+        b.classList.toggle("on", b.dataset.lang === lang);
+      const ov = document.getElementById("overview-link");
+      if (ov) ov.setAttribute("href", lang === "ja" ? "./?lang=ja" : "./");
+    }
+    for (const b of document.querySelectorAll(".lg")) {
+      b.addEventListener("click", () => {
+        lang = b.dataset.lang;
+        const u = new URL(location.href);
+        u.searchParams.set("lang", lang);
+        history.replaceState(null, "", u);
+        apply();
+      });
+    }
+    apply();
+  </script>
+</body>
+</html>
